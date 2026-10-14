@@ -1,0 +1,95 @@
+{
+  "config": {
+    "schema_version": 1,
+    "status": "experimental_not_frozen",
+    "dataset": "UCI HAR raw inertial signals",
+    "channels": [
+      "body_acc_x",
+      "body_acc_y",
+      "body_acc_z",
+      "body_gyro_x",
+      "body_gyro_y",
+      "body_gyro_z",
+      "total_acc_x",
+      "total_acc_y",
+      "total_acc_z"
+    ],
+    "validation_subjects": [
+      5,
+      14,
+      19,
+      27
+    ],
+    "window_samples": 128,
+    "patch_samples": 4,
+    "width": 128,
+    "heads": 4,
+    "layers": 4,
+    "ffn_ratio": 2,
+    "classes": 6,
+    "group_size": 4,
+    "gate_after_block": 1,
+    "position": "learned_absolute_added_before_gating",
+    "pooling": "mean_over_actual_tokens",
+    "activation": "pwl_silu",
+    "seeds": [
+      17,
+      29,
+      43
+    ],
+    "batch_size": 128,
+    "epochs": 30,
+    "learning_rate": 0.0003,
+    "weight_decay": 0.01,
+    "modes": {
+      "quality": {
+        "weight_bits": 8,
+        "keep_groups": 8,
+        "rts": false,
+        "exit_block": 4
+      },
+      "balanced": {
+        "weight_bits": 4,
+        "keep_groups": 6,
+        "rts": true,
+        "exit_block": 4
+      },
+      "energy_saver": {
+        "weight_bits": 4,
+        "keep_groups": 4,
+        "rts": true,
+        "exit_block": 2
+      }
+    }
+  },
+  "seed": 17,
+  "mode": "quality",
+  "execution_mode": {
+    "weight_bits": 8,
+    "keep_groups": 8,
+    "rts": false,
+    "exit_block": 4
+  },
+  "device": "mps",
+  "torch": "2.14.1",
+  "numpy": "2.5.4",
+  "python": "3.12.13",
+  "git_commit": "2e7a59f685a2e047b5d02d6c0b4a9782187bb06c",
+  "git_status": "?? .gitignore\n?? README.md\n?? architecture/\n?? config/\n?? model/\n?? paper/\n?? requirements.lock\n?? requirements.txt\n?? results/\n?? tests/\n",
+  "source_sha256": {
+    "model/speech_data.py": "f03fdebde9d094819973730071b12a4eb7f240ef92573e7898921d3516b850b9",
+    "model/__init__.py": "fbb5838c20a0f746fadf67ddabd4979cd3fd4586903809a6d11019d695b563f9",
+    "model/network.py": "551cea9a1412f66179666efb27f7fa1f6f20439ba6b26d51061136ee348cff91",
+    "model/train.py": "b8d6a9e3f8640aaef020b5ebc3ba52e144842e0a00424333ccdf9b3b754881f1",
+    "model/data.py": "20d9278c49bbddb39323f117a405ebe2065c0827f8d0d40be40b129846a2e99f",
+    "config/speech.json": "1c6f4bd79a6e8629b09473f5cdddc143a40c793dfd1e21909d661b6e4bb52d4a",
+    "config/har.json": "6688524adecce9a7f57c632c5ec227a471d86f9d4f67fa15d3d09cb7b75b06c7",
+    "architecture/profile.py": "7e3e7f229edcbf12c451ac3f49cd79d33d3594736b893de8eb342713c933c112",
+    "architecture/__init__.py": "f1a57c4ba1009b93ee3869e8a17241d9d1f064a2c871b7dac7b37503be68d51c"
+  },
+  "epochs": 30,
+  "dataset_manifest_sha256": "6edd78f34179bf31855f9d7b1b05380feb7f3602bc9bdc1d7f7ebe93a7cab03d",
+  "initialize_sha256": "a76df3bb0f602e7a394ddc6a576c2ed14510fb37817b4a6e3c845364d544fac5",
+  "numeric_status": "experimental_fake_quantization_not_integer_reference",
+  "final_test_requested": false
+}

@@ -1,0 +1,979 @@
+{
+  "config_status": "experimental_not_frozen",
+  "parameters_including_auxiliary_head": 539533,
+  "dense": {
+    "status": "analytical_uncalibrated_not_measured",
+    "sequence": 32,
+    "tokens_after_gate": 32,
+    "mode": {
+      "weight_bits": 8,
+      "keep_groups": 8,
+      "rts": false,
+      "exit_block": 4
+    },
+    "operators": [
+      {
+        "operator": "patch_embedding",
+        "tokens": 32,
+        "macs": 147456
+      },
+      {
+        "operator": "block1_projections",
+        "tokens": 32,
+        "macs": 2097152
+      },
+      {
+        "operator": "block1_attention_qk_av",
+        "tokens": 32,
+        "macs": 262144
+      },
+      {
+        "operator": "block1_ffn",
+        "tokens": 32,
+        "macs": 2097152
+      },
+      {
+        "operator": "block2_projections",
+        "tokens": 32,
+        "macs": 2097152
+      },
+      {
+        "operator": "block2_attention_qk_av",
+        "tokens": 32,
+        "macs": 262144
+      },
+      {
+        "operator": "block2_ffn",
+        "tokens": 32,
+        "macs": 2097152
+      },
+      {
+        "operator": "block3_projections",
+        "tokens": 32,
+        "macs": 2097152
+      },
+      {
+        "operator": "block3_attention_qk_av",
+        "tokens": 32,
+        "macs": 262144
+      },
+      {
+        "operator": "block3_ffn",
+        "tokens": 32,
+        "macs": 2097152
+      },
+      {
+        "operator": "block4_projections",
+        "tokens": 32,
+        "macs": 2097152
+      },
+      {
+        "operator": "block4_attention_qk_av",
+        "tokens": 32,
+        "macs": 262144
+      },
+      {
+        "operator": "block4_ffn",
+        "tokens": 32,
+        "macs": 2097152
+      },
+      {
+        "operator": "classifier",
+        "tokens": 1,
+        "macs": 768
+      }
+    ],
+    "executed_macs": 17974016,
+    "executed_ops_mac_equals_two": 35948032,
+    "ideal_mac_cycle_lower_bound": 280844,
+    "assumed_mac_lanes": 64,
+    "payload_bytes_only": {
+      "encoder_matrix_weights": 524288,
+      "pingpong_int8_activations": 8192,
+      "qkv_int8": 12288,
+      "ffn_int8": 8192,
+      "online_attention_int32_state": 17408,
+      "materialized_int16_scores_comparison": 8192
+    },
+    "excluded_costs": [
+      "normalization",
+      "softmax",
+      "activation",
+      "residual additions",
+      "pooling",
+      "sorting and compaction",
+      "summary division",
+      "metadata",
+      "scales and biases",
+      "banking fragmentation",
+      "pipeline and memory stalls",
+      "DMA"
+    ]
+  },
+  "candidate_modes": {
+    "quality": {
+      "status": "analytical_uncalibrated_not_measured",
+      "sequence": 32,
+      "tokens_after_gate": 32,
+      "mode": {
+        "weight_bits": 8,
+        "keep_groups": 8,
+        "rts": false,
+        "exit_block": 4
+      },
+      "operators": [
+        {
+          "operator": "patch_embedding",
+          "tokens": 32,
+          "macs": 147456
+        },
+        {
+          "operator": "block1_projections",
+          "tokens": 32,
+          "macs": 2097152
+        },
+        {
+          "operator": "block1_attention_qk_av",
+          "tokens": 32,
+          "macs": 262144
+        },
+        {
+          "operator": "block1_ffn",
+          "tokens": 32,
+          "macs": 2097152
+        },
+        {
+          "operator": "block2_projections",
+          "tokens": 32,
+          "macs": 2097152
+        },
+        {
+          "operator": "block2_attention_qk_av",
+          "tokens": 32,
+          "macs": 262144
+        },
+        {
+          "operator": "block2_ffn",
+          "tokens": 32,
+          "macs": 2097152
+        },
+        {
+          "operator": "block3_projections",
+          "tokens": 32,
+          "macs": 2097152
+        },
+        {
+          "operator": "block3_attention_qk_av",
+          "tokens": 32,
+          "macs": 262144
+        },
+        {
+          "operator": "block3_ffn",
+          "tokens": 32,
+          "macs": 2097152
+        },
+        {
+          "operator": "block4_projections",
+          "tokens": 32,
+          "macs": 2097152
+        },
+        {
+          "operator": "block4_attention_qk_av",
+          "tokens": 32,
+          "macs": 262144
+        },
+        {
+          "operator": "block4_ffn",
+          "tokens": 32,
+          "macs": 2097152
+        },
+        {
+          "operator": "classifier",
+          "tokens": 1,
+          "macs": 768
+        }
+      ],
+      "executed_macs": 17974016,
+      "executed_ops_mac_equals_two": 35948032,
+      "ideal_mac_cycle_lower_bound": 280844,
+      "assumed_mac_lanes": 64,
+      "payload_bytes_only": {
+        "encoder_matrix_weights": 524288,
+        "pingpong_int8_activations": 8192,
+        "qkv_int8": 12288,
+        "ffn_int8": 8192,
+        "online_attention_int32_state": 17408,
+        "materialized_int16_scores_comparison": 8192
+      },
+      "excluded_costs": [
+        "normalization",
+        "softmax",
+        "activation",
+        "residual additions",
+        "pooling",
+        "sorting and compaction",
+        "summary division",
+        "metadata",
+        "scales and biases",
+        "banking fragmentation",
+        "pipeline and memory stalls",
+        "DMA"
+      ]
+    },
+    "balanced": {
+      "status": "analytical_uncalibrated_not_measured",
+      "sequence": 32,
+      "tokens_after_gate": 26,
+      "mode": {
+        "weight_bits": 4,
+        "keep_groups": 6,
+        "rts": true,
+        "exit_block": 4
+      },
+      "operators": [
+        {
+          "operator": "patch_embedding",
+          "tokens": 32,
+          "macs": 147456
+        },
+        {
+          "operator": "block1_projections",
+          "tokens": 32,
+          "macs": 2097152
+        },
+        {
+          "operator": "block1_attention_qk_av",
+          "tokens": 32,
+          "macs": 262144
+        },
+        {
+          "operator": "block1_ffn",
+          "tokens": 32,
+          "macs": 2097152
+        },
+        {
+          "operator": "block2_projections",
+          "tokens": 26,
+          "macs": 1703936
+        },
+        {
+          "operator": "block2_attention_qk_av",
+          "tokens": 26,
+          "macs": 173056
+        },
+        {
+          "operator": "block2_ffn",
+          "tokens": 26,
+          "macs": 1703936
+        },
+        {
+          "operator": "block3_projections",
+          "tokens": 26,
+          "macs": 1703936
+        },
+        {
+          "operator": "block3_attention_qk_av",
+          "tokens": 26,
+          "macs": 173056
+        },
+        {
+          "operator": "block3_ffn",
+          "tokens": 26,
+          "macs": 1703936
+        },
+        {
+          "operator": "block4_projections",
+          "tokens": 26,
+          "macs": 1703936
+        },
+        {
+          "operator": "block4_attention_qk_av",
+          "tokens": 26,
+          "macs": 173056
+        },
+        {
+          "operator": "block4_ffn",
+          "tokens": 26,
+          "macs": 1703936
+        },
+        {
+          "operator": "group_scorer",
+          "tokens": 32,
+          "macs": 4096
+        },
+        {
+          "operator": "weighted_summaries",
+          "tokens": 8,
+          "macs": 1024
+        },
+        {
+          "operator": "classifier",
+          "tokens": 1,
+          "macs": 768
+        }
+      ],
+      "executed_macs": 15352576,
+      "executed_ops_mac_equals_two": 30705152,
+      "ideal_mac_cycle_lower_bound": 239884,
+      "assumed_mac_lanes": 64,
+      "payload_bytes_only": {
+        "encoder_matrix_weights": 262144,
+        "pingpong_int8_activations": 8192,
+        "qkv_int8": 12288,
+        "ffn_int8": 8192,
+        "online_attention_int32_state": 17408,
+        "materialized_int16_scores_comparison": 8192
+      },
+      "excluded_costs": [
+        "normalization",
+        "softmax",
+        "activation",
+        "residual additions",
+        "pooling",
+        "sorting and compaction",
+        "summary division",
+        "metadata",
+        "scales and biases",
+        "banking fragmentation",
+        "pipeline and memory stalls",
+        "DMA"
+      ]
+    },
+    "energy_saver": {
+      "status": "analytical_uncalibrated_not_measured",
+      "sequence": 32,
+      "tokens_after_gate": 20,
+      "mode": {
+        "weight_bits": 4,
+        "keep_groups": 4,
+        "rts": true,
+        "exit_block": 2
+      },
+      "operators": [
+        {
+          "operator": "patch_embedding",
+          "tokens": 32,
+          "macs": 147456
+        },
+        {
+          "operator": "block1_projections",
+          "tokens": 32,
+          "macs": 2097152
+        },
+        {
+          "operator": "block1_attention_qk_av",
+          "tokens": 32,
+          "macs": 262144
+        },
+        {
+          "operator": "block1_ffn",
+          "tokens": 32,
+          "macs": 2097152
+        },
+        {
+          "operator": "block2_projections",
+          "tokens": 20,
+          "macs": 1310720
+        },
+        {
+          "operator": "block2_attention_qk_av",
+          "tokens": 20,
+          "macs": 102400
+        },
+        {
+          "operator": "block2_ffn",
+          "tokens": 20,
+          "macs": 1310720
+        },
+        {
+          "operator": "group_scorer",
+          "tokens": 32,
+          "macs": 4096
+        },
+        {
+          "operator": "weighted_summaries",
+          "tokens": 16,
+          "macs": 2048
+        },
+        {
+          "operator": "classifier",
+          "tokens": 1,
+          "macs": 768
+        }
+      ],
+      "executed_macs": 7334656,
+      "executed_ops_mac_equals_two": 14669312,
+      "ideal_mac_cycle_lower_bound": 114604,
+      "assumed_mac_lanes": 64,
+      "payload_bytes_only": {
+        "encoder_matrix_weights": 262144,
+        "pingpong_int8_activations": 8192,
+        "qkv_int8": 12288,
+        "ffn_int8": 8192,
+        "online_attention_int32_state": 17408,
+        "materialized_int16_scores_comparison": 8192
+      },
+      "excluded_costs": [
+        "normalization",
+        "softmax",
+        "activation",
+        "residual additions",
+        "pooling",
+        "sorting and compaction",
+        "summary division",
+        "metadata",
+        "scales and biases",
+        "banking fragmentation",
+        "pipeline and memory stalls",
+        "DMA"
+      ]
+    }
+  },
+  "dense_sequence_sweep": [
+    {
+      "status": "analytical_uncalibrated_not_measured",
+      "sequence": 16,
+      "tokens_after_gate": 16,
+      "mode": {
+        "weight_bits": 8,
+        "keep_groups": 4,
+        "rts": false,
+        "exit_block": 4
+      },
+      "operators": [
+        {
+          "operator": "patch_embedding",
+          "tokens": 16,
+          "macs": 73728
+        },
+        {
+          "operator": "block1_projections",
+          "tokens": 16,
+          "macs": 1048576
+        },
+        {
+          "operator": "block1_attention_qk_av",
+          "tokens": 16,
+          "macs": 65536
+        },
+        {
+          "operator": "block1_ffn",
+          "tokens": 16,
+          "macs": 1048576
+        },
+        {
+          "operator": "block2_projections",
+          "tokens": 16,
+          "macs": 1048576
+        },
+        {
+          "operator": "block2_attention_qk_av",
+          "tokens": 16,
+          "macs": 65536
+        },
+        {
+          "operator": "block2_ffn",
+          "tokens": 16,
+          "macs": 1048576
+        },
+        {
+          "operator": "block3_projections",
+          "tokens": 16,
+          "macs": 1048576
+        },
+        {
+          "operator": "block3_attention_qk_av",
+          "tokens": 16,
+          "macs": 65536
+        },
+        {
+          "operator": "block3_ffn",
+          "tokens": 16,
+          "macs": 1048576
+        },
+        {
+          "operator": "block4_projections",
+          "tokens": 16,
+          "macs": 1048576
+        },
+        {
+          "operator": "block4_attention_qk_av",
+          "tokens": 16,
+          "macs": 65536
+        },
+        {
+          "operator": "block4_ffn",
+          "tokens": 16,
+          "macs": 1048576
+        },
+        {
+          "operator": "classifier",
+          "tokens": 1,
+          "macs": 768
+        }
+      ],
+      "executed_macs": 8725248,
+      "executed_ops_mac_equals_two": 17450496,
+      "ideal_mac_cycle_lower_bound": 136332,
+      "assumed_mac_lanes": 64,
+      "payload_bytes_only": {
+        "encoder_matrix_weights": 524288,
+        "pingpong_int8_activations": 4096,
+        "qkv_int8": 6144,
+        "ffn_int8": 4096,
+        "online_attention_int32_state": 8704,
+        "materialized_int16_scores_comparison": 2048
+      },
+      "excluded_costs": [
+        "normalization",
+        "softmax",
+        "activation",
+        "residual additions",
+        "pooling",
+        "sorting and compaction",
+        "summary division",
+        "metadata",
+        "scales and biases",
+        "banking fragmentation",
+        "pipeline and memory stalls",
+        "DMA"
+      ]
+    },
+    {
+      "status": "analytical_uncalibrated_not_measured",
+      "sequence": 32,
+      "tokens_after_gate": 32,
+      "mode": {
+        "weight_bits": 8,
+        "keep_groups": 8,
+        "rts": false,
+        "exit_block": 4
+      },
+      "operators": [
+        {
+          "operator": "patch_embedding",
+          "tokens": 32,
+          "macs": 147456
+        },
+        {
+          "operator": "block1_projections",
+          "tokens": 32,
+          "macs": 2097152
+        },
+        {
+          "operator": "block1_attention_qk_av",
+          "tokens": 32,
+          "macs": 262144
+        },
+        {
+          "operator": "block1_ffn",
+          "tokens": 32,
+          "macs": 2097152
+        },
+        {
+          "operator": "block2_projections",
+          "tokens": 32,
+          "macs": 2097152
+        },
+        {
+          "operator": "block2_attention_qk_av",
+          "tokens": 32,
+          "macs": 262144
+        },
+        {
+          "operator": "block2_ffn",
+          "tokens": 32,
+          "macs": 2097152
+        },
+        {
+          "operator": "block3_projections",
+          "tokens": 32,
+          "macs": 2097152
+        },
+        {
+          "operator": "block3_attention_qk_av",
+          "tokens": 32,
+          "macs": 262144
+        },
+        {
+          "operator": "block3_ffn",
+          "tokens": 32,
+          "macs": 2097152
+        },
+        {
+          "operator": "block4_projections",
+          "tokens": 32,
+          "macs": 2097152
+        },
+        {
+          "operator": "block4_attention_qk_av",
+          "tokens": 32,
+          "macs": 262144
+        },
+        {
+          "operator": "block4_ffn",
+          "tokens": 32,
+          "macs": 2097152
+        },
+        {
+          "operator": "classifier",
+          "tokens": 1,
+          "macs": 768
+        }
+      ],
+      "executed_macs": 17974016,
+      "executed_ops_mac_equals_two": 35948032,
+      "ideal_mac_cycle_lower_bound": 280844,
+      "assumed_mac_lanes": 64,
+      "payload_bytes_only": {
+        "encoder_matrix_weights": 524288,
+        "pingpong_int8_activations": 8192,
+        "qkv_int8": 12288,
+        "ffn_int8": 8192,
+        "online_attention_int32_state": 17408,
+        "materialized_int16_scores_comparison": 8192
+      },
+      "excluded_costs": [
+        "normalization",
+        "softmax",
+        "activation",
+        "residual additions",
+        "pooling",
+        "sorting and compaction",
+        "summary division",
+        "metadata",
+        "scales and biases",
+        "banking fragmentation",
+        "pipeline and memory stalls",
+        "DMA"
+      ]
+    },
+    {
+      "status": "analytical_uncalibrated_not_measured",
+      "sequence": 64,
+      "tokens_after_gate": 64,
+      "mode": {
+        "weight_bits": 8,
+        "keep_groups": 16,
+        "rts": false,
+        "exit_block": 4
+      },
+      "operators": [
+        {
+          "operator": "patch_embedding",
+          "tokens": 64,
+          "macs": 294912
+        },
+        {
+          "operator": "block1_projections",
+          "tokens": 64,
+          "macs": 4194304
+        },
+        {
+          "operator": "block1_attention_qk_av",
+          "tokens": 64,
+          "macs": 1048576
+        },
+        {
+          "operator": "block1_ffn",
+          "tokens": 64,
+          "macs": 4194304
+        },
+        {
+          "operator": "block2_projections",
+          "tokens": 64,
+          "macs": 4194304
+        },
+        {
+          "operator": "block2_attention_qk_av",
+          "tokens": 64,
+          "macs": 1048576
+        },
+        {
+          "operator": "block2_ffn",
+          "tokens": 64,
+          "macs": 4194304
+        },
+        {
+          "operator": "block3_projections",
+          "tokens": 64,
+          "macs": 4194304
+        },
+        {
+          "operator": "block3_attention_qk_av",
+          "tokens": 64,
+          "macs": 1048576
+        },
+        {
+          "operator": "block3_ffn",
+          "tokens": 64,
+          "macs": 4194304
+        },
+        {
+          "operator": "block4_projections",
+          "tokens": 64,
+          "macs": 4194304
+        },
+        {
+          "operator": "block4_attention_qk_av",
+          "tokens": 64,
+          "macs": 1048576
+        },
+        {
+          "operator": "block4_ffn",
+          "tokens": 64,
+          "macs": 4194304
+        },
+        {
+          "operator": "classifier",
+          "tokens": 1,
+          "macs": 768
+        }
+      ],
+      "executed_macs": 38044416,
+      "executed_ops_mac_equals_two": 76088832,
+      "ideal_mac_cycle_lower_bound": 594444,
+      "assumed_mac_lanes": 64,
+      "payload_bytes_only": {
+        "encoder_matrix_weights": 524288,
+        "pingpong_int8_activations": 16384,
+        "qkv_int8": 24576,
+        "ffn_int8": 16384,
+        "online_attention_int32_state": 34816,
+        "materialized_int16_scores_comparison": 32768
+      },
+      "excluded_costs": [
+        "normalization",
+        "softmax",
+        "activation",
+        "residual additions",
+        "pooling",
+        "sorting and compaction",
+        "summary division",
+        "metadata",
+        "scales and biases",
+        "banking fragmentation",
+        "pipeline and memory stalls",
+        "DMA"
+      ]
+    },
+    {
+      "status": "analytical_uncalibrated_not_measured",
+      "sequence": 128,
+      "tokens_after_gate": 128,
+      "mode": {
+        "weight_bits": 8,
+        "keep_groups": 32,
+        "rts": false,
+        "exit_block": 4
+      },
+      "operators": [
+        {
+          "operator": "patch_embedding",
+          "tokens": 128,
+          "macs": 589824
+        },
+        {
+          "operator": "block1_projections",
+          "tokens": 128,
+          "macs": 8388608
+        },
+        {
+          "operator": "block1_attention_qk_av",
+          "tokens": 128,
+          "macs": 4194304
+        },
+        {
+          "operator": "block1_ffn",
+          "tokens": 128,
+          "macs": 8388608
+        },
+        {
+          "operator": "block2_projections",
+          "tokens": 128,
+          "macs": 8388608
+        },
+        {
+          "operator": "block2_attention_qk_av",
+          "tokens": 128,
+          "macs": 4194304
+        },
+        {
+          "operator": "block2_ffn",
+          "tokens": 128,
+          "macs": 8388608
+        },
+        {
+          "operator": "block3_projections",
+          "tokens": 128,
+          "macs": 8388608
+        },
+        {
+          "operator": "block3_attention_qk_av",
+          "tokens": 128,
+          "macs": 4194304
+        },
+        {
+          "operator": "block3_ffn",
+          "tokens": 128,
+          "macs": 8388608
+        },
+        {
+          "operator": "block4_projections",
+          "tokens": 128,
+          "macs": 8388608
+        },
+        {
+          "operator": "block4_attention_qk_av",
+          "tokens": 128,
+          "macs": 4194304
+        },
+        {
+          "operator": "block4_ffn",
+          "tokens": 128,
+          "macs": 8388608
+        },
+        {
+          "operator": "classifier",
+          "tokens": 1,
+          "macs": 768
+        }
+      ],
+      "executed_macs": 84476672,
+      "executed_ops_mac_equals_two": 168953344,
+      "ideal_mac_cycle_lower_bound": 1319948,
+      "assumed_mac_lanes": 64,
+      "payload_bytes_only": {
+        "encoder_matrix_weights": 524288,
+        "pingpong_int8_activations": 32768,
+        "qkv_int8": 49152,
+        "ffn_int8": 32768,
+        "online_attention_int32_state": 69632,
+        "materialized_int16_scores_comparison": 131072
+      },
+      "excluded_costs": [
+        "normalization",
+        "softmax",
+        "activation",
+        "residual additions",
+        "pooling",
+        "sorting and compaction",
+        "summary division",
+        "metadata",
+        "scales and biases",
+        "banking fragmentation",
+        "pipeline and memory stalls",
+        "DMA"
+      ]
+    },
+    {
+      "status": "analytical_uncalibrated_not_measured",
+      "sequence": 256,
+      "tokens_after_gate": 256,
+      "mode": {
+        "weight_bits": 8,
+        "keep_groups": 64,
+        "rts": false,
+        "exit_block": 4
+      },
+      "operators": [
+        {
+          "operator": "patch_embedding",
+          "tokens": 256,
+          "macs": 1179648
+        },
+        {
+          "operator": "block1_projections",
+          "tokens": 256,
+          "macs": 16777216
+        },
+        {
+          "operator": "block1_attention_qk_av",
+          "tokens": 256,
+          "macs": 16777216
+        },
+        {
+          "operator": "block1_ffn",
+          "tokens": 256,
+          "macs": 16777216
+        },
+        {
+          "operator": "block2_projections",
+          "tokens": 256,
+          "macs": 16777216
+        },
+        {
+          "operator": "block2_attention_qk_av",
+          "tokens": 256,
+          "macs": 16777216
+        },
+        {
+          "operator": "block2_ffn",
+          "tokens": 256,
+          "macs": 16777216
+        },
+        {
+          "operator": "block3_projections",
+          "tokens": 256,
+          "macs": 16777216
+        },
+        {
+          "operator": "block3_attention_qk_av",
+          "tokens": 256,
+          "macs": 16777216
+        },
+        {
+          "operator": "block3_ffn",
+          "tokens": 256,
+          "macs": 16777216
+        },
+        {
+          "operator": "block4_projections",
+          "tokens": 256,
+          "macs": 16777216
+        },
+        {
+          "operator": "block4_attention_qk_av",
+          "tokens": 256,
+          "macs": 16777216
+        },
+        {
+          "operator": "block4_ffn",
+          "tokens": 256,
+          "macs": 16777216
+        },
+        {
+          "operator": "classifier",
+          "tokens": 1,
+          "macs": 768
+        }
+      ],
+      "executed_macs": 202507008,
+      "executed_ops_mac_equals_two": 405014016,
+      "ideal_mac_cycle_lower_bound": 3164172,
+      "assumed_mac_lanes": 64,
+      "payload_bytes_only": {
+        "encoder_matrix_weights": 524288,
+        "pingpong_int8_activations": 65536,
+        "qkv_int8": 98304,
+        "ffn_int8": 65536,
+        "online_attention_int32_state": 139264,
+        "materialized_int16_scores_comparison": 524288
+      },
+      "excluded_costs": [
+        "normalization",
+        "softmax",
+        "activation",
+        "residual additions",
+        "pooling",
+        "sorting and compaction",
+        "summary division",
+        "metadata",
+        "scales and biases",
+        "banking fragmentation",
+        "pipeline and memory stalls",
+        "DMA"
+      ]
+    }
+  ]
+}

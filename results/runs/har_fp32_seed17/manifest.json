@@ -1,0 +1,87 @@
+{
+  "config": {
+    "schema_version": 1,
+    "status": "experimental_not_frozen",
+    "dataset": "UCI HAR raw inertial signals",
+    "channels": [
+      "body_acc_x",
+      "body_acc_y",
+      "body_acc_z",
+      "body_gyro_x",
+      "body_gyro_y",
+      "body_gyro_z",
+      "total_acc_x",
+      "total_acc_y",
+      "total_acc_z"
+    ],
+    "validation_subjects": [
+      5,
+      14,
+      19,
+      27
+    ],
+    "window_samples": 128,
+    "patch_samples": 4,
+    "width": 128,
+    "heads": 4,
+    "layers": 4,
+    "ffn_ratio": 2,
+    "classes": 6,
+    "group_size": 4,
+    "gate_after_block": 1,
+    "position": "learned_absolute_added_before_gating",
+    "pooling": "mean_over_actual_tokens",
+    "activation": "pwl_silu",
+    "seeds": [
+      17,
+      29,
+      43
+    ],
+    "batch_size": 128,
+    "epochs": 30,
+    "learning_rate": 0.0003,
+    "weight_decay": 0.01,
+    "modes": {
+      "quality": {
+        "weight_bits": 8,
+        "keep_groups": 8,
+        "rts": false,
+        "exit_block": 4
+      },
+      "balanced": {
+        "weight_bits": 4,
+        "keep_groups": 6,
+        "rts": true,
+        "exit_block": 4
+      },
+      "energy_saver": {
+        "weight_bits": 4,
+        "keep_groups": 4,
+        "rts": true,
+        "exit_block": 2
+      }
+    }
+  },
+  "seed": 17,
+  "mode": "fp32",
+  "device": "mps",
+  "torch": "2.14.1",
+  "numpy": "2.5.4",
+  "python": "3.12.13",
+  "git_commit": "2e7a59f685a2e047b5d02d6c0b4a9782187bb06c",
+  "git_status": "?? .gitignore\n?? README.md\n?? architecture/\n?? config/\n?? model/\n?? paper/\n?? requirements.txt\n?? tests/\n",
+  "source_sha256": {
+    "model/__init__.py": "fbb5838c20a0f746fadf67ddabd4979cd3fd4586903809a6d11019d695b563f9",
+    "model/network.py": "10f45c16f482a4b6ef44bce23d9bced8505969d16c858594f8233f7e577fdfc1",
+    "model/train.py": "5f44fc820f66f10b286000953eaf871833a645db0aec49553437a6539cc4c1a3",
+    "model/data.py": "e0bb6a7fa8a11df534f9e6186564010276f347df331be753d357fa182df8e5bb",
+    "config/har.json": "6688524adecce9a7f57c632c5ec227a471d86f9d4f67fa15d3d09cb7b75b06c7",
+    "architecture/profile.py": "7e3e7f229edcbf12c451ac3f49cd79d33d3594736b893de8eb342713c933c112",
+    "architecture/__init__.py": "f1a57c4ba1009b93ee3869e8a17241d9d1f064a2c871b7dac7b37503be68d51c"
+  },
+  "epochs": 30,
+  "dataset_manifest_sha256": "6edd78f34179bf31855f9d7b1b05380feb7f3602bc9bdc1d7f7ebe93a7cab03d",
+  "initialize_sha256": null,
+  "numeric_status": "FP32",
+  "final_test_requested": false
+}

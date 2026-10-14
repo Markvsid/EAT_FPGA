@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "status": "experimental_not_frozen",
+  "dataset": "UCI HAR raw inertial signals",
+  "channels": ["body_acc_x", "body_acc_y", "body_acc_z", "body_gyro_x", "body_gyro_y", "body_gyro_z", "total_acc_x", "total_acc_y", "total_acc_z"],
+  "validation_subjects": [5, 14, 19, 27],
+  "window_samples": 128,
+  "patch_samples": 4,
+  "width": 128,
+  "heads": 4,
+  "layers": 4,
+  "ffn_ratio": 2,
+  "classes": 6,
+  "group_size": 4,
+  "gate_after_block": 1,
+  "position": "learned_absolute_added_before_gating",
+  "pooling": "mean_over_actual_tokens",
+  "activation": "pwl_silu",
+  "seeds": [17, 29, 43],
+  "batch_size": 128,
+  "epochs": 30,
+  "learning_rate": 0.0003,
+  "weight_decay": 0.01,
+  "modes": {
+    "quality": {"weight_bits": 8, "keep_groups": 8, "rts": false, "exit_block": 4},
+    "balanced": {"weight_bits": 4, "keep_groups": 6, "rts": true, "exit_block": 4},
+    "energy_saver": {"weight_bits": 4, "keep_groups": 4, "rts": true, "exit_block": 2}
+  }
+}
