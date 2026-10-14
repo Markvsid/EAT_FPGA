@@ -1,0 +1,726 @@
+{
+  "status": "candidate_images_no_bitstream",
+  "entries": {
+    "embedding.weight": {
+      "file": "embedding_weight.bin",
+      "shape": [
+        128,
+        80
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int4_low_nibble_first",
+      "bytes": 5120,
+      "sha256": "ca29642dcf8427744dc045aaa4b5994fca172aed08975dc694ae1fe3d4fc7e39"
+    },
+    "embedding.bias": {
+      "file": "embedding_bias.bin",
+      "shape": [
+        128
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int64_little_endian_container_for_declared_numeric_format",
+      "bytes": 1024,
+      "sha256": "10c5d19c89b88d5c7d2d4b3b567a444528e7ea40e34e52f869ef98206a535a60"
+    },
+    "embedding.multiplier": {
+      "file": "embedding_multiplier.bin",
+      "shape": [
+        128
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int64_little_endian_container_for_declared_numeric_format",
+      "bytes": 1024,
+      "sha256": "55eba21ed42ed96e72ca00795403d14e2ea2aad4e25f08abfb0e2d94ee00a4c6"
+    },
+    "blocks.0.norm1.gamma": {
+      "file": "blocks_0_norm1_gamma.bin",
+      "shape": [
+        128
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int64_little_endian_container_for_declared_numeric_format",
+      "bytes": 1024,
+      "sha256": "08aa284958f833c4dc11a1ae35fbf81c4fd8efa0c864c78ab74bf2cd5b96270c"
+    },
+    "blocks.0.norm2.gamma": {
+      "file": "blocks_0_norm2_gamma.bin",
+      "shape": [
+        128
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int64_little_endian_container_for_declared_numeric_format",
+      "bytes": 1024,
+      "sha256": "c4d8fab673a70018173b64b94853b328585262a51acbfb95ab9aa76349c379cb"
+    },
+    "blocks.0.qkv.weight": {
+      "file": "blocks_0_qkv_weight.bin",
+      "shape": [
+        384,
+        128
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int4_low_nibble_first",
+      "bytes": 24576,
+      "sha256": "e7e6fc40360369f57b26847b670530485cadf08a016126dfadec15525fcdaa0c"
+    },
+    "blocks.0.qkv.bias": {
+      "file": "blocks_0_qkv_bias.bin",
+      "shape": [
+        384
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int64_little_endian_container_for_declared_numeric_format",
+      "bytes": 3072,
+      "sha256": "40ed70d4e5a9bea44d8c2364fe61053da2f30c59bc768cc916a17781dc8173c1"
+    },
+    "blocks.0.qkv.multiplier": {
+      "file": "blocks_0_qkv_multiplier.bin",
+      "shape": [
+        384
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int64_little_endian_container_for_declared_numeric_format",
+      "bytes": 3072,
+      "sha256": "57e926fec87c989d99b7356216a3da57573ddac61e749480403479b514adad24"
+    },
+    "blocks.0.projection.weight": {
+      "file": "blocks_0_projection_weight.bin",
+      "shape": [
+        128,
+        128
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int4_low_nibble_first",
+      "bytes": 8192,
+      "sha256": "92c0e36a39f9739275c8b03ac74c73ec944b6e5465ed6b98642bc383208b380a"
+    },
+    "blocks.0.projection.bias": {
+      "file": "blocks_0_projection_bias.bin",
+      "shape": [
+        128
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int64_little_endian_container_for_declared_numeric_format",
+      "bytes": 1024,
+      "sha256": "a122d1abb1ca137774ab2c00b52bbbed7d3f0678e89548292ab28af987d51c7e"
+    },
+    "blocks.0.projection.multiplier": {
+      "file": "blocks_0_projection_multiplier.bin",
+      "shape": [
+        128
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int64_little_endian_container_for_declared_numeric_format",
+      "bytes": 1024,
+      "sha256": "497e54eefc6dc33369ca0ad22c34130dea29d37bd48904419ef0cfb2cf55942b"
+    },
+    "blocks.0.fc1.weight": {
+      "file": "blocks_0_fc1_weight.bin",
+      "shape": [
+        256,
+        128
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int4_low_nibble_first",
+      "bytes": 16384,
+      "sha256": "c3cd690386a3f12fcb7539403b8231188ec06ee88b8dc7bf62bf4aec8d80d07a"
+    },
+    "blocks.0.fc1.bias": {
+      "file": "blocks_0_fc1_bias.bin",
+      "shape": [
+        256
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int64_little_endian_container_for_declared_numeric_format",
+      "bytes": 2048,
+      "sha256": "7d2820f82ca52be16390d2334b07f494f956a2d166f50e924cc5bdb4fc0f9c69"
+    },
+    "blocks.0.fc1.multiplier": {
+      "file": "blocks_0_fc1_multiplier.bin",
+      "shape": [
+        256
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int64_little_endian_container_for_declared_numeric_format",
+      "bytes": 2048,
+      "sha256": "2cb6df602f4efa241d7c883c10e0e037bebbb343156c1747953e52ba352dd10b"
+    },
+    "blocks.0.fc2.weight": {
+      "file": "blocks_0_fc2_weight.bin",
+      "shape": [
+        128,
+        256
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int4_low_nibble_first",
+      "bytes": 16384,
+      "sha256": "21f08315135d647bd67b75427f565971d79f88347f1e6f0efeffa5d8817287ad"
+    },
+    "blocks.0.fc2.bias": {
+      "file": "blocks_0_fc2_bias.bin",
+      "shape": [
+        128
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int64_little_endian_container_for_declared_numeric_format",
+      "bytes": 1024,
+      "sha256": "be6998339e8d698f1dfcb4361e1dbfa18c663f5bfdc098d853de63b95d54963f"
+    },
+    "blocks.0.fc2.multiplier": {
+      "file": "blocks_0_fc2_multiplier.bin",
+      "shape": [
+        128
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int64_little_endian_container_for_declared_numeric_format",
+      "bytes": 1024,
+      "sha256": "b3ced31f77eaeed64ecac297fac3a77dc9700cc7f9e3c42cd6d122f775f1be52"
+    },
+    "blocks.1.norm1.gamma": {
+      "file": "blocks_1_norm1_gamma.bin",
+      "shape": [
+        128
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int64_little_endian_container_for_declared_numeric_format",
+      "bytes": 1024,
+      "sha256": "b6eb97710b6cf4819ecfcee85738fffa9cc3cb36d3b74e7eb02e151ec98ee569"
+    },
+    "blocks.1.norm2.gamma": {
+      "file": "blocks_1_norm2_gamma.bin",
+      "shape": [
+        128
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int64_little_endian_container_for_declared_numeric_format",
+      "bytes": 1024,
+      "sha256": "5bc0c2fc3d953fda8deca4ccf333a479ca674dca60952f7a7517737459f04761"
+    },
+    "blocks.1.qkv.weight": {
+      "file": "blocks_1_qkv_weight.bin",
+      "shape": [
+        384,
+        128
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int4_low_nibble_first",
+      "bytes": 24576,
+      "sha256": "be805994916546def982d8cf4713a6c6b8847ca42ffe50960087114576af36f3"
+    },
+    "blocks.1.qkv.bias": {
+      "file": "blocks_1_qkv_bias.bin",
+      "shape": [
+        384
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int64_little_endian_container_for_declared_numeric_format",
+      "bytes": 3072,
+      "sha256": "3c0ce92e371d5676f3245e47cd8a6d3f542a7e2270a8d6232711f3477fa24705"
+    },
+    "blocks.1.qkv.multiplier": {
+      "file": "blocks_1_qkv_multiplier.bin",
+      "shape": [
+        384
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int64_little_endian_container_for_declared_numeric_format",
+      "bytes": 3072,
+      "sha256": "565acda933a1d96f550142d0f363c55c348861a62040dbdea10c682bd1712af9"
+    },
+    "blocks.1.projection.weight": {
+      "file": "blocks_1_projection_weight.bin",
+      "shape": [
+        128,
+        128
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int4_low_nibble_first",
+      "bytes": 8192,
+      "sha256": "2ca37f47cbc98249956db20f16431b2eb058318721f5077ba64b1cdb4dd63d75"
+    },
+    "blocks.1.projection.bias": {
+      "file": "blocks_1_projection_bias.bin",
+      "shape": [
+        128
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int64_little_endian_container_for_declared_numeric_format",
+      "bytes": 1024,
+      "sha256": "b17f8c3f9a20e6018b47c9e4249a6fa1491ae7f7f25176dc3b183dcfa53e5ba5"
+    },
+    "blocks.1.projection.multiplier": {
+      "file": "blocks_1_projection_multiplier.bin",
+      "shape": [
+        128
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int64_little_endian_container_for_declared_numeric_format",
+      "bytes": 1024,
+      "sha256": "fb5454dfb41d8c93cf237bf2210c24b33a7278873762afa45371430e1036ddb5"
+    },
+    "blocks.1.fc1.weight": {
+      "file": "blocks_1_fc1_weight.bin",
+      "shape": [
+        256,
+        128
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int4_low_nibble_first",
+      "bytes": 16384,
+      "sha256": "0bf58a4c06cd2acb2e7e4d64c9c48d171877b87d345ddefb1d2f5a46c9874e8a"
+    },
+    "blocks.1.fc1.bias": {
+      "file": "blocks_1_fc1_bias.bin",
+      "shape": [
+        256
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int64_little_endian_container_for_declared_numeric_format",
+      "bytes": 2048,
+      "sha256": "08e8a8a2dbfdd858c572aabbc0fb6b0a1672270fc1cb912412981ce94908a32e"
+    },
+    "blocks.1.fc1.multiplier": {
+      "file": "blocks_1_fc1_multiplier.bin",
+      "shape": [
+        256
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int64_little_endian_container_for_declared_numeric_format",
+      "bytes": 2048,
+      "sha256": "9867576e2e9aca9376a6ba467e5e86788c2e2799d38a7674dc3befd34f034402"
+    },
+    "blocks.1.fc2.weight": {
+      "file": "blocks_1_fc2_weight.bin",
+      "shape": [
+        128,
+        256
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int4_low_nibble_first",
+      "bytes": 16384,
+      "sha256": "51da7bbc1b87c426c55d3d6978d997a9683628562bf92c8d2b22cd4fc0674f78"
+    },
+    "blocks.1.fc2.bias": {
+      "file": "blocks_1_fc2_bias.bin",
+      "shape": [
+        128
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int64_little_endian_container_for_declared_numeric_format",
+      "bytes": 1024,
+      "sha256": "8a76c96878cffbe13a2fe5f3697249a89fdea08f08c0a4da35d85ac9c1c5735d"
+    },
+    "blocks.1.fc2.multiplier": {
+      "file": "blocks_1_fc2_multiplier.bin",
+      "shape": [
+        128
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int64_little_endian_container_for_declared_numeric_format",
+      "bytes": 1024,
+      "sha256": "10d29bd4ee21359b501756c8bd02739e26ff090601ff8204490dc1907e22f1f9"
+    },
+    "blocks.2.norm1.gamma": {
+      "file": "blocks_2_norm1_gamma.bin",
+      "shape": [
+        128
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int64_little_endian_container_for_declared_numeric_format",
+      "bytes": 1024,
+      "sha256": "114f845c6866620528aeb419e52e3d54c34db1da8255d5b84cdb762003823079"
+    },
+    "blocks.2.norm2.gamma": {
+      "file": "blocks_2_norm2_gamma.bin",
+      "shape": [
+        128
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int64_little_endian_container_for_declared_numeric_format",
+      "bytes": 1024,
+      "sha256": "74080890d2b9f0aa6c6cd7508a5c223cb383af00eb3ad9ef9089813b9eebda8b"
+    },
+    "blocks.2.qkv.weight": {
+      "file": "blocks_2_qkv_weight.bin",
+      "shape": [
+        384,
+        128
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int4_low_nibble_first",
+      "bytes": 24576,
+      "sha256": "27e817949a8117099d46808f1d978c55aaf500223a9c83af98fd8d7ea073ce8e"
+    },
+    "blocks.2.qkv.bias": {
+      "file": "blocks_2_qkv_bias.bin",
+      "shape": [
+        384
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int64_little_endian_container_for_declared_numeric_format",
+      "bytes": 3072,
+      "sha256": "9c39bf108c2de0863fcc158dcfa4074e3e37db6e182b47c79dc1f29c880a54d2"
+    },
+    "blocks.2.qkv.multiplier": {
+      "file": "blocks_2_qkv_multiplier.bin",
+      "shape": [
+        384
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int64_little_endian_container_for_declared_numeric_format",
+      "bytes": 3072,
+      "sha256": "5b79ac923b4265647f81c5403241da1bc7d9c59442571760b68123849ea9f59c"
+    },
+    "blocks.2.projection.weight": {
+      "file": "blocks_2_projection_weight.bin",
+      "shape": [
+        128,
+        128
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int4_low_nibble_first",
+      "bytes": 8192,
+      "sha256": "56a93aa4df213c75497a9d5aff18330dbff3f4419625ba3753c1ff0032f3ca3f"
+    },
+    "blocks.2.projection.bias": {
+      "file": "blocks_2_projection_bias.bin",
+      "shape": [
+        128
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int64_little_endian_container_for_declared_numeric_format",
+      "bytes": 1024,
+      "sha256": "a5b1c4242da420229994670fc0399a1f730a4c3f916fbd8c24112b99b22b893d"
+    },
+    "blocks.2.projection.multiplier": {
+      "file": "blocks_2_projection_multiplier.bin",
+      "shape": [
+        128
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int64_little_endian_container_for_declared_numeric_format",
+      "bytes": 1024,
+      "sha256": "65cc78247df209995f459d89808eac8a9e7f5796cb721b3859dcd49d3ea37fff"
+    },
+    "blocks.2.fc1.weight": {
+      "file": "blocks_2_fc1_weight.bin",
+      "shape": [
+        256,
+        128
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int4_low_nibble_first",
+      "bytes": 16384,
+      "sha256": "ce7ccbe8808bd88d6cf78814e1879227b5887f750bd6a200e791f0225acb6679"
+    },
+    "blocks.2.fc1.bias": {
+      "file": "blocks_2_fc1_bias.bin",
+      "shape": [
+        256
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int64_little_endian_container_for_declared_numeric_format",
+      "bytes": 2048,
+      "sha256": "2fd0514c1fe6dec05fcbc4fb82e518b92f6bde9ac0ad3bfc3e6658260a4e4977"
+    },
+    "blocks.2.fc1.multiplier": {
+      "file": "blocks_2_fc1_multiplier.bin",
+      "shape": [
+        256
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int64_little_endian_container_for_declared_numeric_format",
+      "bytes": 2048,
+      "sha256": "fd6f4a067a76118e04f1e7cb25fdd0c95e1a3fb5d402dd686ba748b921d1f683"
+    },
+    "blocks.2.fc2.weight": {
+      "file": "blocks_2_fc2_weight.bin",
+      "shape": [
+        128,
+        256
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int4_low_nibble_first",
+      "bytes": 16384,
+      "sha256": "86c216692f379ecea1a73c5ebf0d60dd7ed96e7c10229dbf2e4a965262c4f918"
+    },
+    "blocks.2.fc2.bias": {
+      "file": "blocks_2_fc2_bias.bin",
+      "shape": [
+        128
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int64_little_endian_container_for_declared_numeric_format",
+      "bytes": 1024,
+      "sha256": "a948a8d728ab3b2bc91b4768e6be19c0c24cf7148141185bf99d614b13267b08"
+    },
+    "blocks.2.fc2.multiplier": {
+      "file": "blocks_2_fc2_multiplier.bin",
+      "shape": [
+        128
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int64_little_endian_container_for_declared_numeric_format",
+      "bytes": 1024,
+      "sha256": "5db5b955c33f28921cbf4317ff84200d479fabaec0e31ec76193d7683c43ae89"
+    },
+    "blocks.3.norm1.gamma": {
+      "file": "blocks_3_norm1_gamma.bin",
+      "shape": [
+        128
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int64_little_endian_container_for_declared_numeric_format",
+      "bytes": 1024,
+      "sha256": "f0fa769a02c15938f20efe013c0d5149e6705eee235f2277870116754cbf825b"
+    },
+    "blocks.3.norm2.gamma": {
+      "file": "blocks_3_norm2_gamma.bin",
+      "shape": [
+        128
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int64_little_endian_container_for_declared_numeric_format",
+      "bytes": 1024,
+      "sha256": "3bd27ad581f2ddc168eb8b0c1459523f0332f47029d811170e673f192e0a419c"
+    },
+    "blocks.3.qkv.weight": {
+      "file": "blocks_3_qkv_weight.bin",
+      "shape": [
+        384,
+        128
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int4_low_nibble_first",
+      "bytes": 24576,
+      "sha256": "e8bafc8fbe3a4efe428f41a69f32d0148666fe2b2fc6dfdaff717e2cf771bee5"
+    },
+    "blocks.3.qkv.bias": {
+      "file": "blocks_3_qkv_bias.bin",
+      "shape": [
+        384
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int64_little_endian_container_for_declared_numeric_format",
+      "bytes": 3072,
+      "sha256": "6e232c603537b8b6f90bf5e82c84c597895f0be48bb48eb98e37ce22a26f1f94"
+    },
+    "blocks.3.qkv.multiplier": {
+      "file": "blocks_3_qkv_multiplier.bin",
+      "shape": [
+        384
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int64_little_endian_container_for_declared_numeric_format",
+      "bytes": 3072,
+      "sha256": "bf2feacd122b2c6602cab93a6d2b7751ea0a3c289d47e2f8f390fcfe1b590a05"
+    },
+    "blocks.3.projection.weight": {
+      "file": "blocks_3_projection_weight.bin",
+      "shape": [
+        128,
+        128
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int4_low_nibble_first",
+      "bytes": 8192,
+      "sha256": "7a66264ef51012e016a9cc8daa0e0b8b2a49fdf692742e69a65c13bc54425f41"
+    },
+    "blocks.3.projection.bias": {
+      "file": "blocks_3_projection_bias.bin",
+      "shape": [
+        128
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int64_little_endian_container_for_declared_numeric_format",
+      "bytes": 1024,
+      "sha256": "643c259fb7a68be72a88be83f826877b83264a1abcd938d82c8cbbba428b88ce"
+    },
+    "blocks.3.projection.multiplier": {
+      "file": "blocks_3_projection_multiplier.bin",
+      "shape": [
+        128
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int64_little_endian_container_for_declared_numeric_format",
+      "bytes": 1024,
+      "sha256": "1582c4b876a337a522c26451c16cecba256a16a29d46ef90f2c3d81e7d68128f"
+    },
+    "blocks.3.fc1.weight": {
+      "file": "blocks_3_fc1_weight.bin",
+      "shape": [
+        256,
+        128
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int4_low_nibble_first",
+      "bytes": 16384,
+      "sha256": "ae83bb899c47d6c18e1edad91f5b0ad300d8ad19e141f29bcd7dd5e99701cde7"
+    },
+    "blocks.3.fc1.bias": {
+      "file": "blocks_3_fc1_bias.bin",
+      "shape": [
+        256
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int64_little_endian_container_for_declared_numeric_format",
+      "bytes": 2048,
+      "sha256": "795b0388e1cbd34df7c3a6ac058ff0e4816df0cfc3ea2d570e2feb34a7bb6c4e"
+    },
+    "blocks.3.fc1.multiplier": {
+      "file": "blocks_3_fc1_multiplier.bin",
+      "shape": [
+        256
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int64_little_endian_container_for_declared_numeric_format",
+      "bytes": 2048,
+      "sha256": "129d2ca91880e32dd2abb344fc373b8d0811a7997e06253ab63efd61ec253d86"
+    },
+    "blocks.3.fc2.weight": {
+      "file": "blocks_3_fc2_weight.bin",
+      "shape": [
+        128,
+        256
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int4_low_nibble_first",
+      "bytes": 16384,
+      "sha256": "6e8f95b1456459143a8229a290ac4876ca5be5059ed578aa400efada756973bc"
+    },
+    "blocks.3.fc2.bias": {
+      "file": "blocks_3_fc2_bias.bin",
+      "shape": [
+        128
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int64_little_endian_container_for_declared_numeric_format",
+      "bytes": 1024,
+      "sha256": "7877c5050c78e8812d09ed5dccd1dcde03c88563c597231e5cab713de5b1fe0a"
+    },
+    "blocks.3.fc2.multiplier": {
+      "file": "blocks_3_fc2_multiplier.bin",
+      "shape": [
+        128
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int64_little_endian_container_for_declared_numeric_format",
+      "bytes": 1024,
+      "sha256": "23abee06550612787b6498a1ed30604958cfd1c908b31beefcd6687f022a3768"
+    },
+    "gate.scorer.weight": {
+      "file": "gate_scorer_weight.bin",
+      "shape": [
+        1,
+        128
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int4_low_nibble_first",
+      "bytes": 64,
+      "sha256": "10c59efbce8ae46c397fca1786fdeb330434e522b737f85f9a43df3a0bec5003"
+    },
+    "gate.scorer.bias": {
+      "file": "gate_scorer_bias.bin",
+      "shape": [
+        1
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int64_little_endian_container_for_declared_numeric_format",
+      "bytes": 8,
+      "sha256": "72976ee8f1497b6bcf1c12b3fdaf0cdc41ceab14646fe0fb49f37895b5889895"
+    },
+    "gate.scorer.multiplier": {
+      "file": "gate_scorer_multiplier.bin",
+      "shape": [
+        1
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int64_little_endian_container_for_declared_numeric_format",
+      "bytes": 8,
+      "sha256": "32019d027d057c02f2c1aade517e6b6168e56e6eb09a2aeefcb63cbb4ecaa6b9"
+    },
+    "norm.gamma": {
+      "file": "norm_gamma.bin",
+      "shape": [
+        128
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int64_little_endian_container_for_declared_numeric_format",
+      "bytes": 1024,
+      "sha256": "d63da323fe19b5876e8285692a6e3d6b2a8c02805d36006828ef541abf496611"
+    },
+    "classifier.weight": {
+      "file": "classifier_weight.bin",
+      "shape": [
+        35,
+        128
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int4_low_nibble_first",
+      "bytes": 2240,
+      "sha256": "4f7a2db442025596b3f1abd32a173b14661ade2c919423b4a79cb15f962a0e2f"
+    },
+    "classifier.bias": {
+      "file": "classifier_bias.bin",
+      "shape": [
+        35
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int64_little_endian_container_for_declared_numeric_format",
+      "bytes": 280,
+      "sha256": "be0f745889d88b1bbd9034e2e73083e049500fb6b5e1e419c539df3710025c2e"
+    },
+    "classifier.multiplier": {
+      "file": "classifier_multiplier.bin",
+      "shape": [
+        35
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int64_little_endian_container_for_declared_numeric_format",
+      "bytes": 280,
+      "sha256": "627d93daf69db3cedb31b980cc76971ea53adc0c544fed0bcd6ad3a5f33e3c68"
+    },
+    "position": {
+      "file": "position.bin",
+      "shape": [
+        32,
+        128
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int64_little_endian_container_for_declared_numeric_format",
+      "bytes": 32768,
+      "sha256": "8ef6e9168d68e6a2fd41ec02b1eb053ada9fadf880c0aed8ba74959717feeb9e"
+    },
+    "silu_knots": {
+      "file": "silu_knots.bin",
+      "shape": [
+        9
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int64_little_endian_container_for_declared_numeric_format",
+      "bytes": 72,
+      "sha256": "45d2c6bd810c9ff6bc7696a72d9385b65fe030c506a6f7a9eb59cd0242d7fe5d"
+    },
+    "rsqrt_table": {
+      "file": "rsqrt_table.bin",
+      "shape": [
+        1024
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int64_little_endian_container_for_declared_numeric_format",
+      "bytes": 8192,
+      "sha256": "609a1f913541c9a28f06f0a5464f4b3043b1f823ac8608fb755437447bead9d2"
+    },
+    "exp_table": {
+      "file": "exp_table.bin",
+      "shape": [
+        4097
+      ],
+      "order": "C_row_major",
+      "encoding": "signed_int64_little_endian_container_for_declared_numeric_format",
+      "bytes": 32776,
+      "sha256": "04e32b40febdc56020762ecc3057efbad88b2707128588c9397f35bd23a7d10c"
+    }
+  },
+  "export_manifest_sha256": "a443658b1c62e13b064a19da849b523c6a5552acf53457d187ecf6921c094999"
+}

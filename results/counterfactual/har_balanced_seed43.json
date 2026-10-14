@@ -1,0 +1,128 @@
+{
+  "status": "validation_counterfactual_same_checkpoint_and_group_decisions",
+  "seed": 43,
+  "checkpoint_sha256": "28cf5f263ae33fdca60a8cb1b590d44b5eb4e27d5fbe6c13313f3a12f0dea35a",
+  "mode": {
+    "weight_bits": 4,
+    "keep_groups": 6,
+    "rts": true,
+    "exit_block": 4
+  },
+  "tokens_without_rts": 24,
+  "tokens_with_rts": 26,
+  "batch_size": 1,
+  "metrics": {
+    "without_rts": {
+      "samples": 1361,
+      "accuracy": 0.9390154298310066,
+      "macro_f1": 0.9401904149046006,
+      "confusion_matrix": [
+        [
+          206,
+          18,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          11,
+          181,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          5,
+          170,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          226,
+          13,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          34,
+          235,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          260
+        ]
+      ]
+    },
+    "with_rts": {
+      "samples": 1361,
+      "accuracy": 0.9426891991182954,
+      "macro_f1": 0.9442613713543676,
+      "confusion_matrix": [
+        [
+          207,
+          17,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          10,
+          182,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          3,
+          172,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          228,
+          12,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          35,
+          234,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          260
+        ]
+      ]
+    }
+  },
+  "accuracy_delta_with_minus_without": 0.0036737692872887973,
+  "note": "Summary removal is an out-of-training-distribution counterfactual; compare with separately trained matched-budget controls as well."
+}

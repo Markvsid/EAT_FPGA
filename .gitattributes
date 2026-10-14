@@ -1,0 +1,2 @@
+# Raw Git diffs preserve space-only context lines as research provenance.
+results/runs/**/tracked_changes.patch -whitespace

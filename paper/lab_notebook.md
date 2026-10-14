@@ -1,6 +1,6 @@
 # Research log
 
-## 2026 10 14 Repository intake and software baseline
+## 2026 10 14 Initial intake snapshot
 
 The active Git repository is `EAT_FPGA/`, inside the outer Research directory.
 The outer directory is not a Git repository. Both copies of the controlling
@@ -44,3 +44,45 @@ Ten Python tests pass, covering dense/streamed attention agreement, token order,
 tie behavior, summaries, scorer gradients, full-model modes, metrics,
 subject separation, training-only normalization, operation counts, matched-token
 budget accounting, and the speech frontend. These do not replace RTL tests.
+
+## 2026 10 14 Local software continuation
+
+Completed the declared 45-job matrix, reusing the three initial seed-17 mode
+runs. Together with the original baselines/smoke run, 49 training runs are saved.
+Both workloads have three-seed baselines and Quality/Balanced/Energy-Saver
+experiments. HAR uses matched 30-epoch fine-tuning; Speech uses matched five-epoch
+fine-tuning after its 30-epoch baseline. HAR also includes dense FP32/W4 controls,
+plain dropping, retention-matched RTS comparisons, a 20-token matched-budget
+comparison, and a shared-parameter family. Results are regenerated from logs.
+
+The initial RMS square-root/divide method showed substantial low-variance error
+in the sampled numerical sweep. The version-2 candidate uses a leading-one
+reciprocal-square-root LUT. Fixed activation scales are calibrated on 1,024
+training samples. Integer-only inference now covers embedding, positions, all
+blocks, streaming attention, gating/summaries, pooling, and the chosen classifier.
+18 independent-mode and nine shared-family checkpoint/mode combinations were
+evaluated over complete validation sets. Changed predictions and clipping remain
+visible; formats are not frozen and hardware equivalence is not established.
+
+The full text of the 2024 simultaneous-pruning FPGA paper explicitly contains
+fusion of discarded tokens in its hardware module. A standalone RTS-on-FPGA
+novelty claim is therefore unsupported. The research matrix records this closer
+overlap and an initial patent search. Further novelty positioning requires a
+specific difference and implementation evidence.
+
+Independent runtime parameter images consume 1,328,624 container bytes for
+seed 17 before activation buffers. The shared-weight family has 997,056 unique
+constant bytes when identical blobs are deduplicated. This is a payload study,
+not a physical banking or timing proof.
+
+Added a portable signed-INT8 C matrix kernel with ARMv8-A NEON support. It agrees
+with NumPy on signed limits, tails, and complete-model stress traces on the local
+Mac. It has not been benchmarked on Cortex-A53. The board measurement analysis
+requires real covered power/timing logs and includes idle gaps in whole-board
+energy. No board measurements were generated.
+
+28 local tests pass. Software CI is configured but has not yet been verified
+on the remote runner. All final test partitions remain reserved until mode and
+format selection is locked. Board access, Vivado, power acquisition, interface
+review, RTL, physical implementation, final novelty review, and independent
+manuscript review remain outstanding.

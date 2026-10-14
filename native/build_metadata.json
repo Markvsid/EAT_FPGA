@@ -1,0 +1,19 @@
+{
+  "command": [
+    "cc",
+    "-O3",
+    "-std=c11",
+    "-dynamiclib",
+    "-fPIC",
+    "-march=armv8-a",
+    "/Users/marksidorov/Documents/ECE4250/Research/EAT_FPGA/native/dot_i8.c",
+    "-o",
+    "/Users/marksidorov/Documents/ECE4250/Research/EAT_FPGA/native/libeat_dot.dylib"
+  ],
+  "platform": "macOS-14.4-arm64-arm-64bit",
+  "machine": "arm64",
+  "compiler": "Apple clang version 15.0.0 (clang-1500.3.9.4)",
+  "source_sha256": "fe20bab2ef6f3a6a213258c3abe142291f83ee3946ca63e8af7dad29e3514a4b",
+  "library_sha256": "38dae178d919ff4d82547681ee5a6f0a2282e9b0aee53ebc1be8c91eaf8f4158",
+  "status": "local_reference_kernel_not_board_benchmark"
+}

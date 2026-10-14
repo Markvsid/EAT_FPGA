@@ -8,9 +8,10 @@ The later execution plans propose a reduced scope; they do not supersede the Wor
 ## Current state
 
 This repository began with planning documents only. The experimental implementation
-now includes raw HAR and Speech Commands preparation, a four-block PyTorch encoder, candidate runtime
-modes, floating-point streamed-attention verification, training, and an analytical
-workload profile. This is not a complete FPGA accelerator or submission-ready paper.
+now includes raw HAR and Speech Commands preparation, a four-block PyTorch encoder,
+controlled mode experiments, integer-only inference candidates, calibration and
+binary export, attention verification, analytical scheduling, nonlinear sweeps,
+and power-log analysis. This is not a complete FPGA accelerator or submission-ready paper.
 See `paper/completion_checklist.md` for the required evidence and its status.
 
 ## Reproduce
@@ -21,9 +22,10 @@ From this directory, with Python 3.12 and uv:
 uv venv --python 3.12 .venv
 uv pip install --python .venv/bin/python -r requirements.txt
 .venv/bin/python -m model.data
+.venv/bin/python -m native.build
 .venv/bin/python -m pytest -q
 .venv/bin/python -m architecture.profile
-.venv/bin/python -m model.train --output results/runs/har_fp32_seed17 --seed 17
+.venv/bin/python -m model.train --output results/reproduction/har_fp32_seed17 --seed 17
 ```
 
 Run independent FP32 training with seeds 17, 29, and 43. CPU uses deterministic
@@ -34,7 +36,7 @@ claimed for that backend. The test set is evaluated only with explicit
 Candidate fake-quantized fine-tuning is available as:
 
 ```sh
-.venv/bin/python -m model.train --mode balanced --initialize results/runs/har_fp32_seed17/best.pt --output results/runs/har_balanced_seed17 --seed 17
+.venv/bin/python -m model.train --mode balanced --initialize results/runs/har_fp32_seed17/best.pt --output results/reproduction/har_balanced_seed17 --seed 17
 ```
 
 These quantized experiments still execute floating-point nonlinear functions,
@@ -46,7 +48,7 @@ Speech Commands v2 uses its official speaker-disjoint partitions and all 35 word
 
 ```sh
 .venv/bin/python -m model.speech_data --download
-.venv/bin/python -m model.train --config config/speech.json --data data/speech --output results/runs/speech_fp32_seed17 --seed 17 --device mps
+.venv/bin/python -m model.train --config config/speech.json --data data/speech --output results/reproduction/speech_fp32_seed17 --seed 17 --device mps
 ```
 
 The audio archive is about 2.3 GB. Repeat training with seeds 29 and 43.
@@ -98,3 +100,45 @@ requires a working board harness, novelty review, and agreed interfaces before
 accelerator RTL. Hardware timing, utilization, power, energy, CPU baselines,
 and bitstreams remain outstanding. Ideal MAC cycles are analytical lower bounds,
 not a calibrated cycle model or measured latency.
+
+## Controlled experiments and integer candidates
+
+```sh
+.venv/bin/python -m model.experiments --device mps
+.venv/bin/python -m golden.export --checkpoint results/runs/har_quality_seed17/best.pt --output exports/har_quality_new --samples 1024
+.venv/bin/python -m golden.pack --export exports/har_quality_new
+.venv/bin/python -m golden.evaluate --export exports/har_quality_new --output results/integer/har_quality_new
+.venv/bin/python -m golden.nonlinear_sweep
+.venv/bin/python -m architecture.schedule
+.venv/bin/python -m results.build_report
+.venv/bin/python -m results.figures
+```
+
+The experiment matrix includes three independent seeds, matched fine-tuning
+controls, precision-only controls, dropping versus RTS at the same keep count,
+and a 20-token matched-budget comparison. It also trains a shared-weight HAR
+family by sampling one runtime mode per minibatch, selecting the checkpoint by
+mean validation accuracy across all three modes. HAR fine-tunes for 30 epochs; Speech
+Commands fine-tunes each mode/control for five epochs after its 30-epoch baseline.
+Within each workload, initializer and fine-tuning budget match. The original
+seven runs are reused where their manifests match. An interrupted incomplete
+run is reported for inspection rather than silently counted as complete.
+
+See `golden/NUMERICAL_CONTRACT.md` for exact candidate arithmetic and the explicit
+wider nonlinear/residual states. Calibration uses training data only. The
+reference produces integer logits and intermediate vectors, but its formats
+remain provisional and FPGA equivalence is untested. `paper/current_results.md`
+is generated from actual completed runs and integer comparisons. The plots label
+modeled schedules and software approximation errors explicitly; no energy curve
+is generated without measured power.
+
+The optional C kernel uses signed INT8 products with widening accumulation and
+ARMv8-A NEON where available. The same numerical reference retains a NumPy
+fallback. Building it locally establishes kernel correctness on this host;
+it does not establish Cortex-A53 performance or board power.
+
+`paper/software_evidence_summary.md` is the concise results overview.
+`paper/current_results.md` retains every completed software and integer row.
+The final test sets have not been used. The next external dependency is board
+DMA/power bring-up and review of `architecture/interface_candidate.md` and
+`golden/NUMERICAL_CONTRACT.md`, followed by RTL and implemented measurements.

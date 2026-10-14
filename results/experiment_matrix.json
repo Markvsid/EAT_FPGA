@@ -1,0 +1,482 @@
+{
+  "status": "validation_only",
+  "jobs": [
+    {
+      "name": "speech_fp32_seed17",
+      "dataset": "speech",
+      "seed": 17,
+      "experiment": "fp32",
+      "mode": "fp32",
+      "arguments": []
+    },
+    {
+      "name": "speech_fp32_seed29",
+      "dataset": "speech",
+      "seed": 29,
+      "experiment": "fp32",
+      "mode": "fp32",
+      "arguments": []
+    },
+    {
+      "name": "speech_fp32_seed43",
+      "dataset": "speech",
+      "seed": 43,
+      "experiment": "fp32",
+      "mode": "fp32",
+      "arguments": []
+    },
+    {
+      "name": "har_fp32_control_seed17",
+      "dataset": "har",
+      "seed": 17,
+      "experiment": "fp32_control",
+      "mode": "fp32",
+      "arguments": [],
+      "initialize": "results/runs/har_fp32_seed17/best.pt"
+    },
+    {
+      "name": "har_fp32_control_seed29",
+      "dataset": "har",
+      "seed": 29,
+      "experiment": "fp32_control",
+      "mode": "fp32",
+      "arguments": [],
+      "initialize": "results/runs/har_fp32_seed29/best.pt"
+    },
+    {
+      "name": "har_fp32_control_seed43",
+      "dataset": "har",
+      "seed": 43,
+      "experiment": "fp32_control",
+      "mode": "fp32",
+      "arguments": [],
+      "initialize": "results/runs/har_fp32_seed43/best.pt"
+    },
+    {
+      "name": "har_quality_seed17",
+      "dataset": "har",
+      "seed": 17,
+      "experiment": "quality",
+      "mode": "quality",
+      "arguments": [],
+      "initialize": "results/runs/har_fp32_seed17/best.pt"
+    },
+    {
+      "name": "har_quality_seed29",
+      "dataset": "har",
+      "seed": 29,
+      "experiment": "quality",
+      "mode": "quality",
+      "arguments": [],
+      "initialize": "results/runs/har_fp32_seed29/best.pt"
+    },
+    {
+      "name": "har_quality_seed43",
+      "dataset": "har",
+      "seed": 43,
+      "experiment": "quality",
+      "mode": "quality",
+      "arguments": [],
+      "initialize": "results/runs/har_fp32_seed43/best.pt"
+    },
+    {
+      "name": "har_dense_w4_seed17",
+      "dataset": "har",
+      "seed": 17,
+      "experiment": "dense_w4",
+      "mode": "quality",
+      "arguments": [
+        "--weight-bits",
+        "4"
+      ],
+      "initialize": "results/runs/har_fp32_seed17/best.pt"
+    },
+    {
+      "name": "har_dense_w4_seed29",
+      "dataset": "har",
+      "seed": 29,
+      "experiment": "dense_w4",
+      "mode": "quality",
+      "arguments": [
+        "--weight-bits",
+        "4"
+      ],
+      "initialize": "results/runs/har_fp32_seed29/best.pt"
+    },
+    {
+      "name": "har_dense_w4_seed43",
+      "dataset": "har",
+      "seed": 43,
+      "experiment": "dense_w4",
+      "mode": "quality",
+      "arguments": [
+        "--weight-bits",
+        "4"
+      ],
+      "initialize": "results/runs/har_fp32_seed43/best.pt"
+    },
+    {
+      "name": "har_drop_keep6_seed17",
+      "dataset": "har",
+      "seed": 17,
+      "experiment": "drop_keep6",
+      "mode": "balanced",
+      "arguments": [
+        "--rts",
+        "off"
+      ],
+      "initialize": "results/runs/har_fp32_seed17/best.pt"
+    },
+    {
+      "name": "har_drop_keep6_seed29",
+      "dataset": "har",
+      "seed": 29,
+      "experiment": "drop_keep6",
+      "mode": "balanced",
+      "arguments": [
+        "--rts",
+        "off"
+      ],
+      "initialize": "results/runs/har_fp32_seed29/best.pt"
+    },
+    {
+      "name": "har_drop_keep6_seed43",
+      "dataset": "har",
+      "seed": 43,
+      "experiment": "drop_keep6",
+      "mode": "balanced",
+      "arguments": [
+        "--rts",
+        "off"
+      ],
+      "initialize": "results/runs/har_fp32_seed43/best.pt"
+    },
+    {
+      "name": "har_balanced_seed17",
+      "dataset": "har",
+      "seed": 17,
+      "experiment": "balanced",
+      "mode": "balanced",
+      "arguments": [],
+      "initialize": "results/runs/har_fp32_seed17/best.pt"
+    },
+    {
+      "name": "har_balanced_seed29",
+      "dataset": "har",
+      "seed": 29,
+      "experiment": "balanced",
+      "mode": "balanced",
+      "arguments": [],
+      "initialize": "results/runs/har_fp32_seed29/best.pt"
+    },
+    {
+      "name": "har_balanced_seed43",
+      "dataset": "har",
+      "seed": 43,
+      "experiment": "balanced",
+      "mode": "balanced",
+      "arguments": [],
+      "initialize": "results/runs/har_fp32_seed43/best.pt"
+    },
+    {
+      "name": "har_drop_keep4_seed17",
+      "dataset": "har",
+      "seed": 17,
+      "experiment": "drop_keep4",
+      "mode": "balanced",
+      "arguments": [
+        "--keep-groups",
+        "4",
+        "--rts",
+        "off"
+      ],
+      "initialize": "results/runs/har_fp32_seed17/best.pt"
+    },
+    {
+      "name": "har_drop_keep4_seed29",
+      "dataset": "har",
+      "seed": 29,
+      "experiment": "drop_keep4",
+      "mode": "balanced",
+      "arguments": [
+        "--keep-groups",
+        "4",
+        "--rts",
+        "off"
+      ],
+      "initialize": "results/runs/har_fp32_seed29/best.pt"
+    },
+    {
+      "name": "har_drop_keep4_seed43",
+      "dataset": "har",
+      "seed": 43,
+      "experiment": "drop_keep4",
+      "mode": "balanced",
+      "arguments": [
+        "--keep-groups",
+        "4",
+        "--rts",
+        "off"
+      ],
+      "initialize": "results/runs/har_fp32_seed43/best.pt"
+    },
+    {
+      "name": "har_drop_keep5_matched20_seed17",
+      "dataset": "har",
+      "seed": 17,
+      "experiment": "drop_keep5_matched20",
+      "mode": "balanced",
+      "arguments": [
+        "--keep-groups",
+        "5",
+        "--rts",
+        "off"
+      ],
+      "initialize": "results/runs/har_fp32_seed17/best.pt"
+    },
+    {
+      "name": "har_drop_keep5_matched20_seed29",
+      "dataset": "har",
+      "seed": 29,
+      "experiment": "drop_keep5_matched20",
+      "mode": "balanced",
+      "arguments": [
+        "--keep-groups",
+        "5",
+        "--rts",
+        "off"
+      ],
+      "initialize": "results/runs/har_fp32_seed29/best.pt"
+    },
+    {
+      "name": "har_drop_keep5_matched20_seed43",
+      "dataset": "har",
+      "seed": 43,
+      "experiment": "drop_keep5_matched20",
+      "mode": "balanced",
+      "arguments": [
+        "--keep-groups",
+        "5",
+        "--rts",
+        "off"
+      ],
+      "initialize": "results/runs/har_fp32_seed43/best.pt"
+    },
+    {
+      "name": "har_rts_keep4_seed17",
+      "dataset": "har",
+      "seed": 17,
+      "experiment": "rts_keep4",
+      "mode": "balanced",
+      "arguments": [
+        "--keep-groups",
+        "4"
+      ],
+      "initialize": "results/runs/har_fp32_seed17/best.pt"
+    },
+    {
+      "name": "har_rts_keep4_seed29",
+      "dataset": "har",
+      "seed": 29,
+      "experiment": "rts_keep4",
+      "mode": "balanced",
+      "arguments": [
+        "--keep-groups",
+        "4"
+      ],
+      "initialize": "results/runs/har_fp32_seed29/best.pt"
+    },
+    {
+      "name": "har_rts_keep4_seed43",
+      "dataset": "har",
+      "seed": 43,
+      "experiment": "rts_keep4",
+      "mode": "balanced",
+      "arguments": [
+        "--keep-groups",
+        "4"
+      ],
+      "initialize": "results/runs/har_fp32_seed43/best.pt"
+    },
+    {
+      "name": "har_energy_saver_seed17",
+      "dataset": "har",
+      "seed": 17,
+      "experiment": "energy_saver",
+      "mode": "energy_saver",
+      "arguments": [],
+      "initialize": "results/runs/har_fp32_seed17/best.pt"
+    },
+    {
+      "name": "har_energy_saver_seed29",
+      "dataset": "har",
+      "seed": 29,
+      "experiment": "energy_saver",
+      "mode": "energy_saver",
+      "arguments": [],
+      "initialize": "results/runs/har_fp32_seed29/best.pt"
+    },
+    {
+      "name": "har_energy_saver_seed43",
+      "dataset": "har",
+      "seed": 43,
+      "experiment": "energy_saver",
+      "mode": "energy_saver",
+      "arguments": [],
+      "initialize": "results/runs/har_fp32_seed43/best.pt"
+    },
+    {
+      "name": "har_joint_seed17",
+      "dataset": "har",
+      "seed": 17,
+      "experiment": "joint",
+      "mode": "fp32",
+      "arguments": [
+        "--joint-modes"
+      ],
+      "initialize": "results/runs/har_fp32_seed17/best.pt"
+    },
+    {
+      "name": "har_joint_seed29",
+      "dataset": "har",
+      "seed": 29,
+      "experiment": "joint",
+      "mode": "fp32",
+      "arguments": [
+        "--joint-modes"
+      ],
+      "initialize": "results/runs/har_fp32_seed29/best.pt"
+    },
+    {
+      "name": "har_joint_seed43",
+      "dataset": "har",
+      "seed": 43,
+      "experiment": "joint",
+      "mode": "fp32",
+      "arguments": [
+        "--joint-modes"
+      ],
+      "initialize": "results/runs/har_fp32_seed43/best.pt"
+    },
+    {
+      "name": "speech_fp32_control_seed17",
+      "dataset": "speech",
+      "seed": 17,
+      "experiment": "fp32_control",
+      "mode": "fp32",
+      "arguments": [],
+      "epochs": 5,
+      "initialize": "results/runs/speech_fp32_seed17/best.pt"
+    },
+    {
+      "name": "speech_fp32_control_seed29",
+      "dataset": "speech",
+      "seed": 29,
+      "experiment": "fp32_control",
+      "mode": "fp32",
+      "arguments": [],
+      "epochs": 5,
+      "initialize": "results/runs/speech_fp32_seed29/best.pt"
+    },
+    {
+      "name": "speech_fp32_control_seed43",
+      "dataset": "speech",
+      "seed": 43,
+      "experiment": "fp32_control",
+      "mode": "fp32",
+      "arguments": [],
+      "epochs": 5,
+      "initialize": "results/runs/speech_fp32_seed43/best.pt"
+    },
+    {
+      "name": "speech_quality_seed17",
+      "dataset": "speech",
+      "seed": 17,
+      "experiment": "quality",
+      "mode": "quality",
+      "arguments": [],
+      "epochs": 5,
+      "initialize": "results/runs/speech_fp32_seed17/best.pt"
+    },
+    {
+      "name": "speech_quality_seed29",
+      "dataset": "speech",
+      "seed": 29,
+      "experiment": "quality",
+      "mode": "quality",
+      "arguments": [],
+      "epochs": 5,
+      "initialize": "results/runs/speech_fp32_seed29/best.pt"
+    },
+    {
+      "name": "speech_quality_seed43",
+      "dataset": "speech",
+      "seed": 43,
+      "experiment": "quality",
+      "mode": "quality",
+      "arguments": [],
+      "epochs": 5,
+      "initialize": "results/runs/speech_fp32_seed43/best.pt"
+    },
+    {
+      "name": "speech_balanced_seed17",
+      "dataset": "speech",
+      "seed": 17,
+      "experiment": "balanced",
+      "mode": "balanced",
+      "arguments": [],
+      "epochs": 5,
+      "initialize": "results/runs/speech_fp32_seed17/best.pt"
+    },
+    {
+      "name": "speech_balanced_seed29",
+      "dataset": "speech",
+      "seed": 29,
+      "experiment": "balanced",
+      "mode": "balanced",
+      "arguments": [],
+      "epochs": 5,
+      "initialize": "results/runs/speech_fp32_seed29/best.pt"
+    },
+    {
+      "name": "speech_balanced_seed43",
+      "dataset": "speech",
+      "seed": 43,
+      "experiment": "balanced",
+      "mode": "balanced",
+      "arguments": [],
+      "epochs": 5,
+      "initialize": "results/runs/speech_fp32_seed43/best.pt"
+    },
+    {
+      "name": "speech_energy_saver_seed17",
+      "dataset": "speech",
+      "seed": 17,
+      "experiment": "energy_saver",
+      "mode": "energy_saver",
+      "arguments": [],
+      "epochs": 5,
+      "initialize": "results/runs/speech_fp32_seed17/best.pt"
+    },
+    {
+      "name": "speech_energy_saver_seed29",
+      "dataset": "speech",
+      "seed": 29,
+      "experiment": "energy_saver",
+      "mode": "energy_saver",
+      "arguments": [],
+      "epochs": 5,
+      "initialize": "results/runs/speech_fp32_seed29/best.pt"
+    },
+    {
+      "name": "speech_energy_saver_seed43",
+      "dataset": "speech",
+      "seed": 43,
+      "experiment": "energy_saver",
+      "mode": "energy_saver",
+      "arguments": [],
+      "epochs": 5,
+      "initialize": "results/runs/speech_fp32_seed43/best.pt"
+    }
+  ]
+}

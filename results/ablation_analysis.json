@@ -1,0 +1,137 @@
+{
+  "status": "software_only_validation",
+  "comparisons": [
+    {
+      "from": "fp32_control",
+      "to": "quality",
+      "paired_seeds": [
+        17,
+        29,
+        43
+      ],
+      "partition": "validation_batch1",
+      "accuracy_delta_percentage_points": [
+        1.322556943423947,
+        -0.881704628949298,
+        -0.14695077149154967
+      ],
+      "paired_mean_delta": 0.09796718099436645,
+      "paired_sample_std": 1.1223550563203082,
+      "complete_three_seed_comparison": true
+    },
+    {
+      "from": "quality",
+      "to": "dense_w4",
+      "paired_seeds": [
+        17,
+        29,
+        43
+      ],
+      "partition": "validation_batch1",
+      "accuracy_delta_percentage_points": [
+        -1.6899338721528268,
+        1.6164584864070575,
+        0.5878030859661987
+      ],
+      "paired_mean_delta": 0.17144256674014313,
+      "paired_sample_std": 1.692062253187938,
+      "complete_three_seed_comparison": true
+    },
+    {
+      "from": "dense_w4",
+      "to": "drop_keep6",
+      "paired_seeds": [
+        17,
+        29,
+        43
+      ],
+      "partition": "validation_batch1",
+      "accuracy_delta_percentage_points": [
+        0.14695077149154967,
+        -1.6164584864070575,
+        -0.22042615723733006
+      ],
+      "paired_mean_delta": -0.5633112907176127,
+      "paired_sample_std": 0.9303659031703454,
+      "complete_three_seed_comparison": true
+    },
+    {
+      "from": "drop_keep6",
+      "to": "balanced",
+      "paired_seeds": [
+        17,
+        29,
+        43
+      ],
+      "partition": "validation_batch1",
+      "accuracy_delta_percentage_points": [
+        0.7347538574577483,
+        2.1307861866274758,
+        0.5878030859662098
+      ],
+      "paired_mean_delta": 1.1511143766838112,
+      "paired_sample_std": 0.8515963091214118,
+      "complete_three_seed_comparison": true
+    },
+    {
+      "from": "drop_keep4",
+      "to": "rts_keep4",
+      "paired_seeds": [
+        17,
+        29,
+        43
+      ],
+      "partition": "validation_batch1",
+      "accuracy_delta_percentage_points": [
+        -0.3673769287288797,
+        1.6899338721528379,
+        1.6899338721528379
+      ],
+      "paired_mean_delta": 1.0041636051922653,
+      "paired_sample_std": 1.187788944695784,
+      "complete_three_seed_comparison": true
+    },
+    {
+      "from": "drop_keep5_matched20",
+      "to": "rts_keep4",
+      "paired_seeds": [
+        17,
+        29,
+        43
+      ],
+      "partition": "validation_batch1",
+      "accuracy_delta_percentage_points": [
+        1.102130786186628,
+        1.9103600293901568,
+        -0.07347538574576928
+      ],
+      "paired_mean_delta": 0.9796718099436719,
+      "paired_sample_std": 0.9975709945832115,
+      "complete_three_seed_comparison": true
+    },
+    {
+      "from": "rts_keep4",
+      "to": "energy_saver",
+      "paired_seeds": [
+        17,
+        29,
+        43
+      ],
+      "partition": "validation_batch1",
+      "accuracy_delta_percentage_points": [
+        0.0,
+        -0.22042615723733006,
+        0.14695077149154967
+      ],
+      "paired_mean_delta": -0.024491795248593462,
+      "paired_sample_std": 0.18490899914942044,
+      "complete_three_seed_comparison": true
+    }
+  ],
+  "limitations": [
+    "independent fine-tuning can change group decisions",
+    "retention-matched comparisons do not have equal token counts with RTS",
+    "20-token comparison is the matched-budget control",
+    "no energy savings or statistical significance inferred"
+  ]
+}

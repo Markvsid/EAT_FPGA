@@ -1,0 +1,4081 @@
+{
+  "hardware_assumptions": {
+    "status": "analytical_candidate_no_rtl_calibration",
+    "array_rows": 8,
+    "array_columns": 8,
+    "assumed_clock_hz": 150000000,
+    "tensor_startup_cycles": 4,
+    "requantize_values_per_cycle": 8,
+    "nonlinear_values_per_cycle": 4,
+    "norm_row_setup_cycles": 32,
+    "exp_values_per_cycle": 4,
+    "softmax_tile_setup_cycles": 4,
+    "divider_cycles_per_value": 16,
+    "control_cycles_per_operator": 4,
+    "input_output_bus_bytes_per_cycle": 16,
+    "weight_read_bytes_per_cycle": 8,
+    "activation_read_bytes_per_cycle": 8,
+    "reserved_memory_fraction": 0.15,
+    "k26_capacities": {
+      "bram36_blocks": 144,
+      "uram288_blocks": 64,
+      "dsp": 1248,
+      "lut": 117120,
+      "ff": 234240
+    },
+    "capacity_source": "https://docs.amd.com/r/en-US/ds987-k26-som/Programmable-Logic",
+    "source_revision": "DS987 revision 1.6 2026-03-25",
+    "assumption": "one signed multiply per PE per cycle; no unverified W4 DSP packing speedup"
+  },
+  "dense": {
+    "status": "uncalibrated_schedule_not_measured",
+    "mode": {
+      "weight_bits": 8,
+      "keep_groups": 8,
+      "rts": false,
+      "exit_block": 4
+    },
+    "sequence": 32,
+    "after_gate": 32,
+    "operators": [
+      {
+        "name": "embedding",
+        "cycles": 3972,
+        "macs": 147456,
+        "array_compute_cycles": 3456,
+        "onchip_load_cycles": 2304,
+        "requantize_cycles": 512,
+        "weight_bytes": 18432,
+        "activation_bytes": 18432,
+        "tail_occupancy": 1.0
+      },
+      {
+        "name": "position_add",
+        "cycles": 1028,
+        "macs": 0
+      },
+      {
+        "name": "block1_norm1",
+        "cycles": 2052,
+        "macs": 0
+      },
+      {
+        "name": "block1_norm2",
+        "cycles": 2052,
+        "macs": 0
+      },
+      {
+        "name": "block1_qkv",
+        "cycles": 29572,
+        "macs": 1572864,
+        "array_compute_cycles": 28032,
+        "onchip_load_cycles": 24576,
+        "requantize_cycles": 1536,
+        "weight_bytes": 196608,
+        "activation_bytes": 196608,
+        "tail_occupancy": 1.0
+      },
+      {
+        "name": "block1_attention_qk",
+        "cycles": 3728,
+        "macs": 131072,
+        "array_compute_cycles": 3200,
+        "onchip_load_cycles": 2048,
+        "requantize_cycles": 512,
+        "weight_bytes": 16384,
+        "activation_bytes": 16384,
+        "tail_occupancy": 1.0
+      },
+      {
+        "name": "block1_attention_av",
+        "cycles": 6672,
+        "macs": 131072,
+        "array_compute_cycles": 3200,
+        "onchip_load_cycles": 6144,
+        "requantize_cycles": 512,
+        "weight_bytes": 16384,
+        "activation_bytes": 49152,
+        "tail_occupancy": 1.0
+      },
+      {
+        "name": "block1_online_softmax",
+        "cycles": 3076,
+        "macs": 0
+      },
+      {
+        "name": "block1_attention_divide",
+        "cycles": 65540,
+        "macs": 0
+      },
+      {
+        "name": "block1_projection",
+        "cycles": 9860,
+        "macs": 524288,
+        "array_compute_cycles": 9344,
+        "onchip_load_cycles": 8192,
+        "requantize_cycles": 512,
+        "weight_bytes": 65536,
+        "activation_bytes": 65536,
+        "tail_occupancy": 1.0
+      },
+      {
+        "name": "block1_fc1",
+        "cycles": 19716,
+        "macs": 1048576,
+        "array_compute_cycles": 18688,
+        "onchip_load_cycles": 16384,
+        "requantize_cycles": 1024,
+        "weight_bytes": 131072,
+        "activation_bytes": 131072,
+        "tail_occupancy": 1.0
+      },
+      {
+        "name": "block1_activation",
+        "cycles": 2052,
+        "macs": 0
+      },
+      {
+        "name": "block1_fc2",
+        "cycles": 18052,
+        "macs": 1048576,
+        "array_compute_cycles": 17536,
+        "onchip_load_cycles": 16384,
+        "requantize_cycles": 512,
+        "weight_bytes": 131072,
+        "activation_bytes": 131072,
+        "tail_occupancy": 1.0
+      },
+      {
+        "name": "block1_residuals",
+        "cycles": 2052,
+        "macs": 0
+      },
+      {
+        "name": "block2_norm1",
+        "cycles": 2052,
+        "macs": 0
+      },
+      {
+        "name": "block2_norm2",
+        "cycles": 2052,
+        "macs": 0
+      },
+      {
+        "name": "block2_qkv",
+        "cycles": 29572,
+        "macs": 1572864,
+        "array_compute_cycles": 28032,
+        "onchip_load_cycles": 24576,
+        "requantize_cycles": 1536,
+        "weight_bytes": 196608,
+        "activation_bytes": 196608,
+        "tail_occupancy": 1.0
+      },
+      {
+        "name": "block2_attention_qk",
+        "cycles": 3728,
+        "macs": 131072,
+        "array_compute_cycles": 3200,
+        "onchip_load_cycles": 2048,
+        "requantize_cycles": 512,
+        "weight_bytes": 16384,
+        "activation_bytes": 16384,
+        "tail_occupancy": 1.0
+      },
+      {
+        "name": "block2_attention_av",
+        "cycles": 6672,
+        "macs": 131072,
+        "array_compute_cycles": 3200,
+        "onchip_load_cycles": 6144,
+        "requantize_cycles": 512,
+        "weight_bytes": 16384,
+        "activation_bytes": 49152,
+        "tail_occupancy": 1.0
+      },
+      {
+        "name": "block2_online_softmax",
+        "cycles": 3076,
+        "macs": 0
+      },
+      {
+        "name": "block2_attention_divide",
+        "cycles": 65540,
+        "macs": 0
+      },
+      {
+        "name": "block2_projection",
+        "cycles": 9860,
+        "macs": 524288,
+        "array_compute_cycles": 9344,
+        "onchip_load_cycles": 8192,
+        "requantize_cycles": 512,
+        "weight_bytes": 65536,
+        "activation_bytes": 65536,
+        "tail_occupancy": 1.0
+      },
+      {
+        "name": "block2_fc1",
+        "cycles": 19716,
+        "macs": 1048576,
+        "array_compute_cycles": 18688,
+        "onchip_load_cycles": 16384,
+        "requantize_cycles": 1024,
+        "weight_bytes": 131072,
+        "activation_bytes": 131072,
+        "tail_occupancy": 1.0
+      },
+      {
+        "name": "block2_activation",
+        "cycles": 2052,
+        "macs": 0
+      },
+      {
+        "name": "block2_fc2",
+        "cycles": 18052,
+        "macs": 1048576,
+        "array_compute_cycles": 17536,
+        "onchip_load_cycles": 16384,
+        "requantize_cycles": 512,
+        "weight_bytes": 131072,
+        "activation_bytes": 131072,
+        "tail_occupancy": 1.0
+      },
+      {
+        "name": "block2_residuals",
+        "cycles": 2052,
+        "macs": 0
+      },
+      {
+        "name": "block3_norm1",
+        "cycles": 2052,
+        "macs": 0
+      },
+      {
+        "name": "block3_norm2",
+        "cycles": 2052,
+        "macs": 0
+      },
+      {
+        "name": "block3_qkv",
+        "cycles": 29572,
+        "macs": 1572864,
+        "array_compute_cycles": 28032,
+        "onchip_load_cycles": 24576,
+        "requantize_cycles": 1536,
+        "weight_bytes": 196608,
+        "activation_bytes": 196608,
+        "tail_occupancy": 1.0
+      },
+      {
+        "name": "block3_attention_qk",
+        "cycles": 3728,
+        "macs": 131072,
+        "array_compute_cycles": 3200,
+        "onchip_load_cycles": 2048,
+        "requantize_cycles": 512,
+        "weight_bytes": 16384,
+        "activation_bytes": 16384,
+        "tail_occupancy": 1.0
+      },
+      {
+        "name": "block3_attention_av",
+        "cycles": 6672,
+        "macs": 131072,
+        "array_compute_cycles": 3200,
+        "onchip_load_cycles": 6144,
+        "requantize_cycles": 512,
+        "weight_bytes": 16384,
+        "activation_bytes": 49152,
+        "tail_occupancy": 1.0
+      },
+      {
+        "name": "block3_online_softmax",
+        "cycles": 3076,
+        "macs": 0
+      },
+      {
+        "name": "block3_attention_divide",
+        "cycles": 65540,
+        "macs": 0
+      },
+      {
+        "name": "block3_projection",
+        "cycles": 9860,
+        "macs": 524288,
+        "array_compute_cycles": 9344,
+        "onchip_load_cycles": 8192,
+        "requantize_cycles": 512,
+        "weight_bytes": 65536,
+        "activation_bytes": 65536,
+        "tail_occupancy": 1.0
+      },
+      {
+        "name": "block3_fc1",
+        "cycles": 19716,
+        "macs": 1048576,
+        "array_compute_cycles": 18688,
+        "onchip_load_cycles": 16384,
+        "requantize_cycles": 1024,
+        "weight_bytes": 131072,
+        "activation_bytes": 131072,
+        "tail_occupancy": 1.0
+      },
+      {
+        "name": "block3_activation",
+        "cycles": 2052,
+        "macs": 0
+      },
+      {
+        "name": "block3_fc2",
+        "cycles": 18052,
+        "macs": 1048576,
+        "array_compute_cycles": 17536,
+        "onchip_load_cycles": 16384,
+        "requantize_cycles": 512,
+        "weight_bytes": 131072,
+        "activation_bytes": 131072,
+        "tail_occupancy": 1.0
+      },
+      {
+        "name": "block3_residuals",
+        "cycles": 2052,
+        "macs": 0
+      },
+      {
+        "name": "block4_norm1",
+        "cycles": 2052,
+        "macs": 0
+      },
+      {
+        "name": "block4_norm2",
+        "cycles": 2052,
+        "macs": 0
+      },
+      {
+        "name": "block4_qkv",
+        "cycles": 29572,
+        "macs": 1572864,
+        "array_compute_cycles": 28032,
+        "onchip_load_cycles": 24576,
+        "requantize_cycles": 1536,
+        "weight_bytes": 196608,
+        "activation_bytes": 196608,
+        "tail_occupancy": 1.0
+      },
+      {
+        "name": "block4_attention_qk",
+        "cycles": 3728,
+        "macs": 131072,
+        "array_compute_cycles": 3200,
+        "onchip_load_cycles": 2048,
+        "requantize_cycles": 512,
+        "weight_bytes": 16384,
+        "activation_bytes": 16384,
+        "tail_occupancy": 1.0
+      },
+      {
+        "name": "block4_attention_av",
+        "cycles": 6672,
+        "macs": 131072,
+        "array_compute_cycles": 3200,
+        "onchip_load_cycles": 6144,
+        "requantize_cycles": 512,
+        "weight_bytes": 16384,
+        "activation_bytes": 49152,
+        "tail_occupancy": 1.0
+      },
+      {
+        "name": "block4_online_softmax",
+        "cycles": 3076,
+        "macs": 0
+      },
+      {
+        "name": "block4_attention_divide",
+        "cycles": 65540,
+        "macs": 0
+      },
+      {
+        "name": "block4_projection",
+        "cycles": 9860,
+        "macs": 524288,
+        "array_compute_cycles": 9344,
+        "onchip_load_cycles": 8192,
+        "requantize_cycles": 512,
+        "weight_bytes": 65536,
+        "activation_bytes": 65536,
+        "tail_occupancy": 1.0
+      },
+      {
+        "name": "block4_fc1",
+        "cycles": 19716,
+        "macs": 1048576,
+        "array_compute_cycles": 18688,
+        "onchip_load_cycles": 16384,
+        "requantize_cycles": 1024,
+        "weight_bytes": 131072,
+        "activation_bytes": 131072,
+        "tail_occupancy": 1.0
+      },
+      {
+        "name": "block4_activation",
+        "cycles": 2052,
+        "macs": 0
+      },
+      {
+        "name": "block4_fc2",
+        "cycles": 18052,
+        "macs": 1048576,
+        "array_compute_cycles": 17536,
+        "onchip_load_cycles": 16384,
+        "requantize_cycles": 512,
+        "weight_bytes": 131072,
+        "activation_bytes": 131072,
+        "tail_occupancy": 1.0
+      },
+      {
+        "name": "block4_residuals",
+        "cycles": 2052,
+        "macs": 0
+      },
+      {
+        "name": "final_norm",
+        "cycles": 2052,
+        "macs": 0
+      },
+      {
+        "name": "pooling",
+        "cycles": 1540,
+        "macs": 0
+      },
+      {
+        "name": "classifier",
+        "cycles": 151,
+        "macs": 768,
+        "array_compute_cycles": 146,
+        "onchip_load_cycles": 96,
+        "requantize_cycles": 1,
+        "weight_bytes": 768,
+        "activation_bytes": 128,
+        "tail_occupancy": 0.09375
+      }
+    ],
+    "estimated_cycles": 666439,
+    "assumed_clock_hz": 150000000,
+    "conditional_latency_ms": 4.442926666666667,
+    "memory_payload_bytes": {
+      "packed_linear_weights": 530560,
+      "bias_and_multiplier_arrays": 44700,
+      "position_and_norm_weights": 15744,
+      "pingpong_state": 24576,
+      "qkv_state": 36864,
+      "ffn_state": 24576,
+      "attention_running_state": 34816,
+      "exp_and_activation_tables": 20520,
+      "token_metadata_and_scores": 320,
+      "input_output": 3474
+    },
+    "memory_payload_total_bytes": 736150,
+    "combined_k26_memory_bytes": 3022848,
+    "payload_fits_combined_capacity_with_reserve": true,
+    "physical_banking_fit_proven": false,
+    "limitations": [
+      "nonlinear rates and divider latency assumed",
+      "no RTL calibration",
+      "no measured clock or energy",
+      "no physical bank allocation",
+      "activation ports count int8 tensor inputs after state requantization",
+      "streaming recurrence overhead simplified",
+      "no additional W4 DSP throughput assumed",
+      "sequential operator schedule; intra-GEMM load overlap assumed"
+    ]
+  },
+  "candidate_modes": {
+    "quality": {
+      "status": "uncalibrated_schedule_not_measured",
+      "mode": {
+        "weight_bits": 8,
+        "keep_groups": 8,
+        "rts": false,
+        "exit_block": 4
+      },
+      "sequence": 32,
+      "after_gate": 32,
+      "operators": [
+        {
+          "name": "embedding",
+          "cycles": 3972,
+          "macs": 147456,
+          "array_compute_cycles": 3456,
+          "onchip_load_cycles": 2304,
+          "requantize_cycles": 512,
+          "weight_bytes": 18432,
+          "activation_bytes": 18432,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "position_add",
+          "cycles": 1028,
+          "macs": 0
+        },
+        {
+          "name": "block1_norm1",
+          "cycles": 2052,
+          "macs": 0
+        },
+        {
+          "name": "block1_norm2",
+          "cycles": 2052,
+          "macs": 0
+        },
+        {
+          "name": "block1_qkv",
+          "cycles": 29572,
+          "macs": 1572864,
+          "array_compute_cycles": 28032,
+          "onchip_load_cycles": 24576,
+          "requantize_cycles": 1536,
+          "weight_bytes": 196608,
+          "activation_bytes": 196608,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block1_attention_qk",
+          "cycles": 3728,
+          "macs": 131072,
+          "array_compute_cycles": 3200,
+          "onchip_load_cycles": 2048,
+          "requantize_cycles": 512,
+          "weight_bytes": 16384,
+          "activation_bytes": 16384,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block1_attention_av",
+          "cycles": 6672,
+          "macs": 131072,
+          "array_compute_cycles": 3200,
+          "onchip_load_cycles": 6144,
+          "requantize_cycles": 512,
+          "weight_bytes": 16384,
+          "activation_bytes": 49152,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block1_online_softmax",
+          "cycles": 3076,
+          "macs": 0
+        },
+        {
+          "name": "block1_attention_divide",
+          "cycles": 65540,
+          "macs": 0
+        },
+        {
+          "name": "block1_projection",
+          "cycles": 9860,
+          "macs": 524288,
+          "array_compute_cycles": 9344,
+          "onchip_load_cycles": 8192,
+          "requantize_cycles": 512,
+          "weight_bytes": 65536,
+          "activation_bytes": 65536,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block1_fc1",
+          "cycles": 19716,
+          "macs": 1048576,
+          "array_compute_cycles": 18688,
+          "onchip_load_cycles": 16384,
+          "requantize_cycles": 1024,
+          "weight_bytes": 131072,
+          "activation_bytes": 131072,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block1_activation",
+          "cycles": 2052,
+          "macs": 0
+        },
+        {
+          "name": "block1_fc2",
+          "cycles": 18052,
+          "macs": 1048576,
+          "array_compute_cycles": 17536,
+          "onchip_load_cycles": 16384,
+          "requantize_cycles": 512,
+          "weight_bytes": 131072,
+          "activation_bytes": 131072,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block1_residuals",
+          "cycles": 2052,
+          "macs": 0
+        },
+        {
+          "name": "block2_norm1",
+          "cycles": 2052,
+          "macs": 0
+        },
+        {
+          "name": "block2_norm2",
+          "cycles": 2052,
+          "macs": 0
+        },
+        {
+          "name": "block2_qkv",
+          "cycles": 29572,
+          "macs": 1572864,
+          "array_compute_cycles": 28032,
+          "onchip_load_cycles": 24576,
+          "requantize_cycles": 1536,
+          "weight_bytes": 196608,
+          "activation_bytes": 196608,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block2_attention_qk",
+          "cycles": 3728,
+          "macs": 131072,
+          "array_compute_cycles": 3200,
+          "onchip_load_cycles": 2048,
+          "requantize_cycles": 512,
+          "weight_bytes": 16384,
+          "activation_bytes": 16384,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block2_attention_av",
+          "cycles": 6672,
+          "macs": 131072,
+          "array_compute_cycles": 3200,
+          "onchip_load_cycles": 6144,
+          "requantize_cycles": 512,
+          "weight_bytes": 16384,
+          "activation_bytes": 49152,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block2_online_softmax",
+          "cycles": 3076,
+          "macs": 0
+        },
+        {
+          "name": "block2_attention_divide",
+          "cycles": 65540,
+          "macs": 0
+        },
+        {
+          "name": "block2_projection",
+          "cycles": 9860,
+          "macs": 524288,
+          "array_compute_cycles": 9344,
+          "onchip_load_cycles": 8192,
+          "requantize_cycles": 512,
+          "weight_bytes": 65536,
+          "activation_bytes": 65536,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block2_fc1",
+          "cycles": 19716,
+          "macs": 1048576,
+          "array_compute_cycles": 18688,
+          "onchip_load_cycles": 16384,
+          "requantize_cycles": 1024,
+          "weight_bytes": 131072,
+          "activation_bytes": 131072,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block2_activation",
+          "cycles": 2052,
+          "macs": 0
+        },
+        {
+          "name": "block2_fc2",
+          "cycles": 18052,
+          "macs": 1048576,
+          "array_compute_cycles": 17536,
+          "onchip_load_cycles": 16384,
+          "requantize_cycles": 512,
+          "weight_bytes": 131072,
+          "activation_bytes": 131072,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block2_residuals",
+          "cycles": 2052,
+          "macs": 0
+        },
+        {
+          "name": "block3_norm1",
+          "cycles": 2052,
+          "macs": 0
+        },
+        {
+          "name": "block3_norm2",
+          "cycles": 2052,
+          "macs": 0
+        },
+        {
+          "name": "block3_qkv",
+          "cycles": 29572,
+          "macs": 1572864,
+          "array_compute_cycles": 28032,
+          "onchip_load_cycles": 24576,
+          "requantize_cycles": 1536,
+          "weight_bytes": 196608,
+          "activation_bytes": 196608,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block3_attention_qk",
+          "cycles": 3728,
+          "macs": 131072,
+          "array_compute_cycles": 3200,
+          "onchip_load_cycles": 2048,
+          "requantize_cycles": 512,
+          "weight_bytes": 16384,
+          "activation_bytes": 16384,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block3_attention_av",
+          "cycles": 6672,
+          "macs": 131072,
+          "array_compute_cycles": 3200,
+          "onchip_load_cycles": 6144,
+          "requantize_cycles": 512,
+          "weight_bytes": 16384,
+          "activation_bytes": 49152,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block3_online_softmax",
+          "cycles": 3076,
+          "macs": 0
+        },
+        {
+          "name": "block3_attention_divide",
+          "cycles": 65540,
+          "macs": 0
+        },
+        {
+          "name": "block3_projection",
+          "cycles": 9860,
+          "macs": 524288,
+          "array_compute_cycles": 9344,
+          "onchip_load_cycles": 8192,
+          "requantize_cycles": 512,
+          "weight_bytes": 65536,
+          "activation_bytes": 65536,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block3_fc1",
+          "cycles": 19716,
+          "macs": 1048576,
+          "array_compute_cycles": 18688,
+          "onchip_load_cycles": 16384,
+          "requantize_cycles": 1024,
+          "weight_bytes": 131072,
+          "activation_bytes": 131072,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block3_activation",
+          "cycles": 2052,
+          "macs": 0
+        },
+        {
+          "name": "block3_fc2",
+          "cycles": 18052,
+          "macs": 1048576,
+          "array_compute_cycles": 17536,
+          "onchip_load_cycles": 16384,
+          "requantize_cycles": 512,
+          "weight_bytes": 131072,
+          "activation_bytes": 131072,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block3_residuals",
+          "cycles": 2052,
+          "macs": 0
+        },
+        {
+          "name": "block4_norm1",
+          "cycles": 2052,
+          "macs": 0
+        },
+        {
+          "name": "block4_norm2",
+          "cycles": 2052,
+          "macs": 0
+        },
+        {
+          "name": "block4_qkv",
+          "cycles": 29572,
+          "macs": 1572864,
+          "array_compute_cycles": 28032,
+          "onchip_load_cycles": 24576,
+          "requantize_cycles": 1536,
+          "weight_bytes": 196608,
+          "activation_bytes": 196608,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block4_attention_qk",
+          "cycles": 3728,
+          "macs": 131072,
+          "array_compute_cycles": 3200,
+          "onchip_load_cycles": 2048,
+          "requantize_cycles": 512,
+          "weight_bytes": 16384,
+          "activation_bytes": 16384,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block4_attention_av",
+          "cycles": 6672,
+          "macs": 131072,
+          "array_compute_cycles": 3200,
+          "onchip_load_cycles": 6144,
+          "requantize_cycles": 512,
+          "weight_bytes": 16384,
+          "activation_bytes": 49152,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block4_online_softmax",
+          "cycles": 3076,
+          "macs": 0
+        },
+        {
+          "name": "block4_attention_divide",
+          "cycles": 65540,
+          "macs": 0
+        },
+        {
+          "name": "block4_projection",
+          "cycles": 9860,
+          "macs": 524288,
+          "array_compute_cycles": 9344,
+          "onchip_load_cycles": 8192,
+          "requantize_cycles": 512,
+          "weight_bytes": 65536,
+          "activation_bytes": 65536,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block4_fc1",
+          "cycles": 19716,
+          "macs": 1048576,
+          "array_compute_cycles": 18688,
+          "onchip_load_cycles": 16384,
+          "requantize_cycles": 1024,
+          "weight_bytes": 131072,
+          "activation_bytes": 131072,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block4_activation",
+          "cycles": 2052,
+          "macs": 0
+        },
+        {
+          "name": "block4_fc2",
+          "cycles": 18052,
+          "macs": 1048576,
+          "array_compute_cycles": 17536,
+          "onchip_load_cycles": 16384,
+          "requantize_cycles": 512,
+          "weight_bytes": 131072,
+          "activation_bytes": 131072,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block4_residuals",
+          "cycles": 2052,
+          "macs": 0
+        },
+        {
+          "name": "final_norm",
+          "cycles": 2052,
+          "macs": 0
+        },
+        {
+          "name": "pooling",
+          "cycles": 1540,
+          "macs": 0
+        },
+        {
+          "name": "classifier",
+          "cycles": 151,
+          "macs": 768,
+          "array_compute_cycles": 146,
+          "onchip_load_cycles": 96,
+          "requantize_cycles": 1,
+          "weight_bytes": 768,
+          "activation_bytes": 128,
+          "tail_occupancy": 0.09375
+        }
+      ],
+      "estimated_cycles": 666439,
+      "assumed_clock_hz": 150000000,
+      "conditional_latency_ms": 4.442926666666667,
+      "memory_payload_bytes": {
+        "packed_linear_weights": 530560,
+        "bias_and_multiplier_arrays": 44700,
+        "position_and_norm_weights": 15744,
+        "pingpong_state": 24576,
+        "qkv_state": 36864,
+        "ffn_state": 24576,
+        "attention_running_state": 34816,
+        "exp_and_activation_tables": 20520,
+        "token_metadata_and_scores": 320,
+        "input_output": 3474
+      },
+      "memory_payload_total_bytes": 736150,
+      "combined_k26_memory_bytes": 3022848,
+      "payload_fits_combined_capacity_with_reserve": true,
+      "physical_banking_fit_proven": false,
+      "limitations": [
+        "nonlinear rates and divider latency assumed",
+        "no RTL calibration",
+        "no measured clock or energy",
+        "no physical bank allocation",
+        "activation ports count int8 tensor inputs after state requantization",
+        "streaming recurrence overhead simplified",
+        "no additional W4 DSP throughput assumed",
+        "sequential operator schedule; intra-GEMM load overlap assumed"
+      ]
+    },
+    "balanced": {
+      "status": "uncalibrated_schedule_not_measured",
+      "mode": {
+        "weight_bits": 4,
+        "keep_groups": 6,
+        "rts": true,
+        "exit_block": 4
+      },
+      "sequence": 32,
+      "after_gate": 26,
+      "operators": [
+        {
+          "name": "embedding",
+          "cycles": 3972,
+          "macs": 147456,
+          "array_compute_cycles": 3456,
+          "onchip_load_cycles": 2304,
+          "requantize_cycles": 512,
+          "weight_bytes": 9216,
+          "activation_bytes": 18432,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "position_add",
+          "cycles": 1028,
+          "macs": 0
+        },
+        {
+          "name": "block1_norm1",
+          "cycles": 2052,
+          "macs": 0
+        },
+        {
+          "name": "block1_norm2",
+          "cycles": 2052,
+          "macs": 0
+        },
+        {
+          "name": "block1_qkv",
+          "cycles": 29572,
+          "macs": 1572864,
+          "array_compute_cycles": 28032,
+          "onchip_load_cycles": 24576,
+          "requantize_cycles": 1536,
+          "weight_bytes": 98304,
+          "activation_bytes": 196608,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block1_attention_qk",
+          "cycles": 3728,
+          "macs": 131072,
+          "array_compute_cycles": 3200,
+          "onchip_load_cycles": 2048,
+          "requantize_cycles": 512,
+          "weight_bytes": 16384,
+          "activation_bytes": 16384,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block1_attention_av",
+          "cycles": 6672,
+          "macs": 131072,
+          "array_compute_cycles": 3200,
+          "onchip_load_cycles": 6144,
+          "requantize_cycles": 512,
+          "weight_bytes": 16384,
+          "activation_bytes": 49152,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block1_online_softmax",
+          "cycles": 3076,
+          "macs": 0
+        },
+        {
+          "name": "block1_attention_divide",
+          "cycles": 65540,
+          "macs": 0
+        },
+        {
+          "name": "block1_projection",
+          "cycles": 9860,
+          "macs": 524288,
+          "array_compute_cycles": 9344,
+          "onchip_load_cycles": 8192,
+          "requantize_cycles": 512,
+          "weight_bytes": 32768,
+          "activation_bytes": 65536,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block1_fc1",
+          "cycles": 19716,
+          "macs": 1048576,
+          "array_compute_cycles": 18688,
+          "onchip_load_cycles": 16384,
+          "requantize_cycles": 1024,
+          "weight_bytes": 65536,
+          "activation_bytes": 131072,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block1_activation",
+          "cycles": 2052,
+          "macs": 0
+        },
+        {
+          "name": "block1_fc2",
+          "cycles": 18052,
+          "macs": 1048576,
+          "array_compute_cycles": 17536,
+          "onchip_load_cycles": 16384,
+          "requantize_cycles": 512,
+          "weight_bytes": 65536,
+          "activation_bytes": 131072,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block1_residuals",
+          "cycles": 2052,
+          "macs": 0
+        },
+        {
+          "name": "group_scorer",
+          "cycles": 592,
+          "macs": 4096,
+          "array_compute_cycles": 584,
+          "onchip_load_cycles": 512,
+          "requantize_cycles": 4,
+          "weight_bytes": 256,
+          "activation_bytes": 4096,
+          "tail_occupancy": 0.125
+        },
+        {
+          "name": "group_score_reduction",
+          "cycles": 36,
+          "macs": 0
+        },
+        {
+          "name": "group_selection",
+          "cycles": 68,
+          "macs": 0
+        },
+        {
+          "name": "token_compaction",
+          "cycles": 836,
+          "macs": 0
+        },
+        {
+          "name": "summary_weighted_accumulation",
+          "cycles": 260,
+          "macs": 0
+        },
+        {
+          "name": "summary_division",
+          "cycles": 4100,
+          "macs": 0
+        },
+        {
+          "name": "block2_norm1",
+          "cycles": 1668,
+          "macs": 0
+        },
+        {
+          "name": "block2_norm2",
+          "cycles": 1668,
+          "macs": 0
+        },
+        {
+          "name": "block2_qkv",
+          "cycles": 29284,
+          "macs": 1277952,
+          "array_compute_cycles": 28032,
+          "onchip_load_cycles": 19968,
+          "requantize_cycles": 1248,
+          "weight_bytes": 98304,
+          "activation_bytes": 159744,
+          "tail_occupancy": 0.8125
+        },
+        {
+          "name": "block2_attention_qk",
+          "cycles": 3556,
+          "macs": 86528,
+          "array_compute_cycles": 3200,
+          "onchip_load_cycles": 1664,
+          "requantize_cycles": 340,
+          "weight_bytes": 13312,
+          "activation_bytes": 13312,
+          "tail_occupancy": 0.66015625
+        },
+        {
+          "name": "block2_attention_av",
+          "cycles": 4488,
+          "macs": 86528,
+          "array_compute_cycles": 2816,
+          "onchip_load_cycles": 4056,
+          "requantize_cycles": 416,
+          "weight_bytes": 13312,
+          "activation_bytes": 32448,
+          "tail_occupancy": 0.8125
+        },
+        {
+          "name": "block2_online_softmax",
+          "cycles": 2344,
+          "macs": 0
+        },
+        {
+          "name": "block2_attention_divide",
+          "cycles": 53252,
+          "macs": 0
+        },
+        {
+          "name": "block2_projection",
+          "cycles": 9764,
+          "macs": 425984,
+          "array_compute_cycles": 9344,
+          "onchip_load_cycles": 6656,
+          "requantize_cycles": 416,
+          "weight_bytes": 32768,
+          "activation_bytes": 53248,
+          "tail_occupancy": 0.8125
+        },
+        {
+          "name": "block2_fc1",
+          "cycles": 19524,
+          "macs": 851968,
+          "array_compute_cycles": 18688,
+          "onchip_load_cycles": 13312,
+          "requantize_cycles": 832,
+          "weight_bytes": 65536,
+          "activation_bytes": 106496,
+          "tail_occupancy": 0.8125
+        },
+        {
+          "name": "block2_activation",
+          "cycles": 1668,
+          "macs": 0
+        },
+        {
+          "name": "block2_fc2",
+          "cycles": 17956,
+          "macs": 851968,
+          "array_compute_cycles": 17536,
+          "onchip_load_cycles": 13312,
+          "requantize_cycles": 416,
+          "weight_bytes": 65536,
+          "activation_bytes": 106496,
+          "tail_occupancy": 0.8125
+        },
+        {
+          "name": "block2_residuals",
+          "cycles": 1668,
+          "macs": 0
+        },
+        {
+          "name": "block3_norm1",
+          "cycles": 1668,
+          "macs": 0
+        },
+        {
+          "name": "block3_norm2",
+          "cycles": 1668,
+          "macs": 0
+        },
+        {
+          "name": "block3_qkv",
+          "cycles": 29284,
+          "macs": 1277952,
+          "array_compute_cycles": 28032,
+          "onchip_load_cycles": 19968,
+          "requantize_cycles": 1248,
+          "weight_bytes": 98304,
+          "activation_bytes": 159744,
+          "tail_occupancy": 0.8125
+        },
+        {
+          "name": "block3_attention_qk",
+          "cycles": 3556,
+          "macs": 86528,
+          "array_compute_cycles": 3200,
+          "onchip_load_cycles": 1664,
+          "requantize_cycles": 340,
+          "weight_bytes": 13312,
+          "activation_bytes": 13312,
+          "tail_occupancy": 0.66015625
+        },
+        {
+          "name": "block3_attention_av",
+          "cycles": 4488,
+          "macs": 86528,
+          "array_compute_cycles": 2816,
+          "onchip_load_cycles": 4056,
+          "requantize_cycles": 416,
+          "weight_bytes": 13312,
+          "activation_bytes": 32448,
+          "tail_occupancy": 0.8125
+        },
+        {
+          "name": "block3_online_softmax",
+          "cycles": 2344,
+          "macs": 0
+        },
+        {
+          "name": "block3_attention_divide",
+          "cycles": 53252,
+          "macs": 0
+        },
+        {
+          "name": "block3_projection",
+          "cycles": 9764,
+          "macs": 425984,
+          "array_compute_cycles": 9344,
+          "onchip_load_cycles": 6656,
+          "requantize_cycles": 416,
+          "weight_bytes": 32768,
+          "activation_bytes": 53248,
+          "tail_occupancy": 0.8125
+        },
+        {
+          "name": "block3_fc1",
+          "cycles": 19524,
+          "macs": 851968,
+          "array_compute_cycles": 18688,
+          "onchip_load_cycles": 13312,
+          "requantize_cycles": 832,
+          "weight_bytes": 65536,
+          "activation_bytes": 106496,
+          "tail_occupancy": 0.8125
+        },
+        {
+          "name": "block3_activation",
+          "cycles": 1668,
+          "macs": 0
+        },
+        {
+          "name": "block3_fc2",
+          "cycles": 17956,
+          "macs": 851968,
+          "array_compute_cycles": 17536,
+          "onchip_load_cycles": 13312,
+          "requantize_cycles": 416,
+          "weight_bytes": 65536,
+          "activation_bytes": 106496,
+          "tail_occupancy": 0.8125
+        },
+        {
+          "name": "block3_residuals",
+          "cycles": 1668,
+          "macs": 0
+        },
+        {
+          "name": "block4_norm1",
+          "cycles": 1668,
+          "macs": 0
+        },
+        {
+          "name": "block4_norm2",
+          "cycles": 1668,
+          "macs": 0
+        },
+        {
+          "name": "block4_qkv",
+          "cycles": 29284,
+          "macs": 1277952,
+          "array_compute_cycles": 28032,
+          "onchip_load_cycles": 19968,
+          "requantize_cycles": 1248,
+          "weight_bytes": 98304,
+          "activation_bytes": 159744,
+          "tail_occupancy": 0.8125
+        },
+        {
+          "name": "block4_attention_qk",
+          "cycles": 3556,
+          "macs": 86528,
+          "array_compute_cycles": 3200,
+          "onchip_load_cycles": 1664,
+          "requantize_cycles": 340,
+          "weight_bytes": 13312,
+          "activation_bytes": 13312,
+          "tail_occupancy": 0.66015625
+        },
+        {
+          "name": "block4_attention_av",
+          "cycles": 4488,
+          "macs": 86528,
+          "array_compute_cycles": 2816,
+          "onchip_load_cycles": 4056,
+          "requantize_cycles": 416,
+          "weight_bytes": 13312,
+          "activation_bytes": 32448,
+          "tail_occupancy": 0.8125
+        },
+        {
+          "name": "block4_online_softmax",
+          "cycles": 2344,
+          "macs": 0
+        },
+        {
+          "name": "block4_attention_divide",
+          "cycles": 53252,
+          "macs": 0
+        },
+        {
+          "name": "block4_projection",
+          "cycles": 9764,
+          "macs": 425984,
+          "array_compute_cycles": 9344,
+          "onchip_load_cycles": 6656,
+          "requantize_cycles": 416,
+          "weight_bytes": 32768,
+          "activation_bytes": 53248,
+          "tail_occupancy": 0.8125
+        },
+        {
+          "name": "block4_fc1",
+          "cycles": 19524,
+          "macs": 851968,
+          "array_compute_cycles": 18688,
+          "onchip_load_cycles": 13312,
+          "requantize_cycles": 832,
+          "weight_bytes": 65536,
+          "activation_bytes": 106496,
+          "tail_occupancy": 0.8125
+        },
+        {
+          "name": "block4_activation",
+          "cycles": 1668,
+          "macs": 0
+        },
+        {
+          "name": "block4_fc2",
+          "cycles": 17956,
+          "macs": 851968,
+          "array_compute_cycles": 17536,
+          "onchip_load_cycles": 13312,
+          "requantize_cycles": 416,
+          "weight_bytes": 65536,
+          "activation_bytes": 106496,
+          "tail_occupancy": 0.8125
+        },
+        {
+          "name": "block4_residuals",
+          "cycles": 1668,
+          "macs": 0
+        },
+        {
+          "name": "final_norm",
+          "cycles": 1668,
+          "macs": 0
+        },
+        {
+          "name": "pooling",
+          "cycles": 1348,
+          "macs": 0
+        },
+        {
+          "name": "classifier",
+          "cycles": 151,
+          "macs": 768,
+          "array_compute_cycles": 146,
+          "onchip_load_cycles": 48,
+          "requantize_cycles": 1,
+          "weight_bytes": 384,
+          "activation_bytes": 128,
+          "tail_occupancy": 0.09375
+        }
+      ],
+      "estimated_cycles": 619003,
+      "assumed_clock_hz": 150000000,
+      "conditional_latency_ms": 4.126686666666667,
+      "memory_payload_bytes": {
+        "packed_linear_weights": 265280,
+        "bias_and_multiplier_arrays": 44700,
+        "position_and_norm_weights": 15744,
+        "pingpong_state": 24576,
+        "qkv_state": 36864,
+        "ffn_state": 24576,
+        "attention_running_state": 34816,
+        "exp_and_activation_tables": 20520,
+        "token_metadata_and_scores": 320,
+        "input_output": 3474
+      },
+      "memory_payload_total_bytes": 470870,
+      "combined_k26_memory_bytes": 3022848,
+      "payload_fits_combined_capacity_with_reserve": true,
+      "physical_banking_fit_proven": false,
+      "limitations": [
+        "nonlinear rates and divider latency assumed",
+        "no RTL calibration",
+        "no measured clock or energy",
+        "no physical bank allocation",
+        "activation ports count int8 tensor inputs after state requantization",
+        "streaming recurrence overhead simplified",
+        "no additional W4 DSP throughput assumed",
+        "sequential operator schedule; intra-GEMM load overlap assumed"
+      ]
+    },
+    "energy_saver": {
+      "status": "uncalibrated_schedule_not_measured",
+      "mode": {
+        "weight_bits": 4,
+        "keep_groups": 4,
+        "rts": true,
+        "exit_block": 2
+      },
+      "sequence": 32,
+      "after_gate": 20,
+      "operators": [
+        {
+          "name": "embedding",
+          "cycles": 3972,
+          "macs": 147456,
+          "array_compute_cycles": 3456,
+          "onchip_load_cycles": 2304,
+          "requantize_cycles": 512,
+          "weight_bytes": 9216,
+          "activation_bytes": 18432,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "position_add",
+          "cycles": 1028,
+          "macs": 0
+        },
+        {
+          "name": "block1_norm1",
+          "cycles": 2052,
+          "macs": 0
+        },
+        {
+          "name": "block1_norm2",
+          "cycles": 2052,
+          "macs": 0
+        },
+        {
+          "name": "block1_qkv",
+          "cycles": 29572,
+          "macs": 1572864,
+          "array_compute_cycles": 28032,
+          "onchip_load_cycles": 24576,
+          "requantize_cycles": 1536,
+          "weight_bytes": 98304,
+          "activation_bytes": 196608,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block1_attention_qk",
+          "cycles": 3728,
+          "macs": 131072,
+          "array_compute_cycles": 3200,
+          "onchip_load_cycles": 2048,
+          "requantize_cycles": 512,
+          "weight_bytes": 16384,
+          "activation_bytes": 16384,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block1_attention_av",
+          "cycles": 6672,
+          "macs": 131072,
+          "array_compute_cycles": 3200,
+          "onchip_load_cycles": 6144,
+          "requantize_cycles": 512,
+          "weight_bytes": 16384,
+          "activation_bytes": 49152,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block1_online_softmax",
+          "cycles": 3076,
+          "macs": 0
+        },
+        {
+          "name": "block1_attention_divide",
+          "cycles": 65540,
+          "macs": 0
+        },
+        {
+          "name": "block1_projection",
+          "cycles": 9860,
+          "macs": 524288,
+          "array_compute_cycles": 9344,
+          "onchip_load_cycles": 8192,
+          "requantize_cycles": 512,
+          "weight_bytes": 32768,
+          "activation_bytes": 65536,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block1_fc1",
+          "cycles": 19716,
+          "macs": 1048576,
+          "array_compute_cycles": 18688,
+          "onchip_load_cycles": 16384,
+          "requantize_cycles": 1024,
+          "weight_bytes": 65536,
+          "activation_bytes": 131072,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block1_activation",
+          "cycles": 2052,
+          "macs": 0
+        },
+        {
+          "name": "block1_fc2",
+          "cycles": 18052,
+          "macs": 1048576,
+          "array_compute_cycles": 17536,
+          "onchip_load_cycles": 16384,
+          "requantize_cycles": 512,
+          "weight_bytes": 65536,
+          "activation_bytes": 131072,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block1_residuals",
+          "cycles": 2052,
+          "macs": 0
+        },
+        {
+          "name": "group_scorer",
+          "cycles": 592,
+          "macs": 4096,
+          "array_compute_cycles": 584,
+          "onchip_load_cycles": 512,
+          "requantize_cycles": 4,
+          "weight_bytes": 256,
+          "activation_bytes": 4096,
+          "tail_occupancy": 0.125
+        },
+        {
+          "name": "group_score_reduction",
+          "cycles": 36,
+          "macs": 0
+        },
+        {
+          "name": "group_selection",
+          "cycles": 68,
+          "macs": 0
+        },
+        {
+          "name": "token_compaction",
+          "cycles": 644,
+          "macs": 0
+        },
+        {
+          "name": "summary_weighted_accumulation",
+          "cycles": 516,
+          "macs": 0
+        },
+        {
+          "name": "summary_division",
+          "cycles": 8196,
+          "macs": 0
+        },
+        {
+          "name": "block2_norm1",
+          "cycles": 1284,
+          "macs": 0
+        },
+        {
+          "name": "block2_norm2",
+          "cycles": 1284,
+          "macs": 0
+        },
+        {
+          "name": "block2_qkv",
+          "cycles": 21988,
+          "macs": 983040,
+          "array_compute_cycles": 21024,
+          "onchip_load_cycles": 15360,
+          "requantize_cycles": 960,
+          "weight_bytes": 73728,
+          "activation_bytes": 122880,
+          "tail_occupancy": 0.8333333333333334
+        },
+        {
+          "name": "block2_attention_qk",
+          "cycles": 2016,
+          "macs": 51200,
+          "array_compute_cycles": 1800,
+          "onchip_load_cycles": 960,
+          "requantize_cycles": 200,
+          "weight_bytes": 7680,
+          "activation_bytes": 7680,
+          "tail_occupancy": 0.6944444444444444
+        },
+        {
+          "name": "block2_attention_av",
+          "cycles": 2736,
+          "macs": 51200,
+          "array_compute_cycles": 1824,
+          "onchip_load_cycles": 2400,
+          "requantize_cycles": 320,
+          "weight_bytes": 7680,
+          "activation_bytes": 19200,
+          "tail_occupancy": 0.8333333333333334
+        },
+        {
+          "name": "block2_online_softmax",
+          "cycles": 1364,
+          "macs": 0
+        },
+        {
+          "name": "block2_attention_divide",
+          "cycles": 40964,
+          "macs": 0
+        },
+        {
+          "name": "block2_projection",
+          "cycles": 7332,
+          "macs": 327680,
+          "array_compute_cycles": 7008,
+          "onchip_load_cycles": 5120,
+          "requantize_cycles": 320,
+          "weight_bytes": 24576,
+          "activation_bytes": 40960,
+          "tail_occupancy": 0.8333333333333334
+        },
+        {
+          "name": "block2_fc1",
+          "cycles": 14660,
+          "macs": 655360,
+          "array_compute_cycles": 14016,
+          "onchip_load_cycles": 10240,
+          "requantize_cycles": 640,
+          "weight_bytes": 49152,
+          "activation_bytes": 81920,
+          "tail_occupancy": 0.8333333333333334
+        },
+        {
+          "name": "block2_activation",
+          "cycles": 1284,
+          "macs": 0
+        },
+        {
+          "name": "block2_fc2",
+          "cycles": 13476,
+          "macs": 655360,
+          "array_compute_cycles": 13152,
+          "onchip_load_cycles": 10240,
+          "requantize_cycles": 320,
+          "weight_bytes": 49152,
+          "activation_bytes": 81920,
+          "tail_occupancy": 0.8333333333333334
+        },
+        {
+          "name": "block2_residuals",
+          "cycles": 1284,
+          "macs": 0
+        },
+        {
+          "name": "final_norm",
+          "cycles": 1284,
+          "macs": 0
+        },
+        {
+          "name": "pooling",
+          "cycles": 1156,
+          "macs": 0
+        },
+        {
+          "name": "classifier",
+          "cycles": 151,
+          "macs": 768,
+          "array_compute_cycles": 146,
+          "onchip_load_cycles": 48,
+          "requantize_cycles": 1,
+          "weight_bytes": 384,
+          "activation_bytes": 128,
+          "tail_occupancy": 0.09375
+        }
+      ],
+      "estimated_cycles": 291739,
+      "assumed_clock_hz": 150000000,
+      "conditional_latency_ms": 1.9449266666666667,
+      "memory_payload_bytes": {
+        "packed_linear_weights": 265280,
+        "bias_and_multiplier_arrays": 44700,
+        "position_and_norm_weights": 15744,
+        "pingpong_state": 24576,
+        "qkv_state": 36864,
+        "ffn_state": 24576,
+        "attention_running_state": 34816,
+        "exp_and_activation_tables": 20520,
+        "token_metadata_and_scores": 320,
+        "input_output": 3474
+      },
+      "memory_payload_total_bytes": 470870,
+      "combined_k26_memory_bytes": 3022848,
+      "payload_fits_combined_capacity_with_reserve": true,
+      "physical_banking_fit_proven": false,
+      "limitations": [
+        "nonlinear rates and divider latency assumed",
+        "no RTL calibration",
+        "no measured clock or energy",
+        "no physical bank allocation",
+        "activation ports count int8 tensor inputs after state requantization",
+        "streaming recurrence overhead simplified",
+        "no additional W4 DSP throughput assumed",
+        "sequential operator schedule; intra-GEMM load overlap assumed"
+      ]
+    }
+  },
+  "dense_sequence_sweep": [
+    {
+      "status": "uncalibrated_schedule_not_measured",
+      "mode": {
+        "weight_bits": 8,
+        "keep_groups": 4,
+        "rts": false,
+        "exit_block": 4
+      },
+      "sequence": 16,
+      "after_gate": 16,
+      "operators": [
+        {
+          "name": "embedding",
+          "cycles": 1988,
+          "macs": 73728,
+          "array_compute_cycles": 1728,
+          "onchip_load_cycles": 1152,
+          "requantize_cycles": 256,
+          "weight_bytes": 9216,
+          "activation_bytes": 9216,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "position_add",
+          "cycles": 516,
+          "macs": 0
+        },
+        {
+          "name": "block1_norm1",
+          "cycles": 1028,
+          "macs": 0
+        },
+        {
+          "name": "block1_norm2",
+          "cycles": 1028,
+          "macs": 0
+        },
+        {
+          "name": "block1_qkv",
+          "cycles": 14788,
+          "macs": 786432,
+          "array_compute_cycles": 14016,
+          "onchip_load_cycles": 12288,
+          "requantize_cycles": 768,
+          "weight_bytes": 98304,
+          "activation_bytes": 98304,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block1_attention_qk",
+          "cycles": 944,
+          "macs": 32768,
+          "array_compute_cycles": 800,
+          "onchip_load_cycles": 512,
+          "requantize_cycles": 128,
+          "weight_bytes": 4096,
+          "activation_bytes": 4096,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block1_attention_av",
+          "cycles": 1808,
+          "macs": 32768,
+          "array_compute_cycles": 1088,
+          "onchip_load_cycles": 1536,
+          "requantize_cycles": 256,
+          "weight_bytes": 4096,
+          "activation_bytes": 12288,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block1_online_softmax",
+          "cycles": 772,
+          "macs": 0
+        },
+        {
+          "name": "block1_attention_divide",
+          "cycles": 32772,
+          "macs": 0
+        },
+        {
+          "name": "block1_projection",
+          "cycles": 4932,
+          "macs": 262144,
+          "array_compute_cycles": 4672,
+          "onchip_load_cycles": 4096,
+          "requantize_cycles": 256,
+          "weight_bytes": 32768,
+          "activation_bytes": 32768,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block1_fc1",
+          "cycles": 9860,
+          "macs": 524288,
+          "array_compute_cycles": 9344,
+          "onchip_load_cycles": 8192,
+          "requantize_cycles": 512,
+          "weight_bytes": 65536,
+          "activation_bytes": 65536,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block1_activation",
+          "cycles": 1028,
+          "macs": 0
+        },
+        {
+          "name": "block1_fc2",
+          "cycles": 9028,
+          "macs": 524288,
+          "array_compute_cycles": 8768,
+          "onchip_load_cycles": 8192,
+          "requantize_cycles": 256,
+          "weight_bytes": 65536,
+          "activation_bytes": 65536,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block1_residuals",
+          "cycles": 1028,
+          "macs": 0
+        },
+        {
+          "name": "block2_norm1",
+          "cycles": 1028,
+          "macs": 0
+        },
+        {
+          "name": "block2_norm2",
+          "cycles": 1028,
+          "macs": 0
+        },
+        {
+          "name": "block2_qkv",
+          "cycles": 14788,
+          "macs": 786432,
+          "array_compute_cycles": 14016,
+          "onchip_load_cycles": 12288,
+          "requantize_cycles": 768,
+          "weight_bytes": 98304,
+          "activation_bytes": 98304,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block2_attention_qk",
+          "cycles": 944,
+          "macs": 32768,
+          "array_compute_cycles": 800,
+          "onchip_load_cycles": 512,
+          "requantize_cycles": 128,
+          "weight_bytes": 4096,
+          "activation_bytes": 4096,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block2_attention_av",
+          "cycles": 1808,
+          "macs": 32768,
+          "array_compute_cycles": 1088,
+          "onchip_load_cycles": 1536,
+          "requantize_cycles": 256,
+          "weight_bytes": 4096,
+          "activation_bytes": 12288,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block2_online_softmax",
+          "cycles": 772,
+          "macs": 0
+        },
+        {
+          "name": "block2_attention_divide",
+          "cycles": 32772,
+          "macs": 0
+        },
+        {
+          "name": "block2_projection",
+          "cycles": 4932,
+          "macs": 262144,
+          "array_compute_cycles": 4672,
+          "onchip_load_cycles": 4096,
+          "requantize_cycles": 256,
+          "weight_bytes": 32768,
+          "activation_bytes": 32768,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block2_fc1",
+          "cycles": 9860,
+          "macs": 524288,
+          "array_compute_cycles": 9344,
+          "onchip_load_cycles": 8192,
+          "requantize_cycles": 512,
+          "weight_bytes": 65536,
+          "activation_bytes": 65536,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block2_activation",
+          "cycles": 1028,
+          "macs": 0
+        },
+        {
+          "name": "block2_fc2",
+          "cycles": 9028,
+          "macs": 524288,
+          "array_compute_cycles": 8768,
+          "onchip_load_cycles": 8192,
+          "requantize_cycles": 256,
+          "weight_bytes": 65536,
+          "activation_bytes": 65536,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block2_residuals",
+          "cycles": 1028,
+          "macs": 0
+        },
+        {
+          "name": "block3_norm1",
+          "cycles": 1028,
+          "macs": 0
+        },
+        {
+          "name": "block3_norm2",
+          "cycles": 1028,
+          "macs": 0
+        },
+        {
+          "name": "block3_qkv",
+          "cycles": 14788,
+          "macs": 786432,
+          "array_compute_cycles": 14016,
+          "onchip_load_cycles": 12288,
+          "requantize_cycles": 768,
+          "weight_bytes": 98304,
+          "activation_bytes": 98304,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block3_attention_qk",
+          "cycles": 944,
+          "macs": 32768,
+          "array_compute_cycles": 800,
+          "onchip_load_cycles": 512,
+          "requantize_cycles": 128,
+          "weight_bytes": 4096,
+          "activation_bytes": 4096,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block3_attention_av",
+          "cycles": 1808,
+          "macs": 32768,
+          "array_compute_cycles": 1088,
+          "onchip_load_cycles": 1536,
+          "requantize_cycles": 256,
+          "weight_bytes": 4096,
+          "activation_bytes": 12288,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block3_online_softmax",
+          "cycles": 772,
+          "macs": 0
+        },
+        {
+          "name": "block3_attention_divide",
+          "cycles": 32772,
+          "macs": 0
+        },
+        {
+          "name": "block3_projection",
+          "cycles": 4932,
+          "macs": 262144,
+          "array_compute_cycles": 4672,
+          "onchip_load_cycles": 4096,
+          "requantize_cycles": 256,
+          "weight_bytes": 32768,
+          "activation_bytes": 32768,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block3_fc1",
+          "cycles": 9860,
+          "macs": 524288,
+          "array_compute_cycles": 9344,
+          "onchip_load_cycles": 8192,
+          "requantize_cycles": 512,
+          "weight_bytes": 65536,
+          "activation_bytes": 65536,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block3_activation",
+          "cycles": 1028,
+          "macs": 0
+        },
+        {
+          "name": "block3_fc2",
+          "cycles": 9028,
+          "macs": 524288,
+          "array_compute_cycles": 8768,
+          "onchip_load_cycles": 8192,
+          "requantize_cycles": 256,
+          "weight_bytes": 65536,
+          "activation_bytes": 65536,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block3_residuals",
+          "cycles": 1028,
+          "macs": 0
+        },
+        {
+          "name": "block4_norm1",
+          "cycles": 1028,
+          "macs": 0
+        },
+        {
+          "name": "block4_norm2",
+          "cycles": 1028,
+          "macs": 0
+        },
+        {
+          "name": "block4_qkv",
+          "cycles": 14788,
+          "macs": 786432,
+          "array_compute_cycles": 14016,
+          "onchip_load_cycles": 12288,
+          "requantize_cycles": 768,
+          "weight_bytes": 98304,
+          "activation_bytes": 98304,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block4_attention_qk",
+          "cycles": 944,
+          "macs": 32768,
+          "array_compute_cycles": 800,
+          "onchip_load_cycles": 512,
+          "requantize_cycles": 128,
+          "weight_bytes": 4096,
+          "activation_bytes": 4096,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block4_attention_av",
+          "cycles": 1808,
+          "macs": 32768,
+          "array_compute_cycles": 1088,
+          "onchip_load_cycles": 1536,
+          "requantize_cycles": 256,
+          "weight_bytes": 4096,
+          "activation_bytes": 12288,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block4_online_softmax",
+          "cycles": 772,
+          "macs": 0
+        },
+        {
+          "name": "block4_attention_divide",
+          "cycles": 32772,
+          "macs": 0
+        },
+        {
+          "name": "block4_projection",
+          "cycles": 4932,
+          "macs": 262144,
+          "array_compute_cycles": 4672,
+          "onchip_load_cycles": 4096,
+          "requantize_cycles": 256,
+          "weight_bytes": 32768,
+          "activation_bytes": 32768,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block4_fc1",
+          "cycles": 9860,
+          "macs": 524288,
+          "array_compute_cycles": 9344,
+          "onchip_load_cycles": 8192,
+          "requantize_cycles": 512,
+          "weight_bytes": 65536,
+          "activation_bytes": 65536,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block4_activation",
+          "cycles": 1028,
+          "macs": 0
+        },
+        {
+          "name": "block4_fc2",
+          "cycles": 9028,
+          "macs": 524288,
+          "array_compute_cycles": 8768,
+          "onchip_load_cycles": 8192,
+          "requantize_cycles": 256,
+          "weight_bytes": 65536,
+          "activation_bytes": 65536,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block4_residuals",
+          "cycles": 1028,
+          "macs": 0
+        },
+        {
+          "name": "final_norm",
+          "cycles": 1028,
+          "macs": 0
+        },
+        {
+          "name": "pooling",
+          "cycles": 1028,
+          "macs": 0
+        },
+        {
+          "name": "classifier",
+          "cycles": 151,
+          "macs": 768,
+          "array_compute_cycles": 146,
+          "onchip_load_cycles": 96,
+          "requantize_cycles": 1,
+          "weight_bytes": 768,
+          "activation_bytes": 128,
+          "tail_occupancy": 0.09375
+        }
+      ],
+      "estimated_cycles": 320775,
+      "assumed_clock_hz": 150000000,
+      "conditional_latency_ms": 2.1385,
+      "memory_payload_bytes": {
+        "packed_linear_weights": 530560,
+        "bias_and_multiplier_arrays": 44700,
+        "position_and_norm_weights": 9600,
+        "pingpong_state": 12288,
+        "qkv_state": 18432,
+        "ffn_state": 12288,
+        "attention_running_state": 17408,
+        "exp_and_activation_tables": 20520,
+        "token_metadata_and_scores": 160,
+        "input_output": 3474
+      },
+      "memory_payload_total_bytes": 669430,
+      "combined_k26_memory_bytes": 3022848,
+      "payload_fits_combined_capacity_with_reserve": true,
+      "physical_banking_fit_proven": false,
+      "limitations": [
+        "nonlinear rates and divider latency assumed",
+        "no RTL calibration",
+        "no measured clock or energy",
+        "no physical bank allocation",
+        "activation ports count int8 tensor inputs after state requantization",
+        "streaming recurrence overhead simplified",
+        "no additional W4 DSP throughput assumed",
+        "sequential operator schedule; intra-GEMM load overlap assumed"
+      ]
+    },
+    {
+      "status": "uncalibrated_schedule_not_measured",
+      "mode": {
+        "weight_bits": 8,
+        "keep_groups": 8,
+        "rts": false,
+        "exit_block": 4
+      },
+      "sequence": 32,
+      "after_gate": 32,
+      "operators": [
+        {
+          "name": "embedding",
+          "cycles": 3972,
+          "macs": 147456,
+          "array_compute_cycles": 3456,
+          "onchip_load_cycles": 2304,
+          "requantize_cycles": 512,
+          "weight_bytes": 18432,
+          "activation_bytes": 18432,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "position_add",
+          "cycles": 1028,
+          "macs": 0
+        },
+        {
+          "name": "block1_norm1",
+          "cycles": 2052,
+          "macs": 0
+        },
+        {
+          "name": "block1_norm2",
+          "cycles": 2052,
+          "macs": 0
+        },
+        {
+          "name": "block1_qkv",
+          "cycles": 29572,
+          "macs": 1572864,
+          "array_compute_cycles": 28032,
+          "onchip_load_cycles": 24576,
+          "requantize_cycles": 1536,
+          "weight_bytes": 196608,
+          "activation_bytes": 196608,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block1_attention_qk",
+          "cycles": 3728,
+          "macs": 131072,
+          "array_compute_cycles": 3200,
+          "onchip_load_cycles": 2048,
+          "requantize_cycles": 512,
+          "weight_bytes": 16384,
+          "activation_bytes": 16384,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block1_attention_av",
+          "cycles": 6672,
+          "macs": 131072,
+          "array_compute_cycles": 3200,
+          "onchip_load_cycles": 6144,
+          "requantize_cycles": 512,
+          "weight_bytes": 16384,
+          "activation_bytes": 49152,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block1_online_softmax",
+          "cycles": 3076,
+          "macs": 0
+        },
+        {
+          "name": "block1_attention_divide",
+          "cycles": 65540,
+          "macs": 0
+        },
+        {
+          "name": "block1_projection",
+          "cycles": 9860,
+          "macs": 524288,
+          "array_compute_cycles": 9344,
+          "onchip_load_cycles": 8192,
+          "requantize_cycles": 512,
+          "weight_bytes": 65536,
+          "activation_bytes": 65536,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block1_fc1",
+          "cycles": 19716,
+          "macs": 1048576,
+          "array_compute_cycles": 18688,
+          "onchip_load_cycles": 16384,
+          "requantize_cycles": 1024,
+          "weight_bytes": 131072,
+          "activation_bytes": 131072,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block1_activation",
+          "cycles": 2052,
+          "macs": 0
+        },
+        {
+          "name": "block1_fc2",
+          "cycles": 18052,
+          "macs": 1048576,
+          "array_compute_cycles": 17536,
+          "onchip_load_cycles": 16384,
+          "requantize_cycles": 512,
+          "weight_bytes": 131072,
+          "activation_bytes": 131072,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block1_residuals",
+          "cycles": 2052,
+          "macs": 0
+        },
+        {
+          "name": "block2_norm1",
+          "cycles": 2052,
+          "macs": 0
+        },
+        {
+          "name": "block2_norm2",
+          "cycles": 2052,
+          "macs": 0
+        },
+        {
+          "name": "block2_qkv",
+          "cycles": 29572,
+          "macs": 1572864,
+          "array_compute_cycles": 28032,
+          "onchip_load_cycles": 24576,
+          "requantize_cycles": 1536,
+          "weight_bytes": 196608,
+          "activation_bytes": 196608,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block2_attention_qk",
+          "cycles": 3728,
+          "macs": 131072,
+          "array_compute_cycles": 3200,
+          "onchip_load_cycles": 2048,
+          "requantize_cycles": 512,
+          "weight_bytes": 16384,
+          "activation_bytes": 16384,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block2_attention_av",
+          "cycles": 6672,
+          "macs": 131072,
+          "array_compute_cycles": 3200,
+          "onchip_load_cycles": 6144,
+          "requantize_cycles": 512,
+          "weight_bytes": 16384,
+          "activation_bytes": 49152,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block2_online_softmax",
+          "cycles": 3076,
+          "macs": 0
+        },
+        {
+          "name": "block2_attention_divide",
+          "cycles": 65540,
+          "macs": 0
+        },
+        {
+          "name": "block2_projection",
+          "cycles": 9860,
+          "macs": 524288,
+          "array_compute_cycles": 9344,
+          "onchip_load_cycles": 8192,
+          "requantize_cycles": 512,
+          "weight_bytes": 65536,
+          "activation_bytes": 65536,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block2_fc1",
+          "cycles": 19716,
+          "macs": 1048576,
+          "array_compute_cycles": 18688,
+          "onchip_load_cycles": 16384,
+          "requantize_cycles": 1024,
+          "weight_bytes": 131072,
+          "activation_bytes": 131072,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block2_activation",
+          "cycles": 2052,
+          "macs": 0
+        },
+        {
+          "name": "block2_fc2",
+          "cycles": 18052,
+          "macs": 1048576,
+          "array_compute_cycles": 17536,
+          "onchip_load_cycles": 16384,
+          "requantize_cycles": 512,
+          "weight_bytes": 131072,
+          "activation_bytes": 131072,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block2_residuals",
+          "cycles": 2052,
+          "macs": 0
+        },
+        {
+          "name": "block3_norm1",
+          "cycles": 2052,
+          "macs": 0
+        },
+        {
+          "name": "block3_norm2",
+          "cycles": 2052,
+          "macs": 0
+        },
+        {
+          "name": "block3_qkv",
+          "cycles": 29572,
+          "macs": 1572864,
+          "array_compute_cycles": 28032,
+          "onchip_load_cycles": 24576,
+          "requantize_cycles": 1536,
+          "weight_bytes": 196608,
+          "activation_bytes": 196608,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block3_attention_qk",
+          "cycles": 3728,
+          "macs": 131072,
+          "array_compute_cycles": 3200,
+          "onchip_load_cycles": 2048,
+          "requantize_cycles": 512,
+          "weight_bytes": 16384,
+          "activation_bytes": 16384,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block3_attention_av",
+          "cycles": 6672,
+          "macs": 131072,
+          "array_compute_cycles": 3200,
+          "onchip_load_cycles": 6144,
+          "requantize_cycles": 512,
+          "weight_bytes": 16384,
+          "activation_bytes": 49152,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block3_online_softmax",
+          "cycles": 3076,
+          "macs": 0
+        },
+        {
+          "name": "block3_attention_divide",
+          "cycles": 65540,
+          "macs": 0
+        },
+        {
+          "name": "block3_projection",
+          "cycles": 9860,
+          "macs": 524288,
+          "array_compute_cycles": 9344,
+          "onchip_load_cycles": 8192,
+          "requantize_cycles": 512,
+          "weight_bytes": 65536,
+          "activation_bytes": 65536,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block3_fc1",
+          "cycles": 19716,
+          "macs": 1048576,
+          "array_compute_cycles": 18688,
+          "onchip_load_cycles": 16384,
+          "requantize_cycles": 1024,
+          "weight_bytes": 131072,
+          "activation_bytes": 131072,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block3_activation",
+          "cycles": 2052,
+          "macs": 0
+        },
+        {
+          "name": "block3_fc2",
+          "cycles": 18052,
+          "macs": 1048576,
+          "array_compute_cycles": 17536,
+          "onchip_load_cycles": 16384,
+          "requantize_cycles": 512,
+          "weight_bytes": 131072,
+          "activation_bytes": 131072,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block3_residuals",
+          "cycles": 2052,
+          "macs": 0
+        },
+        {
+          "name": "block4_norm1",
+          "cycles": 2052,
+          "macs": 0
+        },
+        {
+          "name": "block4_norm2",
+          "cycles": 2052,
+          "macs": 0
+        },
+        {
+          "name": "block4_qkv",
+          "cycles": 29572,
+          "macs": 1572864,
+          "array_compute_cycles": 28032,
+          "onchip_load_cycles": 24576,
+          "requantize_cycles": 1536,
+          "weight_bytes": 196608,
+          "activation_bytes": 196608,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block4_attention_qk",
+          "cycles": 3728,
+          "macs": 131072,
+          "array_compute_cycles": 3200,
+          "onchip_load_cycles": 2048,
+          "requantize_cycles": 512,
+          "weight_bytes": 16384,
+          "activation_bytes": 16384,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block4_attention_av",
+          "cycles": 6672,
+          "macs": 131072,
+          "array_compute_cycles": 3200,
+          "onchip_load_cycles": 6144,
+          "requantize_cycles": 512,
+          "weight_bytes": 16384,
+          "activation_bytes": 49152,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block4_online_softmax",
+          "cycles": 3076,
+          "macs": 0
+        },
+        {
+          "name": "block4_attention_divide",
+          "cycles": 65540,
+          "macs": 0
+        },
+        {
+          "name": "block4_projection",
+          "cycles": 9860,
+          "macs": 524288,
+          "array_compute_cycles": 9344,
+          "onchip_load_cycles": 8192,
+          "requantize_cycles": 512,
+          "weight_bytes": 65536,
+          "activation_bytes": 65536,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block4_fc1",
+          "cycles": 19716,
+          "macs": 1048576,
+          "array_compute_cycles": 18688,
+          "onchip_load_cycles": 16384,
+          "requantize_cycles": 1024,
+          "weight_bytes": 131072,
+          "activation_bytes": 131072,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block4_activation",
+          "cycles": 2052,
+          "macs": 0
+        },
+        {
+          "name": "block4_fc2",
+          "cycles": 18052,
+          "macs": 1048576,
+          "array_compute_cycles": 17536,
+          "onchip_load_cycles": 16384,
+          "requantize_cycles": 512,
+          "weight_bytes": 131072,
+          "activation_bytes": 131072,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block4_residuals",
+          "cycles": 2052,
+          "macs": 0
+        },
+        {
+          "name": "final_norm",
+          "cycles": 2052,
+          "macs": 0
+        },
+        {
+          "name": "pooling",
+          "cycles": 1540,
+          "macs": 0
+        },
+        {
+          "name": "classifier",
+          "cycles": 151,
+          "macs": 768,
+          "array_compute_cycles": 146,
+          "onchip_load_cycles": 96,
+          "requantize_cycles": 1,
+          "weight_bytes": 768,
+          "activation_bytes": 128,
+          "tail_occupancy": 0.09375
+        }
+      ],
+      "estimated_cycles": 666439,
+      "assumed_clock_hz": 150000000,
+      "conditional_latency_ms": 4.442926666666667,
+      "memory_payload_bytes": {
+        "packed_linear_weights": 530560,
+        "bias_and_multiplier_arrays": 44700,
+        "position_and_norm_weights": 15744,
+        "pingpong_state": 24576,
+        "qkv_state": 36864,
+        "ffn_state": 24576,
+        "attention_running_state": 34816,
+        "exp_and_activation_tables": 20520,
+        "token_metadata_and_scores": 320,
+        "input_output": 3474
+      },
+      "memory_payload_total_bytes": 736150,
+      "combined_k26_memory_bytes": 3022848,
+      "payload_fits_combined_capacity_with_reserve": true,
+      "physical_banking_fit_proven": false,
+      "limitations": [
+        "nonlinear rates and divider latency assumed",
+        "no RTL calibration",
+        "no measured clock or energy",
+        "no physical bank allocation",
+        "activation ports count int8 tensor inputs after state requantization",
+        "streaming recurrence overhead simplified",
+        "no additional W4 DSP throughput assumed",
+        "sequential operator schedule; intra-GEMM load overlap assumed"
+      ]
+    },
+    {
+      "status": "uncalibrated_schedule_not_measured",
+      "mode": {
+        "weight_bits": 8,
+        "keep_groups": 16,
+        "rts": false,
+        "exit_block": 4
+      },
+      "sequence": 64,
+      "after_gate": 64,
+      "operators": [
+        {
+          "name": "embedding",
+          "cycles": 7940,
+          "macs": 294912,
+          "array_compute_cycles": 6912,
+          "onchip_load_cycles": 4608,
+          "requantize_cycles": 1024,
+          "weight_bytes": 36864,
+          "activation_bytes": 36864,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "position_add",
+          "cycles": 2052,
+          "macs": 0
+        },
+        {
+          "name": "block1_norm1",
+          "cycles": 4100,
+          "macs": 0
+        },
+        {
+          "name": "block1_norm2",
+          "cycles": 4100,
+          "macs": 0
+        },
+        {
+          "name": "block1_qkv",
+          "cycles": 59140,
+          "macs": 3145728,
+          "array_compute_cycles": 56064,
+          "onchip_load_cycles": 49152,
+          "requantize_cycles": 3072,
+          "weight_bytes": 393216,
+          "activation_bytes": 393216,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block1_attention_qk",
+          "cycles": 14864,
+          "macs": 524288,
+          "array_compute_cycles": 12800,
+          "onchip_load_cycles": 8192,
+          "requantize_cycles": 2048,
+          "weight_bytes": 65536,
+          "activation_bytes": 65536,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block1_attention_av",
+          "cycles": 25616,
+          "macs": 524288,
+          "array_compute_cycles": 10496,
+          "onchip_load_cycles": 24576,
+          "requantize_cycles": 1024,
+          "weight_bytes": 65536,
+          "activation_bytes": 196608,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block1_online_softmax",
+          "cycles": 12292,
+          "macs": 0
+        },
+        {
+          "name": "block1_attention_divide",
+          "cycles": 131076,
+          "macs": 0
+        },
+        {
+          "name": "block1_projection",
+          "cycles": 19716,
+          "macs": 1048576,
+          "array_compute_cycles": 18688,
+          "onchip_load_cycles": 16384,
+          "requantize_cycles": 1024,
+          "weight_bytes": 131072,
+          "activation_bytes": 131072,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block1_fc1",
+          "cycles": 39428,
+          "macs": 2097152,
+          "array_compute_cycles": 37376,
+          "onchip_load_cycles": 32768,
+          "requantize_cycles": 2048,
+          "weight_bytes": 262144,
+          "activation_bytes": 262144,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block1_activation",
+          "cycles": 4100,
+          "macs": 0
+        },
+        {
+          "name": "block1_fc2",
+          "cycles": 36100,
+          "macs": 2097152,
+          "array_compute_cycles": 35072,
+          "onchip_load_cycles": 32768,
+          "requantize_cycles": 1024,
+          "weight_bytes": 262144,
+          "activation_bytes": 262144,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block1_residuals",
+          "cycles": 4100,
+          "macs": 0
+        },
+        {
+          "name": "block2_norm1",
+          "cycles": 4100,
+          "macs": 0
+        },
+        {
+          "name": "block2_norm2",
+          "cycles": 4100,
+          "macs": 0
+        },
+        {
+          "name": "block2_qkv",
+          "cycles": 59140,
+          "macs": 3145728,
+          "array_compute_cycles": 56064,
+          "onchip_load_cycles": 49152,
+          "requantize_cycles": 3072,
+          "weight_bytes": 393216,
+          "activation_bytes": 393216,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block2_attention_qk",
+          "cycles": 14864,
+          "macs": 524288,
+          "array_compute_cycles": 12800,
+          "onchip_load_cycles": 8192,
+          "requantize_cycles": 2048,
+          "weight_bytes": 65536,
+          "activation_bytes": 65536,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block2_attention_av",
+          "cycles": 25616,
+          "macs": 524288,
+          "array_compute_cycles": 10496,
+          "onchip_load_cycles": 24576,
+          "requantize_cycles": 1024,
+          "weight_bytes": 65536,
+          "activation_bytes": 196608,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block2_online_softmax",
+          "cycles": 12292,
+          "macs": 0
+        },
+        {
+          "name": "block2_attention_divide",
+          "cycles": 131076,
+          "macs": 0
+        },
+        {
+          "name": "block2_projection",
+          "cycles": 19716,
+          "macs": 1048576,
+          "array_compute_cycles": 18688,
+          "onchip_load_cycles": 16384,
+          "requantize_cycles": 1024,
+          "weight_bytes": 131072,
+          "activation_bytes": 131072,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block2_fc1",
+          "cycles": 39428,
+          "macs": 2097152,
+          "array_compute_cycles": 37376,
+          "onchip_load_cycles": 32768,
+          "requantize_cycles": 2048,
+          "weight_bytes": 262144,
+          "activation_bytes": 262144,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block2_activation",
+          "cycles": 4100,
+          "macs": 0
+        },
+        {
+          "name": "block2_fc2",
+          "cycles": 36100,
+          "macs": 2097152,
+          "array_compute_cycles": 35072,
+          "onchip_load_cycles": 32768,
+          "requantize_cycles": 1024,
+          "weight_bytes": 262144,
+          "activation_bytes": 262144,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block2_residuals",
+          "cycles": 4100,
+          "macs": 0
+        },
+        {
+          "name": "block3_norm1",
+          "cycles": 4100,
+          "macs": 0
+        },
+        {
+          "name": "block3_norm2",
+          "cycles": 4100,
+          "macs": 0
+        },
+        {
+          "name": "block3_qkv",
+          "cycles": 59140,
+          "macs": 3145728,
+          "array_compute_cycles": 56064,
+          "onchip_load_cycles": 49152,
+          "requantize_cycles": 3072,
+          "weight_bytes": 393216,
+          "activation_bytes": 393216,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block3_attention_qk",
+          "cycles": 14864,
+          "macs": 524288,
+          "array_compute_cycles": 12800,
+          "onchip_load_cycles": 8192,
+          "requantize_cycles": 2048,
+          "weight_bytes": 65536,
+          "activation_bytes": 65536,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block3_attention_av",
+          "cycles": 25616,
+          "macs": 524288,
+          "array_compute_cycles": 10496,
+          "onchip_load_cycles": 24576,
+          "requantize_cycles": 1024,
+          "weight_bytes": 65536,
+          "activation_bytes": 196608,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block3_online_softmax",
+          "cycles": 12292,
+          "macs": 0
+        },
+        {
+          "name": "block3_attention_divide",
+          "cycles": 131076,
+          "macs": 0
+        },
+        {
+          "name": "block3_projection",
+          "cycles": 19716,
+          "macs": 1048576,
+          "array_compute_cycles": 18688,
+          "onchip_load_cycles": 16384,
+          "requantize_cycles": 1024,
+          "weight_bytes": 131072,
+          "activation_bytes": 131072,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block3_fc1",
+          "cycles": 39428,
+          "macs": 2097152,
+          "array_compute_cycles": 37376,
+          "onchip_load_cycles": 32768,
+          "requantize_cycles": 2048,
+          "weight_bytes": 262144,
+          "activation_bytes": 262144,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block3_activation",
+          "cycles": 4100,
+          "macs": 0
+        },
+        {
+          "name": "block3_fc2",
+          "cycles": 36100,
+          "macs": 2097152,
+          "array_compute_cycles": 35072,
+          "onchip_load_cycles": 32768,
+          "requantize_cycles": 1024,
+          "weight_bytes": 262144,
+          "activation_bytes": 262144,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block3_residuals",
+          "cycles": 4100,
+          "macs": 0
+        },
+        {
+          "name": "block4_norm1",
+          "cycles": 4100,
+          "macs": 0
+        },
+        {
+          "name": "block4_norm2",
+          "cycles": 4100,
+          "macs": 0
+        },
+        {
+          "name": "block4_qkv",
+          "cycles": 59140,
+          "macs": 3145728,
+          "array_compute_cycles": 56064,
+          "onchip_load_cycles": 49152,
+          "requantize_cycles": 3072,
+          "weight_bytes": 393216,
+          "activation_bytes": 393216,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block4_attention_qk",
+          "cycles": 14864,
+          "macs": 524288,
+          "array_compute_cycles": 12800,
+          "onchip_load_cycles": 8192,
+          "requantize_cycles": 2048,
+          "weight_bytes": 65536,
+          "activation_bytes": 65536,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block4_attention_av",
+          "cycles": 25616,
+          "macs": 524288,
+          "array_compute_cycles": 10496,
+          "onchip_load_cycles": 24576,
+          "requantize_cycles": 1024,
+          "weight_bytes": 65536,
+          "activation_bytes": 196608,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block4_online_softmax",
+          "cycles": 12292,
+          "macs": 0
+        },
+        {
+          "name": "block4_attention_divide",
+          "cycles": 131076,
+          "macs": 0
+        },
+        {
+          "name": "block4_projection",
+          "cycles": 19716,
+          "macs": 1048576,
+          "array_compute_cycles": 18688,
+          "onchip_load_cycles": 16384,
+          "requantize_cycles": 1024,
+          "weight_bytes": 131072,
+          "activation_bytes": 131072,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block4_fc1",
+          "cycles": 39428,
+          "macs": 2097152,
+          "array_compute_cycles": 37376,
+          "onchip_load_cycles": 32768,
+          "requantize_cycles": 2048,
+          "weight_bytes": 262144,
+          "activation_bytes": 262144,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block4_activation",
+          "cycles": 4100,
+          "macs": 0
+        },
+        {
+          "name": "block4_fc2",
+          "cycles": 36100,
+          "macs": 2097152,
+          "array_compute_cycles": 35072,
+          "onchip_load_cycles": 32768,
+          "requantize_cycles": 1024,
+          "weight_bytes": 262144,
+          "activation_bytes": 262144,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block4_residuals",
+          "cycles": 4100,
+          "macs": 0
+        },
+        {
+          "name": "final_norm",
+          "cycles": 4100,
+          "macs": 0
+        },
+        {
+          "name": "pooling",
+          "cycles": 2564,
+          "macs": 0
+        },
+        {
+          "name": "classifier",
+          "cycles": 151,
+          "macs": 768,
+          "array_compute_cycles": 146,
+          "onchip_load_cycles": 96,
+          "requantize_cycles": 1,
+          "weight_bytes": 768,
+          "activation_bytes": 128,
+          "tail_occupancy": 0.09375
+        }
+      ],
+      "estimated_cycles": 1435335,
+      "assumed_clock_hz": 150000000,
+      "conditional_latency_ms": 9.5689,
+      "memory_payload_bytes": {
+        "packed_linear_weights": 530560,
+        "bias_and_multiplier_arrays": 44700,
+        "position_and_norm_weights": 28032,
+        "pingpong_state": 49152,
+        "qkv_state": 73728,
+        "ffn_state": 49152,
+        "attention_running_state": 69632,
+        "exp_and_activation_tables": 20520,
+        "token_metadata_and_scores": 640,
+        "input_output": 3474
+      },
+      "memory_payload_total_bytes": 869590,
+      "combined_k26_memory_bytes": 3022848,
+      "payload_fits_combined_capacity_with_reserve": true,
+      "physical_banking_fit_proven": false,
+      "limitations": [
+        "nonlinear rates and divider latency assumed",
+        "no RTL calibration",
+        "no measured clock or energy",
+        "no physical bank allocation",
+        "activation ports count int8 tensor inputs after state requantization",
+        "streaming recurrence overhead simplified",
+        "no additional W4 DSP throughput assumed",
+        "sequential operator schedule; intra-GEMM load overlap assumed"
+      ]
+    },
+    {
+      "status": "uncalibrated_schedule_not_measured",
+      "mode": {
+        "weight_bits": 8,
+        "keep_groups": 32,
+        "rts": false,
+        "exit_block": 4
+      },
+      "sequence": 128,
+      "after_gate": 128,
+      "operators": [
+        {
+          "name": "embedding",
+          "cycles": 15876,
+          "macs": 589824,
+          "array_compute_cycles": 13824,
+          "onchip_load_cycles": 9216,
+          "requantize_cycles": 2048,
+          "weight_bytes": 73728,
+          "activation_bytes": 73728,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "position_add",
+          "cycles": 4100,
+          "macs": 0
+        },
+        {
+          "name": "block1_norm1",
+          "cycles": 8196,
+          "macs": 0
+        },
+        {
+          "name": "block1_norm2",
+          "cycles": 8196,
+          "macs": 0
+        },
+        {
+          "name": "block1_qkv",
+          "cycles": 118276,
+          "macs": 6291456,
+          "array_compute_cycles": 112128,
+          "onchip_load_cycles": 98304,
+          "requantize_cycles": 6144,
+          "weight_bytes": 786432,
+          "activation_bytes": 786432,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block1_attention_qk",
+          "cycles": 59408,
+          "macs": 2097152,
+          "array_compute_cycles": 51200,
+          "onchip_load_cycles": 32768,
+          "requantize_cycles": 8192,
+          "weight_bytes": 262144,
+          "activation_bytes": 262144,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block1_attention_av",
+          "cycles": 100368,
+          "macs": 2097152,
+          "array_compute_cycles": 37376,
+          "onchip_load_cycles": 98304,
+          "requantize_cycles": 2048,
+          "weight_bytes": 262144,
+          "activation_bytes": 786432,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block1_online_softmax",
+          "cycles": 49156,
+          "macs": 0
+        },
+        {
+          "name": "block1_attention_divide",
+          "cycles": 262148,
+          "macs": 0
+        },
+        {
+          "name": "block1_projection",
+          "cycles": 39428,
+          "macs": 2097152,
+          "array_compute_cycles": 37376,
+          "onchip_load_cycles": 32768,
+          "requantize_cycles": 2048,
+          "weight_bytes": 262144,
+          "activation_bytes": 262144,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block1_fc1",
+          "cycles": 78852,
+          "macs": 4194304,
+          "array_compute_cycles": 74752,
+          "onchip_load_cycles": 65536,
+          "requantize_cycles": 4096,
+          "weight_bytes": 524288,
+          "activation_bytes": 524288,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block1_activation",
+          "cycles": 8196,
+          "macs": 0
+        },
+        {
+          "name": "block1_fc2",
+          "cycles": 72196,
+          "macs": 4194304,
+          "array_compute_cycles": 70144,
+          "onchip_load_cycles": 65536,
+          "requantize_cycles": 2048,
+          "weight_bytes": 524288,
+          "activation_bytes": 524288,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block1_residuals",
+          "cycles": 8196,
+          "macs": 0
+        },
+        {
+          "name": "block2_norm1",
+          "cycles": 8196,
+          "macs": 0
+        },
+        {
+          "name": "block2_norm2",
+          "cycles": 8196,
+          "macs": 0
+        },
+        {
+          "name": "block2_qkv",
+          "cycles": 118276,
+          "macs": 6291456,
+          "array_compute_cycles": 112128,
+          "onchip_load_cycles": 98304,
+          "requantize_cycles": 6144,
+          "weight_bytes": 786432,
+          "activation_bytes": 786432,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block2_attention_qk",
+          "cycles": 59408,
+          "macs": 2097152,
+          "array_compute_cycles": 51200,
+          "onchip_load_cycles": 32768,
+          "requantize_cycles": 8192,
+          "weight_bytes": 262144,
+          "activation_bytes": 262144,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block2_attention_av",
+          "cycles": 100368,
+          "macs": 2097152,
+          "array_compute_cycles": 37376,
+          "onchip_load_cycles": 98304,
+          "requantize_cycles": 2048,
+          "weight_bytes": 262144,
+          "activation_bytes": 786432,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block2_online_softmax",
+          "cycles": 49156,
+          "macs": 0
+        },
+        {
+          "name": "block2_attention_divide",
+          "cycles": 262148,
+          "macs": 0
+        },
+        {
+          "name": "block2_projection",
+          "cycles": 39428,
+          "macs": 2097152,
+          "array_compute_cycles": 37376,
+          "onchip_load_cycles": 32768,
+          "requantize_cycles": 2048,
+          "weight_bytes": 262144,
+          "activation_bytes": 262144,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block2_fc1",
+          "cycles": 78852,
+          "macs": 4194304,
+          "array_compute_cycles": 74752,
+          "onchip_load_cycles": 65536,
+          "requantize_cycles": 4096,
+          "weight_bytes": 524288,
+          "activation_bytes": 524288,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block2_activation",
+          "cycles": 8196,
+          "macs": 0
+        },
+        {
+          "name": "block2_fc2",
+          "cycles": 72196,
+          "macs": 4194304,
+          "array_compute_cycles": 70144,
+          "onchip_load_cycles": 65536,
+          "requantize_cycles": 2048,
+          "weight_bytes": 524288,
+          "activation_bytes": 524288,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block2_residuals",
+          "cycles": 8196,
+          "macs": 0
+        },
+        {
+          "name": "block3_norm1",
+          "cycles": 8196,
+          "macs": 0
+        },
+        {
+          "name": "block3_norm2",
+          "cycles": 8196,
+          "macs": 0
+        },
+        {
+          "name": "block3_qkv",
+          "cycles": 118276,
+          "macs": 6291456,
+          "array_compute_cycles": 112128,
+          "onchip_load_cycles": 98304,
+          "requantize_cycles": 6144,
+          "weight_bytes": 786432,
+          "activation_bytes": 786432,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block3_attention_qk",
+          "cycles": 59408,
+          "macs": 2097152,
+          "array_compute_cycles": 51200,
+          "onchip_load_cycles": 32768,
+          "requantize_cycles": 8192,
+          "weight_bytes": 262144,
+          "activation_bytes": 262144,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block3_attention_av",
+          "cycles": 100368,
+          "macs": 2097152,
+          "array_compute_cycles": 37376,
+          "onchip_load_cycles": 98304,
+          "requantize_cycles": 2048,
+          "weight_bytes": 262144,
+          "activation_bytes": 786432,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block3_online_softmax",
+          "cycles": 49156,
+          "macs": 0
+        },
+        {
+          "name": "block3_attention_divide",
+          "cycles": 262148,
+          "macs": 0
+        },
+        {
+          "name": "block3_projection",
+          "cycles": 39428,
+          "macs": 2097152,
+          "array_compute_cycles": 37376,
+          "onchip_load_cycles": 32768,
+          "requantize_cycles": 2048,
+          "weight_bytes": 262144,
+          "activation_bytes": 262144,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block3_fc1",
+          "cycles": 78852,
+          "macs": 4194304,
+          "array_compute_cycles": 74752,
+          "onchip_load_cycles": 65536,
+          "requantize_cycles": 4096,
+          "weight_bytes": 524288,
+          "activation_bytes": 524288,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block3_activation",
+          "cycles": 8196,
+          "macs": 0
+        },
+        {
+          "name": "block3_fc2",
+          "cycles": 72196,
+          "macs": 4194304,
+          "array_compute_cycles": 70144,
+          "onchip_load_cycles": 65536,
+          "requantize_cycles": 2048,
+          "weight_bytes": 524288,
+          "activation_bytes": 524288,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block3_residuals",
+          "cycles": 8196,
+          "macs": 0
+        },
+        {
+          "name": "block4_norm1",
+          "cycles": 8196,
+          "macs": 0
+        },
+        {
+          "name": "block4_norm2",
+          "cycles": 8196,
+          "macs": 0
+        },
+        {
+          "name": "block4_qkv",
+          "cycles": 118276,
+          "macs": 6291456,
+          "array_compute_cycles": 112128,
+          "onchip_load_cycles": 98304,
+          "requantize_cycles": 6144,
+          "weight_bytes": 786432,
+          "activation_bytes": 786432,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block4_attention_qk",
+          "cycles": 59408,
+          "macs": 2097152,
+          "array_compute_cycles": 51200,
+          "onchip_load_cycles": 32768,
+          "requantize_cycles": 8192,
+          "weight_bytes": 262144,
+          "activation_bytes": 262144,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block4_attention_av",
+          "cycles": 100368,
+          "macs": 2097152,
+          "array_compute_cycles": 37376,
+          "onchip_load_cycles": 98304,
+          "requantize_cycles": 2048,
+          "weight_bytes": 262144,
+          "activation_bytes": 786432,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block4_online_softmax",
+          "cycles": 49156,
+          "macs": 0
+        },
+        {
+          "name": "block4_attention_divide",
+          "cycles": 262148,
+          "macs": 0
+        },
+        {
+          "name": "block4_projection",
+          "cycles": 39428,
+          "macs": 2097152,
+          "array_compute_cycles": 37376,
+          "onchip_load_cycles": 32768,
+          "requantize_cycles": 2048,
+          "weight_bytes": 262144,
+          "activation_bytes": 262144,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block4_fc1",
+          "cycles": 78852,
+          "macs": 4194304,
+          "array_compute_cycles": 74752,
+          "onchip_load_cycles": 65536,
+          "requantize_cycles": 4096,
+          "weight_bytes": 524288,
+          "activation_bytes": 524288,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block4_activation",
+          "cycles": 8196,
+          "macs": 0
+        },
+        {
+          "name": "block4_fc2",
+          "cycles": 72196,
+          "macs": 4194304,
+          "array_compute_cycles": 70144,
+          "onchip_load_cycles": 65536,
+          "requantize_cycles": 2048,
+          "weight_bytes": 524288,
+          "activation_bytes": 524288,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block4_residuals",
+          "cycles": 8196,
+          "macs": 0
+        },
+        {
+          "name": "final_norm",
+          "cycles": 8196,
+          "macs": 0
+        },
+        {
+          "name": "pooling",
+          "cycles": 4612,
+          "macs": 0
+        },
+        {
+          "name": "classifier",
+          "cycles": 151,
+          "macs": 768,
+          "array_compute_cycles": 146,
+          "onchip_load_cycles": 96,
+          "requantize_cycles": 1,
+          "weight_bytes": 768,
+          "activation_bytes": 128,
+          "tail_occupancy": 0.09375
+        }
+      ],
+      "estimated_cycles": 3283399,
+      "assumed_clock_hz": 150000000,
+      "conditional_latency_ms": 21.889326666666665,
+      "memory_payload_bytes": {
+        "packed_linear_weights": 530560,
+        "bias_and_multiplier_arrays": 44700,
+        "position_and_norm_weights": 52608,
+        "pingpong_state": 98304,
+        "qkv_state": 147456,
+        "ffn_state": 98304,
+        "attention_running_state": 139264,
+        "exp_and_activation_tables": 20520,
+        "token_metadata_and_scores": 1280,
+        "input_output": 3474
+      },
+      "memory_payload_total_bytes": 1136470,
+      "combined_k26_memory_bytes": 3022848,
+      "payload_fits_combined_capacity_with_reserve": true,
+      "physical_banking_fit_proven": false,
+      "limitations": [
+        "nonlinear rates and divider latency assumed",
+        "no RTL calibration",
+        "no measured clock or energy",
+        "no physical bank allocation",
+        "activation ports count int8 tensor inputs after state requantization",
+        "streaming recurrence overhead simplified",
+        "no additional W4 DSP throughput assumed",
+        "sequential operator schedule; intra-GEMM load overlap assumed"
+      ]
+    },
+    {
+      "status": "uncalibrated_schedule_not_measured",
+      "mode": {
+        "weight_bits": 8,
+        "keep_groups": 64,
+        "rts": false,
+        "exit_block": 4
+      },
+      "sequence": 256,
+      "after_gate": 256,
+      "operators": [
+        {
+          "name": "embedding",
+          "cycles": 31748,
+          "macs": 1179648,
+          "array_compute_cycles": 27648,
+          "onchip_load_cycles": 18432,
+          "requantize_cycles": 4096,
+          "weight_bytes": 147456,
+          "activation_bytes": 147456,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "position_add",
+          "cycles": 8196,
+          "macs": 0
+        },
+        {
+          "name": "block1_norm1",
+          "cycles": 16388,
+          "macs": 0
+        },
+        {
+          "name": "block1_norm2",
+          "cycles": 16388,
+          "macs": 0
+        },
+        {
+          "name": "block1_qkv",
+          "cycles": 236548,
+          "macs": 12582912,
+          "array_compute_cycles": 224256,
+          "onchip_load_cycles": 196608,
+          "requantize_cycles": 12288,
+          "weight_bytes": 1572864,
+          "activation_bytes": 1572864,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block1_attention_qk",
+          "cycles": 237584,
+          "macs": 8388608,
+          "array_compute_cycles": 204800,
+          "onchip_load_cycles": 131072,
+          "requantize_cycles": 32768,
+          "weight_bytes": 1048576,
+          "activation_bytes": 1048576,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block1_attention_av",
+          "cycles": 397328,
+          "macs": 8388608,
+          "array_compute_cycles": 140288,
+          "onchip_load_cycles": 393216,
+          "requantize_cycles": 4096,
+          "weight_bytes": 1048576,
+          "activation_bytes": 3145728,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block1_online_softmax",
+          "cycles": 196612,
+          "macs": 0
+        },
+        {
+          "name": "block1_attention_divide",
+          "cycles": 524292,
+          "macs": 0
+        },
+        {
+          "name": "block1_projection",
+          "cycles": 78852,
+          "macs": 4194304,
+          "array_compute_cycles": 74752,
+          "onchip_load_cycles": 65536,
+          "requantize_cycles": 4096,
+          "weight_bytes": 524288,
+          "activation_bytes": 524288,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block1_fc1",
+          "cycles": 157700,
+          "macs": 8388608,
+          "array_compute_cycles": 149504,
+          "onchip_load_cycles": 131072,
+          "requantize_cycles": 8192,
+          "weight_bytes": 1048576,
+          "activation_bytes": 1048576,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block1_activation",
+          "cycles": 16388,
+          "macs": 0
+        },
+        {
+          "name": "block1_fc2",
+          "cycles": 144388,
+          "macs": 8388608,
+          "array_compute_cycles": 140288,
+          "onchip_load_cycles": 131072,
+          "requantize_cycles": 4096,
+          "weight_bytes": 1048576,
+          "activation_bytes": 1048576,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block1_residuals",
+          "cycles": 16388,
+          "macs": 0
+        },
+        {
+          "name": "block2_norm1",
+          "cycles": 16388,
+          "macs": 0
+        },
+        {
+          "name": "block2_norm2",
+          "cycles": 16388,
+          "macs": 0
+        },
+        {
+          "name": "block2_qkv",
+          "cycles": 236548,
+          "macs": 12582912,
+          "array_compute_cycles": 224256,
+          "onchip_load_cycles": 196608,
+          "requantize_cycles": 12288,
+          "weight_bytes": 1572864,
+          "activation_bytes": 1572864,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block2_attention_qk",
+          "cycles": 237584,
+          "macs": 8388608,
+          "array_compute_cycles": 204800,
+          "onchip_load_cycles": 131072,
+          "requantize_cycles": 32768,
+          "weight_bytes": 1048576,
+          "activation_bytes": 1048576,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block2_attention_av",
+          "cycles": 397328,
+          "macs": 8388608,
+          "array_compute_cycles": 140288,
+          "onchip_load_cycles": 393216,
+          "requantize_cycles": 4096,
+          "weight_bytes": 1048576,
+          "activation_bytes": 3145728,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block2_online_softmax",
+          "cycles": 196612,
+          "macs": 0
+        },
+        {
+          "name": "block2_attention_divide",
+          "cycles": 524292,
+          "macs": 0
+        },
+        {
+          "name": "block2_projection",
+          "cycles": 78852,
+          "macs": 4194304,
+          "array_compute_cycles": 74752,
+          "onchip_load_cycles": 65536,
+          "requantize_cycles": 4096,
+          "weight_bytes": 524288,
+          "activation_bytes": 524288,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block2_fc1",
+          "cycles": 157700,
+          "macs": 8388608,
+          "array_compute_cycles": 149504,
+          "onchip_load_cycles": 131072,
+          "requantize_cycles": 8192,
+          "weight_bytes": 1048576,
+          "activation_bytes": 1048576,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block2_activation",
+          "cycles": 16388,
+          "macs": 0
+        },
+        {
+          "name": "block2_fc2",
+          "cycles": 144388,
+          "macs": 8388608,
+          "array_compute_cycles": 140288,
+          "onchip_load_cycles": 131072,
+          "requantize_cycles": 4096,
+          "weight_bytes": 1048576,
+          "activation_bytes": 1048576,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block2_residuals",
+          "cycles": 16388,
+          "macs": 0
+        },
+        {
+          "name": "block3_norm1",
+          "cycles": 16388,
+          "macs": 0
+        },
+        {
+          "name": "block3_norm2",
+          "cycles": 16388,
+          "macs": 0
+        },
+        {
+          "name": "block3_qkv",
+          "cycles": 236548,
+          "macs": 12582912,
+          "array_compute_cycles": 224256,
+          "onchip_load_cycles": 196608,
+          "requantize_cycles": 12288,
+          "weight_bytes": 1572864,
+          "activation_bytes": 1572864,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block3_attention_qk",
+          "cycles": 237584,
+          "macs": 8388608,
+          "array_compute_cycles": 204800,
+          "onchip_load_cycles": 131072,
+          "requantize_cycles": 32768,
+          "weight_bytes": 1048576,
+          "activation_bytes": 1048576,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block3_attention_av",
+          "cycles": 397328,
+          "macs": 8388608,
+          "array_compute_cycles": 140288,
+          "onchip_load_cycles": 393216,
+          "requantize_cycles": 4096,
+          "weight_bytes": 1048576,
+          "activation_bytes": 3145728,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block3_online_softmax",
+          "cycles": 196612,
+          "macs": 0
+        },
+        {
+          "name": "block3_attention_divide",
+          "cycles": 524292,
+          "macs": 0
+        },
+        {
+          "name": "block3_projection",
+          "cycles": 78852,
+          "macs": 4194304,
+          "array_compute_cycles": 74752,
+          "onchip_load_cycles": 65536,
+          "requantize_cycles": 4096,
+          "weight_bytes": 524288,
+          "activation_bytes": 524288,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block3_fc1",
+          "cycles": 157700,
+          "macs": 8388608,
+          "array_compute_cycles": 149504,
+          "onchip_load_cycles": 131072,
+          "requantize_cycles": 8192,
+          "weight_bytes": 1048576,
+          "activation_bytes": 1048576,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block3_activation",
+          "cycles": 16388,
+          "macs": 0
+        },
+        {
+          "name": "block3_fc2",
+          "cycles": 144388,
+          "macs": 8388608,
+          "array_compute_cycles": 140288,
+          "onchip_load_cycles": 131072,
+          "requantize_cycles": 4096,
+          "weight_bytes": 1048576,
+          "activation_bytes": 1048576,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block3_residuals",
+          "cycles": 16388,
+          "macs": 0
+        },
+        {
+          "name": "block4_norm1",
+          "cycles": 16388,
+          "macs": 0
+        },
+        {
+          "name": "block4_norm2",
+          "cycles": 16388,
+          "macs": 0
+        },
+        {
+          "name": "block4_qkv",
+          "cycles": 236548,
+          "macs": 12582912,
+          "array_compute_cycles": 224256,
+          "onchip_load_cycles": 196608,
+          "requantize_cycles": 12288,
+          "weight_bytes": 1572864,
+          "activation_bytes": 1572864,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block4_attention_qk",
+          "cycles": 237584,
+          "macs": 8388608,
+          "array_compute_cycles": 204800,
+          "onchip_load_cycles": 131072,
+          "requantize_cycles": 32768,
+          "weight_bytes": 1048576,
+          "activation_bytes": 1048576,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block4_attention_av",
+          "cycles": 397328,
+          "macs": 8388608,
+          "array_compute_cycles": 140288,
+          "onchip_load_cycles": 393216,
+          "requantize_cycles": 4096,
+          "weight_bytes": 1048576,
+          "activation_bytes": 3145728,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block4_online_softmax",
+          "cycles": 196612,
+          "macs": 0
+        },
+        {
+          "name": "block4_attention_divide",
+          "cycles": 524292,
+          "macs": 0
+        },
+        {
+          "name": "block4_projection",
+          "cycles": 78852,
+          "macs": 4194304,
+          "array_compute_cycles": 74752,
+          "onchip_load_cycles": 65536,
+          "requantize_cycles": 4096,
+          "weight_bytes": 524288,
+          "activation_bytes": 524288,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block4_fc1",
+          "cycles": 157700,
+          "macs": 8388608,
+          "array_compute_cycles": 149504,
+          "onchip_load_cycles": 131072,
+          "requantize_cycles": 8192,
+          "weight_bytes": 1048576,
+          "activation_bytes": 1048576,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block4_activation",
+          "cycles": 16388,
+          "macs": 0
+        },
+        {
+          "name": "block4_fc2",
+          "cycles": 144388,
+          "macs": 8388608,
+          "array_compute_cycles": 140288,
+          "onchip_load_cycles": 131072,
+          "requantize_cycles": 4096,
+          "weight_bytes": 1048576,
+          "activation_bytes": 1048576,
+          "tail_occupancy": 1.0
+        },
+        {
+          "name": "block4_residuals",
+          "cycles": 16388,
+          "macs": 0
+        },
+        {
+          "name": "final_norm",
+          "cycles": 16388,
+          "macs": 0
+        },
+        {
+          "name": "pooling",
+          "cycles": 8708,
+          "macs": 0
+        },
+        {
+          "name": "classifier",
+          "cycles": 151,
+          "macs": 768,
+          "array_compute_cycles": 146,
+          "onchip_load_cycles": 96,
+          "requantize_cycles": 1,
+          "weight_bytes": 768,
+          "activation_bytes": 128,
+          "tail_occupancy": 0.09375
+        }
+      ],
+      "estimated_cycles": 8220615,
+      "assumed_clock_hz": 150000000,
+      "conditional_latency_ms": 54.8041,
+      "memory_payload_bytes": {
+        "packed_linear_weights": 530560,
+        "bias_and_multiplier_arrays": 44700,
+        "position_and_norm_weights": 101760,
+        "pingpong_state": 196608,
+        "qkv_state": 294912,
+        "ffn_state": 196608,
+        "attention_running_state": 278528,
+        "exp_and_activation_tables": 20520,
+        "token_metadata_and_scores": 2560,
+        "input_output": 3474
+      },
+      "memory_payload_total_bytes": 1670230,
+      "combined_k26_memory_bytes": 3022848,
+      "payload_fits_combined_capacity_with_reserve": true,
+      "physical_banking_fit_proven": false,
+      "limitations": [
+        "nonlinear rates and divider latency assumed",
+        "no RTL calibration",
+        "no measured clock or energy",
+        "no physical bank allocation",
+        "activation ports count int8 tensor inputs after state requantization",
+        "streaming recurrence overhead simplified",
+        "no additional W4 DSP throughput assumed",
+        "sequential operator schedule; intra-GEMM load overlap assumed"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,352 @@
+{
+  "status": "candidate_integer_validation_not_hardware_equivalence",
+  "partition": "validation",
+  "samples": 1361,
+  "mode": {
+    "weight_bits": 8,
+    "keep_groups": 8,
+    "rts": false,
+    "exit_block": 4
+  },
+  "integer": {
+    "samples": 1361,
+    "accuracy": 0.9316678912564291,
+    "macro_f1": 0.9291721778064272,
+    "confusion_matrix": [
+      [
+        164,
+        59,
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        192,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        4,
+        171,
+        0,
+        0,
+        0
+      ],
+      [
+        3,
+        0,
+        0,
+        231,
+        7,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        19,
+        250,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        260
+      ]
+    ]
+  },
+  "fake_quantized_batch1": {
+    "samples": 1361,
+    "accuracy": 0.9324026451138868,
+    "macro_f1": 0.9297928727342958,
+    "confusion_matrix": [
+      [
+        164,
+        59,
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        192,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        5,
+        170,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        232,
+        8,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        18,
+        251,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        260
+      ]
+    ]
+  },
+  "changed_predictions": 11,
+  "maximum_logit_absolute_error": 2.250568151473999,
+  "mean_logit_maximum_error": 0.17689059739337082,
+  "saturations": {
+    "embedding.input_int8": 0,
+    "embedding": 0,
+    "position_added": 0,
+    "blocks.0.norm1": 0,
+    "blocks.0.qkv.input_int8": 0,
+    "blocks.0.qkv": 0,
+    "blocks.0.q.int8": 0,
+    "blocks.0.k.int8": 0,
+    "blocks.0.v.int8": 0,
+    "blocks.0.attention": 0,
+    "blocks.0.projection.input_int8": 0,
+    "blocks.0.projection": 0,
+    "blocks.0.residual1": 0,
+    "blocks.0.norm2": 0,
+    "blocks.0.fc1.input_int8": 0,
+    "blocks.0.fc1": 0,
+    "blocks.0.activation": 0,
+    "blocks.0.fc2.input_int8": 0,
+    "blocks.0.fc2": 0,
+    "blocks.0.residual2": 0,
+    "blocks.1.norm1": 0,
+    "blocks.1.qkv.input_int8": 0,
+    "blocks.1.qkv": 0,
+    "blocks.1.q.int8": 0,
+    "blocks.1.k.int8": 0,
+    "blocks.1.v.int8": 0,
+    "blocks.1.attention": 0,
+    "blocks.1.projection.input_int8": 0,
+    "blocks.1.projection": 0,
+    "blocks.1.residual1": 0,
+    "blocks.1.norm2": 0,
+    "blocks.1.fc1.input_int8": 0,
+    "blocks.1.fc1": 0,
+    "blocks.1.activation": 0,
+    "blocks.1.fc2.input_int8": 0,
+    "blocks.1.fc2": 0,
+    "blocks.1.residual2": 0,
+    "blocks.2.norm1": 0,
+    "blocks.2.qkv.input_int8": 0,
+    "blocks.2.qkv": 0,
+    "blocks.2.q.int8": 0,
+    "blocks.2.k.int8": 0,
+    "blocks.2.v.int8": 0,
+    "blocks.2.attention": 0,
+    "blocks.2.projection.input_int8": 0,
+    "blocks.2.projection": 0,
+    "blocks.2.residual1": 0,
+    "blocks.2.norm2": 0,
+    "blocks.2.fc1.input_int8": 0,
+    "blocks.2.fc1": 0,
+    "blocks.2.activation": 0,
+    "blocks.2.fc2.input_int8": 0,
+    "blocks.2.fc2": 0,
+    "blocks.2.residual2": 0,
+    "blocks.3.norm1": 0,
+    "blocks.3.qkv.input_int8": 0,
+    "blocks.3.qkv": 0,
+    "blocks.3.q.int8": 0,
+    "blocks.3.k.int8": 0,
+    "blocks.3.v.int8": 0,
+    "blocks.3.attention": 0,
+    "blocks.3.projection.input_int8": 0,
+    "blocks.3.projection": 0,
+    "blocks.3.residual1": 0,
+    "blocks.3.norm2": 0,
+    "blocks.3.fc1.input_int8": 0,
+    "blocks.3.fc1": 0,
+    "blocks.3.activation": 0,
+    "blocks.3.fc2.input_int8": 0,
+    "blocks.3.fc2": 0,
+    "blocks.3.residual2": 0,
+    "norm": 0,
+    "pooled": 0,
+    "classifier.input_int8": 0,
+    "classifier": 0
+  },
+  "export_sha256": "c925669635c2d60aa4c4a488bffc3ae5917f5b54d06ab750aafd748fafd1df36",
+  "checkpoint_sha256": "85908e8275c419a99312b40b5583b09cf05cf66145d8ae60f4d4b90a1702fb32",
+  "export_manifest_sha256": "2ca7a496f9868fe05dbdb50a339f5803117f48778e62c0362b3dd9e14d4eddd0",
+  "attention_int8_operands": true,
+  "trace_errors": {
+    "embedding": {
+      "max_absolute_real_error": 0.12784528732299805,
+      "compared_windows": 1361
+    },
+    "blocks.0.norm1": {
+      "max_absolute_real_error": 0.6629801988601685,
+      "compared_windows": 1361
+    },
+    "blocks.0.qkv": {
+      "max_absolute_real_error": 0.7848727405071259,
+      "compared_windows": 1361
+    },
+    "blocks.0.projection": {
+      "max_absolute_real_error": 0.6600632071495056,
+      "compared_windows": 1361
+    },
+    "blocks.0.norm2": {
+      "max_absolute_real_error": 2.0880110263824463,
+      "compared_windows": 1361
+    },
+    "blocks.0.fc1": {
+      "max_absolute_real_error": 1.399000883102417,
+      "compared_windows": 1361
+    },
+    "blocks.0.fc2": {
+      "max_absolute_real_error": 0.7327989339828491,
+      "compared_windows": 1361
+    },
+    "blocks.0.residual2": {
+      "max_absolute_real_error": 1.0998142957687378,
+      "compared_windows": 1361
+    },
+    "blocks.1.norm1": {
+      "max_absolute_real_error": 2.4577322006225586,
+      "compared_windows": 1361
+    },
+    "blocks.1.qkv": {
+      "max_absolute_real_error": 1.9758248329162598,
+      "compared_windows": 1361
+    },
+    "blocks.1.projection": {
+      "max_absolute_real_error": 1.1334453877061605,
+      "compared_windows": 1361
+    },
+    "blocks.1.norm2": {
+      "max_absolute_real_error": 1.8432117104530334,
+      "compared_windows": 1361
+    },
+    "blocks.1.fc1": {
+      "max_absolute_real_error": 1.4580777734518051,
+      "compared_windows": 1361
+    },
+    "blocks.1.fc2": {
+      "max_absolute_real_error": 0.5275123715400696,
+      "compared_windows": 1361
+    },
+    "blocks.1.residual2": {
+      "max_absolute_real_error": 1.6592284888029099,
+      "compared_windows": 1361
+    },
+    "blocks.2.norm1": {
+      "max_absolute_real_error": 1.4364298582077026,
+      "compared_windows": 1361
+    },
+    "blocks.2.qkv": {
+      "max_absolute_real_error": 1.3546010851860046,
+      "compared_windows": 1361
+    },
+    "blocks.2.projection": {
+      "max_absolute_real_error": 0.6038855314254761,
+      "compared_windows": 1361
+    },
+    "blocks.2.norm2": {
+      "max_absolute_real_error": 1.466781735420227,
+      "compared_windows": 1361
+    },
+    "blocks.2.fc1": {
+      "max_absolute_real_error": 1.0864296555519104,
+      "compared_windows": 1361
+    },
+    "blocks.2.fc2": {
+      "max_absolute_real_error": 0.5525922775268555,
+      "compared_windows": 1361
+    },
+    "blocks.2.residual2": {
+      "max_absolute_real_error": 2.166123390197754,
+      "compared_windows": 1361
+    },
+    "blocks.3.norm1": {
+      "max_absolute_real_error": 1.4040465354919434,
+      "compared_windows": 1361
+    },
+    "blocks.3.qkv": {
+      "max_absolute_real_error": 1.0341185331344604,
+      "compared_windows": 1361
+    },
+    "blocks.3.projection": {
+      "max_absolute_real_error": 0.7434175610542297,
+      "compared_windows": 1361
+    },
+    "blocks.3.norm2": {
+      "max_absolute_real_error": 1.283252239227295,
+      "compared_windows": 1361
+    },
+    "blocks.3.fc1": {
+      "max_absolute_real_error": 1.020833432674408,
+      "compared_windows": 1361
+    },
+    "blocks.3.fc2": {
+      "max_absolute_real_error": 0.6550701260566711,
+      "compared_windows": 1361
+    },
+    "blocks.3.residual2": {
+      "max_absolute_real_error": 2.1804921627044678,
+      "compared_windows": 1361
+    },
+    "norm": {
+      "max_absolute_real_error": 1.0765711665153503,
+      "compared_windows": 1361
+    },
+    "classifier": {
+      "max_absolute_real_error": 2.250568151473999,
+      "compared_windows": 1361
+    }
+  },
+  "native_kernel": {
+    "command": [
+      "cc",
+      "-O3",
+      "-std=c11",
+      "-dynamiclib",
+      "-fPIC",
+      "-march=armv8-a",
+      "/Users/marksidorov/Documents/ECE4250/Research/EAT_FPGA/native/dot_i8.c",
+      "-o",
+      "/Users/marksidorov/Documents/ECE4250/Research/EAT_FPGA/native/libeat_dot.dylib"
+    ],
+    "platform": "macOS-14.4-arm64-arm-64bit",
+    "machine": "arm64",
+    "compiler": "Apple clang version 15.0.0 (clang-1500.3.9.4)",
+    "source_sha256": "fe20bab2ef6f3a6a213258c3abe142291f83ee3946ca63e8af7dad29e3514a4b",
+    "library_sha256": "38dae178d919ff4d82547681ee5a6f0a2282e9b0aee53ebc1be8c91eaf8f4158",
+    "status": "local_reference_kernel_not_board_benchmark"
+  },
+  "input_scale": 0.125,
+  "input_clipped_values": 0
+}

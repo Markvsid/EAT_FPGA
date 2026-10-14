@@ -1,0 +1,44 @@
+{
+  "status": "export_container_budget_no_physical_bank_proof",
+  "banks": [
+    {
+      "path": "exports/calibrated/har_quality_seed17",
+      "checkpoint_sha256": "85908e8275c419a99312b40b5583b09cf05cf66145d8ae60f4d4b90a1702fb32",
+      "mode": {
+        "weight_bits": 8,
+        "keep_groups": 8,
+        "rts": false,
+        "exit_block": 4
+      },
+      "binary_bytes": 673040
+    },
+    {
+      "path": "exports/calibrated/har_balanced_seed17",
+      "checkpoint_sha256": "fba95eab8dc6fcb3c07a9740cb0d9263ff43b8100a8b9303257a86ae87fe890e",
+      "mode": {
+        "weight_bits": 4,
+        "keep_groups": 6,
+        "rts": true,
+        "exit_block": 4
+      },
+      "binary_bytes": 407904
+    },
+    {
+      "path": "exports/calibrated/har_energy_saver_seed17",
+      "checkpoint_sha256": "5eebe55ff89136c31b0cdf425517f030b9b6faa9c428c9f724aaa7240ebb492d",
+      "mode": {
+        "weight_bits": 4,
+        "keep_groups": 4,
+        "rts": true,
+        "exit_block": 2
+      },
+      "binary_bytes": 247680
+    }
+  ],
+  "shared_training_checkpoint": false,
+  "all_banks_bytes": 1328624,
+  "deduplicated_constant_bytes": 1246544,
+  "combined_k26_memory_capacity_bytes": 3022848,
+  "activations_and_controller_memory_excluded": true,
+  "physical_banking_fit_proven": false
+}

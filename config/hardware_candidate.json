@@ -1,0 +1,22 @@
+{
+  "status": "analytical_candidate_no_rtl_calibration",
+  "array_rows": 8,
+  "array_columns": 8,
+  "assumed_clock_hz": 150000000,
+  "tensor_startup_cycles": 4,
+  "requantize_values_per_cycle": 8,
+  "nonlinear_values_per_cycle": 4,
+  "norm_row_setup_cycles": 32,
+  "exp_values_per_cycle": 4,
+  "softmax_tile_setup_cycles": 4,
+  "divider_cycles_per_value": 16,
+  "control_cycles_per_operator": 4,
+  "input_output_bus_bytes_per_cycle": 16,
+  "weight_read_bytes_per_cycle": 8,
+  "activation_read_bytes_per_cycle": 8,
+  "reserved_memory_fraction": 0.15,
+  "k26_capacities": {"bram36_blocks": 144, "uram288_blocks": 64, "dsp": 1248, "lut": 117120, "ff": 234240},
+  "capacity_source": "https://docs.amd.com/r/en-US/ds987-k26-som/Programmable-Logic",
+  "source_revision": "DS987 revision 1.6 2026-03-25",
+  "assumption": "one signed multiply per PE per cycle; no unverified W4 DSP packing speedup"
+}

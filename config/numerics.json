@@ -1,0 +1,23 @@
+{
+  "version": 2,
+  "status": "candidate_not_frozen",
+  "state_fraction_bits": 12,
+  "state_signed_bits": 24,
+  "linear_activation_signed_bits": 8,
+  "weight_signed_bits": [4, 8],
+  "linear_accumulator_signed_bits": 40,
+  "weight_multiplier_fraction_bits": 24,
+  "norm_gamma_fraction_bits": 14,
+  "norm_epsilon_q24": 168,
+  "exp_fraction_bits": 20,
+  "exp_input_fraction_bits": 8,
+  "exp_negative_limit": 16,
+  "attention_tile": 8,
+  "rounding": "nearest_ties_to_even",
+  "overflow": "saturate_state_count_events_assert_other_intermediates",
+  "calibration": "training_partition_only_maximum_absolute_linear_input",
+  "rms_sqrt": "integer_floor_square_root",
+  "rmsnorm_implementation": "rsqrt_lut",
+  "activation": "pwl_silu_integer_knots",
+  "attention": "online_tile_recurrence_integer_exp_lookup"
+}

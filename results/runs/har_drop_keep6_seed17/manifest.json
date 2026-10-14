@@ -1,0 +1,116 @@
+{
+  "config": {
+    "schema_version": 1,
+    "status": "experimental_not_frozen",
+    "dataset": "UCI HAR raw inertial signals",
+    "channels": [
+      "body_acc_x",
+      "body_acc_y",
+      "body_acc_z",
+      "body_gyro_x",
+      "body_gyro_y",
+      "body_gyro_z",
+      "total_acc_x",
+      "total_acc_y",
+      "total_acc_z"
+    ],
+    "validation_subjects": [
+      5,
+      14,
+      19,
+      27
+    ],
+    "window_samples": 128,
+    "patch_samples": 4,
+    "width": 128,
+    "heads": 4,
+    "layers": 4,
+    "ffn_ratio": 2,
+    "classes": 6,
+    "group_size": 4,
+    "gate_after_block": 1,
+    "position": "learned_absolute_added_before_gating",
+    "pooling": "mean_over_actual_tokens",
+    "activation": "pwl_silu",
+    "seeds": [
+      17,
+      29,
+      43
+    ],
+    "batch_size": 128,
+    "epochs": 30,
+    "learning_rate": 0.0003,
+    "weight_decay": 0.01,
+    "modes": {
+      "quality": {
+        "weight_bits": 8,
+        "keep_groups": 8,
+        "rts": false,
+        "exit_block": 4
+      },
+      "balanced": {
+        "weight_bits": 4,
+        "keep_groups": 6,
+        "rts": true,
+        "exit_block": 4
+      },
+      "energy_saver": {
+        "weight_bits": 4,
+        "keep_groups": 4,
+        "rts": true,
+        "exit_block": 2
+      }
+    }
+  },
+  "seed": 17,
+  "mode": "balanced",
+  "execution_mode": {
+    "weight_bits": 4,
+    "keep_groups": 6,
+    "rts": false,
+    "exit_block": 4
+  },
+  "experiment_id": "drop_keep6",
+  "device": "mps",
+  "joint_modes": false,
+  "torch": "2.14.1",
+  "numpy": "2.5.4",
+  "python": "3.12.13",
+  "git_commit": "631dc1225e5695903bc3a7ca183868f133e8c9e5",
+  "git_status": " M README.md\n M model/network.py\n M model/train.py\n M paper/manuscript.md\n M paper/related_work.md\n M requirements.lock\n M requirements.txt\n M results/software_summary.json\n M results/summarize.py\n?? .github/\n?? architecture/explore.py\n?? architecture/interface_candidate.md\n?? architecture/schedule.py\n?? config/hardware_candidate.json\n?? config/numerics.json\n?? golden/\n?? host/\n?? model/counterfactual.py\n?? model/evaluate_runs.py\n?? model/experiments.py\n?? paper/current_results.md\n?? paper/figures/\n?? paper/references.bib\n?? paper/sources/\n?? results/ablation_analysis.json\n?? results/ablation_analysis.py\n?? results/build_report.py\n?? results/counterfactual/\n?? results/design_space.json\n?? results/experiment_matrix.json\n?? results/figures.py\n?? results/har_dense_w4_seed17.log\n?? results/har_dense_w4_seed29.log\n?? results/har_dense_w4_seed43.log\n?? results/har_drop_keep6_seed17.log\n?? results/har_fp32_control_seed17.log\n?? results/har_fp32_control_seed29.log\n?? results/har_fp32_control_seed43.log\n?? results/har_quality_seed29.log\n?? results/har_quality_seed43.log\n?? results/integer/\n?? results/integer_summary.json\n?? results/integer_summary.py\n?? results/nonlinear_sweep.json\n?? results/schedule_estimates.json\n?? results/speech_fp32_seed17.log\n?? results/speech_fp32_seed29.log\n?? results/speech_fp32_seed43.log\n?? tests/test_integer.py\n?? tests/test_measurements.py\n?? tests/test_pack.py\n?? tests/test_schedule.py\n",
+  "source_sha256": {
+    "model/speech_data.py": "f03fdebde9d094819973730071b12a4eb7f240ef92573e7898921d3516b850b9",
+    "model/__init__.py": "fbb5838c20a0f746fadf67ddabd4979cd3fd4586903809a6d11019d695b563f9",
+    "model/counterfactual.py": "62f001dc92beecef5629acb4f5f25719e04bf0f6dac319231eca77b173e8b290",
+    "model/experiments.py": "a4dcff48907c171df926aef4abda41780b7713e33e2df5eb8d8726a6ea3752a3",
+    "model/network.py": "3f47187c616f7429f4bb94efed9030aa5e6485d69e87b877cefeae809a65e6aa",
+    "model/train.py": "41ada65c50bdd5fd114bb6f1d743baa6e8a2447eb0a027bc85252b6a1a8ad18e",
+    "model/data.py": "20d9278c49bbddb39323f117a405ebe2065c0827f8d0d40be40b129846a2e99f",
+    "model/evaluate_runs.py": "c2bc754c4c257b715ededd2f86725a969aa60450cb29a75e6bc7bd93ff257053",
+    "config/hardware_candidate.json": "b273c4beefd5e2c1c4dabf47324240285f2789e8b72f122bfb79cc4cc2902b1f",
+    "config/speech.json": "1c6f4bd79a6e8629b09473f5cdddc143a40c793dfd1e21909d661b6e4bb52d4a",
+    "config/numerics.json": "09341d6cc82e522fca8f992b96b3aa8c139dfa6ceb84e00c6746bcc9add71622",
+    "config/har.json": "6688524adecce9a7f57c632c5ec227a471d86f9d4f67fa15d3d09cb7b75b06c7",
+    "config/splits/speech.json": "480492613291233c343d95cce3be22f3669c3f51bde4271167a2743cb038a6ea",
+    "config/splits/har.json": "007ac72a2cb4160fe27251b04eeac62af24a3d91d1ecf6c0122c5b45df9d99e5",
+    "golden/pack.py": "b6e53788c5a08226182b8775d9feb9579875b84009ca035cd97ae5fb7738d263",
+    "golden/arithmetic.py": "834012742f0895f672c33540e03ea56db293c5d03c379203aaa81527c3214ca8",
+    "golden/batch.py": "3c616d17085b14df0fc4b9c2137c76ca8d0b8865e6b8299e9d87d3b84a23668a",
+    "golden/__init__.py": "af18c252b9c9efdc9b6b2e2a6912700e3620604492cfdb0558404e1ce449b18b",
+    "golden/export.py": "b77b2de898f91dd2485c8303d78d1971a72dc246316e2fadf80cb8581d8076d5",
+    "golden/NUMERICAL_CONTRACT.md": "b6bd972de1d0f4088a2e3e6fcdb360f9a4edf6e17ecd3bf361e2a799595ee753",
+    "golden/reference.py": "2f2a080634bd28bc42242506c7af3f7dc41c9d40bd539f2e6447503977a624fc",
+    "golden/evaluate.py": "9a9187d489fb48d0b6d1cd9f8a6403377fe1617ede99964796105d5783c2e75e",
+    "golden/nonlinear_sweep.py": "1cfdece436976a861f1e8c5486b2fefdfc55c46292d57b15468877304235a510",
+    "architecture/profile.py": "7e3e7f229edcbf12c451ac3f49cd79d33d3594736b893de8eb342713c933c112",
+    "architecture/__init__.py": "f1a57c4ba1009b93ee3869e8a17241d9d1f064a2c871b7dac7b37503be68d51c",
+    "architecture/explore.py": "9454217787ace3384919f51fcf9324aae493da4c517cd0698f2d0e3f258933e4",
+    "architecture/schedule.py": "10319c3ef32a328683f3af5ddcd8e3d6f8d98b53edb55f3d32a119aae10e7428",
+    "architecture/interface_candidate.md": "b827d1a9113915ef103236767c10cf8ebd820a768d5798f9f65ed07ba5875925"
+  },
+  "epochs": 30,
+  "dataset_manifest_sha256": "6edd78f34179bf31855f9d7b1b05380feb7f3602bc9bdc1d7f7ebe93a7cab03d",
+  "initialize_sha256": "a76df3bb0f602e7a394ddc6a576c2ed14510fb37817b4a6e3c845364d544fac5",
+  "numeric_status": "experimental_fake_quantization_not_integer_reference",
+  "final_test_requested": false
+}

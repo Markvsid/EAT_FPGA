@@ -1,0 +1,63 @@
+{
+  "status": "software_validation_batch1",
+  "partition": "validation",
+  "batch_size": 1,
+  "validation": {
+    "samples": 1361,
+    "accuracy": 0.9485672299779574,
+    "macro_f1": 0.949796718760739,
+    "confusion_matrix": [
+      [
+        203,
+        21,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        6,
+        186,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        175,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        233,
+        5,
+        3
+      ],
+      [
+        2,
+        1,
+        1,
+        31,
+        234,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        260
+      ]
+    ]
+  },
+  "selected_epoch": 5,
+  "checkpoint_sha256": "99a08eeb35827e44371a2a231982f1be85db2c1095b08ba2f506b0b8731cd960",
+  "note": "Checkpoint selected by original batched validation; this is a separate deployment-boundary reevaluation."
+}

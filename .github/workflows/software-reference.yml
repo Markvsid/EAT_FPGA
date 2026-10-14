@@ -1,0 +1,44 @@
+name: Software reference checks
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  software-reference:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: requirements.lock
+      - name: Install CPU PyTorch and pinned dependencies
+        run: |
+          python -m pip install torch==2.14.1 --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install -r requirements.lock
+      - name: Prepare official HAR partitions
+        run: python -m model.data
+      - name: Build portable integer kernel
+        run: python -m native.build
+      - name: Verify software and numerical primitives
+        run: python -m pytest -q
+      - name: Exercise candidate integer export and validation
+        run: |
+          python -m golden.export --checkpoint results/runs/har_quality_seed17/best.pt --output exports/ci_quality --samples 64
+          python -m golden.pack --export exports/ci_quality
+          python -m golden.evaluate --export exports/ci_quality --output results/integer/ci_quality --limit 32
+          python -m golden.stress --export exports/ci_quality --output /tmp/integer_stress.json
+      - name: Exercise analytical models
+        run: |
+          python -m architecture.profile --output /tmp/workload_profile.json
+          python -m architecture.schedule --output /tmp/schedule_estimates.json
+
+# RTL and board equivalence are outstanding gates, not implied by this job.

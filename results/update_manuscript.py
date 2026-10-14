@@ -21,6 +21,25 @@ def main():
     before, remaining = paper.read_text().split(begin, 1)
     _, after = remaining.split(end, 1)
     paper.write_text(before + begin + "\n" + "\n".join(lines) + "\n" + end + after)
+    integer_path = Path("results/integer_summary.json")
+    if integer_path.exists():
+        rows = json.loads(integer_path.read_text())["groups"]
+        table = ["| Workload | Mode | Integer validation accuracy percent | Changed predictions versus batch 1 fake quantization |",
+                 "| --- | --- | --- | --- |"]
+        for row in rows:
+            if row["experiment"].startswith("joint_"):
+                continue
+            value = f"{100*row['accuracy_mean']:.3f}"
+            if row["accuracy_sample_std"] is not None:
+                value += f" ± {100*row['accuracy_sample_std']:.3f}"
+            dataset = "HAR" if row["dataset"].startswith("UCI") else "Speech Commands 35 words"
+            table.append(f"| {dataset} | {row['experiment']} | {value} | {row['changed_predictions']} / {row['compared_windows']} |")
+        start, finish = "<!-- INTEGER_VALIDATION_BEGIN -->", "<!-- INTEGER_VALIDATION_END -->"
+        text = paper.read_text()
+        if start in text:
+            prefix, rest = text.split(start, 1)
+            _, suffix = rest.split(finish, 1)
+            paper.write_text(prefix + start + "\n" + "\n".join(table) + "\n" + finish + suffix)
 
 
 if __name__ == "__main__":

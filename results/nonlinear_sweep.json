@@ -1,0 +1,102 @@
+{
+  "status": "software_error_sweep_no_synthesis_cost",
+  "exp": [
+    {
+      "address_fraction_bits": 6,
+      "output_fraction_bits": 16,
+      "entries": 1025,
+      "packed_table_bits": 17425,
+      "max_absolute_error": 0.007782061739756485,
+      "rms_error": 0.0007975657444602074
+    },
+    {
+      "address_fraction_bits": 6,
+      "output_fraction_bits": 20,
+      "entries": 1025,
+      "packed_table_bits": 21525,
+      "max_absolute_error": 0.007782061739756485,
+      "rms_error": 0.000797555270209821
+    },
+    {
+      "address_fraction_bits": 6,
+      "output_fraction_bits": 24,
+      "entries": 1025,
+      "packed_table_bits": 25625,
+      "max_absolute_error": 0.007782061739756485,
+      "rms_error": 0.0007975552375825296
+    },
+    {
+      "address_fraction_bits": 8,
+      "output_fraction_bits": 16,
+      "entries": 4097,
+      "packed_table_bits": 69649,
+      "max_absolute_error": 0.0019512188925244756,
+      "rms_error": 0.00020015639641408615
+    },
+    {
+      "address_fraction_bits": 8,
+      "output_fraction_bits": 20,
+      "entries": 4097,
+      "packed_table_bits": 86037,
+      "max_absolute_error": 0.0019512188925244756,
+      "rms_error": 0.00020011601817636525
+    },
+    {
+      "address_fraction_bits": 8,
+      "output_fraction_bits": 24,
+      "entries": 4097,
+      "packed_table_bits": 102425,
+      "max_absolute_error": 0.0019512188925244756,
+      "rms_error": 0.00020011582650848741
+    },
+    {
+      "address_fraction_bits": 10,
+      "output_fraction_bits": 16,
+      "entries": 16385,
+      "packed_table_bits": 278545,
+      "max_absolute_error": 0.0004941158557949521,
+      "rms_error": 5.3010484243970994e-05
+    },
+    {
+      "address_fraction_bits": 10,
+      "output_fraction_bits": 20,
+      "entries": 16385,
+      "packed_table_bits": 344085,
+      "max_absolute_error": 0.0004881620601105974,
+      "rms_error": 5.285831899836012e-05
+    },
+    {
+      "address_fraction_bits": 10,
+      "output_fraction_bits": 24,
+      "entries": 16385,
+      "packed_table_bits": 409625,
+      "max_absolute_error": 0.0004881620601105974,
+      "rms_error": 5.285760442137247e-05
+    }
+  ],
+  "activation": {
+    "domain": [
+      -8,
+      8
+    ],
+    "max_error_vs_exact_silu": 0.07193198325337935,
+    "max_error_vs_training_pwl": 0.0002406605112550697
+  },
+  "rmsnorm": {
+    "rows": 2048,
+    "width": 128,
+    "input_magnitude_range": [
+      0.001,
+      128
+    ],
+    "sqrt_divide_max_absolute_error": 0.1441719163236792,
+    "lut_max_absolute_error": 0.0016861854629044437,
+    "lut_entries": 1024,
+    "lut_fraction_bits": 30
+  },
+  "limitations": [
+    "sampled RMS inputs do not prove an error bound over all integer vectors",
+    "LUT accuracy does not establish FPGA area or timing",
+    "task-level LUT replacement requires separate validation"
+  ]
+}

@@ -141,13 +141,18 @@ class Encoder(nn.Module):
         c = self.config
         mode = mode or {"weight_bits": None, "keep_groups": self.position.shape[1] // c["group_size"], "rts": False, "exit_block": c["layers"]}
         bits = mode["weight_bits"]
+        total_groups = self.position.shape[1] // c["group_size"]
+        if bits not in [None, 4, 8] or not 1 <= mode["keep_groups"] <= total_groups:
+            raise ValueError("Unsupported precision or token retention")
+        if mode["exit_block"] not in [2, c["layers"]] or not isinstance(mode["rts"], bool):
+            raise ValueError("Unsupported depth or summary mode")
         x = self.embedding(x.reshape(x.shape[0], -1, c["patch_samples"] * len(c["channels"])), bits) + self.position
         auxiliary = None
         for index, block in enumerate(self.blocks, 1):
             x = block(x, bits, stream)
             if index == c["gate_after_block"] and mode["keep_groups"] < x.shape[1] // c["group_size"]:
                 x = self.gate(x, mode["keep_groups"], mode["rts"], bits)
-            if index == 2:
+            if index == 2 and (return_aux or mode["exit_block"] == 2):
                 auxiliary = self.exit_classifier(self.norm(x).mean(1), bits)
             if index == mode["exit_block"]:
                 break

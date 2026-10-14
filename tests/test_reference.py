@@ -46,6 +46,14 @@ def test_complete_encoder_and_runtime_modes():
             assert output.shape == (2, 6) and output.isfinite().all()
 
 
+@pytest.mark.parametrize("override", [{"keep_groups": 9}, {"weight_bits": 2}, {"exit_block": 3}])
+def test_invalid_modes_do_not_silently_run_dense(override):
+    c = json.loads(Path("config/har.json").read_text())
+    model = Encoder(c).eval()
+    with pytest.raises(ValueError):
+        model(torch.zeros(1, 128, 9), {**c["modes"]["quality"], **override})
+
+
 def test_metric_includes_absent_classes():
     result = metrics([0, 0, 1], [0, 1, 1], 3)
     assert result["accuracy"] == pytest.approx(2 / 3)

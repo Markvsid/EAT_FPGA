@@ -1,0 +1,931 @@
+{
+  "status": "analytical_design_space_no_synthesis_validation",
+  "points": [
+    {
+      "array_rows": 2,
+      "array_columns": 8,
+      "assumed_pe_multipliers": 16,
+      "memory_read_bytes_per_cycle": 8,
+      "nonlinear_values_per_cycle": 2,
+      "cycles": {
+        "quality": 1596353,
+        "balanced": 1378117,
+        "energy_saver": 667685
+      },
+      "memory_payload_bytes": {
+        "quality": 736150,
+        "balanced": 470870,
+        "energy_saver": 470870
+      }
+    },
+    {
+      "array_rows": 2,
+      "array_columns": 8,
+      "assumed_pe_multipliers": 16,
+      "memory_read_bytes_per_cycle": 8,
+      "nonlinear_values_per_cycle": 4,
+      "cycles": {
+        "quality": 1568193,
+        "balanced": 1352709,
+        "energy_saver": 653733
+      },
+      "memory_payload_bytes": {
+        "quality": 736150,
+        "balanced": 470870,
+        "energy_saver": 470870
+      }
+    },
+    {
+      "array_rows": 2,
+      "array_columns": 8,
+      "assumed_pe_multipliers": 16,
+      "memory_read_bytes_per_cycle": 8,
+      "nonlinear_values_per_cycle": 8,
+      "cycles": {
+        "quality": 1554113,
+        "balanced": 1340005,
+        "energy_saver": 646757
+      },
+      "memory_payload_bytes": {
+        "quality": 736150,
+        "balanced": 470870,
+        "energy_saver": 470870
+      }
+    },
+    {
+      "array_rows": 2,
+      "array_columns": 8,
+      "assumed_pe_multipliers": 16,
+      "memory_read_bytes_per_cycle": 16,
+      "nonlinear_values_per_cycle": 2,
+      "cycles": {
+        "quality": 1596353,
+        "balanced": 1378117,
+        "energy_saver": 667685
+      },
+      "memory_payload_bytes": {
+        "quality": 736150,
+        "balanced": 470870,
+        "energy_saver": 470870
+      }
+    },
+    {
+      "array_rows": 2,
+      "array_columns": 8,
+      "assumed_pe_multipliers": 16,
+      "memory_read_bytes_per_cycle": 16,
+      "nonlinear_values_per_cycle": 4,
+      "cycles": {
+        "quality": 1568193,
+        "balanced": 1352709,
+        "energy_saver": 653733
+      },
+      "memory_payload_bytes": {
+        "quality": 736150,
+        "balanced": 470870,
+        "energy_saver": 470870
+      }
+    },
+    {
+      "array_rows": 2,
+      "array_columns": 8,
+      "assumed_pe_multipliers": 16,
+      "memory_read_bytes_per_cycle": 16,
+      "nonlinear_values_per_cycle": 8,
+      "cycles": {
+        "quality": 1554113,
+        "balanced": 1340005,
+        "energy_saver": 646757
+      },
+      "memory_payload_bytes": {
+        "quality": 736150,
+        "balanced": 470870,
+        "energy_saver": 470870
+      }
+    },
+    {
+      "array_rows": 2,
+      "array_columns": 8,
+      "assumed_pe_multipliers": 16,
+      "memory_read_bytes_per_cycle": 32,
+      "nonlinear_values_per_cycle": 2,
+      "cycles": {
+        "quality": 1596353,
+        "balanced": 1378117,
+        "energy_saver": 667685
+      },
+      "memory_payload_bytes": {
+        "quality": 736150,
+        "balanced": 470870,
+        "energy_saver": 470870
+      }
+    },
+    {
+      "array_rows": 2,
+      "array_columns": 8,
+      "assumed_pe_multipliers": 16,
+      "memory_read_bytes_per_cycle": 32,
+      "nonlinear_values_per_cycle": 4,
+      "cycles": {
+        "quality": 1568193,
+        "balanced": 1352709,
+        "energy_saver": 653733
+      },
+      "memory_payload_bytes": {
+        "quality": 736150,
+        "balanced": 470870,
+        "energy_saver": 470870
+      }
+    },
+    {
+      "array_rows": 2,
+      "array_columns": 8,
+      "assumed_pe_multipliers": 16,
+      "memory_read_bytes_per_cycle": 32,
+      "nonlinear_values_per_cycle": 8,
+      "cycles": {
+        "quality": 1554113,
+        "balanced": 1340005,
+        "energy_saver": 646757
+      },
+      "memory_payload_bytes": {
+        "quality": 736150,
+        "balanced": 470870,
+        "energy_saver": 470870
+      }
+    },
+    {
+      "array_rows": 4,
+      "array_columns": 8,
+      "assumed_pe_multipliers": 32,
+      "memory_read_bytes_per_cycle": 8,
+      "nonlinear_values_per_cycle": 2,
+      "cycles": {
+        "quality": 988355,
+        "balanced": 883927,
+        "energy_saver": 417727
+      },
+      "memory_payload_bytes": {
+        "quality": 736150,
+        "balanced": 470870,
+        "energy_saver": 470870
+      }
+    },
+    {
+      "array_rows": 4,
+      "array_columns": 8,
+      "assumed_pe_multipliers": 32,
+      "memory_read_bytes_per_cycle": 8,
+      "nonlinear_values_per_cycle": 4,
+      "cycles": {
+        "quality": 960195,
+        "balanced": 858519,
+        "energy_saver": 403775
+      },
+      "memory_payload_bytes": {
+        "quality": 736150,
+        "balanced": 470870,
+        "energy_saver": 470870
+      }
+    },
+    {
+      "array_rows": 4,
+      "array_columns": 8,
+      "assumed_pe_multipliers": 32,
+      "memory_read_bytes_per_cycle": 8,
+      "nonlinear_values_per_cycle": 8,
+      "cycles": {
+        "quality": 946115,
+        "balanced": 845815,
+        "energy_saver": 396799
+      },
+      "memory_payload_bytes": {
+        "quality": 736150,
+        "balanced": 470870,
+        "energy_saver": 470870
+      }
+    },
+    {
+      "array_rows": 4,
+      "array_columns": 8,
+      "assumed_pe_multipliers": 32,
+      "memory_read_bytes_per_cycle": 16,
+      "nonlinear_values_per_cycle": 2,
+      "cycles": {
+        "quality": 987331,
+        "balanced": 883671,
+        "energy_saver": 417471
+      },
+      "memory_payload_bytes": {
+        "quality": 736150,
+        "balanced": 470870,
+        "energy_saver": 470870
+      }
+    },
+    {
+      "array_rows": 4,
+      "array_columns": 8,
+      "assumed_pe_multipliers": 32,
+      "memory_read_bytes_per_cycle": 16,
+      "nonlinear_values_per_cycle": 4,
+      "cycles": {
+        "quality": 959171,
+        "balanced": 858263,
+        "energy_saver": 403519
+      },
+      "memory_payload_bytes": {
+        "quality": 736150,
+        "balanced": 470870,
+        "energy_saver": 470870
+      }
+    },
+    {
+      "array_rows": 4,
+      "array_columns": 8,
+      "assumed_pe_multipliers": 32,
+      "memory_read_bytes_per_cycle": 16,
+      "nonlinear_values_per_cycle": 8,
+      "cycles": {
+        "quality": 945091,
+        "balanced": 845559,
+        "energy_saver": 396543
+      },
+      "memory_payload_bytes": {
+        "quality": 736150,
+        "balanced": 470870,
+        "energy_saver": 470870
+      }
+    },
+    {
+      "array_rows": 4,
+      "array_columns": 8,
+      "assumed_pe_multipliers": 32,
+      "memory_read_bytes_per_cycle": 32,
+      "nonlinear_values_per_cycle": 2,
+      "cycles": {
+        "quality": 987331,
+        "balanced": 883671,
+        "energy_saver": 417471
+      },
+      "memory_payload_bytes": {
+        "quality": 736150,
+        "balanced": 470870,
+        "energy_saver": 470870
+      }
+    },
+    {
+      "array_rows": 4,
+      "array_columns": 8,
+      "assumed_pe_multipliers": 32,
+      "memory_read_bytes_per_cycle": 32,
+      "nonlinear_values_per_cycle": 4,
+      "cycles": {
+        "quality": 959171,
+        "balanced": 858263,
+        "energy_saver": 403519
+      },
+      "memory_payload_bytes": {
+        "quality": 736150,
+        "balanced": 470870,
+        "energy_saver": 470870
+      }
+    },
+    {
+      "array_rows": 4,
+      "array_columns": 8,
+      "assumed_pe_multipliers": 32,
+      "memory_read_bytes_per_cycle": 32,
+      "nonlinear_values_per_cycle": 8,
+      "cycles": {
+        "quality": 945091,
+        "balanced": 845559,
+        "energy_saver": 396543
+      },
+      "memory_payload_bytes": {
+        "quality": 736150,
+        "balanced": 470870,
+        "energy_saver": 470870
+      }
+    },
+    {
+      "array_rows": 8,
+      "array_columns": 8,
+      "assumed_pe_multipliers": 64,
+      "memory_read_bytes_per_cycle": 8,
+      "nonlinear_values_per_cycle": 2,
+      "cycles": {
+        "quality": 694599,
+        "balanced": 644411,
+        "energy_saver": 305691
+      },
+      "memory_payload_bytes": {
+        "quality": 736150,
+        "balanced": 470870,
+        "energy_saver": 470870
+      }
+    },
+    {
+      "array_rows": 8,
+      "array_columns": 8,
+      "assumed_pe_multipliers": 64,
+      "memory_read_bytes_per_cycle": 8,
+      "nonlinear_values_per_cycle": 4,
+      "cycles": {
+        "quality": 666439,
+        "balanced": 619003,
+        "energy_saver": 291739
+      },
+      "memory_payload_bytes": {
+        "quality": 736150,
+        "balanced": 470870,
+        "energy_saver": 470870
+      }
+    },
+    {
+      "array_rows": 8,
+      "array_columns": 8,
+      "assumed_pe_multipliers": 64,
+      "memory_read_bytes_per_cycle": 8,
+      "nonlinear_values_per_cycle": 8,
+      "cycles": {
+        "quality": 652359,
+        "balanced": 606299,
+        "energy_saver": 284763
+      },
+      "memory_payload_bytes": {
+        "quality": 736150,
+        "balanced": 470870,
+        "energy_saver": 470870
+      }
+    },
+    {
+      "array_rows": 8,
+      "array_columns": 8,
+      "assumed_pe_multipliers": 64,
+      "memory_read_bytes_per_cycle": 16,
+      "nonlinear_values_per_cycle": 2,
+      "cycles": {
+        "quality": 682823,
+        "balanced": 637747,
+        "energy_saver": 302171
+      },
+      "memory_payload_bytes": {
+        "quality": 736150,
+        "balanced": 470870,
+        "energy_saver": 470870
+      }
+    },
+    {
+      "array_rows": 8,
+      "array_columns": 8,
+      "assumed_pe_multipliers": 64,
+      "memory_read_bytes_per_cycle": 16,
+      "nonlinear_values_per_cycle": 4,
+      "cycles": {
+        "quality": 654663,
+        "balanced": 612339,
+        "energy_saver": 288219
+      },
+      "memory_payload_bytes": {
+        "quality": 736150,
+        "balanced": 470870,
+        "energy_saver": 470870
+      }
+    },
+    {
+      "array_rows": 8,
+      "array_columns": 8,
+      "assumed_pe_multipliers": 64,
+      "memory_read_bytes_per_cycle": 16,
+      "nonlinear_values_per_cycle": 8,
+      "cycles": {
+        "quality": 640583,
+        "balanced": 599635,
+        "energy_saver": 281243
+      },
+      "memory_payload_bytes": {
+        "quality": 736150,
+        "balanced": 470870,
+        "energy_saver": 470870
+      }
+    },
+    {
+      "array_rows": 8,
+      "array_columns": 8,
+      "assumed_pe_multipliers": 64,
+      "memory_read_bytes_per_cycle": 32,
+      "nonlinear_values_per_cycle": 2,
+      "cycles": {
+        "quality": 682823,
+        "balanced": 637747,
+        "energy_saver": 302171
+      },
+      "memory_payload_bytes": {
+        "quality": 736150,
+        "balanced": 470870,
+        "energy_saver": 470870
+      }
+    },
+    {
+      "array_rows": 8,
+      "array_columns": 8,
+      "assumed_pe_multipliers": 64,
+      "memory_read_bytes_per_cycle": 32,
+      "nonlinear_values_per_cycle": 4,
+      "cycles": {
+        "quality": 654663,
+        "balanced": 612339,
+        "energy_saver": 288219
+      },
+      "memory_payload_bytes": {
+        "quality": 736150,
+        "balanced": 470870,
+        "energy_saver": 470870
+      }
+    },
+    {
+      "array_rows": 8,
+      "array_columns": 8,
+      "assumed_pe_multipliers": 64,
+      "memory_read_bytes_per_cycle": 32,
+      "nonlinear_values_per_cycle": 8,
+      "cycles": {
+        "quality": 640583,
+        "balanced": 599635,
+        "energy_saver": 281243
+      },
+      "memory_payload_bytes": {
+        "quality": 736150,
+        "balanced": 470870,
+        "energy_saver": 470870
+      }
+    },
+    {
+      "array_rows": 4,
+      "array_columns": 16,
+      "assumed_pe_multipliers": 64,
+      "memory_read_bytes_per_cycle": 8,
+      "nonlinear_values_per_cycle": 2,
+      "cycles": {
+        "quality": 911563,
+        "balanced": 611013,
+        "energy_saver": 294825
+      },
+      "memory_payload_bytes": {
+        "quality": 736150,
+        "balanced": 470870,
+        "energy_saver": 470870
+      }
+    },
+    {
+      "array_rows": 4,
+      "array_columns": 16,
+      "assumed_pe_multipliers": 64,
+      "memory_read_bytes_per_cycle": 8,
+      "nonlinear_values_per_cycle": 4,
+      "cycles": {
+        "quality": 883403,
+        "balanced": 585605,
+        "energy_saver": 280873
+      },
+      "memory_payload_bytes": {
+        "quality": 736150,
+        "balanced": 470870,
+        "energy_saver": 470870
+      }
+    },
+    {
+      "array_rows": 4,
+      "array_columns": 16,
+      "assumed_pe_multipliers": 64,
+      "memory_read_bytes_per_cycle": 8,
+      "nonlinear_values_per_cycle": 8,
+      "cycles": {
+        "quality": 869323,
+        "balanced": 572901,
+        "energy_saver": 273897
+      },
+      "memory_payload_bytes": {
+        "quality": 736150,
+        "balanced": 470870,
+        "energy_saver": 470870
+      }
+    },
+    {
+      "array_rows": 4,
+      "array_columns": 16,
+      "assumed_pe_multipliers": 64,
+      "memory_read_bytes_per_cycle": 16,
+      "nonlinear_values_per_cycle": 2,
+      "cycles": {
+        "quality": 682827,
+        "balanced": 609061,
+        "energy_saver": 293545
+      },
+      "memory_payload_bytes": {
+        "quality": 736150,
+        "balanced": 470870,
+        "energy_saver": 470870
+      }
+    },
+    {
+      "array_rows": 4,
+      "array_columns": 16,
+      "assumed_pe_multipliers": 64,
+      "memory_read_bytes_per_cycle": 16,
+      "nonlinear_values_per_cycle": 4,
+      "cycles": {
+        "quality": 654667,
+        "balanced": 583653,
+        "energy_saver": 279593
+      },
+      "memory_payload_bytes": {
+        "quality": 736150,
+        "balanced": 470870,
+        "energy_saver": 470870
+      }
+    },
+    {
+      "array_rows": 4,
+      "array_columns": 16,
+      "assumed_pe_multipliers": 64,
+      "memory_read_bytes_per_cycle": 16,
+      "nonlinear_values_per_cycle": 8,
+      "cycles": {
+        "quality": 640587,
+        "balanced": 570949,
+        "energy_saver": 272617
+      },
+      "memory_payload_bytes": {
+        "quality": 736150,
+        "balanced": 470870,
+        "energy_saver": 470870
+      }
+    },
+    {
+      "array_rows": 4,
+      "array_columns": 16,
+      "assumed_pe_multipliers": 64,
+      "memory_read_bytes_per_cycle": 32,
+      "nonlinear_values_per_cycle": 2,
+      "cycles": {
+        "quality": 682827,
+        "balanced": 609061,
+        "energy_saver": 293545
+      },
+      "memory_payload_bytes": {
+        "quality": 736150,
+        "balanced": 470870,
+        "energy_saver": 470870
+      }
+    },
+    {
+      "array_rows": 4,
+      "array_columns": 16,
+      "assumed_pe_multipliers": 64,
+      "memory_read_bytes_per_cycle": 32,
+      "nonlinear_values_per_cycle": 4,
+      "cycles": {
+        "quality": 654667,
+        "balanced": 583653,
+        "energy_saver": 279593
+      },
+      "memory_payload_bytes": {
+        "quality": 736150,
+        "balanced": 470870,
+        "energy_saver": 470870
+      }
+    },
+    {
+      "array_rows": 4,
+      "array_columns": 16,
+      "assumed_pe_multipliers": 64,
+      "memory_read_bytes_per_cycle": 32,
+      "nonlinear_values_per_cycle": 8,
+      "cycles": {
+        "quality": 640587,
+        "balanced": 570949,
+        "energy_saver": 272617
+      },
+      "memory_payload_bytes": {
+        "quality": 736150,
+        "balanced": 470870,
+        "energy_saver": 470870
+      }
+    },
+    {
+      "array_rows": 8,
+      "array_columns": 16,
+      "assumed_pe_multipliers": 128,
+      "memory_read_bytes_per_cycle": 8,
+      "nonlinear_values_per_cycle": 2,
+      "cycles": {
+        "quality": 634831,
+        "balanced": 480549,
+        "energy_saver": 233221
+      },
+      "memory_payload_bytes": {
+        "quality": 736150,
+        "balanced": 470870,
+        "energy_saver": 470870
+      }
+    },
+    {
+      "array_rows": 8,
+      "array_columns": 16,
+      "assumed_pe_multipliers": 128,
+      "memory_read_bytes_per_cycle": 8,
+      "nonlinear_values_per_cycle": 4,
+      "cycles": {
+        "quality": 606671,
+        "balanced": 455141,
+        "energy_saver": 219269
+      },
+      "memory_payload_bytes": {
+        "quality": 736150,
+        "balanced": 470870,
+        "energy_saver": 470870
+      }
+    },
+    {
+      "array_rows": 8,
+      "array_columns": 16,
+      "assumed_pe_multipliers": 128,
+      "memory_read_bytes_per_cycle": 8,
+      "nonlinear_values_per_cycle": 8,
+      "cycles": {
+        "quality": 592591,
+        "balanced": 442437,
+        "energy_saver": 212293
+      },
+      "memory_payload_bytes": {
+        "quality": 736150,
+        "balanced": 470870,
+        "energy_saver": 470870
+      }
+    },
+    {
+      "array_rows": 8,
+      "array_columns": 16,
+      "assumed_pe_multipliers": 128,
+      "memory_read_bytes_per_cycle": 16,
+      "nonlinear_values_per_cycle": 2,
+      "cycles": {
+        "quality": 521103,
+        "balanced": 478049,
+        "energy_saver": 231717
+      },
+      "memory_payload_bytes": {
+        "quality": 736150,
+        "balanced": 470870,
+        "energy_saver": 470870
+      }
+    },
+    {
+      "array_rows": 8,
+      "array_columns": 16,
+      "assumed_pe_multipliers": 128,
+      "memory_read_bytes_per_cycle": 16,
+      "nonlinear_values_per_cycle": 4,
+      "cycles": {
+        "quality": 492943,
+        "balanced": 452641,
+        "energy_saver": 217765
+      },
+      "memory_payload_bytes": {
+        "quality": 736150,
+        "balanced": 470870,
+        "energy_saver": 470870
+      }
+    },
+    {
+      "array_rows": 8,
+      "array_columns": 16,
+      "assumed_pe_multipliers": 128,
+      "memory_read_bytes_per_cycle": 16,
+      "nonlinear_values_per_cycle": 8,
+      "cycles": {
+        "quality": 478863,
+        "balanced": 439937,
+        "energy_saver": 210789
+      },
+      "memory_payload_bytes": {
+        "quality": 736150,
+        "balanced": 470870,
+        "energy_saver": 470870
+      }
+    },
+    {
+      "array_rows": 8,
+      "array_columns": 16,
+      "assumed_pe_multipliers": 128,
+      "memory_read_bytes_per_cycle": 32,
+      "nonlinear_values_per_cycle": 2,
+      "cycles": {
+        "quality": 521103,
+        "balanced": 478049,
+        "energy_saver": 231717
+      },
+      "memory_payload_bytes": {
+        "quality": 736150,
+        "balanced": 470870,
+        "energy_saver": 470870
+      }
+    },
+    {
+      "array_rows": 8,
+      "array_columns": 16,
+      "assumed_pe_multipliers": 128,
+      "memory_read_bytes_per_cycle": 32,
+      "nonlinear_values_per_cycle": 4,
+      "cycles": {
+        "quality": 492943,
+        "balanced": 452641,
+        "energy_saver": 217765
+      },
+      "memory_payload_bytes": {
+        "quality": 736150,
+        "balanced": 470870,
+        "energy_saver": 470870
+      }
+    },
+    {
+      "array_rows": 8,
+      "array_columns": 16,
+      "assumed_pe_multipliers": 128,
+      "memory_read_bytes_per_cycle": 32,
+      "nonlinear_values_per_cycle": 8,
+      "cycles": {
+        "quality": 478863,
+        "balanced": 439937,
+        "energy_saver": 210789
+      },
+      "memory_payload_bytes": {
+        "quality": 736150,
+        "balanced": 470870,
+        "energy_saver": 470870
+      }
+    },
+    {
+      "array_rows": 16,
+      "array_columns": 16,
+      "assumed_pe_multipliers": 256,
+      "memory_read_bytes_per_cycle": 8,
+      "nonlinear_values_per_cycle": 2,
+      "cycles": {
+        "quality": 498647,
+        "balanced": 434501,
+        "energy_saver": 216869
+      },
+      "memory_payload_bytes": {
+        "quality": 736150,
+        "balanced": 470870,
+        "energy_saver": 470870
+      }
+    },
+    {
+      "array_rows": 16,
+      "array_columns": 16,
+      "assumed_pe_multipliers": 256,
+      "memory_read_bytes_per_cycle": 8,
+      "nonlinear_values_per_cycle": 4,
+      "cycles": {
+        "quality": 470487,
+        "balanced": 409093,
+        "energy_saver": 202917
+      },
+      "memory_payload_bytes": {
+        "quality": 736150,
+        "balanced": 470870,
+        "energy_saver": 470870
+      }
+    },
+    {
+      "array_rows": 16,
+      "array_columns": 16,
+      "assumed_pe_multipliers": 256,
+      "memory_read_bytes_per_cycle": 8,
+      "nonlinear_values_per_cycle": 8,
+      "cycles": {
+        "quality": 456407,
+        "balanced": 396389,
+        "energy_saver": 195941
+      },
+      "memory_payload_bytes": {
+        "quality": 736150,
+        "balanced": 470870,
+        "energy_saver": 470870
+      }
+    },
+    {
+      "array_rows": 16,
+      "array_columns": 16,
+      "assumed_pe_multipliers": 256,
+      "memory_read_bytes_per_cycle": 16,
+      "nonlinear_values_per_cycle": 2,
+      "cycles": {
+        "quality": 442167,
+        "balanced": 397837,
+        "energy_saver": 201721
+      },
+      "memory_payload_bytes": {
+        "quality": 736150,
+        "balanced": 470870,
+        "energy_saver": 470870
+      }
+    },
+    {
+      "array_rows": 16,
+      "array_columns": 16,
+      "assumed_pe_multipliers": 256,
+      "memory_read_bytes_per_cycle": 16,
+      "nonlinear_values_per_cycle": 4,
+      "cycles": {
+        "quality": 414007,
+        "balanced": 372429,
+        "energy_saver": 187769
+      },
+      "memory_payload_bytes": {
+        "quality": 736150,
+        "balanced": 470870,
+        "energy_saver": 470870
+      }
+    },
+    {
+      "array_rows": 16,
+      "array_columns": 16,
+      "assumed_pe_multipliers": 256,
+      "memory_read_bytes_per_cycle": 16,
+      "nonlinear_values_per_cycle": 8,
+      "cycles": {
+        "quality": 399927,
+        "balanced": 359725,
+        "energy_saver": 180793
+      },
+      "memory_payload_bytes": {
+        "quality": 736150,
+        "balanced": 470870,
+        "energy_saver": 470870
+      }
+    },
+    {
+      "array_rows": 16,
+      "array_columns": 16,
+      "assumed_pe_multipliers": 256,
+      "memory_read_bytes_per_cycle": 32,
+      "nonlinear_values_per_cycle": 2,
+      "cycles": {
+        "quality": 440247,
+        "balanced": 397189,
+        "energy_saver": 201241
+      },
+      "memory_payload_bytes": {
+        "quality": 736150,
+        "balanced": 470870,
+        "energy_saver": 470870
+      }
+    },
+    {
+      "array_rows": 16,
+      "array_columns": 16,
+      "assumed_pe_multipliers": 256,
+      "memory_read_bytes_per_cycle": 32,
+      "nonlinear_values_per_cycle": 4,
+      "cycles": {
+        "quality": 412087,
+        "balanced": 371781,
+        "energy_saver": 187289
+      },
+      "memory_payload_bytes": {
+        "quality": 736150,
+        "balanced": 470870,
+        "energy_saver": 470870
+      }
+    },
+    {
+      "array_rows": 16,
+      "array_columns": 16,
+      "assumed_pe_multipliers": 256,
+      "memory_read_bytes_per_cycle": 32,
+      "nonlinear_values_per_cycle": 8,
+      "cycles": {
+        "quality": 398007,
+        "balanced": 359077,
+        "energy_saver": 180313
+      },
+      "memory_payload_bytes": {
+        "quality": 736150,
+        "balanced": 470870,
+        "energy_saver": 470870
+      }
+    }
+  ],
+  "assumed_clock_hz": 150000000,
+  "limitations": [
+    "PE multiplier count is not total DSP use",
+    "routing and memory banks not checked",
+    "ports and nonlinear throughput are independent assumptions, not synthesized configurations",
+    "no energy surrogate calibrated",
+    "no configuration selected or frozen"
+  ]
+}

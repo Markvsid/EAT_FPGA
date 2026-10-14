@@ -72,12 +72,13 @@ residual additions, and transfer overhead. The analytical report separately
 counts embedding, scoring, summaries, and classification; it reports excluded
 costs explicitly. Ideal MAC cycle bounds are not predicted FPGA latency.
 
-The planned Speech Commands frontend converts 16 kHz mono clips to 40 log-mel
+The Speech Commands frontend converts 16 kHz mono clips to 40 log-mel
 channels in 64 frame slots. Two-frame patches again produce 32 tokens. This
 candidate uses the 35-word protocol and official validation and testing lists,
 with no synthesized unknown or silence classes. The frontend runs on the host;
 its cost must be included in end-to-end latency, separately from accelerator
-latency. Audio quality and final frontend selection remain unvalidated.
+latency. Three-seed software validation is complete; frontend selection and
+its treatment of two trailing log-silence frames remain provisional.
 
 ## 4 Algorithm and hardware co-design
 
@@ -125,9 +126,9 @@ each query's running maximum, normalizer, and weighted value accumulator. Each
 new tile rescales the prior state to the updated maximum before adding its
 contributions. Division by the final normalizer produces the attention result.
 Tests compare this recurrence with dense attention for sequence length one,
-partial final tiles, and the complete encoder. Fixed-point exp approximation,
-finite-width recurrence behavior, RTL buffering, and backpressure verification
-remain outstanding.
+partial final tiles, and the complete encoder. The integer candidate now uses a
+finite-width online recurrence with exponential lookup and per-tile rounding.
+RTL buffering, backpressure, and fixed-point hardware equivalence remain outstanding.
 
 ## 6 Analytical model
 
@@ -139,10 +140,12 @@ These are partial budgets: they exclude scales, metadata, physical allocation
 fragmentation, and memory banking overhead. Resource feasibility must be checked
 against the confirmed device and synthesized design.
 
-The current cycle output is a lower bound assuming a specified number of MAC
-lanes. It does not include memory stalls or nonlinear-unit timing. Calibration
-against RTL is necessary before it becomes the approximately 10–15 percent
-accurate cycle model required by the plan.
+The initial profiler reports a MAC cycle lower bound. A separate schedule candidate
+now includes array tails, GEMM startup, requantization, on-chip transfer assumptions,
+normalization, activation, online attention, division, selection, compaction,
+summaries, and control. Its nonlinear rates and overlap assumptions are provisional.
+Calibration against RTL is necessary before it becomes the approximately
+10–15 percent accurate cycle model required by the plan.
 
 ## 7 Implementation and reproducibility
 
@@ -161,9 +164,13 @@ tree state, checkpoint initialization, and seed.
 
 Fake quantization currently uses per-output-channel weight scales and
 power-of-two activation scales. It retains floating-point nonlinear functions,
-residual arithmetic, and biases. Runtime maxima determine the candidate
-activation scales. This is an exploratory training model, not the frozen-scale
-integer reference needed for FPGA equivalence. No tool version, implemented
+residual arithmetic, and biases. Runtime maxima determine the training model's
+activation scales. A separate integer-only candidate now calibrates fixed scales
+on training data, exports finite-width weights/constants, and evaluates the full
+validation partition. It uses Q12 residual/nonlinear state, INT8 tensor operands,
+per-channel W4/W8 weights, and explicit nearest-even rounding. Candidate formats
+and changed predictions are documented in the numerical contract;
+FPGA equivalence remains untested. No tool version, implemented
 clock, routed resource usage, or bitstream is available yet.
 
 ## 8 Evaluation
@@ -180,9 +187,45 @@ The initial HAR FP32 validation results are:
 <!-- SOFTWARE_RESULTS_END -->
 
 These are validation measurements of the software baseline, not final test
-results or FPGA outcomes. `results/summarize.py` regenerates the supporting
-summary from completed run logs. Quantized modes and controlled RTS ablations
-must undergo the same three-seed comparison before final mode selection.
+results or FPGA outcomes. The complete local matrix now includes three-seed
+mode comparisons on both workloads, matched fine-tuning controls, HAR precision
+and token/depth ablations, and a shared-weight HAR family. HAR fine-tunes each
+independent variant for 30 epochs; Speech fine-tunes each mode and its dense
+control for five epochs after the 30-epoch baseline. Checkpoints are selected
+using batched validation; deployment-boundary reevaluation uses batch one.
+
+The candidate fixed-scale integer results are:
+
+<!-- INTEGER_VALIDATION_BEGIN -->
+| Workload | Mode | Integer validation accuracy percent | Changed predictions versus batch 1 fake quantization |
+| --- | --- | --- | --- |
+| HAR | balanced | 94.024 ± 1.967 | 47 / 4083 |
+| HAR | energy_saver | 93.216 ± 1.479 | 41 / 4083 |
+| HAR | quality | 93.534 ± 0.409 | 43 / 4083 |
+| Speech Commands 35 words | balanced | 91.928 ± 0.153 | 287 / 29943 |
+| Speech Commands 35 words | energy_saver | 91.511 ± 0.250 | 393 / 29943 |
+| Speech Commands 35 words | quality | 93.043 ± 0.199 | 279 / 29943 |
+<!-- INTEGER_VALIDATION_END -->
+
+The differences from dynamic fake quantization include fixed activation scales,
+INT8 Q/K/V operands, finite-width RMSNorm/PWL arithmetic, and per-tile attention
+rounding. They are recorded as changed predictions and intermediate errors.
+This comparison establishes a software numerical candidate, not FPGA equivalence.
+The shared-family results and full per-run evidence are generated separately in
+`software_evidence_summary.md` and `current_results.md`.
+
+For HAR, the paired 20-token RTS-versus-dropping comparison improves mean
+batch-one validation accuracy by about 0.98 percentage points with sample
+standard deviation about 1.00 across three seeds. At a fixed RTS-trained
+checkpoint and identical group decisions, adding the two Balanced summaries
+changes accuracy by about 0.15 percentage points on average. These answer
+different questions; neither establishes measured energy savings or standalone
+algorithmic novelty. The nearest verified FPGA work already fuses dropped tokens.
+
+Speech Energy-Saver loses about 1.39 percentage points relative to the original
+floating baseline in batched validation, exceeding the one-point envelope used
+for the primary HAR workload. This is a task-specific limitation of the current
+mode family rather than evidence of equal quality across workloads.
 
 The final evaluation must add Speech Commands quality, bit-accurate and board
 prediction agreement, routed timing and resources, measured power and energy,
@@ -194,10 +237,11 @@ training times or ideal MAC bounds.
 
 ## 9 Limitations and discussion
 
-Current results use one short-sequence workload and software execution. The
-secondary workload, fixed-point reference, accelerator, physical implementation,
-and energy evaluation are incomplete. Novelty is unresolved because token
-summaries, merging, and runtime FPGA pruning have close prior work.
+Current results use software execution. Secondary-workload and controlled mode
+training are complete locally; the fixed-point reference is a validation candidate.
+The accelerator, physical implementation, and energy evaluation are incomplete.
+Novelty is unresolved: the closest verified 2024 FPGA pruning design already
+fuses discarded tokens, so a standalone summary-on-FPGA claim is not supported.
 
 The Paper 1 design assumes on-chip weights and one device. It consequently
 cannot substantiate a major DDR weight-traffic reduction claim. Learned score
