@@ -8,7 +8,8 @@ Primary dataset record: https://doi.org/10.24432/C54S4K
 License: CC BY 4.0, recorded by the UCI dataset page.
 
 The experiment uses the nine sequential inertial channels, not the 561-column
-precomputed feature table. Official test subjects remain reserved. Subjects
+precomputed feature table. Official test subjects are excluded from training and
+checkpoint selection and are used in the frozen Python evaluation. Subjects
 5, 14, 19, and 27 from the official training set are validation only. The
 remaining training subjects fit channel-wise normalization. Counts are 5,991
 training, 1,361 validation, and 2,947 test windows. Labels retain the official

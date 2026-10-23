@@ -1,0 +1,815 @@
+{
+  "name": "har_energy_saver_seed17",
+  "dataset": "har",
+  "mode_name": "energy_saver",
+  "seed": 17,
+  "evaluation_plan_sha256": "2d1326e17103f00490601686bfe47689499b84afc33f344cc0fc013cedb535e0",
+  "inputs_sha256": "4c6d02e9b76a88e422b84f2fc911d1cf80d641355d94755a65672e056e353807",
+  "predictions_sha256": "46d2536cd9dbcff03ce40ddddc2c39837f38d08d28f7a73479bc3074b3e9f837",
+  "conditions": {
+    "clean": {
+      "pytorch": {
+        "samples": 120,
+        "accuracy": 0.9166666666666666,
+        "macro_f1": 0.9166633444479221,
+        "confusion_matrix": [
+          [
+            18,
+            0,
+            2,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            19,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            20,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            15,
+            5,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            2,
+            18,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            20
+          ]
+        ],
+        "per_class": [
+          {
+            "label": "WALKING",
+            "support": 20,
+            "precision": 1.0,
+            "recall": 0.9,
+            "f1": 0.9473684210526316
+          },
+          {
+            "label": "WALKING_UPSTAIRS",
+            "support": 20,
+            "precision": 1.0,
+            "recall": 0.95,
+            "f1": 0.9743589743589743
+          },
+          {
+            "label": "WALKING_DOWNSTAIRS",
+            "support": 20,
+            "precision": 0.8695652173913043,
+            "recall": 1.0,
+            "f1": 0.9302325581395349
+          },
+          {
+            "label": "SITTING",
+            "support": 20,
+            "precision": 0.8823529411764706,
+            "recall": 0.75,
+            "f1": 0.8108108108108107
+          },
+          {
+            "label": "STANDING",
+            "support": 20,
+            "precision": 0.782608695652174,
+            "recall": 0.9,
+            "f1": 0.8372093023255814
+          },
+          {
+            "label": "LAYING",
+            "support": 20,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          }
+        ]
+      },
+      "integer": {
+        "samples": 120,
+        "accuracy": 0.9083333333333333,
+        "macro_f1": 0.9084929078809126,
+        "confusion_matrix": [
+          [
+            18,
+            0,
+            2,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            19,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            20,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            15,
+            5,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            3,
+            17,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            20
+          ]
+        ],
+        "per_class": [
+          {
+            "label": "WALKING",
+            "support": 20,
+            "precision": 1.0,
+            "recall": 0.9,
+            "f1": 0.9473684210526316
+          },
+          {
+            "label": "WALKING_UPSTAIRS",
+            "support": 20,
+            "precision": 1.0,
+            "recall": 0.95,
+            "f1": 0.9743589743589743
+          },
+          {
+            "label": "WALKING_DOWNSTAIRS",
+            "support": 20,
+            "precision": 0.8695652173913043,
+            "recall": 1.0,
+            "f1": 0.9302325581395349
+          },
+          {
+            "label": "SITTING",
+            "support": 20,
+            "precision": 0.8333333333333334,
+            "recall": 0.75,
+            "f1": 0.7894736842105262
+          },
+          {
+            "label": "STANDING",
+            "support": 20,
+            "precision": 0.7727272727272727,
+            "recall": 0.85,
+            "f1": 0.8095238095238095
+          },
+          {
+            "label": "LAYING",
+            "support": 20,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          }
+        ]
+      },
+      "input_clipped_values": 0
+    },
+    "noise_sd0.1": {
+      "pytorch": {
+        "samples": 120,
+        "accuracy": 0.9166666666666666,
+        "macro_f1": 0.9166633444479221,
+        "confusion_matrix": [
+          [
+            18,
+            0,
+            2,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            19,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            20,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            15,
+            5,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            2,
+            18,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            20
+          ]
+        ],
+        "per_class": [
+          {
+            "label": "WALKING",
+            "support": 20,
+            "precision": 1.0,
+            "recall": 0.9,
+            "f1": 0.9473684210526316
+          },
+          {
+            "label": "WALKING_UPSTAIRS",
+            "support": 20,
+            "precision": 1.0,
+            "recall": 0.95,
+            "f1": 0.9743589743589743
+          },
+          {
+            "label": "WALKING_DOWNSTAIRS",
+            "support": 20,
+            "precision": 0.8695652173913043,
+            "recall": 1.0,
+            "f1": 0.9302325581395349
+          },
+          {
+            "label": "SITTING",
+            "support": 20,
+            "precision": 0.8823529411764706,
+            "recall": 0.75,
+            "f1": 0.8108108108108107
+          },
+          {
+            "label": "STANDING",
+            "support": 20,
+            "precision": 0.782608695652174,
+            "recall": 0.9,
+            "f1": 0.8372093023255814
+          },
+          {
+            "label": "LAYING",
+            "support": 20,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          }
+        ]
+      },
+      "integer": {
+        "samples": 120,
+        "accuracy": 0.9083333333333333,
+        "macro_f1": 0.9081163359009136,
+        "confusion_matrix": [
+          [
+            18,
+            0,
+            2,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            18,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            20,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            15,
+            5,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            2,
+            18,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            20
+          ]
+        ],
+        "per_class": [
+          {
+            "label": "WALKING",
+            "support": 20,
+            "precision": 0.9473684210526315,
+            "recall": 0.9,
+            "f1": 0.9230769230769231
+          },
+          {
+            "label": "WALKING_UPSTAIRS",
+            "support": 20,
+            "precision": 1.0,
+            "recall": 0.9,
+            "f1": 0.9473684210526316
+          },
+          {
+            "label": "WALKING_DOWNSTAIRS",
+            "support": 20,
+            "precision": 0.8695652173913043,
+            "recall": 1.0,
+            "f1": 0.9302325581395349
+          },
+          {
+            "label": "SITTING",
+            "support": 20,
+            "precision": 0.8823529411764706,
+            "recall": 0.75,
+            "f1": 0.8108108108108107
+          },
+          {
+            "label": "STANDING",
+            "support": 20,
+            "precision": 0.782608695652174,
+            "recall": 0.9,
+            "f1": 0.8372093023255814
+          },
+          {
+            "label": "LAYING",
+            "support": 20,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          }
+        ]
+      },
+      "input_clipped_values": 0
+    },
+    "noise_sd0.25": {
+      "pytorch": {
+        "samples": 120,
+        "accuracy": 0.8916666666666667,
+        "macro_f1": 0.8896776825785393,
+        "confusion_matrix": [
+          [
+            19,
+            0,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            18,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            20,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            13,
+            6,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            2,
+            17,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            20
+          ]
+        ],
+        "per_class": [
+          {
+            "label": "WALKING",
+            "support": 20,
+            "precision": 0.8636363636363636,
+            "recall": 0.95,
+            "f1": 0.9047619047619048
+          },
+          {
+            "label": "WALKING_UPSTAIRS",
+            "support": 20,
+            "precision": 1.0,
+            "recall": 0.9,
+            "f1": 0.9473684210526316
+          },
+          {
+            "label": "WALKING_DOWNSTAIRS",
+            "support": 20,
+            "precision": 0.9090909090909091,
+            "recall": 1.0,
+            "f1": 0.9523809523809523
+          },
+          {
+            "label": "SITTING",
+            "support": 20,
+            "precision": 0.8666666666666667,
+            "recall": 0.65,
+            "f1": 0.7428571428571429
+          },
+          {
+            "label": "STANDING",
+            "support": 20,
+            "precision": 0.7391304347826086,
+            "recall": 0.85,
+            "f1": 0.7906976744186046
+          },
+          {
+            "label": "LAYING",
+            "support": 20,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          }
+        ]
+      },
+      "integer": {
+        "samples": 120,
+        "accuracy": 0.8833333333333333,
+        "macro_f1": 0.881187464785996,
+        "confusion_matrix": [
+          [
+            18,
+            0,
+            2,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            18,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            20,
+            0,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0,
+            13,
+            5,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            2,
+            17,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            20
+          ]
+        ],
+        "per_class": [
+          {
+            "label": "WALKING",
+            "support": 20,
+            "precision": 0.8181818181818182,
+            "recall": 0.9,
+            "f1": 0.8571428571428572
+          },
+          {
+            "label": "WALKING_UPSTAIRS",
+            "support": 20,
+            "precision": 1.0,
+            "recall": 0.9,
+            "f1": 0.9473684210526316
+          },
+          {
+            "label": "WALKING_DOWNSTAIRS",
+            "support": 20,
+            "precision": 0.8695652173913043,
+            "recall": 1.0,
+            "f1": 0.9302325581395349
+          },
+          {
+            "label": "SITTING",
+            "support": 20,
+            "precision": 0.8666666666666667,
+            "recall": 0.65,
+            "f1": 0.7428571428571429
+          },
+          {
+            "label": "STANDING",
+            "support": 20,
+            "precision": 0.7727272727272727,
+            "recall": 0.85,
+            "f1": 0.8095238095238095
+          },
+          {
+            "label": "LAYING",
+            "support": 20,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          }
+        ]
+      },
+      "input_clipped_values": 0
+    },
+    "missing_gyro": {
+      "pytorch": {
+        "samples": 120,
+        "accuracy": 0.7833333333333333,
+        "macro_f1": 0.7784475017995355,
+        "confusion_matrix": [
+          [
+            11,
+            5,
+            3,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            19,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            2,
+            18,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            15,
+            5,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            9,
+            11,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            20
+          ]
+        ],
+        "per_class": [
+          {
+            "label": "WALKING",
+            "support": 20,
+            "precision": 1.0,
+            "recall": 0.55,
+            "f1": 0.7096774193548387
+          },
+          {
+            "label": "WALKING_UPSTAIRS",
+            "support": 20,
+            "precision": 0.7307692307692307,
+            "recall": 0.95,
+            "f1": 0.8260869565217392
+          },
+          {
+            "label": "WALKING_DOWNSTAIRS",
+            "support": 20,
+            "precision": 0.8181818181818182,
+            "recall": 0.9,
+            "f1": 0.8571428571428572
+          },
+          {
+            "label": "SITTING",
+            "support": 20,
+            "precision": 0.6,
+            "recall": 0.75,
+            "f1": 0.6666666666666665
+          },
+          {
+            "label": "STANDING",
+            "support": 20,
+            "precision": 0.6875,
+            "recall": 0.55,
+            "f1": 0.6111111111111112
+          },
+          {
+            "label": "LAYING",
+            "support": 20,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          }
+        ]
+      },
+      "integer": {
+        "samples": 120,
+        "accuracy": 0.775,
+        "macro_f1": 0.7708723546855692,
+        "confusion_matrix": [
+          [
+            11,
+            5,
+            3,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            19,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            3,
+            17,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            15,
+            5,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            9,
+            11,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            20
+          ]
+        ],
+        "per_class": [
+          {
+            "label": "WALKING",
+            "support": 20,
+            "precision": 1.0,
+            "recall": 0.55,
+            "f1": 0.7096774193548387
+          },
+          {
+            "label": "WALKING_UPSTAIRS",
+            "support": 20,
+            "precision": 0.7037037037037037,
+            "recall": 0.95,
+            "f1": 0.8085106382978724
+          },
+          {
+            "label": "WALKING_DOWNSTAIRS",
+            "support": 20,
+            "precision": 0.8095238095238095,
+            "recall": 0.85,
+            "f1": 0.8292682926829269
+          },
+          {
+            "label": "SITTING",
+            "support": 20,
+            "precision": 0.6,
+            "recall": 0.75,
+            "f1": 0.6666666666666665
+          },
+          {
+            "label": "STANDING",
+            "support": 20,
+            "precision": 0.6875,
+            "recall": 0.55,
+            "f1": 0.6111111111111112
+          },
+          {
+            "label": "LAYING",
+            "support": 20,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          }
+        ]
+      },
+      "input_clipped_values": 0
+    }
+  }
+}

@@ -68,4 +68,4 @@ Each row is one exported checkpoint evaluated on validation inputs. Original fak
 
 ## Outstanding evidence
 
-Full three-seed comparisons must finish before selecting modes. Test sets remain reserved. Hardware bring-up, RTL equivalence, synthesis, routed timing, resource utilization, measured latency/energy, and independent review are outstanding. Do not read software accuracy or schedule estimates as FPGA results.
+The subsequent frozen held-out evaluation is documented in [Python test results](python_test_results.md), separately from these validation tables. Hardware bring-up, RTL equivalence, synthesis, routed timing, resource utilization, measured latency/energy, and independent review are outstanding. Do not read software accuracy or schedule estimates as FPGA results.

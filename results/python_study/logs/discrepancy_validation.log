@@ -1,0 +1,6 @@
+har_quality_seed17 {'dynamic_original': 0, 'input_only': 2, 'fixed_linear': 1, 'fixed_linear_qkv': 1, 'integer': 1}
+har_balanced_seed17 {'dynamic_original': 0, 'input_only': 3, 'fixed_linear': 3, 'fixed_linear_qkv': 4, 'integer': 3}
+har_energy_saver_seed17 {'dynamic_original': 0, 'input_only': 2, 'fixed_linear': 1, 'fixed_linear_qkv': 1, 'integer': 2}
+speech_quality_seed17 {'dynamic_original': 0, 'input_only': 2, 'fixed_linear': 2, 'fixed_linear_qkv': 3, 'integer': 5}
+speech_balanced_seed17 {'dynamic_original': 0, 'input_only': 1, 'fixed_linear': 2, 'fixed_linear_qkv': 3, 'integer': 2}
+speech_energy_saver_seed17 {'dynamic_original': 0, 'input_only': 3, 'fixed_linear': 2, 'fixed_linear_qkv': 2, 'integer': 2}

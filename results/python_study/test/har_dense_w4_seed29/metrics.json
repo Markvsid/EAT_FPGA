@@ -1,0 +1,229 @@
+{
+  "partition": "test",
+  "name": "har_dense_w4_seed29",
+  "dataset": "har",
+  "mode_name": "dense_w4",
+  "seed": 29,
+  "samples": 2947,
+  "batch_size": 1,
+  "device": "cpu",
+  "checkpoint_sha256": "4467a489503a2a7f8ee4b618f7222c24d64a71381df0e7f9736bead41c38540d",
+  "evaluation_plan_sha256": "2d1326e17103f00490601686bfe47689499b84afc33f344cc0fc013cedb535e0",
+  "selected_epoch": 6,
+  "python": "3.12.13",
+  "torch": "2.14.1",
+  "numpy": "2.5.4",
+  "machine": "arm64",
+  "pytorch": {
+    "samples": 2947,
+    "accuracy": 0.9423142178486597,
+    "macro_f1": 0.9426714758969852,
+    "confusion_matrix": [
+      [
+        493,
+        1,
+        2,
+        0,
+        0,
+        0
+      ],
+      [
+        3,
+        444,
+        24,
+        0,
+        0,
+        0
+      ],
+      [
+        2,
+        0,
+        418,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        3,
+        0,
+        395,
+        93,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        42,
+        490,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        537
+      ]
+    ],
+    "per_class": [
+      {
+        "label": "WALKING",
+        "support": 496,
+        "precision": 0.9899598393574297,
+        "recall": 0.9939516129032258,
+        "f1": 0.9919517102615694
+      },
+      {
+        "label": "WALKING_UPSTAIRS",
+        "support": 471,
+        "precision": 0.9910714285714286,
+        "recall": 0.9426751592356688,
+        "f1": 0.9662676822633297
+      },
+      {
+        "label": "WALKING_DOWNSTAIRS",
+        "support": 420,
+        "precision": 0.9414414414414415,
+        "recall": 0.9952380952380953,
+        "f1": 0.9675925925925928
+      },
+      {
+        "label": "SITTING",
+        "support": 491,
+        "precision": 0.9038901601830663,
+        "recall": 0.8044806517311609,
+        "f1": 0.8512931034482758
+      },
+      {
+        "label": "STANDING",
+        "support": 532,
+        "precision": 0.8404802744425386,
+        "recall": 0.9210526315789473,
+        "f1": 0.8789237668161435
+      },
+      {
+        "label": "LAYING",
+        "support": 537,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      }
+    ]
+  },
+  "executed_structure": {
+    "status": "analytical_uncalibrated_not_measured",
+    "sequence": 32,
+    "tokens_after_gate": 32,
+    "mode": {
+      "weight_bits": 4,
+      "keep_groups": 8,
+      "rts": false,
+      "exit_block": 4
+    },
+    "operators": [
+      {
+        "operator": "patch_embedding",
+        "tokens": 32,
+        "macs": 147456
+      },
+      {
+        "operator": "block1_projections",
+        "tokens": 32,
+        "macs": 2097152
+      },
+      {
+        "operator": "block1_attention_qk_av",
+        "tokens": 32,
+        "macs": 262144
+      },
+      {
+        "operator": "block1_ffn",
+        "tokens": 32,
+        "macs": 2097152
+      },
+      {
+        "operator": "block2_projections",
+        "tokens": 32,
+        "macs": 2097152
+      },
+      {
+        "operator": "block2_attention_qk_av",
+        "tokens": 32,
+        "macs": 262144
+      },
+      {
+        "operator": "block2_ffn",
+        "tokens": 32,
+        "macs": 2097152
+      },
+      {
+        "operator": "block3_projections",
+        "tokens": 32,
+        "macs": 2097152
+      },
+      {
+        "operator": "block3_attention_qk_av",
+        "tokens": 32,
+        "macs": 262144
+      },
+      {
+        "operator": "block3_ffn",
+        "tokens": 32,
+        "macs": 2097152
+      },
+      {
+        "operator": "block4_projections",
+        "tokens": 32,
+        "macs": 2097152
+      },
+      {
+        "operator": "block4_attention_qk_av",
+        "tokens": 32,
+        "macs": 262144
+      },
+      {
+        "operator": "block4_ffn",
+        "tokens": 32,
+        "macs": 2097152
+      },
+      {
+        "operator": "classifier",
+        "tokens": 1,
+        "macs": 768
+      }
+    ],
+    "executed_macs": 17974016,
+    "executed_ops_mac_equals_two": 35948032,
+    "ideal_mac_cycle_lower_bound": 280844,
+    "assumed_mac_lanes": 64,
+    "payload_bytes_only": {
+      "encoder_matrix_weights": 262144,
+      "pingpong_int8_activations": 8192,
+      "qkv_int8": 12288,
+      "ffn_int8": 8192,
+      "online_attention_int32_state": 17408,
+      "materialized_int16_scores_comparison": 8192
+    },
+    "excluded_costs": [
+      "normalization",
+      "softmax",
+      "activation",
+      "residual additions",
+      "pooling",
+      "sorting and compaction",
+      "summary division",
+      "metadata",
+      "scales and biases",
+      "banking fragmentation",
+      "pipeline and memory stalls",
+      "DMA"
+    ]
+  },
+  "parameter_count": 539533,
+  "checkpoint_file_bytes": 2172965,
+  "predictions_sha256": "a90e164184202bb00f390c9f6b733e5056cd4bbbcc72ed59008c558ef59cef97",
+  "evaluation_elapsed_seconds_not_inference_benchmark": 5.1012793350964785
+}

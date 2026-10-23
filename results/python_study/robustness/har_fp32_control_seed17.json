@@ -1,0 +1,415 @@
+{
+  "name": "har_fp32_control_seed17",
+  "dataset": "har",
+  "mode_name": "fp32_control",
+  "seed": 17,
+  "evaluation_plan_sha256": "2d1326e17103f00490601686bfe47689499b84afc33f344cc0fc013cedb535e0",
+  "inputs_sha256": "4c6d02e9b76a88e422b84f2fc911d1cf80d641355d94755a65672e056e353807",
+  "predictions_sha256": "2c8f0644b48a5b5a3a0e645256d155bbd6ad8025a08149d4e785ffb6a4a6ec56",
+  "conditions": {
+    "clean": {
+      "pytorch": {
+        "samples": 120,
+        "accuracy": 0.9333333333333333,
+        "macro_f1": 0.9329981405988214,
+        "confusion_matrix": [
+          [
+            20,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            19,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            20,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            15,
+            5,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            2,
+            18,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            20
+          ]
+        ],
+        "per_class": [
+          {
+            "label": "WALKING",
+            "support": 20,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          {
+            "label": "WALKING_UPSTAIRS",
+            "support": 20,
+            "precision": 1.0,
+            "recall": 0.95,
+            "f1": 0.9743589743589743
+          },
+          {
+            "label": "WALKING_DOWNSTAIRS",
+            "support": 20,
+            "precision": 0.9523809523809523,
+            "recall": 1.0,
+            "f1": 0.975609756097561
+          },
+          {
+            "label": "SITTING",
+            "support": 20,
+            "precision": 0.8823529411764706,
+            "recall": 0.75,
+            "f1": 0.8108108108108107
+          },
+          {
+            "label": "STANDING",
+            "support": 20,
+            "precision": 0.782608695652174,
+            "recall": 0.9,
+            "f1": 0.8372093023255814
+          },
+          {
+            "label": "LAYING",
+            "support": 20,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          }
+        ]
+      }
+    },
+    "noise_sd0.1": {
+      "pytorch": {
+        "samples": 120,
+        "accuracy": 0.9333333333333333,
+        "macro_f1": 0.9329981405988214,
+        "confusion_matrix": [
+          [
+            20,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            19,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            20,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            15,
+            5,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            2,
+            18,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            20
+          ]
+        ],
+        "per_class": [
+          {
+            "label": "WALKING",
+            "support": 20,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          {
+            "label": "WALKING_UPSTAIRS",
+            "support": 20,
+            "precision": 1.0,
+            "recall": 0.95,
+            "f1": 0.9743589743589743
+          },
+          {
+            "label": "WALKING_DOWNSTAIRS",
+            "support": 20,
+            "precision": 0.9523809523809523,
+            "recall": 1.0,
+            "f1": 0.975609756097561
+          },
+          {
+            "label": "SITTING",
+            "support": 20,
+            "precision": 0.8823529411764706,
+            "recall": 0.75,
+            "f1": 0.8108108108108107
+          },
+          {
+            "label": "STANDING",
+            "support": 20,
+            "precision": 0.782608695652174,
+            "recall": 0.9,
+            "f1": 0.8372093023255814
+          },
+          {
+            "label": "LAYING",
+            "support": 20,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          }
+        ]
+      }
+    },
+    "noise_sd0.25": {
+      "pytorch": {
+        "samples": 120,
+        "accuracy": 0.9083333333333333,
+        "macro_f1": 0.906409963174981,
+        "confusion_matrix": [
+          [
+            20,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            19,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            20,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            12,
+            8,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            2,
+            18,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            20
+          ]
+        ],
+        "per_class": [
+          {
+            "label": "WALKING",
+            "support": 20,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          {
+            "label": "WALKING_UPSTAIRS",
+            "support": 20,
+            "precision": 1.0,
+            "recall": 0.95,
+            "f1": 0.9743589743589743
+          },
+          {
+            "label": "WALKING_DOWNSTAIRS",
+            "support": 20,
+            "precision": 0.9523809523809523,
+            "recall": 1.0,
+            "f1": 0.975609756097561
+          },
+          {
+            "label": "SITTING",
+            "support": 20,
+            "precision": 0.8571428571428571,
+            "recall": 0.6,
+            "f1": 0.7058823529411764
+          },
+          {
+            "label": "STANDING",
+            "support": 20,
+            "precision": 0.6923076923076923,
+            "recall": 0.9,
+            "f1": 0.7826086956521738
+          },
+          {
+            "label": "LAYING",
+            "support": 20,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          }
+        ]
+      }
+    },
+    "missing_gyro": {
+      "pytorch": {
+        "samples": 120,
+        "accuracy": 0.7666666666666667,
+        "macro_f1": 0.754940877644696,
+        "confusion_matrix": [
+          [
+            7,
+            10,
+            1,
+            2,
+            0,
+            0
+          ],
+          [
+            0,
+            19,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            2,
+            18,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            15,
+            5,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            7,
+            13,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            20
+          ]
+        ],
+        "per_class": [
+          {
+            "label": "WALKING",
+            "support": 20,
+            "precision": 1.0,
+            "recall": 0.35,
+            "f1": 0.5185185185185185
+          },
+          {
+            "label": "WALKING_UPSTAIRS",
+            "support": 20,
+            "precision": 0.6129032258064516,
+            "recall": 0.95,
+            "f1": 0.7450980392156863
+          },
+          {
+            "label": "WALKING_DOWNSTAIRS",
+            "support": 20,
+            "precision": 0.9,
+            "recall": 0.9,
+            "f1": 0.9
+          },
+          {
+            "label": "SITTING",
+            "support": 20,
+            "precision": 0.625,
+            "recall": 0.75,
+            "f1": 0.6818181818181818
+          },
+          {
+            "label": "STANDING",
+            "support": 20,
+            "precision": 0.7222222222222222,
+            "recall": 0.65,
+            "f1": 0.6842105263157895
+          },
+          {
+            "label": "LAYING",
+            "support": 20,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          }
+        ]
+      }
+    }
+  }
+}

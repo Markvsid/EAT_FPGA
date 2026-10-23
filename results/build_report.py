@@ -30,7 +30,7 @@ def main():
         name = str(path.parent.relative_to("results/integer"))
         text.append(f"| {name} | {m['samples']} | {100 * m['integer']['accuracy']:.3f} | {100 * m['fake_quantized_batch1']['accuracy']:.3f} | {m['changed_predictions']} | {sum(m['saturations'].values())} |")
     text.extend(["", "## Outstanding evidence", "",
-                 "Full three-seed comparisons must finish before selecting modes. Test sets remain reserved. Hardware bring-up, RTL equivalence, synthesis, routed timing, resource utilization, measured latency/energy, and independent review are outstanding. Do not read software accuracy or schedule estimates as FPGA results.", ""])
+                 "The subsequent frozen held-out evaluation is documented in [Python test results](python_test_results.md), separately from these validation tables. Hardware bring-up, RTL equivalence, synthesis, routed timing, resource utilization, measured latency/energy, and independent review are outstanding. Do not read software accuracy or schedule estimates as FPGA results.", ""])
     Path("paper/current_results.md").write_text("\n".join(text))
 
 

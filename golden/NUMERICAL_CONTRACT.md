@@ -74,5 +74,9 @@ The validation harness stores input integers, every traced intermediate, logits,
 predictions, changed-prediction counts against batch-1 fake quantization, and
 saturation counts. Frozen scales, Q/K/V quantization, and integer nonlinear
 rounding introduce discrepancies from the original training model. These must
-be measured rather than described as exact PyTorch agreement. Final test and
-RTL/board comparisons remain separate gates.
+be measured rather than described as exact PyTorch agreement. Full-test software
+comparisons are now recorded in `paper/python_test_results.md`; RTL/board
+comparisons remain separate outstanding gates. `paper/python_numerical_findings.md`
+maps the discrepancy investigation to the controlling Word template. The frozen
+`results/python_study/evaluation_plan.json` fixes settings for software evaluation
+and does not declare the template's G2 numerical or hardware gate passed.

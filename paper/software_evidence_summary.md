@@ -1,6 +1,6 @@
 # Software evidence summary
 
-All values below are validation results. Test partitions remain reserved; no FPGA measurements exist.
+All values below are validation results. For the subsequent frozen held-out test study, see [Python test results](python_test_results.md). No FPGA measurements exist.
 
 ## Training and software validation
 

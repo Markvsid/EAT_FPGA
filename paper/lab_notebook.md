@@ -86,3 +86,64 @@ on the remote runner. All final test partitions remain reserved until mode and
 format selection is locked. Board access, Vivado, power acquisition, interface
 review, RTL, physical implementation, final novelty review, and independent
 manuscript review remain outstanding.
+
+## 2026 10 23 Frozen Python evaluation
+
+The current task is software testing on data. Re-read the controlling Word
+requirements for full-test numerical comparisons, error reporting and G2 before
+opening the held-out partitions. The existing dynamic fake-quantized training
+forward and calibrated integer forward have different contracts. A validation-only
+sequential counterfactual study on 256 examples per workload/mode, seed17, found
+changes from input quantization, fixed linear scales, QKV quantization and full
+integer arithmetic. These interacting changes were documented rather than
+silently presented as exact equivalence. No checkpoint or numerical export was
+modified and no further training occurred.
+
+Froze `results/python_study/evaluation_plan.json` at
+2026-10-23T16:11:05.298339+00:00, SHA256
+`2d1326e17103f00490601686bfe47689499b84afc33f344cc0fc013cedb535e0`.
+The plan fingerprints the controlling template, source files, data, checkpoints
+and exports. An older baseline manifest lacked `execution_mode`; its FP32 mode
+fallback was corrected before the plan was created and before test inference.
+
+Completed 54 full-test checkpoint/mode evaluations across all three seeds,
+including 27 integer comparisons over 152,091 repeated-seed example evaluations.
+Official test sets contain 2,947 HAR windows and 11,005 speech clips. The study
+covers original FP32, matched fine-tuned FP32, independent modes, HAR ablations
+and shared HAR modes. All test logits/labels are saved. No test-driven parameter,
+scale, checkpoint or mode selection was performed.
+
+Independent integer mean test accuracies are HAR 93.474/93.055/93.360 percent and
+speech 92.379/90.986/90.616 percent for Quality/Balanced/Energy-Saver. Matched
+fine-tuned FP32 controls average 93.881 and 92.440 percent. The strong validation
+RTS benefit does not carry over clearly: the held-out equal-retained-group
+comparison is +0.023 points and matched 20-token comparison +0.238 points, with
+large seed variation. Do not infer significance from three seeds.
+
+Full-test final-prediction agreement is about 98.5–98.9 percent, with larger HAR
+group-selection disagreement. Per-layer errors, changed choices, input clipping,
+saturation counts, first-input vectors and worst-final-logit-error vectors are
+stored. A subsequent validation-only scorer sensitivity diagnosis is explicitly
+labeled exploratory and post-test; it changes no frozen inference settings.
+G2 is not declared passed.
+
+Completed 30 robustness evaluations on the same 120 HAR and 350 speech examples
+across configurations and seeds. Gyro removal and 10 dB white noise expose clear
+weaknesses. Speech frontend reconstruction matches stored clean features exactly;
+noise causes 213/333 PCM-clipped values at 20/10 dB respectively over 5,600,000
+values per condition. The balanced subset is exploratory, not the full test set.
+
+Measured isolated batch1 CPU timing on Apple M3 Pro, one PyTorch thread, 20 warmups
+and 200 timed forward calls per implementation/checkpoint. Inputs are preloaded,
+preprocessed first 32 training windows. The integer reference includes checks,
+trace copies and native dot products; software timing is not an FPGA or A53
+baseline. There is one timing session and no frequency or thermal control.
+
+The evidence audit recomputes accuracy, F1, confusion matrices and per-class
+metrics from saved predictions, verifies labels/indices, hashes and timing samples,
+and passes all 54 test/27 integer/30 robustness evaluations. The 29 local unit tests
+pass. Accuracy, robustness and all eight confusion plots were visually inspected.
+Main report: `paper/python_test_results.md`; numerical findings:
+`paper/python_numerical_findings.md`. The manuscript, dataset documentation and
+completion checklist now distinguish held-out results from older validation
+snapshots. The original hardware and submission requirements remain outstanding.

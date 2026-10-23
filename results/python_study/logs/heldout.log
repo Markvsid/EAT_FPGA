@@ -1,0 +1,168 @@
+har_fp32_seed29 2000 / 2947
+har_fp32_seed43 2000 / 2947
+har_fp32_seed17 2000 / 2947
+har_fp32_seed17 complete
+har_fp32_seed29 complete
+har_fp32_seed43 complete
+har_fp32_control_seed17 2000 / 2947
+har_fp32_control_seed29 2000 / 2947
+har_fp32_control_seed43 2000 / 2947
+har_fp32_control_seed17 complete
+har_fp32_control_seed29 complete
+har_fp32_control_seed43 complete
+har_quality_seed17 2000 / 2947
+har_quality_seed43 2000 / 2947
+har_quality_seed29 2000 / 2947
+har_quality_seed17 complete
+har_quality_seed29 complete
+har_quality_seed43 complete
+har_balanced_seed17 2000 / 2947
+har_balanced_seed29 2000 / 2947
+har_balanced_seed43 2000 / 2947
+har_balanced_seed17 complete
+har_balanced_seed29 complete
+har_balanced_seed43 complete
+har_energy_saver_seed17 2000 / 2947
+har_energy_saver_seed29 2000 / 2947
+har_energy_saver_seed43 2000 / 2947
+har_energy_saver_seed17 complete
+har_energy_saver_seed29 complete
+har_dense_w4_seed17 2000 / 2947
+har_energy_saver_seed43 complete
+har_dense_w4_seed17 complete
+har_dense_w4_seed29 2000 / 2947
+har_dense_w4_seed43 2000 / 2947
+har_dense_w4_seed29 complete
+har_drop_keep6_seed17 2000 / 2947
+har_dense_w4_seed43 complete
+har_drop_keep6_seed17 complete
+har_drop_keep6_seed29 2000 / 2947
+har_drop_keep6_seed43 2000 / 2947
+har_drop_keep6_seed29 complete
+har_drop_keep4_seed17 2000 / 2947
+har_drop_keep6_seed43 complete
+har_drop_keep4_seed17 complete
+har_drop_keep4_seed29 2000 / 2947
+har_drop_keep4_seed43 2000 / 2947
+har_drop_keep4_seed29 complete
+har_drop_keep5_matched20_seed17 2000 / 2947
+har_drop_keep4_seed43 complete
+har_drop_keep5_matched20_seed17 complete
+har_drop_keep5_matched20_seed29 2000 / 2947
+har_drop_keep5_matched20_seed43 2000 / 2947
+har_drop_keep5_matched20_seed29 complete
+har_rts_keep4_seed17 2000 / 2947
+har_drop_keep5_matched20_seed43 complete
+har_rts_keep4_seed17 complete
+har_rts_keep4_seed29 2000 / 2947
+har_rts_keep4_seed29 complete
+har_rts_keep4_seed43 2000 / 2947
+har_rts_keep4_seed43 complete
+har_joint_energy_saver_seed17 2000 / 2947
+har_joint_balanced_seed17 2000 / 2947
+har_joint_quality_seed17 2000 / 2947
+har_joint_quality_seed17 complete
+har_joint_balanced_seed17 complete
+har_joint_energy_saver_seed17 complete
+har_joint_quality_seed29 2000 / 2947
+har_joint_energy_saver_seed29 2000 / 2947
+har_joint_quality_seed29 complete
+har_joint_balanced_seed29 2000 / 2947
+har_joint_balanced_seed29 complete
+har_joint_energy_saver_seed29 complete
+har_joint_quality_seed43 2000 / 2947
+har_joint_balanced_seed43 2000 / 2947
+har_joint_energy_saver_seed43 2000 / 2947
+speech_fp32_seed17 2000 / 11005
+speech_fp32_seed17 4000 / 11005
+har_joint_quality_seed43 complete
+speech_fp32_seed17 6000 / 11005
+speech_fp32_seed29 2000 / 11005
+speech_fp32_seed17 8000 / 11005
+har_joint_balanced_seed43 complete
+har_joint_energy_saver_seed43 complete
+speech_fp32_seed29 4000 / 11005
+speech_fp32_seed17 10000 / 11005
+speech_fp32_seed43 2000 / 11005
+speech_fp32_seed17 complete
+speech_fp32_seed29 6000 / 11005
+speech_fp32_seed43 4000 / 11005
+speech_fp32_seed29 8000 / 11005
+speech_fp32_control_seed17 2000 / 11005
+speech_fp32_seed43 6000 / 11005
+speech_fp32_seed29 10000 / 11005
+speech_fp32_control_seed17 4000 / 11005
+speech_fp32_seed29 complete
+speech_fp32_seed43 8000 / 11005
+speech_fp32_control_seed17 6000 / 11005
+speech_fp32_control_seed29 2000 / 11005
+speech_fp32_seed43 10000 / 11005
+speech_fp32_control_seed17 8000 / 11005
+speech_fp32_seed43 complete
+speech_fp32_control_seed29 4000 / 11005
+speech_fp32_control_seed17 10000 / 11005
+speech_fp32_control_seed29 6000 / 11005
+speech_fp32_control_seed17 complete
+speech_fp32_control_seed43 2000 / 11005
+speech_fp32_control_seed29 8000 / 11005
+speech_fp32_control_seed43 4000 / 11005
+speech_fp32_control_seed29 10000 / 11005
+speech_fp32_control_seed43 6000 / 11005
+speech_fp32_control_seed29 complete
+speech_fp32_control_seed43 8000 / 11005
+speech_fp32_control_seed43 10000 / 11005
+speech_fp32_control_seed43 complete
+speech_quality_seed17 2000 / 11005
+speech_quality_seed29 2000 / 11005
+speech_quality_seed43 2000 / 11005
+speech_quality_seed17 4000 / 11005
+speech_quality_seed29 4000 / 11005
+speech_quality_seed43 4000 / 11005
+speech_quality_seed17 6000 / 11005
+speech_quality_seed29 6000 / 11005
+speech_quality_seed43 6000 / 11005
+speech_quality_seed17 8000 / 11005
+speech_quality_seed29 8000 / 11005
+speech_quality_seed43 8000 / 11005
+speech_quality_seed17 10000 / 11005
+speech_quality_seed29 10000 / 11005
+speech_quality_seed43 10000 / 11005
+speech_quality_seed17 complete
+speech_quality_seed29 complete
+speech_quality_seed43 complete
+speech_balanced_seed17 2000 / 11005
+speech_balanced_seed29 2000 / 11005
+speech_balanced_seed43 2000 / 11005
+speech_balanced_seed17 4000 / 11005
+speech_balanced_seed29 4000 / 11005
+speech_balanced_seed43 4000 / 11005
+speech_balanced_seed17 6000 / 11005
+speech_balanced_seed29 6000 / 11005
+speech_balanced_seed43 6000 / 11005
+speech_balanced_seed17 8000 / 11005
+speech_balanced_seed29 8000 / 11005
+speech_balanced_seed43 8000 / 11005
+speech_balanced_seed17 10000 / 11005
+speech_balanced_seed29 10000 / 11005
+speech_balanced_seed43 10000 / 11005
+speech_balanced_seed17 complete
+speech_balanced_seed29 complete
+speech_balanced_seed43 complete
+speech_energy_saver_seed17 2000 / 11005
+speech_energy_saver_seed29 2000 / 11005
+speech_energy_saver_seed43 2000 / 11005
+speech_energy_saver_seed17 4000 / 11005
+speech_energy_saver_seed29 4000 / 11005
+speech_energy_saver_seed43 4000 / 11005
+speech_energy_saver_seed17 6000 / 11005
+speech_energy_saver_seed29 6000 / 11005
+speech_energy_saver_seed43 6000 / 11005
+speech_energy_saver_seed17 8000 / 11005
+speech_energy_saver_seed29 8000 / 11005
+speech_energy_saver_seed43 8000 / 11005
+speech_energy_saver_seed17 10000 / 11005
+speech_energy_saver_seed29 10000 / 11005
+speech_energy_saver_seed17 complete
+speech_energy_saver_seed43 10000 / 11005
+speech_energy_saver_seed29 complete
+speech_energy_saver_seed43 complete

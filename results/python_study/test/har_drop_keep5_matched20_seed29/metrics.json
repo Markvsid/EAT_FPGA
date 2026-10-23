@@ -1,0 +1,234 @@
+{
+  "partition": "test",
+  "name": "har_drop_keep5_matched20_seed29",
+  "dataset": "har",
+  "mode_name": "drop_keep5_matched20",
+  "seed": 29,
+  "samples": 2947,
+  "batch_size": 1,
+  "device": "cpu",
+  "checkpoint_sha256": "7939e497977e75b17ef889235c987f8b364fab93b6374c779c8e1677b59d4de6",
+  "evaluation_plan_sha256": "2d1326e17103f00490601686bfe47689499b84afc33f344cc0fc013cedb535e0",
+  "selected_epoch": 17,
+  "python": "3.12.13",
+  "torch": "2.14.1",
+  "numpy": "2.5.4",
+  "machine": "arm64",
+  "pytorch": {
+    "samples": 2947,
+    "accuracy": 0.9317950458092976,
+    "macro_f1": 0.9322544102631078,
+    "confusion_matrix": [
+      [
+        477,
+        5,
+        14,
+        0,
+        0,
+        0
+      ],
+      [
+        6,
+        443,
+        20,
+        2,
+        0,
+        0
+      ],
+      [
+        1,
+        1,
+        418,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        1,
+        392,
+        97,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        53,
+        479,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        537
+      ]
+    ],
+    "per_class": [
+      {
+        "label": "WALKING",
+        "support": 496,
+        "precision": 0.9855371900826446,
+        "recall": 0.9616935483870968,
+        "f1": 0.9734693877551021
+      },
+      {
+        "label": "WALKING_UPSTAIRS",
+        "support": 471,
+        "precision": 0.9844444444444445,
+        "recall": 0.940552016985138,
+        "f1": 0.9619978284473399
+      },
+      {
+        "label": "WALKING_DOWNSTAIRS",
+        "support": 420,
+        "precision": 0.9227373068432672,
+        "recall": 0.9952380952380953,
+        "f1": 0.9576174112256587
+      },
+      {
+        "label": "SITTING",
+        "support": 491,
+        "precision": 0.8769574944071589,
+        "recall": 0.7983706720977597,
+        "f1": 0.8358208955223881
+      },
+      {
+        "label": "STANDING",
+        "support": 532,
+        "precision": 0.8315972222222222,
+        "recall": 0.900375939849624,
+        "f1": 0.8646209386281589
+      },
+      {
+        "label": "LAYING",
+        "support": 537,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      }
+    ]
+  },
+  "executed_structure": {
+    "status": "analytical_uncalibrated_not_measured",
+    "sequence": 32,
+    "tokens_after_gate": 20,
+    "mode": {
+      "weight_bits": 4,
+      "keep_groups": 5,
+      "rts": false,
+      "exit_block": 4
+    },
+    "operators": [
+      {
+        "operator": "patch_embedding",
+        "tokens": 32,
+        "macs": 147456
+      },
+      {
+        "operator": "block1_projections",
+        "tokens": 32,
+        "macs": 2097152
+      },
+      {
+        "operator": "block1_attention_qk_av",
+        "tokens": 32,
+        "macs": 262144
+      },
+      {
+        "operator": "block1_ffn",
+        "tokens": 32,
+        "macs": 2097152
+      },
+      {
+        "operator": "block2_projections",
+        "tokens": 20,
+        "macs": 1310720
+      },
+      {
+        "operator": "block2_attention_qk_av",
+        "tokens": 20,
+        "macs": 102400
+      },
+      {
+        "operator": "block2_ffn",
+        "tokens": 20,
+        "macs": 1310720
+      },
+      {
+        "operator": "block3_projections",
+        "tokens": 20,
+        "macs": 1310720
+      },
+      {
+        "operator": "block3_attention_qk_av",
+        "tokens": 20,
+        "macs": 102400
+      },
+      {
+        "operator": "block3_ffn",
+        "tokens": 20,
+        "macs": 1310720
+      },
+      {
+        "operator": "block4_projections",
+        "tokens": 20,
+        "macs": 1310720
+      },
+      {
+        "operator": "block4_attention_qk_av",
+        "tokens": 20,
+        "macs": 102400
+      },
+      {
+        "operator": "block4_ffn",
+        "tokens": 20,
+        "macs": 1310720
+      },
+      {
+        "operator": "group_scorer",
+        "tokens": 32,
+        "macs": 4096
+      },
+      {
+        "operator": "classifier",
+        "tokens": 1,
+        "macs": 768
+      }
+    ],
+    "executed_macs": 12780288,
+    "executed_ops_mac_equals_two": 25560576,
+    "ideal_mac_cycle_lower_bound": 199692,
+    "assumed_mac_lanes": 64,
+    "payload_bytes_only": {
+      "encoder_matrix_weights": 262144,
+      "pingpong_int8_activations": 8192,
+      "qkv_int8": 12288,
+      "ffn_int8": 8192,
+      "online_attention_int32_state": 17408,
+      "materialized_int16_scores_comparison": 8192
+    },
+    "excluded_costs": [
+      "normalization",
+      "softmax",
+      "activation",
+      "residual additions",
+      "pooling",
+      "sorting and compaction",
+      "summary division",
+      "metadata",
+      "scales and biases",
+      "banking fragmentation",
+      "pipeline and memory stalls",
+      "DMA"
+    ]
+  },
+  "parameter_count": 539533,
+  "checkpoint_file_bytes": 2176261,
+  "predictions_sha256": "38891cfca99a12c2aa7384fc60609d8069988730082cfe001ef157a858e16851",
+  "evaluation_elapsed_seconds_not_inference_benchmark": 5.159742707386613
+}

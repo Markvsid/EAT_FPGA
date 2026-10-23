@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "evaluation_plan_sha256": "2d1326e17103f00490601686bfe47689499b84afc33f344cc0fc013cedb535e0",
+  "test_evaluations": 54,
+  "integer_comparisons": 27,
+  "robustness_evaluations": 30,
+  "checks": [
+    "frozen source/data/checkpoint/export SHA256",
+    "prediction SHA256",
+    "test labels and sample counts",
+    "accuracy/F1/per-class/confusion recomputation",
+    "integer prediction changes",
+    "robustness indices/labels/metrics/hashes",
+    "timing sample count and finite positive durations"
+  ]
+}

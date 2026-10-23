@@ -1,0 +1,229 @@
+{
+  "partition": "test",
+  "name": "har_fp32_seed29",
+  "dataset": "har",
+  "mode_name": "fp32",
+  "seed": 29,
+  "samples": 2947,
+  "batch_size": 1,
+  "device": "cpu",
+  "checkpoint_sha256": "b7fa845a83c79f3be7f38229e4a0fec8e8117b5691a06e475566fa1906241077",
+  "evaluation_plan_sha256": "2d1326e17103f00490601686bfe47689499b84afc33f344cc0fc013cedb535e0",
+  "selected_epoch": 20,
+  "python": "3.12.13",
+  "torch": "2.14.1",
+  "numpy": "2.5.4",
+  "machine": "arm64",
+  "pytorch": {
+    "samples": 2947,
+    "accuracy": 0.9345096708517137,
+    "macro_f1": 0.9353442802680204,
+    "confusion_matrix": [
+      [
+        484,
+        5,
+        7,
+        0,
+        0,
+        0
+      ],
+      [
+        4,
+        445,
+        22,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        419,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        2,
+        0,
+        416,
+        73,
+        0
+      ],
+      [
+        1,
+        2,
+        0,
+        76,
+        453,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        537
+      ]
+    ],
+    "per_class": [
+      {
+        "label": "WALKING",
+        "support": 496,
+        "precision": 0.9877551020408163,
+        "recall": 0.9758064516129032,
+        "f1": 0.9817444219066936
+      },
+      {
+        "label": "WALKING_UPSTAIRS",
+        "support": 471,
+        "precision": 0.9801762114537445,
+        "recall": 0.9447983014861996,
+        "f1": 0.9621621621621621
+      },
+      {
+        "label": "WALKING_DOWNSTAIRS",
+        "support": 420,
+        "precision": 0.9352678571428571,
+        "recall": 0.9976190476190476,
+        "f1": 0.9654377880184332
+      },
+      {
+        "label": "SITTING",
+        "support": 491,
+        "precision": 0.8455284552845529,
+        "recall": 0.8472505091649695,
+        "f1": 0.8463886063072229
+      },
+      {
+        "label": "STANDING",
+        "support": 532,
+        "precision": 0.8612167300380228,
+        "recall": 0.8515037593984962,
+        "f1": 0.8563327032136105
+      },
+      {
+        "label": "LAYING",
+        "support": 537,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      }
+    ]
+  },
+  "executed_structure": {
+    "status": "analytical_uncalibrated_not_measured",
+    "sequence": 32,
+    "tokens_after_gate": 32,
+    "mode": {
+      "weight_bits": 32,
+      "keep_groups": 8,
+      "rts": false,
+      "exit_block": 4
+    },
+    "operators": [
+      {
+        "operator": "patch_embedding",
+        "tokens": 32,
+        "macs": 147456
+      },
+      {
+        "operator": "block1_projections",
+        "tokens": 32,
+        "macs": 2097152
+      },
+      {
+        "operator": "block1_attention_qk_av",
+        "tokens": 32,
+        "macs": 262144
+      },
+      {
+        "operator": "block1_ffn",
+        "tokens": 32,
+        "macs": 2097152
+      },
+      {
+        "operator": "block2_projections",
+        "tokens": 32,
+        "macs": 2097152
+      },
+      {
+        "operator": "block2_attention_qk_av",
+        "tokens": 32,
+        "macs": 262144
+      },
+      {
+        "operator": "block2_ffn",
+        "tokens": 32,
+        "macs": 2097152
+      },
+      {
+        "operator": "block3_projections",
+        "tokens": 32,
+        "macs": 2097152
+      },
+      {
+        "operator": "block3_attention_qk_av",
+        "tokens": 32,
+        "macs": 262144
+      },
+      {
+        "operator": "block3_ffn",
+        "tokens": 32,
+        "macs": 2097152
+      },
+      {
+        "operator": "block4_projections",
+        "tokens": 32,
+        "macs": 2097152
+      },
+      {
+        "operator": "block4_attention_qk_av",
+        "tokens": 32,
+        "macs": 262144
+      },
+      {
+        "operator": "block4_ffn",
+        "tokens": 32,
+        "macs": 2097152
+      },
+      {
+        "operator": "classifier",
+        "tokens": 1,
+        "macs": 768
+      }
+    ],
+    "executed_macs": 17974016,
+    "executed_ops_mac_equals_two": 35948032,
+    "ideal_mac_cycle_lower_bound": 280844,
+    "assumed_mac_lanes": 64,
+    "payload_bytes_only": {
+      "encoder_matrix_weights": 2097152,
+      "pingpong_int8_activations": 8192,
+      "qkv_int8": 12288,
+      "ffn_int8": 8192,
+      "online_attention_int32_state": 17408,
+      "materialized_int16_scores_comparison": 8192
+    },
+    "excluded_costs": [
+      "normalization",
+      "softmax",
+      "activation",
+      "residual additions",
+      "pooling",
+      "sorting and compaction",
+      "summary division",
+      "metadata",
+      "scales and biases",
+      "banking fragmentation",
+      "pipeline and memory stalls",
+      "DMA"
+    ]
+  },
+  "parameter_count": 539533,
+  "checkpoint_file_bytes": 2172901,
+  "predictions_sha256": "e48ce6884a1d2b247a232d3e8c64dccbe2b2e672eddd1851516344010340abc4",
+  "evaluation_elapsed_seconds_not_inference_benchmark": 1.9284878354519606
+}

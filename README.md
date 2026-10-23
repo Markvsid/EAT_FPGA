@@ -14,6 +14,11 @@ binary export, attention verification, analytical scheduling, nonlinear sweeps,
 and power-log analysis. This is not a complete FPGA accelerator or submission-ready paper.
 See `paper/completion_checklist.md` for the required evidence and its status.
 
+The frozen Python study is documented in [Python test results](paper/python_test_results.md)
+and [Numerical discrepancy findings](paper/python_numerical_findings.md). It evaluates
+the saved models on the official held-out partitions, with three seeds, per-class
+metrics, integer comparisons, HAR ablations, robustness subsets and local CPU timings.
+
 ## Reproduce
 
 From this directory, with Python 3.12 and uv:
@@ -30,8 +35,8 @@ uv pip install --python .venv/bin/python -r requirements.txt
 
 Run independent FP32 training with seeds 17, 29, and 43. CPU uses deterministic
 algorithms. `--device mps` uses the local Apple GPU; exact determinism is not
-claimed for that backend. The test set is evaluated only with explicit
-`--final-test`, after validation has fixed the modes and protocol.
+claimed for that backend. Training uses validation-only selection; its optional
+`--final-test` switch is separate from the frozen evaluation runner below.
 
 Candidate fake-quantized fine-tuning is available as:
 
@@ -139,6 +144,25 @@ it does not establish Cortex-A53 performance or board power.
 
 `paper/software_evidence_summary.md` is the concise results overview.
 `paper/current_results.md` retains every completed software and integer row.
-The final test sets have not been used. The next external dependency is board
+The test sets are now used by the frozen Python evaluation, separately from
+model selection. The next external dependency for hardware work is board
 DMA/power bring-up and review of `architecture/interface_candidate.md` and
 `golden/NUMERICAL_CONTRACT.md`, followed by RTL and implemented measurements.
+
+## Frozen Python evaluation
+
+The existing `results/python_study/evaluation_plan.json` records the settings and
+artifact hashes fixed before test evaluation. Do not overwrite it or retune on
+these test results. With prepared data and the recorded inference sources:
+
+```sh
+.venv/bin/python -m model.python_study run --workers 3
+.venv/bin/python -m results.python_robustness
+# Finish all inference workers before measuring timing
+.venv/bin/python -m results.python_timing
+.venv/bin/python -m results.python_report
+```
+
+Matching completed evaluations are reused after checksum verification. The numerical
+formats remain candidates: an evaluation freeze is not the template's G2 approval.
+Python timings do not establish FPGA speed, energy savings, or an Arm baseline.

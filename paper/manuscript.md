@@ -227,8 +227,44 @@ floating baseline in batched validation, exceeding the one-point envelope used
 for the primary HAR workload. This is a task-specific limitation of the current
 mode family rather than evidence of equal quality across workloads.
 
-The final evaluation must add Speech Commands quality, bit-accurate and board
-prediction agreement, routed timing and resources, measured power and energy,
+### Held out Python study
+
+The subsequent study fixes the existing checkpoints, preprocessing, mode settings
+and training-calibrated scales before evaluating the official test partitions.
+It includes 54 checkpoint/mode evaluations, 27 full-test integer comparisons,
+30 robustness evaluations and local batch1 CPU timings. Full results, per-class
+errors, HAR ablations, numerical agreement, perturbation definitions and timing
+boundaries are documented in [Python test results](python_test_results.md).
+[Numerical findings](python_numerical_findings.md) map the discrepancy analysis
+to the controlling Word template. The software evaluation freeze does not declare
+G2 passed, and the test results are not used to select new settings.
+
+<!-- INTEGER_TEST_BEGIN -->
+| Workload | Configuration | Test accuracy percent |
+| --- | --- | --- |
+| har | fp32 (pytorch) | 93.259 ± 0.363 |
+| har | fp32_control (pytorch) | 93.881 ± 0.829 |
+| har | quality (integer) | 93.474 ± 0.255 |
+| har | balanced (integer) | 93.055 ± 0.553 |
+| har | energy_saver (integer) | 93.360 ± 0.207 |
+| speech | fp32 (pytorch) | 92.101 ± 0.274 |
+| speech | fp32_control (pytorch) | 92.440 ± 0.244 |
+| speech | quality (integer) | 92.379 ± 0.153 |
+| speech | balanced (integer) | 90.986 ± 0.238 |
+| speech | energy_saver (integer) | 90.616 ± 0.575 |
+<!-- INTEGER_TEST_END -->
+
+The validation RTS advantage is substantially smaller on held-out data. With
+the same retained group count, the paired mean gain is 0.023 percentage points;
+at a matched 20-token budget it is 0.238 points, with sample standard deviation
+0.791 across three seeds. These results do not establish a significant accuracy
+benefit. HAR token-group identities also change on about 39–45 percent of
+independent adaptive-mode integer comparisons, despite about 98.5–98.9 percent
+final-prediction agreement. Validation diagnosis finds small ranking margins
+and few exact ties; numerical stability of the execution path remains open.
+
+The final hardware evaluation must add board prediction agreement,
+routed timing and resources, measured power and energy,
 median and p95 latency, the same-board Arm baseline, and board ablations a–e.
 Each headline mechanism requires an attributable benefit and overhead. Whole-board
 energy is the primary measure; modeled or idle-subtracted energy must be labeled
@@ -238,7 +274,8 @@ training times or ideal MAC bounds.
 ## 9 Limitations and discussion
 
 Current results use software execution. Secondary-workload and controlled mode
-training are complete locally; the fixed-point reference is a validation candidate.
+training and the held-out Python study are complete locally; fixed-point formats
+remain candidates with documented differences from the trained forward pass.
 The accelerator, physical implementation, and energy evaluation are incomplete.
 Novelty is unresolved: the closest verified 2024 FPGA pruning design already
 fuses discarded tokens, so a standalone summary-on-FPGA claim is not supported.

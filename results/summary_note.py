@@ -10,7 +10,7 @@ from results.summarize import summarize
 def main():
     summary = summarize("results/runs")
     integer = json.loads(Path("results/integer_summary.json").read_text())
-    lines = ["# Software evidence summary", "", "All values below are validation results. Test partitions remain reserved; no FPGA measurements exist.", "",
+    lines = ["# Software evidence summary", "", "All values below are validation results. For the subsequent frozen held-out test study, see [Python test results](python_test_results.md). No FPGA measurements exist.", "",
              "## Training and software validation", "",
              "| Workload | Configuration | Seeds | Batched selection accuracy percent | Batch 1 accuracy percent |",
              "| --- | --- | --- | --- | --- |"]
