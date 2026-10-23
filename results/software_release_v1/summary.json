@@ -1,0 +1,768 @@
+{
+  "accuracy": [
+    {
+      "dataset": "har",
+      "family": "independent",
+      "mode": "balanced",
+      "partition": "test",
+      "accuracy_percent": 93.0550842664857,
+      "accuracy_sd_points": 0.5527334791480865,
+      "macro_f1": 0.9309979115183319,
+      "macro_f1_sd": 0.0050622424129187615
+    },
+    {
+      "dataset": "har",
+      "family": "independent",
+      "mode": "balanced",
+      "partition": "validation",
+      "accuracy_percent": 94.02400195934362,
+      "accuracy_sd_points": 1.966524924432605,
+      "macro_f1": 0.940306220814358,
+      "macro_f1_sd": 0.02159428929018697
+    },
+    {
+      "dataset": "har",
+      "family": "independent",
+      "mode": "energy_saver",
+      "partition": "test",
+      "accuracy_percent": 93.3604795837575,
+      "accuracy_sd_points": 0.20733291233823453,
+      "macro_f1": 0.9339670969886888,
+      "macro_f1_sd": 0.0018535750328705742
+    },
+    {
+      "dataset": "har",
+      "family": "independent",
+      "mode": "energy_saver",
+      "partition": "validation",
+      "accuracy_percent": 93.2157727161401,
+      "accuracy_sd_points": 1.479271993195345,
+      "macro_f1": 0.9308209724034141,
+      "macro_f1_sd": 0.016911790469625605
+    },
+    {
+      "dataset": "har",
+      "family": "independent",
+      "mode": "quality",
+      "partition": "test",
+      "accuracy_percent": 93.47358896052484,
+      "accuracy_sd_points": 0.2546845435855113,
+      "macro_f1": 0.9349160191069785,
+      "macro_f1_sd": 0.0024374673110598567
+    },
+    {
+      "dataset": "har",
+      "family": "independent",
+      "mode": "quality",
+      "partition": "validation",
+      "accuracy_percent": 93.53416605437181,
+      "accuracy_sd_points": 0.4090936343005171,
+      "macro_f1": 0.9341712164595599,
+      "macro_f1_sd": 0.005408955731912861
+    },
+    {
+      "dataset": "har",
+      "family": "shared",
+      "mode": "balanced",
+      "partition": "test",
+      "accuracy_percent": 92.9193530143649,
+      "accuracy_sd_points": 1.0260585428052564,
+      "macro_f1": 0.9293794224713094,
+      "macro_f1_sd": 0.01089215553791781
+    },
+    {
+      "dataset": "har",
+      "family": "shared",
+      "mode": "balanced",
+      "partition": "validation",
+      "accuracy_percent": 94.26891991182954,
+      "accuracy_sd_points": 1.2555479420011062,
+      "macro_f1": 0.9433250175799803,
+      "macro_f1_sd": 0.013429476926556832
+    },
+    {
+      "dataset": "har",
+      "family": "shared",
+      "mode": "energy_saver",
+      "partition": "test",
+      "accuracy_percent": 92.4442936319421,
+      "accuracy_sd_points": 0.6450210351491112,
+      "macro_f1": 0.9245571485459536,
+      "macro_f1_sd": 0.006610791966009517
+    },
+    {
+      "dataset": "har",
+      "family": "shared",
+      "mode": "energy_saver",
+      "partition": "validation",
+      "accuracy_percent": 91.96669115846191,
+      "accuracy_sd_points": 1.3394571554127173,
+      "macro_f1": 0.9191358697531871,
+      "macro_f1_sd": 0.014531491771626442
+    },
+    {
+      "dataset": "har",
+      "family": "shared",
+      "mode": "quality",
+      "partition": "test",
+      "accuracy_percent": 93.3604795837575,
+      "accuracy_sd_points": 0.6035209398011139,
+      "macro_f1": 0.933950748291501,
+      "macro_f1_sd": 0.006446640358295497
+    },
+    {
+      "dataset": "har",
+      "family": "shared",
+      "mode": "quality",
+      "partition": "validation",
+      "accuracy_percent": 94.14646093558657,
+      "accuracy_sd_points": 1.508185581027739,
+      "macro_f1": 0.9419292113018414,
+      "macro_f1_sd": 0.016830549682952035
+    },
+    {
+      "dataset": "speech",
+      "family": "independent",
+      "mode": "balanced",
+      "partition": "test",
+      "accuracy_percent": 90.99803119794032,
+      "accuracy_sd_points": 0.24674132187692158,
+      "macro_f1": 0.9007114719230387,
+      "macro_f1_sd": 0.0034093438068024617
+    },
+    {
+      "dataset": "speech",
+      "family": "independent",
+      "mode": "balanced",
+      "partition": "validation",
+      "accuracy_percent": 91.96807267140902,
+      "accuracy_sd_points": 0.18752823887207704,
+      "macro_f1": 0.912790738299567,
+      "macro_f1_sd": 0.0028750598713168955
+    },
+    {
+      "dataset": "speech",
+      "family": "independent",
+      "mode": "energy_saver",
+      "partition": "test",
+      "accuracy_percent": 90.58609722853248,
+      "accuracy_sd_points": 0.5181854585873062,
+      "macro_f1": 0.8957376481273491,
+      "macro_f1_sd": 0.005307071487099191
+    },
+    {
+      "dataset": "speech",
+      "family": "independent",
+      "mode": "energy_saver",
+      "partition": "validation",
+      "accuracy_percent": 91.56731122466019,
+      "accuracy_sd_points": 0.19895629707920381,
+      "macro_f1": 0.9071357368965898,
+      "macro_f1_sd": 0.003107105424027866
+    },
+    {
+      "dataset": "speech",
+      "family": "independent",
+      "mode": "quality",
+      "partition": "test",
+      "accuracy_percent": 92.3277298197789,
+      "accuracy_sd_points": 0.10333922222766379,
+      "macro_f1": 0.9142907275598087,
+      "macro_f1_sd": 0.001432699094557393
+    },
+    {
+      "dataset": "speech",
+      "family": "independent",
+      "mode": "quality",
+      "partition": "validation",
+      "accuracy_percent": 93.05680793507665,
+      "accuracy_sd_points": 0.21418253007145946,
+      "macro_f1": 0.9229880707408626,
+      "macro_f1_sd": 0.0017579095009268941
+    }
+  ],
+  "robustness": [
+    {
+      "dataset": "har",
+      "family": "baseline",
+      "mode": "fp32",
+      "condition": "clean",
+      "accuracy_percent": 91.11111111111111,
+      "accuracy_sd_points": 2.678791878053595,
+      "paired_delta_vs_clean_points": 0.0,
+      "paired_delta_sd_points": 0.0
+    },
+    {
+      "dataset": "har",
+      "family": "baseline",
+      "mode": "fp32",
+      "condition": "missing_gyro",
+      "accuracy_percent": 83.33333333333334,
+      "accuracy_sd_points": 4.166666666666669,
+      "paired_delta_vs_clean_points": -7.7777777777777795,
+      "paired_delta_sd_points": 2.6787918780536013
+    },
+    {
+      "dataset": "har",
+      "family": "baseline",
+      "mode": "fp32",
+      "condition": "noise_sd0.1",
+      "accuracy_percent": 92.22222222222221,
+      "accuracy_sd_points": 2.4056261216234387,
+      "paired_delta_vs_clean_points": 1.1111111111111072,
+      "paired_delta_sd_points": 0.48112522432468646
+    },
+    {
+      "dataset": "har",
+      "family": "baseline",
+      "mode": "fp32",
+      "condition": "noise_sd0.25",
+      "accuracy_percent": 90.55555555555556,
+      "accuracy_sd_points": 2.097176232019656,
+      "paired_delta_vs_clean_points": -0.5555555555555574,
+      "paired_delta_sd_points": 1.2729376930432856
+    },
+    {
+      "dataset": "har",
+      "family": "baseline",
+      "mode": "fp32_control",
+      "condition": "clean",
+      "accuracy_percent": 91.66666666666666,
+      "accuracy_sd_points": 2.8867513459481313,
+      "paired_delta_vs_clean_points": 0.0,
+      "paired_delta_sd_points": 0.0
+    },
+    {
+      "dataset": "har",
+      "family": "baseline",
+      "mode": "fp32_control",
+      "condition": "missing_gyro",
+      "accuracy_percent": 80.55555555555557,
+      "accuracy_sd_points": 4.1943524640393015,
+      "paired_delta_vs_clean_points": -11.111111111111109,
+      "paired_delta_sd_points": 6.938886664887107
+    },
+    {
+      "dataset": "har",
+      "family": "baseline",
+      "mode": "fp32_control",
+      "condition": "noise_sd0.1",
+      "accuracy_percent": 92.5,
+      "accuracy_sd_points": 1.4433756729740657,
+      "paired_delta_vs_clean_points": 0.833333333333334,
+      "paired_delta_sd_points": 1.4433756729740659
+    },
+    {
+      "dataset": "har",
+      "family": "baseline",
+      "mode": "fp32_control",
+      "condition": "noise_sd0.25",
+      "accuracy_percent": 90.55555555555556,
+      "accuracy_sd_points": 0.48112522432468646,
+      "paired_delta_vs_clean_points": -1.1111111111111107,
+      "paired_delta_sd_points": 3.154949081000154
+    },
+    {
+      "dataset": "har",
+      "family": "independent",
+      "mode": "balanced",
+      "condition": "clean",
+      "accuracy_percent": 92.22222222222221,
+      "accuracy_sd_points": 1.7347216662217773,
+      "paired_delta_vs_clean_points": 0.0,
+      "paired_delta_sd_points": 0.0
+    },
+    {
+      "dataset": "har",
+      "family": "independent",
+      "mode": "balanced",
+      "condition": "missing_gyro",
+      "accuracy_percent": 83.88888888888889,
+      "accuracy_sd_points": 1.924500897298752,
+      "paired_delta_vs_clean_points": -8.333333333333332,
+      "paired_delta_sd_points": 2.2047927592204903
+    },
+    {
+      "dataset": "har",
+      "family": "independent",
+      "mode": "balanced",
+      "condition": "noise_sd0.1",
+      "accuracy_percent": 93.33333333333333,
+      "accuracy_sd_points": 1.6666666666666663,
+      "paired_delta_vs_clean_points": 1.1111111111111107,
+      "paired_delta_sd_points": 0.4811252243246928
+    },
+    {
+      "dataset": "har",
+      "family": "independent",
+      "mode": "balanced",
+      "condition": "noise_sd0.25",
+      "accuracy_percent": 90.27777777777779,
+      "accuracy_sd_points": 0.48112522432468646,
+      "paired_delta_vs_clean_points": -1.9444444444444413,
+      "paired_delta_sd_points": 1.924500897298752
+    },
+    {
+      "dataset": "har",
+      "family": "independent",
+      "mode": "energy_saver",
+      "condition": "clean",
+      "accuracy_percent": 91.38888888888889,
+      "accuracy_sd_points": 0.9622504486493794,
+      "paired_delta_vs_clean_points": 0.0,
+      "paired_delta_sd_points": 0.0
+    },
+    {
+      "dataset": "har",
+      "family": "independent",
+      "mode": "energy_saver",
+      "condition": "missing_gyro",
+      "accuracy_percent": 79.44444444444444,
+      "accuracy_sd_points": 2.0971762320196508,
+      "paired_delta_vs_clean_points": -11.944444444444446,
+      "paired_delta_sd_points": 2.405626121623442
+    },
+    {
+      "dataset": "har",
+      "family": "independent",
+      "mode": "energy_saver",
+      "condition": "noise_sd0.1",
+      "accuracy_percent": 92.50000000000001,
+      "accuracy_sd_points": 1.6666666666666663,
+      "paired_delta_vs_clean_points": 1.1111111111111107,
+      "paired_delta_sd_points": 0.962250448649376
+    },
+    {
+      "dataset": "har",
+      "family": "independent",
+      "mode": "energy_saver",
+      "condition": "noise_sd0.25",
+      "accuracy_percent": 89.44444444444444,
+      "accuracy_sd_points": 1.2729376930432892,
+      "paired_delta_vs_clean_points": -1.9444444444444449,
+      "paired_delta_sd_points": 1.7347216662217773
+    },
+    {
+      "dataset": "har",
+      "family": "independent",
+      "mode": "quality",
+      "condition": "clean",
+      "accuracy_percent": 92.5,
+      "accuracy_sd_points": 1.6666666666666663,
+      "paired_delta_vs_clean_points": 0.0,
+      "paired_delta_sd_points": 0.0
+    },
+    {
+      "dataset": "har",
+      "family": "independent",
+      "mode": "quality",
+      "condition": "missing_gyro",
+      "accuracy_percent": 84.44444444444444,
+      "accuracy_sd_points": 2.5458753860865797,
+      "paired_delta_vs_clean_points": -8.055555555555555,
+      "paired_delta_sd_points": 1.924500897298752
+    },
+    {
+      "dataset": "har",
+      "family": "independent",
+      "mode": "quality",
+      "condition": "noise_sd0.1",
+      "accuracy_percent": 92.77777777777777,
+      "accuracy_sd_points": 2.4056261216234387,
+      "paired_delta_vs_clean_points": 0.2777777777777768,
+      "paired_delta_sd_points": 1.2729376930432845
+    },
+    {
+      "dataset": "har",
+      "family": "independent",
+      "mode": "quality",
+      "condition": "noise_sd0.25",
+      "accuracy_percent": 90.55555555555556,
+      "accuracy_sd_points": 1.2729376930432845,
+      "paired_delta_vs_clean_points": -1.9444444444444449,
+      "paired_delta_sd_points": 1.2729376930432856
+    },
+    {
+      "dataset": "har",
+      "family": "shared",
+      "mode": "balanced",
+      "condition": "clean",
+      "accuracy_percent": 93.05555555555557,
+      "accuracy_sd_points": 2.5458753860865797,
+      "paired_delta_vs_clean_points": 0.0,
+      "paired_delta_sd_points": 0.0
+    },
+    {
+      "dataset": "har",
+      "family": "shared",
+      "mode": "balanced",
+      "condition": "missing_gyro",
+      "accuracy_percent": 83.33333333333334,
+      "accuracy_sd_points": 3.6324157862838944,
+      "paired_delta_vs_clean_points": -9.722222222222229,
+      "paired_delta_sd_points": 3.7577081273524153
+    },
+    {
+      "dataset": "har",
+      "family": "shared",
+      "mode": "balanced",
+      "condition": "noise_sd0.1",
+      "accuracy_percent": 93.05555555555554,
+      "accuracy_sd_points": 2.4056261216234454,
+      "paired_delta_vs_clean_points": -3.700743415417188e-15,
+      "paired_delta_sd_points": 0.8333333333333359
+    },
+    {
+      "dataset": "har",
+      "family": "shared",
+      "mode": "balanced",
+      "condition": "noise_sd0.25",
+      "accuracy_percent": 90.83333333333333,
+      "accuracy_sd_points": 0.8333333333333304,
+      "paired_delta_vs_clean_points": -2.2222222222222254,
+      "paired_delta_sd_points": 1.7347216662217817
+    },
+    {
+      "dataset": "har",
+      "family": "shared",
+      "mode": "energy_saver",
+      "condition": "clean",
+      "accuracy_percent": 92.50000000000001,
+      "accuracy_sd_points": 1.6666666666666663,
+      "paired_delta_vs_clean_points": 0.0,
+      "paired_delta_sd_points": 0.0
+    },
+    {
+      "dataset": "har",
+      "family": "shared",
+      "mode": "energy_saver",
+      "condition": "missing_gyro",
+      "accuracy_percent": 83.61111111111111,
+      "accuracy_sd_points": 4.738533919231106,
+      "paired_delta_vs_clean_points": -8.888888888888891,
+      "paired_delta_sd_points": 5.422005915539763
+    },
+    {
+      "dataset": "har",
+      "family": "shared",
+      "mode": "energy_saver",
+      "condition": "noise_sd0.1",
+      "accuracy_percent": 91.94444444444444,
+      "accuracy_sd_points": 1.2729376930432905,
+      "paired_delta_vs_clean_points": -0.5555555555555574,
+      "paired_delta_sd_points": 1.2729376930432892
+    },
+    {
+      "dataset": "har",
+      "family": "shared",
+      "mode": "energy_saver",
+      "condition": "noise_sd0.25",
+      "accuracy_percent": 89.72222222222221,
+      "accuracy_sd_points": 1.2729376930432905,
+      "paired_delta_vs_clean_points": -2.777777777777779,
+      "paired_delta_sd_points": 1.7347216662217817
+    },
+    {
+      "dataset": "har",
+      "family": "shared",
+      "mode": "quality",
+      "condition": "clean",
+      "accuracy_percent": 93.61111111111113,
+      "accuracy_sd_points": 1.924500897298752,
+      "paired_delta_vs_clean_points": 0.0,
+      "paired_delta_sd_points": 0.0
+    },
+    {
+      "dataset": "har",
+      "family": "shared",
+      "mode": "quality",
+      "condition": "missing_gyro",
+      "accuracy_percent": 83.88888888888889,
+      "accuracy_sd_points": 4.1107357185968745,
+      "paired_delta_vs_clean_points": -9.722222222222229,
+      "paired_delta_sd_points": 3.367876570272817
+    },
+    {
+      "dataset": "har",
+      "family": "shared",
+      "mode": "quality",
+      "condition": "noise_sd0.1",
+      "accuracy_percent": 93.61111111111113,
+      "accuracy_sd_points": 2.0971762320196565,
+      "paired_delta_vs_clean_points": -3.700743415417188e-15,
+      "paired_delta_sd_points": 0.8333333333333359
+    },
+    {
+      "dataset": "har",
+      "family": "shared",
+      "mode": "quality",
+      "condition": "noise_sd0.25",
+      "accuracy_percent": 91.66666666666666,
+      "accuracy_sd_points": 0.8333333333333359,
+      "paired_delta_vs_clean_points": -1.9444444444444486,
+      "paired_delta_sd_points": 2.097176232019656
+    },
+    {
+      "dataset": "speech",
+      "family": "baseline",
+      "mode": "fp32",
+      "condition": "clean",
+      "accuracy_percent": 90.57142857142857,
+      "accuracy_sd_points": 1.030157507275427,
+      "paired_delta_vs_clean_points": 0.0,
+      "paired_delta_sd_points": 0.0
+    },
+    {
+      "dataset": "speech",
+      "family": "baseline",
+      "mode": "fp32",
+      "condition": "gain0.5",
+      "accuracy_percent": 90.85714285714285,
+      "accuracy_sd_points": 0.494871659305393,
+      "paired_delta_vs_clean_points": 0.2857142857142855,
+      "paired_delta_sd_points": 0.5714285714285727
+    },
+    {
+      "dataset": "speech",
+      "family": "baseline",
+      "mode": "fp32",
+      "condition": "snr10",
+      "accuracy_percent": 65.80952380952381,
+      "accuracy_sd_points": 1.8145294174531121,
+      "paired_delta_vs_clean_points": -24.76190476190476,
+      "paired_delta_sd_points": 2.81879020703786
+    },
+    {
+      "dataset": "speech",
+      "family": "baseline",
+      "mode": "fp32",
+      "condition": "snr20",
+      "accuracy_percent": 83.04761904761905,
+      "accuracy_sd_points": 0.8247860988423195,
+      "paired_delta_vs_clean_points": -7.523809523809522,
+      "paired_delta_sd_points": 0.3299144395369298
+    },
+    {
+      "dataset": "speech",
+      "family": "baseline",
+      "mode": "fp32_control",
+      "condition": "clean",
+      "accuracy_percent": 91.23809523809524,
+      "accuracy_sd_points": 0.5947617141331817,
+      "paired_delta_vs_clean_points": 0.0,
+      "paired_delta_sd_points": 0.0
+    },
+    {
+      "dataset": "speech",
+      "family": "baseline",
+      "mode": "fp32_control",
+      "condition": "gain0.5",
+      "accuracy_percent": 90.76190476190476,
+      "accuracy_sd_points": 1.1547005383792543,
+      "paired_delta_vs_clean_points": -0.4761904761904745,
+      "paired_delta_sd_points": 0.6598288790738596
+    },
+    {
+      "dataset": "speech",
+      "family": "baseline",
+      "mode": "fp32_control",
+      "condition": "snr10",
+      "accuracy_percent": 67.90476190476191,
+      "accuracy_sd_points": 2.1633936555429645,
+      "paired_delta_vs_clean_points": -23.333333333333332,
+      "paired_delta_sd_points": 2.5608246970950055
+    },
+    {
+      "dataset": "speech",
+      "family": "baseline",
+      "mode": "fp32_control",
+      "condition": "snr20",
+      "accuracy_percent": 82.76190476190477,
+      "accuracy_sd_points": 0.918442929618375,
+      "paired_delta_vs_clean_points": -8.476190476190474,
+      "paired_delta_sd_points": 1.1547005383792486
+    },
+    {
+      "dataset": "speech",
+      "family": "independent",
+      "mode": "balanced",
+      "condition": "clean",
+      "accuracy_percent": 88.95238095238095,
+      "accuracy_sd_points": 1.081696827771481,
+      "paired_delta_vs_clean_points": 0.0,
+      "paired_delta_sd_points": 0.0
+    },
+    {
+      "dataset": "speech",
+      "family": "independent",
+      "mode": "balanced",
+      "condition": "gain0.5",
+      "accuracy_percent": 89.04761904761905,
+      "accuracy_sd_points": 1.4093951035189256,
+      "paired_delta_vs_clean_points": 0.09523809523810009,
+      "paired_delta_sd_points": 0.32991443953692656
+    },
+    {
+      "dataset": "speech",
+      "family": "independent",
+      "mode": "balanced",
+      "condition": "snr10",
+      "accuracy_percent": 63.42857142857142,
+      "accuracy_sd_points": 1.2453996981544804,
+      "paired_delta_vs_clean_points": -25.523809523809522,
+      "paired_delta_sd_points": 1.1895234282663634
+    },
+    {
+      "dataset": "speech",
+      "family": "independent",
+      "mode": "balanced",
+      "condition": "snr20",
+      "accuracy_percent": 79.42857142857143,
+      "accuracy_sd_points": 0.494871659305393,
+      "paired_delta_vs_clean_points": -9.523809523809517,
+      "paired_delta_sd_points": 1.5735915849388862
+    },
+    {
+      "dataset": "speech",
+      "family": "independent",
+      "mode": "energy_saver",
+      "condition": "clean",
+      "accuracy_percent": 89.52380952380952,
+      "accuracy_sd_points": 0.43643578047198517,
+      "paired_delta_vs_clean_points": 0.0,
+      "paired_delta_sd_points": 0.0
+    },
+    {
+      "dataset": "speech",
+      "family": "independent",
+      "mode": "energy_saver",
+      "condition": "gain0.5",
+      "accuracy_percent": 89.52380952380952,
+      "accuracy_sd_points": 0.5947617141331817,
+      "paired_delta_vs_clean_points": 0.0,
+      "paired_delta_sd_points": 0.28571428571428914
+    },
+    {
+      "dataset": "speech",
+      "family": "independent",
+      "mode": "energy_saver",
+      "condition": "snr10",
+      "accuracy_percent": 61.904761904761905,
+      "accuracy_sd_points": 3.836807062568319,
+      "paired_delta_vs_clean_points": -27.61904761904762,
+      "paired_delta_sd_points": 4.133816078897272
+    },
+    {
+      "dataset": "speech",
+      "family": "independent",
+      "mode": "energy_saver",
+      "condition": "snr20",
+      "accuracy_percent": 79.71428571428572,
+      "accuracy_sd_points": 1.428571428571429,
+      "paired_delta_vs_clean_points": -9.809523809523812,
+      "paired_delta_sd_points": 1.8589734567564895
+    },
+    {
+      "dataset": "speech",
+      "family": "independent",
+      "mode": "quality",
+      "condition": "clean",
+      "accuracy_percent": 91.04761904761904,
+      "accuracy_sd_points": 1.3502330360721733,
+      "paired_delta_vs_clean_points": 0.0,
+      "paired_delta_sd_points": 0.0
+    },
+    {
+      "dataset": "speech",
+      "family": "independent",
+      "mode": "quality",
+      "condition": "gain0.5",
+      "accuracy_percent": 90.57142857142857,
+      "accuracy_sd_points": 1.2453996981544804,
+      "paired_delta_vs_clean_points": -0.4761904761904745,
+      "paired_delta_sd_points": 0.43643578047198395
+    },
+    {
+      "dataset": "speech",
+      "family": "independent",
+      "mode": "quality",
+      "condition": "snr10",
+      "accuracy_percent": 67.23809523809523,
+      "accuracy_sd_points": 2.379046856532724,
+      "paired_delta_vs_clean_points": -23.80952380952381,
+      "paired_delta_sd_points": 3.7289089429432183
+    },
+    {
+      "dataset": "speech",
+      "family": "independent",
+      "mode": "quality",
+      "condition": "snr20",
+      "accuracy_percent": 82.95238095238095,
+      "accuracy_sd_points": 0.6598288790738596,
+      "paired_delta_vs_clean_points": -8.095238095238093,
+      "paired_delta_sd_points": 0.7190318509781642
+    }
+  ],
+  "storage": [
+    {
+      "family": "independent",
+      "seed": 17,
+      "unique_checkpoints": 3,
+      "unique_fp32_parameter_bytes": 6474396,
+      "checkpoint_file_bytes": 6529167,
+      "all_constant_container_bytes": 1328624,
+      "deduplicated_constant_container_bytes": 1246544,
+      "hardware_banking_proven": false
+    },
+    {
+      "family": "independent",
+      "seed": 29,
+      "unique_checkpoints": 3,
+      "unique_fp32_parameter_bytes": 6474396,
+      "checkpoint_file_bytes": 6529167,
+      "all_constant_container_bytes": 1327280,
+      "deduplicated_constant_container_bytes": 1245200,
+      "hardware_banking_proven": false
+    },
+    {
+      "family": "independent",
+      "seed": 43,
+      "unique_checkpoints": 3,
+      "unique_fp32_parameter_bytes": 6474396,
+      "checkpoint_file_bytes": 6529167,
+      "all_constant_container_bytes": 1327280,
+      "deduplicated_constant_container_bytes": 1245200,
+      "hardware_banking_proven": false
+    },
+    {
+      "family": "shared",
+      "seed": 17,
+      "unique_checkpoints": 1,
+      "unique_fp32_parameter_bytes": 2158132,
+      "checkpoint_file_bytes": 2176709,
+      "all_constant_container_bytes": 1327280,
+      "deduplicated_constant_container_bytes": 997056,
+      "hardware_banking_proven": false
+    },
+    {
+      "family": "shared",
+      "seed": 29,
+      "unique_checkpoints": 1,
+      "unique_fp32_parameter_bytes": 2158132,
+      "checkpoint_file_bytes": 2176709,
+      "all_constant_container_bytes": 1327280,
+      "deduplicated_constant_container_bytes": 997056,
+      "hardware_banking_proven": false
+    },
+    {
+      "family": "shared",
+      "seed": 43,
+      "unique_checkpoints": 1,
+      "unique_fp32_parameter_bytes": 2158132,
+      "checkpoint_file_bytes": 2176709,
+      "all_constant_container_bytes": 1327280,
+      "deduplicated_constant_container_bytes": 997056,
+      "hardware_banking_proven": false
+    }
+  ]
+}

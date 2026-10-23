@@ -1,0 +1,322 @@
+{
+  "integer": {
+    "samples": 2947,
+    "accuracy": 0.9246691550729556,
+    "macro_f1": 0.92489886607454,
+    "confusion_matrix": [
+      [
+        482,
+        2,
+        12,
+        0,
+        0,
+        0
+      ],
+      [
+        25,
+        427,
+        18,
+        1,
+        0,
+        0
+      ],
+      [
+        3,
+        11,
+        406,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        3,
+        0,
+        438,
+        50,
+        0
+      ],
+      [
+        2,
+        0,
+        0,
+        95,
+        435,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        537
+      ]
+    ],
+    "per_class": [
+      {
+        "label": "WALKING",
+        "support": 496,
+        "precision": 0.94140625,
+        "recall": 0.9717741935483871,
+        "f1": 0.9563492063492065
+      },
+      {
+        "label": "WALKING_UPSTAIRS",
+        "support": 471,
+        "precision": 0.963882618510158,
+        "recall": 0.9065817409766455,
+        "f1": 0.9343544857768052
+      },
+      {
+        "label": "WALKING_DOWNSTAIRS",
+        "support": 420,
+        "precision": 0.9311926605504587,
+        "recall": 0.9666666666666667,
+        "f1": 0.9485981308411215
+      },
+      {
+        "label": "SITTING",
+        "support": 491,
+        "precision": 0.8202247191011236,
+        "recall": 0.8920570264765784,
+        "f1": 0.8546341463414634
+      },
+      {
+        "label": "STANDING",
+        "support": 532,
+        "precision": 0.8969072164948454,
+        "recall": 0.8176691729323309,
+        "f1": 0.8554572271386431
+      },
+      {
+        "label": "LAYING",
+        "support": 537,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      }
+    ]
+  },
+  "aligned": {
+    "samples": 2947,
+    "accuracy": 0.9246691550729556,
+    "macro_f1": 0.92489886607454,
+    "confusion_matrix": [
+      [
+        482,
+        2,
+        12,
+        0,
+        0,
+        0
+      ],
+      [
+        25,
+        427,
+        18,
+        1,
+        0,
+        0
+      ],
+      [
+        3,
+        11,
+        406,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        3,
+        0,
+        438,
+        50,
+        0
+      ],
+      [
+        2,
+        0,
+        0,
+        95,
+        435,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        537
+      ]
+    ],
+    "per_class": [
+      {
+        "label": "WALKING",
+        "support": 496,
+        "precision": 0.94140625,
+        "recall": 0.9717741935483871,
+        "f1": 0.9563492063492065
+      },
+      {
+        "label": "WALKING_UPSTAIRS",
+        "support": 471,
+        "precision": 0.963882618510158,
+        "recall": 0.9065817409766455,
+        "f1": 0.9343544857768052
+      },
+      {
+        "label": "WALKING_DOWNSTAIRS",
+        "support": 420,
+        "precision": 0.9311926605504587,
+        "recall": 0.9666666666666667,
+        "f1": 0.9485981308411215
+      },
+      {
+        "label": "SITTING",
+        "support": 491,
+        "precision": 0.8202247191011236,
+        "recall": 0.8920570264765784,
+        "f1": 0.8546341463414634
+      },
+      {
+        "label": "STANDING",
+        "support": 532,
+        "precision": 0.8969072164948454,
+        "recall": 0.8176691729323309,
+        "f1": 0.8554572271386431
+      },
+      {
+        "label": "LAYING",
+        "support": 537,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      }
+    ]
+  },
+  "maximum_integer_error": 0,
+  "changed_predictions": 0,
+  "changed_group_choices": 0,
+  "trace_point_examples": {
+    "embedding.input_int8": 2947,
+    "embedding.accumulator": 2947,
+    "embedding": 2947,
+    "position_added": 2947,
+    "blocks.0.norm1": 2947,
+    "blocks.0.qkv.input_int8": 2947,
+    "blocks.0.qkv.accumulator": 2947,
+    "blocks.0.qkv": 2947,
+    "blocks.0.q": 2947,
+    "blocks.0.k": 2947,
+    "blocks.0.v": 2947,
+    "blocks.0.attention": 2947,
+    "blocks.0.projection.input_int8": 2947,
+    "blocks.0.projection.accumulator": 2947,
+    "blocks.0.projection": 2947,
+    "blocks.0.residual1": 2947,
+    "blocks.0.norm2": 2947,
+    "blocks.0.fc1.input_int8": 2947,
+    "blocks.0.fc1.accumulator": 2947,
+    "blocks.0.fc1": 2947,
+    "blocks.0.activation": 2947,
+    "blocks.0.fc2.input_int8": 2947,
+    "blocks.0.fc2.accumulator": 2947,
+    "blocks.0.fc2": 2947,
+    "blocks.0.residual2": 2947,
+    "gate.scorer.input_int8": 2947,
+    "gate.scorer.accumulator": 2947,
+    "gate.scorer": 2947,
+    "gate.group_sums": 2947,
+    "gate.selected_groups": 2947,
+    "gate.compacted": 2947,
+    "blocks.1.norm1": 2947,
+    "blocks.1.qkv.input_int8": 2947,
+    "blocks.1.qkv.accumulator": 2947,
+    "blocks.1.qkv": 2947,
+    "blocks.1.q": 2947,
+    "blocks.1.k": 2947,
+    "blocks.1.v": 2947,
+    "blocks.1.attention": 2947,
+    "blocks.1.projection.input_int8": 2947,
+    "blocks.1.projection.accumulator": 2947,
+    "blocks.1.projection": 2947,
+    "blocks.1.residual1": 2947,
+    "blocks.1.norm2": 2947,
+    "blocks.1.fc1.input_int8": 2947,
+    "blocks.1.fc1.accumulator": 2947,
+    "blocks.1.fc1": 2947,
+    "blocks.1.activation": 2947,
+    "blocks.1.fc2.input_int8": 2947,
+    "blocks.1.fc2.accumulator": 2947,
+    "blocks.1.fc2": 2947,
+    "blocks.1.residual2": 2947,
+    "norm": 2947,
+    "pooled": 2947,
+    "exit_classifier.input_int8": 2947,
+    "exit_classifier.accumulator": 2947,
+    "exit_classifier": 2947
+  },
+  "input_clipped_values": 0,
+  "saturations": {
+    "embedding.input_int8": 0,
+    "embedding": 0,
+    "position_added": 0,
+    "blocks.0.norm1": 0,
+    "blocks.0.qkv.input_int8": 0,
+    "blocks.0.qkv": 0,
+    "blocks.0.q.int8": 0,
+    "blocks.0.k.int8": 0,
+    "blocks.0.v.int8": 0,
+    "blocks.0.attention": 0,
+    "blocks.0.projection.input_int8": 0,
+    "blocks.0.projection": 0,
+    "blocks.0.residual1": 0,
+    "blocks.0.norm2": 0,
+    "blocks.0.fc1.input_int8": 0,
+    "blocks.0.fc1": 0,
+    "blocks.0.activation": 0,
+    "blocks.0.fc2.input_int8": 0,
+    "blocks.0.fc2": 0,
+    "blocks.0.residual2": 0,
+    "gate.scorer.input_int8": 0,
+    "gate.scorer": 0,
+    "gate.compacted": 0,
+    "blocks.1.norm1": 0,
+    "blocks.1.qkv.input_int8": 0,
+    "blocks.1.qkv": 0,
+    "blocks.1.q.int8": 0,
+    "blocks.1.k.int8": 0,
+    "blocks.1.v.int8": 0,
+    "blocks.1.attention": 0,
+    "blocks.1.projection.input_int8": 0,
+    "blocks.1.projection": 0,
+    "blocks.1.residual1": 0,
+    "blocks.1.norm2": 0,
+    "blocks.1.fc1.input_int8": 0,
+    "blocks.1.fc1": 0,
+    "blocks.1.activation": 0,
+    "blocks.1.fc2.input_int8": 0,
+    "blocks.1.fc2": 0,
+    "blocks.1.residual2": 0,
+    "norm": 0,
+    "pooled": 0,
+    "exit_classifier.input_int8": 0,
+    "exit_classifier": 0
+  },
+  "job": {
+    "name": "har_joint_energy_saver_seed29",
+    "dataset": "har",
+    "seed": 29,
+    "mode": "energy_saver",
+    "family": "shared",
+    "export": "exports/joint/har_joint_energy_saver_seed29",
+    "checkpoint": "results/runs/har_joint_seed29/best.pt"
+  },
+  "partition": "test",
+  "plan_sha256": "ae2874e015a61af1b730b907163e542b9b0eea6e819f1dcb4b846aea8a0ce8dd",
+  "predictions_sha256": "717be0658b9ac2a7da460d43a58433c967103bd2e8e1bd7e4dc87c3649b23e5b",
+  "test_previously_observed": true
+}

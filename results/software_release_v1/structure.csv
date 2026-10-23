@@ -1,0 +1,10 @@
+dataset,family,mode,tokens_after_gate,layers,weight_bits,executed_macs
+har,independent,quality,32,4,8,17974016
+har,independent,balanced,26,4,4,15352576
+har,independent,energy_saver,20,2,4,7334656
+speech,independent,quality,32,4,8,18157952
+speech,independent,balanced,26,4,4,15536512
+speech,independent,energy_saver,20,2,4,7518592
+har,shared,quality,32,4,8,17974016
+har,shared,balanced,26,4,4,15352576
+har,shared,energy_saver,20,2,4,7334656

@@ -308,6 +308,33 @@ This stage checks implementation agreement on unchanged inputs. It does not
 establish invariance of token choices under input noise, a new shared-weight
 family, or hardware feasibility. The global G2 and board gates remain open.
 
+### Shared family and final robustness release
+
+The shared HAR checkpoint is now exposed through three aligned mode branches
+that reference the same actual parameter objects. All nine shared settings pass
+full validation and subsequent test comparisons with zero intermediate, logit,
+prediction and group-choice differences. All 27 final aligned settings also pass
+exact comparisons under the four predefined robustness conditions. No additional
+training is performed for this release; data and subsets were previously observed.
+
+Shared HAR test means are 93.360/92.919/92.444 percent for
+Quality/Balanced/Energy-Saver. Deduplicated encoded constant containers average
+997,056 bytes versus approximately 1,245,781 for the independent family, about
+20 percent less. This is a payload comparison without physical banking or buffer
+overhead. One FP32 checkpoint does not imply one identical quantized weight image
+for every precision mode.
+
+The families do not have matched per-mode training budgets: independent modes
+received 30 fine-tuning epochs each, while the joint family received 30 total
+epochs with modes sampled per minibatch and selection by mean mode validation
+accuracy. Accuracy differences therefore cannot be attributed only to sharing.
+On the fixed robustness subsets, missing gyro channels and 10 dB speech noise
+still cause large losses. Exact implementation agreement does not establish
+noise resilience. The default independent family is retained for continuity;
+all three seeds and the shared option are published without new test-driven
+selection. Complete evidence is in [the software release](software_release_results.md)
+and [comparison notes](software_release_notes.md).
+
 The final hardware evaluation must add board prediction agreement,
 routed timing and resources, measured power and energy,
 median and p95 latency, the same-board Arm baseline, and board ablations a–e.

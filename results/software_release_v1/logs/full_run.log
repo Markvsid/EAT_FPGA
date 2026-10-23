@@ -1,0 +1,75 @@
+Alignment evidence audit passed {'validation': 18, 'test': 18} {'validation': 102078, 'test': 125568} epoch0 selections 14
+har_joint_energy_saver_seed17 64 / 1361
+har_joint_balanced_seed17 64 / 1361
+har_joint_quality_seed17 64 / 1361
+har_joint_quality_seed29 64 / 1361
+har_joint_balanced_seed29 64 / 1361
+har_joint_quality_seed17 exact validation
+har_joint_balanced_seed17 exact validation
+har_joint_energy_saver_seed17 exact validation
+har_joint_energy_saver_seed29 64 / 1361
+har_joint_quality_seed29 exact validation
+har_joint_quality_seed43 64 / 1361
+har_joint_balanced_seed43 64 / 1361
+har_joint_balanced_seed29 exact validation
+har_joint_energy_saver_seed29 exact validation
+har_joint_energy_saver_seed43 64 / 1361
+har_joint_quality_seed43 exact validation
+har_joint_balanced_seed43 exact validation
+har_joint_energy_saver_seed43 exact validation
+har_joint_energy_saver_seed17 64 / 2947
+har_joint_balanced_seed17 64 / 2947
+har_joint_quality_seed17 64 / 2947
+har_joint_energy_saver_seed17 2112 / 2947
+har_joint_quality_seed29 64 / 2947
+har_joint_balanced_seed17 2112 / 2947
+har_joint_quality_seed17 2112 / 2947
+har_joint_balanced_seed29 64 / 2947
+har_joint_quality_seed17 exact test
+har_joint_balanced_seed17 exact test
+har_joint_energy_saver_seed17 exact test
+har_joint_energy_saver_seed29 64 / 2947
+har_joint_quality_seed29 2112 / 2947
+har_joint_energy_saver_seed29 2112 / 2947
+har_joint_quality_seed29 exact test
+har_joint_quality_seed43 64 / 2947
+har_joint_balanced_seed43 64 / 2947
+har_joint_balanced_seed29 2112 / 2947
+har_joint_balanced_seed29 exact test
+har_joint_energy_saver_seed29 exact test
+har_joint_energy_saver_seed43 64 / 2947
+har_joint_balanced_seed43 2112 / 2947
+har_joint_energy_saver_seed43 2112 / 2947
+har_joint_quality_seed43 2112 / 2947
+har_joint_quality_seed43 exact test
+har_joint_balanced_seed43 exact test
+har_joint_energy_saver_seed43 exact test
+har_quality_seed17 exact robustness
+har_balanced_seed17 exact robustness
+har_energy_saver_seed17 exact robustness
+har_quality_seed29 exact robustness
+har_balanced_seed29 exact robustness
+har_energy_saver_seed29 exact robustness
+har_quality_seed43 exact robustness
+har_balanced_seed43 exact robustness
+har_energy_saver_seed43 exact robustness
+speech_quality_seed17 exact robustness
+speech_balanced_seed17 exact robustness
+speech_energy_saver_seed17 exact robustness
+speech_quality_seed29 exact robustness
+speech_balanced_seed29 exact robustness
+speech_energy_saver_seed29 exact robustness
+speech_quality_seed43 exact robustness
+speech_balanced_seed43 exact robustness
+speech_energy_saver_seed43 exact robustness
+har_joint_quality_seed17 exact robustness
+har_joint_balanced_seed17 exact robustness
+har_joint_energy_saver_seed17 exact robustness
+har_joint_quality_seed29 exact robustness
+har_joint_balanced_seed29 exact robustness
+har_joint_energy_saver_seed29 exact robustness
+har_joint_quality_seed43 exact robustness
+har_joint_balanced_seed43 exact robustness
+har_joint_energy_saver_seed43 exact robustness
+Release report and catalog generated
+Release evidence audit passed

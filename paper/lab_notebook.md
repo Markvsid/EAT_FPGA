@@ -238,3 +238,51 @@ previously-observed-test disclosure. Main report:
 exports, every final logit/label, per-point errors, golden vectors, environment,
 phase timestamps and complete logs are retained under `results/alignment_study`.
 No RTL, board, energy, hardware timing or global G2 completion is claimed.
+
+## 2026 10 23 Shared HAR alignment and frozen software release
+
+Added `SharedAlignedEncoder`, whose three mode branches alias the same PyTorch
+network and parameter objects. It requires identical checkpoint hashes/configs,
+checks loaded tensors, and rejects unrelated independent checkpoints. Calibration
+and encoded constant images remain mode-specific. `shared_state_dict()` exposes
+the common parameters once. No training or recalibration was added in this phase.
+
+Froze `results/software_release_v1/plan.json` before the new comparisons, SHA256
+`ae2874e015a61af1b730b907163e542b9b0eea6e819f1dcb4b846aea8a0ce8dd`.
+The plan fixes all 27 models (18 independent aligned and nine shared HAR settings),
+the previously observed subsets, sources, inputs and checkpoint/export hashes.
+The independent family remains the default for continuity, with shared HAR an
+additional option; this policy is recorded before evaluation, not selected from
+new test results. All three seeds remain published rather than choosing a test seed.
+
+All nine shared validation and nine shared test comparisons pass at every trace
+point, logit and group choice: 12,249 validation and 26,523 test example evaluations.
+All 27 aligned settings also pass exact comparisons on the same four predefined
+robustness conditions, adding 21,240 example evaluations over 108 conditions.
+Together this adds 60,012 numerical comparisons across repeated modes/seeds.
+
+Shared HAR test means are 93.360/92.919/92.444 percent for Quality/Balanced/
+Energy-Saver. Independent means are 93.474/93.055/93.360. Shared FP32 parameter
+bytes per seed are 2,158,132 versus 6,474,396 for three independent models. Actual
+quantized constant containers reduce by about 20.0 percent after exact blob
+deduplication (997,056 bytes shared versus an independent mean around 1,245,781).
+These are logical packed-weight/signed64-container budgets, not physical memory
+or timing/energy results. The comparison does not isolate sharing: independent
+modes had 30 fine-tuning epochs each, while joint modes sampled across 30 total
+fine-tuning epochs and used a different validation aggregation objective.
+
+Robustness remains limited. Independent HAR missing-gyro means are84.44/83.89/
+79.44 percent, shared means 83.89/83.33/83.61. Speech 10dB white-noise means are
+67.24/63.43/61.90 percent versus clean subset91.05/88.95/89.52. The small balanced
+subset can reverse full-test rankings, so no universal robustness benefit or
+family selection is inferred. The original frontend/PCM-clipping metadata and
+FP32-control predictions are preserved and reused on identical features.
+
+All 39 local unit tests pass, including parameter identity, mode switching and
+rejection of unrelated checkpoints. The release audit passes. The one-command
+`python -m results.software_release run` was run again successfully: it verifies
+hashes, reuses completed results and regenerates tables, figures, catalog and
+audit. All three generated PNG figures were visually inspected, with matching
+PDF exports retained. Generated report and interpretation notes are linked from
+README, manuscript and completion checklist. Hardware G2, RTL, board measurements
+and other full-paper requirements remain outstanding.

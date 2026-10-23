@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "plan_sha256": "ae2874e015a61af1b730b907163e542b9b0eea6e819f1dcb4b846aea8a0ce8dd",
+  "shared_partition_comparisons": 18,
+  "robustness_settings": 27,
+  "robustness_conditions": 108,
+  "checks": [
+    "frozen source/checkpoint/export/data/subset hashes",
+    "prior independent alignment audit",
+    "zero intermediate/logit/group differences on full shared partitions and all perturbations",
+    "saved labels, indices, metrics and predictions recomputed"
+  ]
+}

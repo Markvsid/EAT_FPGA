@@ -1,6 +1,6 @@
 {
   "status": "software_research_package_hardware_gates_incomplete",
-  "parent_git_commit_at_capture": "31857ff56ba72891c13db3b51232eecc472db67b",
+  "parent_git_commit_at_capture": "77a80ccd256ce185b7e991ae2df83deab1cba9b4",
   "completed_training_runs": 49,
   "completed_independent_integer_comparisons": 18,
   "completed_shared_family_integer_comparisons": 9,
@@ -9,6 +9,9 @@
   "completed_aligned_training_runs": 18,
   "completed_aligned_validation_comparisons": 18,
   "completed_aligned_subsequent_test_comparisons": 18,
+  "completed_shared_release_validation_comparisons": 9,
+  "completed_shared_release_test_comparisons": 9,
+  "completed_final_release_robustness_settings": 27,
   "files": {
     ".gitattributes": {
       "bytes": 124,
@@ -23,8 +26,8 @@
       "sha256": "af480f6656adaf84ab9a86e9107cd0585e83637b181401beab501018010044ef"
     },
     "README.md": {
-      "bytes": 9954,
-      "sha256": "f9ed6cc8a3330b296243eaa02301b43f1b6263c94519c6e16c03234691c21bc4"
+      "bytes": 11142,
+      "sha256": "e75b7cdf2633a212ca7eb32b11eb12b5850872f8349979a2f0a3ba4e8c859c6e"
     },
     "Report_Template/FPGA_Energy_Efficient_Transformer_Research_Plan_2-Month_Extended.docx": {
       "bytes": 535637,
@@ -8526,6 +8529,10 @@
       "bytes": 14664,
       "sha256": "06e25ad2ffff354f9757418648a3c47350a2370a8b1f4129b99ea716b594a979"
     },
+    "model/shared_aligned.py": {
+      "bytes": 2512,
+      "sha256": "1b9bdaa03175c63501384fbac36c3aa26b59018040ab019512fa269fde0e3167"
+    },
     "model/speech_data.py": {
       "bytes": 5336,
       "sha256": "f03fdebde9d094819973730071b12a4eb7f240ef92573e7898921d3516b850b9"
@@ -8563,8 +8570,8 @@
       "sha256": "c44b71e5768755410e0082967c443e091e6281e0661e49503df26483f49027e8"
     },
     "paper/completion_checklist.md": {
-      "bytes": 5841,
-      "sha256": "6f390e8bcb7617a0b9fb7f9f0013f8b94dc1c565d9a5ffc80b8ebfdcc94b7b7e"
+      "bytes": 7240,
+      "sha256": "dd3a21e6a8c77fb3ec487e235c112ff8cd71a8b1c730a97a97ed52aff152e888"
     },
     "paper/current_results.md": {
       "bytes": 5711,
@@ -8611,12 +8618,12 @@
       "sha256": "23d26cae5767dea4953866d915727602a077300ec04159eea9bfd26c95e06391"
     },
     "paper/lab_notebook.md": {
-      "bytes": 15067,
-      "sha256": "be714b82c6e9758e528422a825a3299b9833fae6864381edaf8df1544b27dbb2"
+      "bytes": 18288,
+      "sha256": "0bd29b999b2ba571890a0fe8145bb988a6fd57f811741f46e96e5a789b199f2f"
     },
     "paper/manuscript.md": {
-      "bytes": 20223,
-      "sha256": "93c909f195232ebb6de05781bb27a9e5da60455285cff6357197d093e7977dc9"
+      "bytes": 21920,
+      "sha256": "eb30ec8ea89ddd71b0de320ba94b6c5f1ca22803a396090ab9a455e58515f36a"
     },
     "paper/python_numerical_findings.md": {
       "bytes": 11205,
@@ -8637,6 +8644,14 @@
     "paper/software_evidence_summary.md": {
       "bytes": 4055,
       "sha256": "78fd07d967c1f89196fe1b54a208e5cca5c2ca2eec206fa50088ba8c39e85a40"
+    },
+    "paper/software_release_notes.md": {
+      "bytes": 5148,
+      "sha256": "82013687507320c90aa14f6050d8d1c37e2c087d460801df6153765c76bc043e"
+    },
+    "paper/software_release_results.md": {
+      "bytes": 10422,
+      "sha256": "3d9f42c3ad39d165657ed7c5eaa552171a36545a3570cca1aeb2739094de009c"
     },
     "paper/sources/arxiv_metadata.xml": {
       "bytes": 9956,
@@ -9719,8 +9734,8 @@
       "sha256": "691774d0678a2b34720c49e457b9ae57f752d228321cca0021924edb1c33992f"
     },
     "results/artifact_manifest.py": {
-      "bytes": 2692,
-      "sha256": "1fb8c317f2c2256130720b9be6242c7ddbdf7873e18bbfcf3d469d5c5d7d5882"
+      "bytes": 3123,
+      "sha256": "75ed6912eb8563ab70250fc322e13a90e6c1cd7ca2d04876362fc93b87314a5e"
     },
     "results/build_report.py": {
       "bytes": 2812,
@@ -12562,6 +12577,522 @@
       "bytes": 112278,
       "sha256": "0f9d63c8e8ed54840f8ad0fb9def7ac76cfd3f041cac41636b2fdd3f2b183411"
     },
+    "results/software_release.py": {
+      "bytes": 14902,
+      "sha256": "18c6d059d45c4f43038b40be3f3fa87b5cc0bddf8e27e23e91070e725f751b84"
+    },
+    "results/software_release_report.py": {
+      "bytes": 19144,
+      "sha256": "d632997545dd0cf5fc1f7ef859438bbadf78f9229ab37b5a17421b1570f19932"
+    },
+    "results/software_release_v1/accuracy.csv": {
+      "bytes": 2070,
+      "sha256": "ca9d8ff56d7369a542092725d15d15a69b71e1fa667694ef05559a0deb2d9d56"
+    },
+    "results/software_release_v1/audit.json": {
+      "bytes": 488,
+      "sha256": "9e135aad9560eb9b4178dc07caae9a23bc3bef626cfc901605b573a3e4733c3a"
+    },
+    "results/software_release_v1/catalog.json": {
+      "bytes": 20583,
+      "sha256": "fcfe067000e095196135422feb5aaba94bc8b98d74cc53c628e3c4c79b5084ad"
+    },
+    "results/software_release_v1/figures/robustness_har.pdf": {
+      "bytes": 22207,
+      "sha256": "81db07c5e22dbba6f0f40f73ffd5f26ddfed89b0286953476f1f05c780948e55"
+    },
+    "results/software_release_v1/figures/robustness_har.png": {
+      "bytes": 110073,
+      "sha256": "8092f9a4e689853274b16dfcd40fb5b4f541e68c291b870376468b4bed48a0bf"
+    },
+    "results/software_release_v1/figures/robustness_speech.pdf": {
+      "bytes": 20042,
+      "sha256": "43c6d1354374f0dd25589e62d6b21698539c9760d65435c8a70976cf4c88e18c"
+    },
+    "results/software_release_v1/figures/robustness_speech.png": {
+      "bytes": 105408,
+      "sha256": "d107aa66b66088a5f6094b4da47459dea068872e76484b63079c67ce1adfab9e"
+    },
+    "results/software_release_v1/figures/shared_accuracy_storage.pdf": {
+      "bytes": 19466,
+      "sha256": "b01e8b394cb6260211c62792d6b8b5bf548ef6409120fc9bf4fdf0cc9b2363b9"
+    },
+    "results/software_release_v1/figures/shared_accuracy_storage.png": {
+      "bytes": 69898,
+      "sha256": "dc1f3461103ca7e1c07626299922023c6a2fe9b8b4a9d7a791821798c70c1ddf"
+    },
+    "results/software_release_v1/logs/full_run.log": {
+      "bytes": 3052,
+      "sha256": "0fee70083a6d085853e28e12e62e9f7d6e4db004f0bebbda5a2831bfd1f28376"
+    },
+    "results/software_release_v1/logs/pytest.log": {
+      "bytes": 99,
+      "sha256": "3ece5ce36404ac5e5abef2c2f3e8c1fa23496b18dcb27f80b01d0fc7584fa004"
+    },
+    "results/software_release_v1/logs/reproduce.log": {
+      "bytes": 2080,
+      "sha256": "6c3c5fcbf4c906d86b510350a596daf4074282c01fe47ee33f97400d50ee3183"
+    },
+    "results/software_release_v1/per_class.csv": {
+      "bytes": 91225,
+      "sha256": "f8f7b819ca98353d30e12cbc26fe89b44537338a69a7a532bb984a675f95f012"
+    },
+    "results/software_release_v1/per_seed.csv": {
+      "bytes": 7820,
+      "sha256": "42332733d30cecdb787c40ebf8d82a6ba5bbc413acc75e48ed6ed6ed6a5f890b"
+    },
+    "results/software_release_v1/plan.json": {
+      "bytes": 33495,
+      "sha256": "ae2874e015a61af1b730b907163e542b9b0eea6e819f1dcb4b846aea8a0ce8dd"
+    },
+    "results/software_release_v1/robustness/har_balanced_seed17/metrics.json": {
+      "bytes": 41621,
+      "sha256": "e637efb73d0e9e1d05449717889dd08cf2f2e6391290120ff9c911e227179ea7"
+    },
+    "results/software_release_v1/robustness/har_balanced_seed17/predictions.npz": {
+      "bytes": 19745,
+      "sha256": "84c66b020511bd300a91d50d9ffda9d8ba7fe323ec96833aaa307b54dca9e1fb"
+    },
+    "results/software_release_v1/robustness/har_balanced_seed29/metrics.json": {
+      "bytes": 41587,
+      "sha256": "78f7f9936de2bff00648826dcf4068eb7fc6794700fab0fe2b4a24b83d2b556d"
+    },
+    "results/software_release_v1/robustness/har_balanced_seed29/predictions.npz": {
+      "bytes": 19951,
+      "sha256": "564959d10ae2c26149e9d6283a522f92c7f12085f44898322c621e8d371389f2"
+    },
+    "results/software_release_v1/robustness/har_balanced_seed43/metrics.json": {
+      "bytes": 41457,
+      "sha256": "67e407722c8a528cd842ee43e9b6bed5ab6372be6e983f9b4b2069285a9f1fb7"
+    },
+    "results/software_release_v1/robustness/har_balanced_seed43/predictions.npz": {
+      "bytes": 19713,
+      "sha256": "f39aa1b7816c52a456bc989d9595bf9a26259d9be4ef37aaf0c4220539dcbef3"
+    },
+    "results/software_release_v1/robustness/har_energy_saver_seed17/metrics.json": {
+      "bytes": 31437,
+      "sha256": "3529757ff48e8d47ce189e259abc650f3c3f5fdcc9b6bab9915eb5279b9570f9"
+    },
+    "results/software_release_v1/robustness/har_energy_saver_seed17/predictions.npz": {
+      "bytes": 20017,
+      "sha256": "1dc084fd4c09060ee7b749256df051d934d42d0f1de4c81ac2b5393bd64294ed"
+    },
+    "results/software_release_v1/robustness/har_energy_saver_seed29/metrics.json": {
+      "bytes": 31365,
+      "sha256": "89dccb3207164bf2f4fbd86b3dc14873ce644cb9c8be3d29d5c8203d104edd58"
+    },
+    "results/software_release_v1/robustness/har_energy_saver_seed29/predictions.npz": {
+      "bytes": 19915,
+      "sha256": "0a0f846cde72723736d556555bef685db2b4cfcc5960925e59d1167a526e7ec1"
+    },
+    "results/software_release_v1/robustness/har_energy_saver_seed43/metrics.json": {
+      "bytes": 31433,
+      "sha256": "7070d2ecfb97bc1a939af3ea7ef4685b9ae77d3f2c922c30b63a35d2416f087e"
+    },
+    "results/software_release_v1/robustness/har_energy_saver_seed43/predictions.npz": {
+      "bytes": 19931,
+      "sha256": "16439cd4a003ca5f6084d64f7dce7a8a6bd908bab72dd772fb3d92805c7f655a"
+    },
+    "results/software_release_v1/robustness/har_joint_balanced_seed17/metrics.json": {
+      "bytes": 41389,
+      "sha256": "bc337cd8fca54be7ac931bf0e1f3ecf89cd9dab690bb5742cb111a7fed5467d1"
+    },
+    "results/software_release_v1/robustness/har_joint_balanced_seed17/predictions.npz": {
+      "bytes": 19775,
+      "sha256": "2b9276e6f4cf111c260bcc6d93b16d702b3bad3a6b8e657c67a3147f090a5ccb"
+    },
+    "results/software_release_v1/robustness/har_joint_balanced_seed29/metrics.json": {
+      "bytes": 41479,
+      "sha256": "3b64770e642222ac1c1f65df756efb4a35cf8069825907377fd2a22e20164457"
+    },
+    "results/software_release_v1/robustness/har_joint_balanced_seed29/predictions.npz": {
+      "bytes": 19829,
+      "sha256": "e7a6de571a553d416965760cb67212c323cd6cf69cedf82cb683f87ca3e2c1f2"
+    },
+    "results/software_release_v1/robustness/har_joint_balanced_seed43/metrics.json": {
+      "bytes": 41391,
+      "sha256": "7bcf1ec95c6961908cd9df3ea87bd7c50b5ab241777cf08ad554bd1f72f9fb22"
+    },
+    "results/software_release_v1/robustness/har_joint_balanced_seed43/predictions.npz": {
+      "bytes": 19707,
+      "sha256": "88bf9547be32937db95730f864f7ac1e96a08426180c4af972edfd387ca19917"
+    },
+    "results/software_release_v1/robustness/har_joint_energy_saver_seed17/metrics.json": {
+      "bytes": 31125,
+      "sha256": "e630db910df6083437fac0de242989e1fea434a0da384ab3f76d71f5f7bd058b"
+    },
+    "results/software_release_v1/robustness/har_joint_energy_saver_seed17/predictions.npz": {
+      "bytes": 19877,
+      "sha256": "1c58031e70149bb2104c56684724c6ece8da64d8e9073df9170907a6dcc471f1"
+    },
+    "results/software_release_v1/robustness/har_joint_energy_saver_seed29/metrics.json": {
+      "bytes": 31059,
+      "sha256": "e75535380508bc579c8f7d85a04fd0ce1e540cb9ac27f180fa9067128c41166e"
+    },
+    "results/software_release_v1/robustness/har_joint_energy_saver_seed29/predictions.npz": {
+      "bytes": 19913,
+      "sha256": "2026de8da15e3e70193a5d0666e3e2418d9329b146758902f6da2d2d4bfdd22a"
+    },
+    "results/software_release_v1/robustness/har_joint_energy_saver_seed43/metrics.json": {
+      "bytes": 31239,
+      "sha256": "1a9d156296673cc8cc1b2f5ba9cb6b39f4e704b4f531f340b1d1b10d3768a7f2"
+    },
+    "results/software_release_v1/robustness/har_joint_energy_saver_seed43/predictions.npz": {
+      "bytes": 19803,
+      "sha256": "1e3972b4a1bb4345f0e3f8d9ca33dd1cae50b61c8b3da2afe881b988a7034af0"
+    },
+    "results/software_release_v1/robustness/har_joint_quality_seed17/metrics.json": {
+      "bytes": 40216,
+      "sha256": "ccee6921c72f52cf9f2f095f3460ccf023354f10185ee06f63fd07769a9704ff"
+    },
+    "results/software_release_v1/robustness/har_joint_quality_seed17/predictions.npz": {
+      "bytes": 19747,
+      "sha256": "a143993e34f31cc36d4734c9b5a1abbb513ca8620fab1bd003734f0658a6b4dd"
+    },
+    "results/software_release_v1/robustness/har_joint_quality_seed29/metrics.json": {
+      "bytes": 40240,
+      "sha256": "d558ac3402376b86a41e61c1b2bf71fd29f254fc4ffd78c0f48b6b65ee85e17c"
+    },
+    "results/software_release_v1/robustness/har_joint_quality_seed29/predictions.npz": {
+      "bytes": 19817,
+      "sha256": "5937bb8a1b89c869961c89c0ffa771a99d48895977a5aba708508df872eaeb18"
+    },
+    "results/software_release_v1/robustness/har_joint_quality_seed43/metrics.json": {
+      "bytes": 40128,
+      "sha256": "8cbc6b61efbe7d49eaf231c68f649aa69ea861093925c6f5abd3614d752e950e"
+    },
+    "results/software_release_v1/robustness/har_joint_quality_seed43/predictions.npz": {
+      "bytes": 19679,
+      "sha256": "d4841d8d761bb71b7f2473cfcdb45f228665b67d3b6ad037760bf56218c7f3ee"
+    },
+    "results/software_release_v1/robustness/har_quality_seed17/metrics.json": {
+      "bytes": 40291,
+      "sha256": "c60d4ed4234f9918b979f9639e4f9d0e5ce01866b054aa30f65e7871d46da371"
+    },
+    "results/software_release_v1/robustness/har_quality_seed17/predictions.npz": {
+      "bytes": 19867,
+      "sha256": "1ace1af58b8b109008d4e6366d1e61448dd362e1f60e609bffa133dd788c0a41"
+    },
+    "results/software_release_v1/robustness/har_quality_seed29/metrics.json": {
+      "bytes": 40361,
+      "sha256": "0c4a7fdfd9261cdf0230218c38f35921b3ebee99905c488d5d34d5231da66c12"
+    },
+    "results/software_release_v1/robustness/har_quality_seed29/predictions.npz": {
+      "bytes": 19933,
+      "sha256": "e8b4e8bd949038c0b21cc2e25f91707f2604de6e4be8d2b55601171d87ee2639"
+    },
+    "results/software_release_v1/robustness/har_quality_seed43/metrics.json": {
+      "bytes": 40525,
+      "sha256": "07aa01f5cfc827749180381982d3bfa8a36738c5ac085909350fbe9512b3f0ff"
+    },
+    "results/software_release_v1/robustness/har_quality_seed43/predictions.npz": {
+      "bytes": 19847,
+      "sha256": "bc5502c2d3424517644f0bc7ddc2d3437a14c8d31cc2fcbdc4f44dd5d0beb812"
+    },
+    "results/software_release_v1/robustness/speech_balanced_seed17/metrics.json": {
+      "bytes": 231221,
+      "sha256": "e19b2f2043bfb6c67210977afe6baff60c2a717bd6e7982aca8c78e6fccd4b8d"
+    },
+    "results/software_release_v1/robustness/speech_balanced_seed17/predictions.npz": {
+      "bytes": 281593,
+      "sha256": "2d7fc0f0cbfee20f6381fcf0eb1a44eeb5a0a0ac886853b0274bf69f836d7b71"
+    },
+    "results/software_release_v1/robustness/speech_balanced_seed29/metrics.json": {
+      "bytes": 231331,
+      "sha256": "7171b592ecc15ed46965edbfbfb00d1b87c96a73d384505f33ecbd7db38fea72"
+    },
+    "results/software_release_v1/robustness/speech_balanced_seed29/predictions.npz": {
+      "bytes": 280711,
+      "sha256": "18e82d264862b49315d9537c16be61729e138ba8c371e06687e4b1368ec09e35"
+    },
+    "results/software_release_v1/robustness/speech_balanced_seed43/metrics.json": {
+      "bytes": 230879,
+      "sha256": "25fdd7999d6ec7fab855e6be2e47da73fa012de2e2ebacad4c5b3c416bd270ce"
+    },
+    "results/software_release_v1/robustness/speech_balanced_seed43/predictions.npz": {
+      "bytes": 280955,
+      "sha256": "25a0f7002fdd6694a66ae5c96f9fbe1592b289fe5e6d44a27e9404ff41619ed2"
+    },
+    "results/software_release_v1/robustness/speech_energy_saver_seed17/metrics.json": {
+      "bytes": 221041,
+      "sha256": "80ccdfe3d447a411c10b26ac4223b9b49be5b35c39ed13dce4def6458bb53fe2"
+    },
+    "results/software_release_v1/robustness/speech_energy_saver_seed17/predictions.npz": {
+      "bytes": 287601,
+      "sha256": "1b453754553954eb1bb9f29b294028a90e5f915c108d47117401a0cdaa4e1ec7"
+    },
+    "results/software_release_v1/robustness/speech_energy_saver_seed29/metrics.json": {
+      "bytes": 220895,
+      "sha256": "041de371802e3241f16f6674fc2ea1011c75587ab03318b2d2fd05611edad155"
+    },
+    "results/software_release_v1/robustness/speech_energy_saver_seed29/predictions.npz": {
+      "bytes": 287755,
+      "sha256": "413560af5a3c5ff9aab16ec6cb08ea65923203c45efb66030ca13c51ebd9ee95"
+    },
+    "results/software_release_v1/robustness/speech_energy_saver_seed43/metrics.json": {
+      "bytes": 220565,
+      "sha256": "b0f532b57fab8f12bd5512a1824ed74075f18142b72e626e8c97ec5ca104b9a6"
+    },
+    "results/software_release_v1/robustness/speech_energy_saver_seed43/predictions.npz": {
+      "bytes": 287743,
+      "sha256": "bb380e1af43d2b3d683c3ec47a270a081e3f312fca5c4acc7da31667cc97851f"
+    },
+    "results/software_release_v1/robustness/speech_quality_seed17/metrics.json": {
+      "bytes": 230057,
+      "sha256": "e4ad750180852d816af2c4b2cedc114f8e42107664488ce3c6a2bc1f4e85f648"
+    },
+    "results/software_release_v1/robustness/speech_quality_seed17/predictions.npz": {
+      "bytes": 282217,
+      "sha256": "210b4d4b51b9ba68ebe20ff080adc765d245f07194b6bfe07ae405efb1bd3370"
+    },
+    "results/software_release_v1/robustness/speech_quality_seed29/metrics.json": {
+      "bytes": 229605,
+      "sha256": "41a7232df835def77adf8f8b3b6dd948143cbeb22affb324f9b61aa24a60e62b"
+    },
+    "results/software_release_v1/robustness/speech_quality_seed29/predictions.npz": {
+      "bytes": 281157,
+      "sha256": "8bc53994a1d36d83a410165867963c530b06ef4f0c24bc495deefca7360bf58a"
+    },
+    "results/software_release_v1/robustness/speech_quality_seed43/metrics.json": {
+      "bytes": 229881,
+      "sha256": "3e8e19e054e2690a9aa31bfd52d89ecd7cae0ab1e8926a6390213fbba6c78472"
+    },
+    "results/software_release_v1/robustness/speech_quality_seed43/predictions.npz": {
+      "bytes": 281671,
+      "sha256": "91c4a132138b0c2eeb6c781d714cee1c72e3d631bc3989cc904a1be8be3ec36d"
+    },
+    "results/software_release_v1/robustness_summary.csv": {
+      "bytes": 5362,
+      "sha256": "da4a7ebfa034691be1c9a914fe5fa35b78bb594d585fbaeafc34b95a7dbdeb88"
+    },
+    "results/software_release_v1/storage.csv": {
+      "bytes": 484,
+      "sha256": "cd5113ae2b15019432f39b0fe1e8e988131a0c3985a3cf58348c07bceb47764f"
+    },
+    "results/software_release_v1/structure.csv": {
+      "bytes": 440,
+      "sha256": "2626dc6781f114c929bbc54f926a1d34a1a1b56522749e1eabb67e4763f66701"
+    },
+    "results/software_release_v1/summary.json": {
+      "bytes": 23901,
+      "sha256": "99034136bc7506af8af4ad76551d1e9a54b43178555a6f5fc092c074bd376eed"
+    },
+    "results/software_release_v1/test/har_joint_balanced_seed17/golden_vectors.npz": {
+      "bytes": 868730,
+      "sha256": "1829b83232c40eaccc0860e171fa995e7c3c87feace86fe506f2cdaa43dae685"
+    },
+    "results/software_release_v1/test/har_joint_balanced_seed17/metrics.json": {
+      "bytes": 9504,
+      "sha256": "b9ef8bcffe43c600abcc337bb3b570feb750bac00706fff64ef7642655e69226"
+    },
+    "results/software_release_v1/test/har_joint_balanced_seed17/predictions.npz": {
+      "bytes": 96483,
+      "sha256": "3f815b0ba21b91a7bb6d5211956f40dc43f346d9bc3959184ee0b1f3314d08ac"
+    },
+    "results/software_release_v1/test/har_joint_balanced_seed29/golden_vectors.npz": {
+      "bytes": 887278,
+      "sha256": "a78ce0e6436e9e6f3571a47dbe3d6f9e211e025011d0fa01dc46fd2740372734"
+    },
+    "results/software_release_v1/test/har_joint_balanced_seed29/metrics.json": {
+      "bytes": 9479,
+      "sha256": "56f8a2463ac1fca6aa25c4ec9ab941f077eccbc8a33b07d5944abdab067e81f0"
+    },
+    "results/software_release_v1/test/har_joint_balanced_seed29/predictions.npz": {
+      "bytes": 96691,
+      "sha256": "1f087361159fa1b44b87f58b5cfd558ab031277e1d09821c79eba3233a888f52"
+    },
+    "results/software_release_v1/test/har_joint_balanced_seed43/golden_vectors.npz": {
+      "bytes": 891391,
+      "sha256": "98851f341160c6ae49280593df270716b8f6ea9c3e3722cae4da914300ab4e06"
+    },
+    "results/software_release_v1/test/har_joint_balanced_seed43/metrics.json": {
+      "bytes": 9444,
+      "sha256": "73a38329e080558fb23cab87b20b54633ef54da4e7b12e6797a22e07a204ed88"
+    },
+    "results/software_release_v1/test/har_joint_balanced_seed43/predictions.npz": {
+      "bytes": 95941,
+      "sha256": "34806cddbcc912eb9d025eb01d014d5a4220d34ba5a30893905a808c542ccc15"
+    },
+    "results/software_release_v1/test/har_joint_energy_saver_seed17/golden_vectors.npz": {
+      "bytes": 463770,
+      "sha256": "ef69d1902af7a405f118cdeb2d421820a31d0c9465232aecf9c158ac16f19b3b"
+    },
+    "results/software_release_v1/test/har_joint_energy_saver_seed17/metrics.json": {
+      "bytes": 7199,
+      "sha256": "b26c678b286d7edbc1292c0bc344fdea4fbbeb331ebf369b8044d6cc4f0527ff"
+    },
+    "results/software_release_v1/test/har_joint_energy_saver_seed17/predictions.npz": {
+      "bytes": 97571,
+      "sha256": "9428ec206659aae65a11b5b8d2da36b624cf2c88c14f7a4a71df44899f2103d8"
+    },
+    "results/software_release_v1/test/har_joint_energy_saver_seed29/golden_vectors.npz": {
+      "bytes": 468076,
+      "sha256": "4db6238d27954f6c7c632c20f08750fe3388024f080ef892e34211a229f415b7"
+    },
+    "results/software_release_v1/test/har_joint_energy_saver_seed29/metrics.json": {
+      "bytes": 7185,
+      "sha256": "ebe041df40bb7f41cd8b907b3d141b38dbe1bb5b55a4c7ce069098c13ff35ec2"
+    },
+    "results/software_release_v1/test/har_joint_energy_saver_seed29/predictions.npz": {
+      "bytes": 97581,
+      "sha256": "717be0658b9ac2a7da460d43a58433c967103bd2e8e1bd7e4dc87c3649b23e5b"
+    },
+    "results/software_release_v1/test/har_joint_energy_saver_seed43/golden_vectors.npz": {
+      "bytes": 467329,
+      "sha256": "10d37091429fb95e43781dd5703ec9d8ee49042a7bb989e04023429b2be218e6"
+    },
+    "results/software_release_v1/test/har_joint_energy_saver_seed43/metrics.json": {
+      "bytes": 7235,
+      "sha256": "5634e1f5beb5251f7134d85a9211d49fb097815c28ddaa581dfab64f237522e3"
+    },
+    "results/software_release_v1/test/har_joint_energy_saver_seed43/predictions.npz": {
+      "bytes": 96717,
+      "sha256": "150c1d9a4f8d7328ecd9f11c6be36bf937dc92856a1abe219d01ed908b20ca85"
+    },
+    "results/software_release_v1/test/har_joint_quality_seed17/golden_vectors.npz": {
+      "bytes": 1059847,
+      "sha256": "876cfa5df443c3ef96b118176f11cf52c039299393a8f17f4d671bd552110110"
+    },
+    "results/software_release_v1/test/har_joint_quality_seed17/metrics.json": {
+      "bytes": 9232,
+      "sha256": "816d26cacd738c63ef7a4ec890bc691e7dece4ff597878cb6d549b155f271ee4"
+    },
+    "results/software_release_v1/test/har_joint_quality_seed17/predictions.npz": {
+      "bytes": 96569,
+      "sha256": "08867feba6897b9b319c5df9c023c7f331fda39ddb7e2b8db5a92bf71251c02e"
+    },
+    "results/software_release_v1/test/har_joint_quality_seed29/golden_vectors.npz": {
+      "bytes": 1063924,
+      "sha256": "ce03afa13a0f23a35592f7ebea316b284f989dda33a2efa7f1c7afcc391f8fc3"
+    },
+    "results/software_release_v1/test/har_joint_quality_seed29/metrics.json": {
+      "bytes": 9204,
+      "sha256": "18104a93fad8c740f2b55f7f6e4c8b36e5012f6d1f6d62653106566dd616a9f7"
+    },
+    "results/software_release_v1/test/har_joint_quality_seed29/predictions.npz": {
+      "bytes": 96649,
+      "sha256": "54110e16ffd3a32ca832dc5cf4d5dd569251e549f9b0cfb2cf7368b7ad8c85cc"
+    },
+    "results/software_release_v1/test/har_joint_quality_seed43/golden_vectors.npz": {
+      "bytes": 1068874,
+      "sha256": "ae125a350b667302fd880bb081fb9e69fd85be0993de47cff424d61851820027"
+    },
+    "results/software_release_v1/test/har_joint_quality_seed43/metrics.json": {
+      "bytes": 9166,
+      "sha256": "f8ea9b884bdd729baad245ef468be8126360486107d4d11a21d1849c2e4ecc64"
+    },
+    "results/software_release_v1/test/har_joint_quality_seed43/predictions.npz": {
+      "bytes": 95935,
+      "sha256": "82698015f183cb4796b4b8d33ab2a699c8426a6d294e41040460c925592b786a"
+    },
+    "results/software_release_v1/validation/har_joint_balanced_seed17/golden_vectors.npz": {
+      "bytes": 924825,
+      "sha256": "9b1a389c1b990567c35a04eceb88b7991ac02e8ce17e4e12a8622417d3a28086"
+    },
+    "results/software_release_v1/validation/har_joint_balanced_seed17/metrics.json": {
+      "bytes": 9538,
+      "sha256": "88a927ff028a2fbebe819a3adfd8be0601a5a6704bc2e6b0c43ff20acbb12ad9"
+    },
+    "results/software_release_v1/validation/har_joint_balanced_seed17/predictions.npz": {
+      "bytes": 45038,
+      "sha256": "1a25abeb4af32e108bc37f0b877e37eacb0657e01d8b9f0cd04a3e0e336bf387"
+    },
+    "results/software_release_v1/validation/har_joint_balanced_seed29/golden_vectors.npz": {
+      "bytes": 908631,
+      "sha256": "12e678d93c9f0bda639c69292e0d38e3c5fde089e306c1fdc265aab69eb24847"
+    },
+    "results/software_release_v1/validation/har_joint_balanced_seed29/metrics.json": {
+      "bytes": 9483,
+      "sha256": "c4b4cd06d725f9d8dcb7ad68a4a940114875c289ac57903845d427132c142cc1"
+    },
+    "results/software_release_v1/validation/har_joint_balanced_seed29/predictions.npz": {
+      "bytes": 44958,
+      "sha256": "50d28d449427835bb56a9aa4973c9e1a16847d431aeb4dd4407c4280566090b4"
+    },
+    "results/software_release_v1/validation/har_joint_balanced_seed43/golden_vectors.npz": {
+      "bytes": 926682,
+      "sha256": "b61a7af059106cdf70ae67e02714d95c8c2d5b42c4a3f50b5f44cbf3854385fa"
+    },
+    "results/software_release_v1/validation/har_joint_balanced_seed43/metrics.json": {
+      "bytes": 9502,
+      "sha256": "1deb1a8302444d8a391597b79caa59a62d38f361583801736bb8cf96bfc939ee"
+    },
+    "results/software_release_v1/validation/har_joint_balanced_seed43/predictions.npz": {
+      "bytes": 44720,
+      "sha256": "a61627c80486c4bccadc15e8f4171f513045db3ab7df420299e1ff8a8ba96148"
+    },
+    "results/software_release_v1/validation/har_joint_energy_saver_seed17/golden_vectors.npz": {
+      "bytes": 472674,
+      "sha256": "b84c708391efb07122f376bf6f8978f2a82d8caf56b7e12b5402f608629dac63"
+    },
+    "results/software_release_v1/validation/har_joint_energy_saver_seed17/metrics.json": {
+      "bytes": 7267,
+      "sha256": "7231f420d056ed97a65132875bbe6df7917b6499b06b77e14a9628d1209413ce"
+    },
+    "results/software_release_v1/validation/har_joint_energy_saver_seed17/predictions.npz": {
+      "bytes": 45484,
+      "sha256": "1d5acc0c69749356d9a16df07768d13392157fe483d170b3169d2fc9f6fb49f0"
+    },
+    "results/software_release_v1/validation/har_joint_energy_saver_seed29/golden_vectors.npz": {
+      "bytes": 470687,
+      "sha256": "87aa1cb79d1a447ce1a9b9f63b250da85ff0782b97c16c560d4d3809760d466f"
+    },
+    "results/software_release_v1/validation/har_joint_energy_saver_seed29/metrics.json": {
+      "bytes": 7263,
+      "sha256": "91f205a86a961b992e85420e8082002aca31f1d64e03893fcf253e2a24e34228"
+    },
+    "results/software_release_v1/validation/har_joint_energy_saver_seed29/predictions.npz": {
+      "bytes": 45498,
+      "sha256": "b800de6ee61497e97c20382746e3c01a4238d4c8f7b737c7ae63c1ca0ccf9049"
+    },
+    "results/software_release_v1/validation/har_joint_energy_saver_seed43/golden_vectors.npz": {
+      "bytes": 471222,
+      "sha256": "156dad039f058d546ec324eb5e15892d4950476544d0fb2da890e87b6f0274c1"
+    },
+    "results/software_release_v1/validation/har_joint_energy_saver_seed43/metrics.json": {
+      "bytes": 7205,
+      "sha256": "e0911a76e86629e3b45bb848ffa8e1854dca0dbd46b02c9ac3efc6a0afd16028"
+    },
+    "results/software_release_v1/validation/har_joint_energy_saver_seed43/predictions.npz": {
+      "bytes": 44996,
+      "sha256": "6562c9f3521049cd6a72d1e0d283e0af292247e225b0d3d4be0efcda03e44ad7"
+    },
+    "results/software_release_v1/validation/har_joint_quality_seed17/golden_vectors.npz": {
+      "bytes": 1112047,
+      "sha256": "220d59e2e25a94487e4b1524256797aacd81ddf18028494cf42dab6a9d6ce159"
+    },
+    "results/software_release_v1/validation/har_joint_quality_seed17/metrics.json": {
+      "bytes": 9184,
+      "sha256": "2cfaf0dfd968e3a808de2f6805ec9d34c9e30c7feb56650e2550eef66cb09cca"
+    },
+    "results/software_release_v1/validation/har_joint_quality_seed17/predictions.npz": {
+      "bytes": 44918,
+      "sha256": "c40b83576ec46900d3b2301ef7454416803ada8b0f2e028ba32a7ee698c4e136"
+    },
+    "results/software_release_v1/validation/har_joint_quality_seed29/golden_vectors.npz": {
+      "bytes": 1101138,
+      "sha256": "21f2ba671f59e217a8e48e461498057fdb94434d2644b23c4df3edb1b98c1381"
+    },
+    "results/software_release_v1/validation/har_joint_quality_seed29/metrics.json": {
+      "bytes": 9268,
+      "sha256": "01e9e77436d95f9a77d30ac2f36887baa0777d97b0b9801ecb93d14310113df0"
+    },
+    "results/software_release_v1/validation/har_joint_quality_seed29/predictions.npz": {
+      "bytes": 45044,
+      "sha256": "2a4f8001a38caafd7131df1a2966564aba7e4ed9ca2a1df9afc7169b2a1efad6"
+    },
+    "results/software_release_v1/validation/har_joint_quality_seed43/golden_vectors.npz": {
+      "bytes": 1114422,
+      "sha256": "2faa367bbf0a5815f7c69c2adcb23cb1e91079ccdd0de1954a415167cb95951e"
+    },
+    "results/software_release_v1/validation/har_joint_quality_seed43/metrics.json": {
+      "bytes": 9204,
+      "sha256": "9e63c5b4d58b2c40c91c3d6b8409a455a0908170609a6480577b749ef94b438b"
+    },
+    "results/software_release_v1/validation/har_joint_quality_seed43/predictions.npz": {
+      "bytes": 44808,
+      "sha256": "ad37e41331d83b7bc6a75fb078dbf508e75470faf479f58e0779b8e9b3ebe4d1"
+    },
     "results/software_summary.json": {
       "bytes": 984196,
       "sha256": "820f4bea3b9ec4919871f7c823cc20575f99cd434f20ba7ca6c3a3efe3df3b70"
@@ -12677,6 +13208,10 @@
     "tests/test_schedule.py": {
       "bytes": 1074,
       "sha256": "6b962cf877585acc805dc71a1c4872ba64990aa5115e7af364af47869a71acf1"
+    },
+    "tests/test_shared_aligned.py": {
+      "bytes": 1508,
+      "sha256": "c81fc7c400edcdbc16c6220513c5987039fe47e599425d646244b8fcd1ad5a55"
     },
     "tests/test_speech_frontend.py": {
       "bytes": 470,

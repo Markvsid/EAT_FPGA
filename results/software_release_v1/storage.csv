@@ -1,0 +1,7 @@
+family,seed,unique_checkpoints,unique_fp32_parameter_bytes,checkpoint_file_bytes,all_constant_container_bytes,deduplicated_constant_container_bytes,hardware_banking_proven
+independent,17,3,6474396,6529167,1328624,1246544,False
+independent,29,3,6474396,6529167,1327280,1245200,False
+independent,43,3,6474396,6529167,1327280,1245200,False
+shared,17,1,2158132,2176709,1327280,997056,False
+shared,29,1,2158132,2176709,1327280,997056,False
+shared,43,1,2158132,2176709,1327280,997056,False

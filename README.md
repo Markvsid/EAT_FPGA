@@ -186,3 +186,26 @@ dynamic fake-quantized forward. Fine-tuning uses validation-only selection and
 retains the starting checkpoint when later epochs do not improve it. Subsequent
 test evaluation is disclosed because those test sets were previously observed.
 The study covers independent modes, not a retrained shared-weight HAR family.
+
+## Frozen software release v1
+
+The [release report](paper/software_release_results.md) consolidates independent
+aligned models, the aligned shared HAR family, and repeated robustness results
+for all 27 settings. [Findings and comparison limits](paper/software_release_notes.md)
+explain the accuracy/storage tradeoff, unequal training budgets and noise sensitivity.
+The fixed model catalog is `results/software_release_v1/catalog.json`.
+
+After the setup and data preparation above, reproduce/reuse the final numerical
+checks, tables, figures, catalog and audit with one command:
+
+```sh
+.venv/bin/python -m results.software_release run
+```
+
+Shared HAR inference uses `model.shared_aligned.SharedAlignedEncoder` with the
+three joint exports for one seed. All branches reference one actual parameter
+set, while mode-specific calibration and encoded constants remain distinct.
+`shared_state_dict()` exposes the common parameters once. The release keeps the
+independent family as its default and publishes all three seeds for each option.
+The shared family is verified without new training. Test and robustness data
+were previously observed. This software freeze does not approve hardware G2.
