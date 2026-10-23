@@ -80,3 +80,17 @@ comparisons remain separate outstanding gates. `paper/python_numerical_findings.
 maps the discrepancy investigation to the controlling Word template. The frozen
 `results/python_study/evaluation_plan.json` fixes settings for software evaluation
 and does not declare the template's G2 numerical or hardware gate passed.
+
+## Aligned training implementation
+
+The subsequent alignment experiment uses `model.aligned.AlignedEncoder` to model
+this contract independently in CPU PyTorch, with exact forward values and explicit
+surrogate gradients. It retains the original training-only calibration, channel
+scales, tables and output multipliers. See `paper/alignment_method.md` for the
+arithmetic bounds, rounding boundaries and fixed experiment protocol.
+
+An aligned checkpoint must be used with `AlignedEncoder` and its corresponding
+export manifest, or with `IntegerEncoder` and its exported constants. Loading its
+shadow weights into the original `model.network.Encoder` invokes the legacy dynamic
+fake-quantized forward, which has a different contract. The numerical comparison
+does not assert retroactive equivalence for that legacy forward.

@@ -47,6 +47,22 @@ def main():
         assert m['checkpoint_sha256'] == training['checkpoint_sha256']
         assert freeze['export_manifests'][job['name']] == sha(export / 'manifest.json')
         with np.load(export / 'constants.npz') as arrays, np.load(Path(job['initial_export']) / 'constants.npz') as old:
+            # Recompute parameter quantization independently in NumPy, including
+            # updated checkpoints, rather than only trusting the Torch exporter.
+            state = checkpoint['model']
+            for name, layer in m['layers'].items():
+                scale = np.asarray(layer['weight_scale'], dtype=np.float32)
+                bits = m['mode']['weight_bits']
+                weight = state[name + '.weight'].numpy()
+                expected = np.clip(np.rint(weight / scale[:, None]), -(1 << (bits - 1)), (1 << (bits - 1)) - 1).astype(np.int8)
+                bias = np.rint(state[name + '.bias'].numpy() / (scale * 2. ** layer['activation_exponent'])).astype(np.int64)
+                assert np.array_equal(arrays[name + '.weight'], expected)
+                assert np.array_equal(arrays[name + '.bias'], bias)
+            for name in arrays.files:
+                if name.endswith('.gamma'):
+                    gamma = np.rint(state[name.removesuffix('.gamma') + '.weight'].numpy() * (1 << m['spec']['norm_gamma_fraction_bits'])).astype(np.int64)
+                    assert np.array_equal(arrays[name], gamma)
+            assert np.array_equal(arrays['position'], np.rint(state['position'].numpy()[0] * 4096.).astype(np.int64))
             for key in old.files:
                 if key.endswith('.multiplier') or key in ['rsqrt_table', 'exp_table', 'silu_knots']:
                     assert np.array_equal(arrays[key], old[key])
@@ -80,7 +96,8 @@ def main():
          'compared_examples_across_seeds': examples, 'selected_epoch0_models': selected_zero,
          'checks': ['original frozen study source/data/checkpoint/export hashes unchanged',
                     'new frozen sources/data/initial artifacts unchanged', 'full declared training history and earliest maximum validation selection',
-                    'checkpoint/export/prediction checksums', 'unchanged scales, formats, lookup tables and multipliers',
+                    'checkpoint/export/prediction checksums', 'independent NumPy recomputation of selected parameter quantization',
+                    'unchanged scales, formats, lookup tables and multipliers',
                     'zero exact per-point error, group and prediction differences', 'labels and recomputed class metrics/confusion matrices',
                     'subsequent-test disclosure and post-training export freeze']})
     print('Alignment evidence audit passed', counts, examples, 'epoch0 selections', selected_zero)

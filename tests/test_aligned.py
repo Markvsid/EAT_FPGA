@@ -74,3 +74,36 @@ def test_aligned_batch_independence_complete_trace_and_gradients(mode):
     assert m.network.embedding.weight.grad.abs().sum() > 0
     if mode != 'quality':
         assert m.network.gate.scorer.weight.grad.abs().sum() > 0
+
+
+@pytest.mark.parametrize('mode', ['quality', 'balanced', 'energy_saver'])
+def test_updated_parameters_export_and_match_independent_reference(mode, tmp_path):
+    from golden.export_aligned import export
+    torch.set_num_threads(1)
+    root = Path(f'exports/calibrated/har_{mode}_seed17')
+    if not root.exists():
+        pytest.skip('Saved export required')
+    torch.manual_seed(11)
+    m = AlignedEncoder(root).train()
+    before = m.export_constants()
+    x = torch.randn(3, 128, 9)
+    optimizer = torch.optim.AdamW(m.parameters(), lr=.0001)
+    torch.nn.functional.cross_entropy(m(x), torch.tensor([0, 1, 2])).backward()
+    optimizer.step()
+    checkpoint = tmp_path / 'updated.pt'
+    torch.save({'model': m.network.state_dict()}, checkpoint)
+    output = tmp_path / 'export'
+    export(m, checkpoint, output, 'unit_test')
+    with np.load(output / 'constants.npz') as after:
+        assert any(not np.array_equal(before[k], after[k]) for k in before)
+    ref = IntegerEncoder(output, use_native=False)
+    m.eval()
+    m.trace_enabled = True
+    with torch.no_grad():
+        logits = m(x).numpy() * 4096.
+    scale = 2. ** (ref.manifest['input_q12_shift'] - 12)
+    for batch, inp in enumerate(x.numpy()):
+        integer = ref.predict(np.clip(np.rint(inp / scale), -128, 127).astype(np.int8))
+        np.testing.assert_array_equal(logits[batch], integer)
+        for name, value in ref.trace.items():
+            np.testing.assert_array_equal(m.trace[name][batch].numpy(), value, err_msg=name)

@@ -65,8 +65,38 @@ def main():
                               'selected_validation_accuracy_percent': r['validation']['accuracy'] * 100,
                               'checkpoint_sha256': r['checkpoint_sha256'], 'export_constants_sha256': r['export_constants_sha256']})
     csv_file(ROOT / 'training.csv', training_rows)
+    epoch_rows = []
+    for job in plan['jobs']:
+        r = train[job['name']]
+        epoch_rows.append({'name': job['name'], 'dataset': job['dataset'], 'mode': job['mode'], 'seed': job['seed'],
+                           'epoch': 0, 'train_cross_entropy': '', 'validation_accuracy_percent': 100 * r['initial_validation']['accuracy']})
+        for h in r['history']:
+            epoch_rows.append({'name': job['name'], 'dataset': job['dataset'], 'mode': job['mode'], 'seed': job['seed'],
+                               'epoch': h['epoch'], 'train_cross_entropy': h['training_loss'], 'validation_accuracy_percent': 100 * h['validation']['accuracy']})
+    csv_file(ROOT / 'epochs.csv', epoch_rows)
     figure_dir = ROOT / 'figures'
     figure_dir.mkdir(exist_ok=True)
+    fig, axes = plt.subplots(2, 3, figsize=(12, 7), sharey=True)
+    for row_index, dataset in enumerate(['har', 'speech']):
+        for col_index, mode in enumerate(['quality', 'balanced', 'energy_saver']):
+            ax = axes[row_index, col_index]
+            for seed in [17, 29, 43]:
+                values = [v for v in epoch_rows if v['dataset'] == dataset and v['mode'] == mode and v['seed'] == seed]
+                baseline = values[0]['validation_accuracy_percent']
+                ax.plot([v['epoch'] for v in values], [v['validation_accuracy_percent'] - baseline for v in values], marker='o', label=f'Seed{seed}')
+            ax.axhline(0, color='gray', linewidth=.7, linestyle='--')
+            ax.set_title(dataset.upper() + ' · ' + mode.replace('_', ' '))
+            ax.set_xlabel('Fine-tuning epoch')
+            ax.set_xticks([0, 1, 2, 3] if dataset == 'har' else [0, 1])
+            if col_index == 0:
+                ax.set_ylabel('Validation change from epoch0\n(percentage points)')
+            if row_index == 0 and col_index == 0:
+                ax.legend(fontsize=8)
+    fig.suptitle('All validation trajectories · starting checkpoint remains eligible')
+    fig.tight_layout()
+    fig.savefig(figure_dir / 'validation_trajectories.png', dpi=180)
+    fig.savefig(figure_dir / 'validation_trajectories.pdf')
+    plt.close(fig)
     for partition in ['validation', 'test']:
         fig, axes = plt.subplots(1, 2, figsize=(11, 4.5))
         for ax, dataset in zip(axes, ['har', 'speech']):
@@ -106,6 +136,8 @@ def main():
              '| --- | --- | --- | --- | --- |']
     for r in training_rows:
         lines.append(f'| {r["name"]} | {r["epochs_run"]} | {r["selected_epoch"]} | {r["initial_validation_accuracy_percent"]:.3f} | {r["selected_validation_accuracy_percent"]:.3f} |')
+    lines += ['', '![Validation trajectories](../results/alignment_study/figures/validation_trajectories.png)', '',
+              f'{sum(r["selected_epoch"] == 0 for r in training_rows)} of 18 settings retain epoch0 after the declared fine-tuning budget. This is a negative fine-tuning outcome for those settings, not a claim that their weights improved. `epochs.csv` records every training loss and validation result, including unselected epochs. Independent updated-parameter tests additionally take optimizer steps, export changed constants and compare all traces for W8, W4 and early-exit modes, so export verification is not limited to unchanged starting weights.']
     for partition in ['validation', 'test']:
         lines += ['', '## ' + ('Validation accuracy' if partition == 'validation' else 'Accuracy on previously observed test sets'), '',
                   'Mean ± sample SD across three seeds. Paired deltas describe changes from the same mode’s original integer checkpoint; they are not significance tests.', '',
@@ -133,6 +165,7 @@ def main():
               '- `phases.json`: ordered phase timestamps. No RTL, synthesis or board evidence is implied.', '',
               '```sh', '.venv/bin/python -m results.run_alignment_study', '.venv/bin/python -m results.alignment_report',
               '.venv/bin/python -m results.alignment_audit', '.venv/bin/python -m pytest -q', '```', '',
+              'For aligned PyTorch inference, load `AlignedEncoder("results/alignment_study/exports/<name>").eval()` and supply a batch of preprocessed FP32 windows. The module quantizes the host input with the recorded fixed scale. Use `IntegerEncoder` for the integer-only path with prequantized INT8 inputs. Loading shadow parameters into the original `model.network.Encoder` instead invokes the old dynamic fake-quantized contract and is not the aligned model.', '',
               'Matching completed runs are reused after provenance checks. An incomplete training directory stops for explicit recovery rather than silently restarting. Original study sources, data, checkpoints, exports and frozen plan remain unchanged. Future experiments must retain the disclosure that test results have already been seen.']
     Path('paper/aligned_numerics_results.md').write_text('\n'.join(lines) + '\n')
     print('Aligned report generated:', len(train), 'trained settings;', len(evaluations), 'complete partition comparisons')
