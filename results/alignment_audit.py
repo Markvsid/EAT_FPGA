@@ -77,6 +77,8 @@ def main():
             assert result['maximum_integer_lsb_error'] == result['changed_predictions'] == result['changed_group_choices'] == 0
             if part == 'validation':
                 assert freeze['validation_metrics'][job['name']] == sha(out / 'metrics.json')
+                for field in ['samples', 'accuracy', 'macro_f1', 'confusion_matrix']:
+                    assert training['validation'][field] == result['integer'][field]
             else:
                 assert result['test_disclosure'] == 'subsequent evaluation on previously observed test sets'
             with np.load(out / 'predictions.npz') as arrays:

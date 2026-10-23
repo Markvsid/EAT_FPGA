@@ -25,6 +25,9 @@ def main():
                 "completed_shared_family_integer_comparisons": len(list(Path("results/integer/joint").glob("*/metrics.json"))),
                 "completed_heldout_checkpoint_mode_evaluations": len(list(Path("results/python_study/test").glob("*/metrics.json"))),
                 "completed_robustness_evaluations": len(list(Path("results/python_study/robustness").glob("*seed*.json"))),
+                "completed_aligned_training_runs": len(list(Path("results/alignment_study/runs").glob("*/metrics.json"))),
+                "completed_aligned_validation_comparisons": len(list(Path("results/alignment_study/validation").glob("*/metrics.json"))),
+                "completed_aligned_subsequent_test_comparisons": len(list(Path("results/alignment_study/test").glob("*/metrics.json"))),
                 "files": files, "excluded": ["downloaded/prepared datasets", "virtual environment", "native compiled libraries", "Git internals"]}
     Path("results/artifact_manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
     print(json.dumps({"files": len(files), "bytes": sum(p["bytes"] for p in files.values()),

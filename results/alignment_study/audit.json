@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "plan_sha256": "6ef2d2147004c824e02150e8906366b0cba61edebe42746b9c96f384b9e76c2e",
+  "comparisons": {
+    "validation": 18,
+    "test": 18
+  },
+  "compared_examples_across_seeds": {
+    "validation": 102078,
+    "test": 125568
+  },
+  "selected_epoch0_models": 14,
+  "checks": [
+    "original frozen study source/data/checkpoint/export hashes unchanged",
+    "new frozen sources/data/initial artifacts unchanged",
+    "full declared training history and earliest maximum validation selection",
+    "checkpoint/export/prediction checksums",
+    "independent NumPy recomputation of selected parameter quantization",
+    "unchanged scales, formats, lookup tables and multipliers",
+    "zero exact per-point error, group and prediction differences",
+    "labels and recomputed class metrics/confusion matrices",
+    "subsequent-test disclosure and post-training export freeze"
+  ]
+}

@@ -83,3 +83,20 @@ Before a future G2 freeze, the training forward path should model the intended f
 ## Reproduction and provenance
 
 `golden/discrepancy_study.py` created `results/python_study/discrepancy_validation.json` before the test plan freeze. The frozen plan records its checksum plus the controlling template, checkpoint, export, prepared test data and inference-source checksums. No downloaded pretrained weights were used. All existing models were trained locally and then fine-tuned as documented in the training manifests.
+
+## Subsequent aligned training study
+
+The proposed alignment work is implemented separately in `model/aligned.py` and
+`model/aligned_arithmetic.py`, with independent PyTorch arithmetic and explicit
+surrogate gradients. The original dynamic fake-quantized forward and this
+diagnostic history are preserved. Full results are in
+[Aligned numerical results](aligned_numerics_results.md).
+
+The new study completes 18 fine-tuning settings and exact comparisons over all
+validation and subsequent test examples, with zero error at every recorded
+intermediate, logit and group choice. This agreement applies to the new training
+contract; it does not retroactively change the legacy discrepancy counts above.
+Four speech settings select updated weights, while 14 retain their starting
+checkpoints. No consistent test accuracy improvement is observed. Test sets were
+previously observed and are disclosed as such. Global G2 still requires hardware
+feasibility/verification, and shared-weight alignment is outside this study.

@@ -1,0 +1,18 @@
+har_quality_seed17 first legacy divergence {'embedding': 29, 'blocks.0.norm1': 3} aligned max error 0
+har_quality_seed29 first legacy divergence {'embedding': 29, 'blocks.0.norm1': 3} aligned max error 0
+har_quality_seed43 first legacy divergence {'embedding': 29, 'blocks.0.norm1': 3} aligned max error 0
+har_balanced_seed17 first legacy divergence {'embedding': 32} aligned max error 0
+har_balanced_seed29 first legacy divergence {'embedding': 32} aligned max error 0
+har_balanced_seed43 first legacy divergence {'embedding': 32} aligned max error 0
+har_energy_saver_seed17 first legacy divergence {'embedding': 32} aligned max error 0
+har_energy_saver_seed29 first legacy divergence {'embedding': 32} aligned max error 0
+har_energy_saver_seed43 first legacy divergence {'embedding': 32} aligned max error 0
+speech_quality_seed17 first legacy divergence {'embedding': 32} aligned max error 0
+speech_quality_seed29 first legacy divergence {'embedding': 32} aligned max error 0
+speech_quality_seed43 first legacy divergence {'embedding': 32} aligned max error 0
+speech_balanced_seed17 first legacy divergence {'embedding': 32} aligned max error 0
+speech_balanced_seed29 first legacy divergence {'embedding': 32} aligned max error 0
+speech_balanced_seed43 first legacy divergence {'embedding': 32} aligned max error 0
+speech_energy_saver_seed17 first legacy divergence {'embedding': 32} aligned max error 0
+speech_energy_saver_seed29 first legacy divergence {'embedding': 32} aligned max error 0
+speech_energy_saver_seed43 first legacy divergence {'embedding': 32} aligned max error 0

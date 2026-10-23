@@ -14,14 +14,14 @@ cannot replace board measurements.
 | Three validated and frozen modes | Candidate table only in `config/har.json` |
 | W8A8 and W4A8 QAT quality | Three seeds per mode/workload; fair fine-tuning controls; batch-1 reevaluation; still a provisional training/numeric contract |
 | RTS versus plain dropping at equal processed-token budgets | Three-seed 20-token comparison, retention controls, and same-checkpoint counterfactual complete in software |
-| Exact full-model integer reference | Candidate integer-only runtime complete; 27 full-validation and 27 full-test mode/checkpoint comparisons; numerical disagreement documented; no RTL/board equivalence |
+| Exact full-model integer reference | Original candidate comparisons preserved; subsequent aligned PyTorch forward has 18 full-validation and 18 subsequent full-test comparisons with zero intermediate/logit/group errors; no RTL/board equivalence |
 | Frozen scales, widths, approximation sweeps, exports, vectors | Training-calibrated scales, version-2 candidate widths, LUT/PWL sweeps, packed images and traces exist; G2 freeze pending |
 | RTL tensor engine and fixed-point streamed attention | Not implemented; G1 interface agreement pending |
 | RTL controller, compactor, RTS, nonlinear units, buffers | Not implemented |
 | Unit, layer, full-model RTL equivalence and backpressure | Not implemented |
 | Calibrated cycle model within about 10–15 percent of RTL | Operator schedule with tails/nonlinear/memory assumptions and 54-point DSE exists; RTL calibration pending |
 | KV260 dense and adaptive bitstreams; nonnegative routed slack | Board and Vivado access missing |
-| Accuracy over three seeds per workload and numeric stage | FP32, fake-quantized and candidate integer full-test study in `python_test_results.md`; board stage pending |
+| Accuracy over three seeds per workload and numeric stage | Original full-test study in `python_test_results.md`; validation-selected aligned study in `aligned_numerics_results.md`, with previously observed test disclosure; board stage pending |
 | LUT, FF, DSP, BRAM, URAM, routed Fmax, WNS and per-block costs | Pending implementation |
 | Board outputs versus integer reference on full test set | Pending |
 | Mode and dense/Arm CPU median and p95 latency, watts, joules | Board and power harness missing |
@@ -49,6 +49,22 @@ and nine shared-family integer validation comparisons. The subsequent frozen Pyt
 study evaluates 54 checkpoint/mode settings on the official held-out test partitions,
 including 27 integer comparisons. It includes 30 robustness evaluations and isolated
 CPU timings; see `python_test_results.md` and `python_numerical_findings.md`.
-29 local tests pass, and native versus NumPy full-model traces agree on stress
+At the initial software-study snapshot, 29 local tests passed, and native versus NumPy full-model traces agreed on stress
 inputs. Whole-model INT8-limit stress tests count intentional saturations and
 raise on checked accumulator overflow. These are software checks, not RTL gates.
+
+## Subsequent numerical alignment
+
+The aligned study completes 18 additional fine-tuning runs (three seeds for each
+independent mode/workload), with three full HAR epochs and one full speech epoch.
+Four speech settings select updated checkpoints; all nine HAR settings and five
+speech settings retain epoch0. Fine-tuning does not provide a consistent test
+accuracy improvement. Selected validation gains are subject to checkpoint selection.
+
+An independently implemented PyTorch forward matches every NumPy reference trace
+point on 102,078 validation and 125,568 subsequent test example evaluations across
+seeds/modes. Prediction and group-choice changes are zero. The original dynamic
+fake forward is unchanged and is not retrospectively declared equivalent.
+All 37 local tests and the full evidence audit pass. This closes the corresponding
+independent-mode software comparison; shared-weight alignment and the hardware
+parts of G2 remain outstanding. See `aligned_numerics_results.md`.

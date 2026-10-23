@@ -1,0 +1,73 @@
+{
+  "job": {
+    "name": "har_quality_seed17",
+    "dataset": "har",
+    "mode": "quality",
+    "seed": 17,
+    "epochs": 3,
+    "initial_export": "exports/calibrated/har_quality_seed17",
+    "initial_checkpoint": "results/runs/har_quality_seed17/best.pt",
+    "initial_checkpoint_sha256": "85908e8275c419a99312b40b5583b09cf05cf66145d8ae60f4d4b90a1702fb32",
+    "initial_manifest_sha256": "6001e305500e079545d1525b87feaffd400c695babc57fe74a5c594aa4f3a91b",
+    "initial_constants_sha256": "6654e54a1cf52c8e36b15f5538be7e79f5a1d20fd44ca684e18970d01b506a38"
+  },
+  "plan_sha256": "6ef2d2147004c824e02150e8906366b0cba61edebe42746b9c96f384b9e76c2e",
+  "initial_validation": {
+    "samples": 1361,
+    "accuracy": 0.9316678912564291,
+    "macro_f1": 0.9291721778064272,
+    "confusion_matrix": [
+      [
+        164,
+        59,
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        192,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        4,
+        171,
+        0,
+        0,
+        0
+      ],
+      [
+        3,
+        0,
+        0,
+        231,
+        7,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        19,
+        250,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        260
+      ]
+    ]
+  },
+  "initial_full_validation_prediction_agreement_with_existing_integer": true,
+  "torch": "2.14.1",
+  "numpy": "2.5.4"
+}

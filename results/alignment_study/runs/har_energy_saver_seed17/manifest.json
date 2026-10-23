@@ -1,0 +1,73 @@
+{
+  "job": {
+    "name": "har_energy_saver_seed17",
+    "dataset": "har",
+    "mode": "energy_saver",
+    "seed": 17,
+    "epochs": 3,
+    "initial_export": "exports/calibrated/har_energy_saver_seed17",
+    "initial_checkpoint": "results/runs/har_energy_saver_seed17/best.pt",
+    "initial_checkpoint_sha256": "5eebe55ff89136c31b0cdf425517f030b9b6faa9c428c9f724aaa7240ebb492d",
+    "initial_manifest_sha256": "4a5cb42aff5c86349555f1e31fb324866179dd82e737e017ef28f9b80b754055",
+    "initial_constants_sha256": "ec61bebc255a9d8ab4bb909ff4a126f2ee27028d1e01f88b0b739afde43df781"
+  },
+  "plan_sha256": "6ef2d2147004c824e02150e8906366b0cba61edebe42746b9c96f384b9e76c2e",
+  "initial_validation": {
+    "samples": 1361,
+    "accuracy": 0.9184423218221895,
+    "macro_f1": 0.915522120737049,
+    "confusion_matrix": [
+      [
+        167,
+        55,
+        2,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        192,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        17,
+        157,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        232,
+        9,
+        0
+      ],
+      [
+        0,
+        3,
+        0,
+        24,
+        242,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        260
+      ]
+    ]
+  },
+  "initial_full_validation_prediction_agreement_with_existing_integer": true,
+  "torch": "2.14.1",
+  "numpy": "2.5.4"
+}

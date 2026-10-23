@@ -263,6 +263,51 @@ independent adaptive-mode integer comparisons, despite about 98.5–98.9 percent
 final-prediction agreement. Validation diagnosis finds small ranking margins
 and few exact ties; numerical stability of the execution path remains open.
 
+### Aligned numerical forward and subsequent evaluation
+
+A separate CPU PyTorch encoder now models the existing integer contract during
+training, including fixed scales, rounded parameters, nonlinear approximations,
+residual states, online attention updates, summaries and pooling. Forward values
+are exact under the declared finite-width arithmetic; gradients use explicit
+floating surrogates. Bounded floating matrix products are used only where all
+integer products and partial sums are exactly representable. This implementation
+does not call the NumPy golden forward. It changes the training-forward contract
+and does not assert retrospective equivalence for the original dynamic model.
+
+The fixed experiment fine-tunes the independent modes over three seeds, with
+three full HAR epochs and one full speech epoch. Existing training-only calibration
+is retained. Validation selection includes the starting checkpoint. All nine HAR
+settings retain it; four speech settings select updated parameters with small
+validation gains. Selecting the maximum including epoch0 makes selected validation
+accuracy nondecreasing by construction and is not independent evidence of improved
+generalization. Subsequent test results are explicitly disclosed as using the
+already-observed test sets. Full methods and evidence are in
+[Aligned numerical results](aligned_numerics_results.md).
+
+<!-- ALIGNED_NUMERICS_BEGIN -->
+| Workload | Mode | Aligned integer test accuracy percent |
+| --- | --- | --- |
+| har | quality | 93.474 ± 0.255 |
+| har | balanced | 93.055 ± 0.553 |
+| har | energy_saver | 93.360 ± 0.207 |
+| speech | quality | 92.328 ± 0.103 |
+| speech | balanced | 90.998 ± 0.247 |
+| speech | energy_saver | 90.586 ± 0.518 |
+
+Across all 18 independent settings, full-validation comparisons cover 102,078
+example evaluations and subsequent test comparisons cover 125,568. Maximum
+integer error at every recorded point is zero, as are changed predictions and
+group choices. The evidence audit independently recomputes parameter quantization
+and classification metrics and verifies the frozen artifacts. HAR accuracy is
+unchanged because all selected checkpoints are the starting models. Speech mean
+test changes are −0.051/+0.012/−0.030 percentage points for
+Quality/Balanced/Energy-Saver, providing no consistent accuracy benefit.
+<!-- ALIGNED_NUMERICS_END -->
+
+This stage checks implementation agreement on unchanged inputs. It does not
+establish invariance of token choices under input noise, a new shared-weight
+family, or hardware feasibility. The global G2 and board gates remain open.
+
 The final hardware evaluation must add board prediction agreement,
 routed timing and resources, measured power and energy,
 median and p95 latency, the same-board Arm baseline, and board ablations a–e.

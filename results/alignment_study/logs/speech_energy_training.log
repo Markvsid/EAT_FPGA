@@ -1,0 +1,18 @@
+speech_energy_saver_seed17 epoch0 0.9178439034164914
+speech_energy_saver_seed29 epoch0 0.9145376214808135
+speech_energy_saver_seed43 epoch0 0.9129345756938183
+speech_energy_saver_seed17 epoch 1 batch 200 / 663
+speech_energy_saver_seed29 epoch 1 batch 200 / 663
+speech_energy_saver_seed43 epoch 1 batch 200 / 663
+speech_energy_saver_seed17 epoch 1 batch 400 / 663
+speech_energy_saver_seed29 epoch 1 batch 400 / 663
+speech_energy_saver_seed43 epoch 1 batch 400 / 663
+speech_energy_saver_seed17 epoch 1 batch 600 / 663
+speech_energy_saver_seed29 epoch 1 batch 600 / 663
+speech_energy_saver_seed43 epoch 1 batch 600 / 663
+speech_energy_saver_seed17 epoch 1 validation 0.9143372407574392 seconds 686.3912658728659
+speech_energy_saver_seed17 complete
+speech_energy_saver_seed29 epoch 1 validation 0.915238954012624 seconds 691.1822420433164
+speech_energy_saver_seed29 complete
+speech_energy_saver_seed43 epoch 1 validation 0.9139364793106903 seconds 697.496103418991
+speech_energy_saver_seed43 complete

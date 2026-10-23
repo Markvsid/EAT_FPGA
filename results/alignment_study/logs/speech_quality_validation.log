@@ -1,0 +1,18 @@
+speech_quality_seed43 validation 64 / 9981
+speech_quality_seed29 validation 64 / 9981
+speech_quality_seed17 validation 64 / 9981
+speech_quality_seed43 validation 2112 / 9981
+speech_quality_seed17 validation 2112 / 9981
+speech_quality_seed29 validation 2112 / 9981
+speech_quality_seed43 validation 4160 / 9981
+speech_quality_seed17 validation 4160 / 9981
+speech_quality_seed29 validation 4160 / 9981
+speech_quality_seed43 validation 6208 / 9981
+speech_quality_seed17 validation 6208 / 9981
+speech_quality_seed29 validation 6208 / 9981
+speech_quality_seed43 validation 8256 / 9981
+speech_quality_seed17 validation 8256 / 9981
+speech_quality_seed29 validation 8256 / 9981
+speech_quality_seed17 exact validation
+speech_quality_seed29 exact validation
+speech_quality_seed43 exact validation

@@ -1,0 +1,21 @@
+speech_energy_saver_seed17 test 64 / 11005
+speech_energy_saver_seed29 test 64 / 11005
+speech_energy_saver_seed43 test 64 / 11005
+speech_energy_saver_seed29 test 2112 / 11005
+speech_energy_saver_seed17 test 2112 / 11005
+speech_energy_saver_seed43 test 2112 / 11005
+speech_energy_saver_seed29 test 4160 / 11005
+speech_energy_saver_seed17 test 4160 / 11005
+speech_energy_saver_seed43 test 4160 / 11005
+speech_energy_saver_seed29 test 6208 / 11005
+speech_energy_saver_seed17 test 6208 / 11005
+speech_energy_saver_seed43 test 6208 / 11005
+speech_energy_saver_seed29 test 8256 / 11005
+speech_energy_saver_seed17 test 8256 / 11005
+speech_energy_saver_seed43 test 8256 / 11005
+speech_energy_saver_seed17 test 10304 / 11005
+speech_energy_saver_seed29 test 10304 / 11005
+speech_energy_saver_seed43 test 10304 / 11005
+speech_energy_saver_seed17 exact test
+speech_energy_saver_seed29 exact test
+speech_energy_saver_seed43 exact test

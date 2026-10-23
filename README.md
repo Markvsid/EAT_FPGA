@@ -166,3 +166,23 @@ these test results. With prepared data and the recorded inference sources:
 Matching completed evaluations are reused after checksum verification. The numerical
 formats remain candidates: an evaluation freeze is not the template's G2 approval.
 Python timings do not establish FPGA speed, energy savings, or an Arm baseline.
+
+## Aligned numerical training study
+
+The subsequent [aligned numerical study](paper/aligned_numerics_results.md) uses
+an independently implemented CPU PyTorch forward that follows the existing
+integer contract, with surrogate gradients for training. Its fixed protocol and
+arithmetic bounds are described in [the method](paper/alignment_method.md).
+
+```sh
+.venv/bin/python -m results.run_alignment_study
+.venv/bin/python -m results.alignment_report
+.venv/bin/python -m results.alignment_audit
+```
+
+Use `model.aligned.AlignedEncoder` with its corresponding export for aligned
+PyTorch inference. The original `model.network.Encoder` retains its different
+dynamic fake-quantized forward. Fine-tuning uses validation-only selection and
+retains the starting checkpoint when later epochs do not improve it. Subsequent
+test evaluation is disclosed because those test sets were previously observed.
+The study covers independent modes, not a retrained shared-weight HAR family.

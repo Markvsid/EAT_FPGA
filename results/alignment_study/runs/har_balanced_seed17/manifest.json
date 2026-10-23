@@ -1,0 +1,73 @@
+{
+  "job": {
+    "name": "har_balanced_seed17",
+    "dataset": "har",
+    "mode": "balanced",
+    "seed": 17,
+    "epochs": 3,
+    "initial_export": "exports/calibrated/har_balanced_seed17",
+    "initial_checkpoint": "results/runs/har_balanced_seed17/best.pt",
+    "initial_checkpoint_sha256": "fba95eab8dc6fcb3c07a9740cb0d9263ff43b8100a8b9303257a86ae87fe890e",
+    "initial_manifest_sha256": "b1b52da455aa12c779818452e8e58337500c2aa67ea010b4ebcc242b9e1b74c8",
+    "initial_constants_sha256": "59ea54639c7d4ae79dd6fbd8276130e06d8794d166c3b4fd4ba2e9959058ea7b"
+  },
+  "plan_sha256": "6ef2d2147004c824e02150e8906366b0cba61edebe42746b9c96f384b9e76c2e",
+  "initial_validation": {
+    "samples": 1361,
+    "accuracy": 0.9191770756796473,
+    "macro_f1": 0.9168479066223826,
+    "confusion_matrix": [
+      [
+        163,
+        58,
+        3,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        192,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        10,
+        165,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        237,
+        4,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        35,
+        234,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        260
+      ]
+    ]
+  },
+  "initial_full_validation_prediction_agreement_with_existing_integer": true,
+  "torch": "2.14.1",
+  "numpy": "2.5.4"
+}

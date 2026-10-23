@@ -147,3 +147,94 @@ Main report: `paper/python_test_results.md`; numerical findings:
 `paper/python_numerical_findings.md`. The manuscript, dataset documentation and
 completion checklist now distinguish held-out results from older validation
 snapshots. The original hardware and submission requirements remain outstanding.
+
+## 2026 10 23 Numerical alignment implementation
+
+Implemented `AlignedEncoder` separately from the existing NumPy integer model.
+The new PyTorch implementation independently models the fixed exported scales,
+parameter rounding, Q12 states, LUT nonlinear functions, online attention,
+integer summaries and pooling. It returns exact forward values through a custom
+autograd function while passing approximate gradients through floating surrogate
+operators. It does not call the NumPy/native golden forward. Bounded matrix
+products use exact FP32/FP64 integer emulation under documented range proofs;
+this is not an integer-only PyTorch runtime or a hardware speed claim.
+
+A pre-freeze implementation check identified FP64 versus FP32 parameter/scale
+division as a source of altered quantized constants. Preserved the existing
+exporter's FP32 division boundary before training. Exact per-point comparisons
+then passed on zeros, signed limits, random legal inputs and validation examples.
+Tests also verify gradients, training/evaluation equality, batch independence and
+export after actual optimizer updates.
+
+The initial diagnosis uses 32 validation examples for each of 18 settings. The
+legacy first error over one Q12 unit occurs at embedding on 567/576 examples and
+first RMSNorm on 9. With the same quantized host input, Quality first diverges at
+RMSNorm on all 192 examples and adaptive modes at embedding on all 384. All
+aligned traces match exactly. This is a first-difference threshold diagnosis,
+not additive attribution of changed predictions to a single operation.
+
+Froze the alignment training plan at 2026-10-23T16:44:59.695012+00:00, SHA256
+`6ef2d2147004c824e02150e8906366b0cba61edebe42746b9c96f384b9e76c2e`.
+HAR has three full fine-tuning epochs per mode/seed; speech has one full epoch.
+The protocol uses all training examples, AdamW3e-5, weight decay0.01, batch128,
+cosine decay, gradient clipping1, primary cross-entropy, fixed calibration and
+validation selection including epoch 0. No test examples select settings.
+
+HAR Quality was trained and fully verified first, followed by adaptive modes.
+All nine HAR settings retained epoch 0: training loss fell but validation did not
+improve. All nine passed exact full-validation comparisons. Speech Energy-Saver
+was overlapped with Quality in a second three-worker process under the identical
+frozen job protocol; its completed runs are reused by the main runner. All six
+workers use one CPU thread each. Memory pressure was checked while overlapping;
+the system reported29 percent free memory. Two speech Energy-Saver seeds selected
+updated checkpoints, gaining approximately0.07 and 0.10 validation points; the
+third retained epoch 0. All three passed full-validation intermediate/logit/group
+comparisons, including the updated parameters. Speech Quality/Balanced and final
+subsequent-test comparisons were still running at this log entry.
+
+Implementation checkpoint 9627044 was pushed while the experiment continued.
+Its GitHub CI passed: https://github.com/Markvsid/EAT_FPGA/actions/runs/39990530742.
+The original0633422 test-study CI also passed. Original sources, checkpoints,
+exports and frozen data remain unchanged. The new agreement claim applies to
+the aligned contract; it does not rewrite legacy dynamic-fake results. Hardware
+feasibility, RTL/board equivalence and global G2 remain outstanding.
+
+### Completed aligned study
+
+All 18 declared fine-tuning settings completed. Four speech settings select
+epoch 1: Quality seed29 (+0.040 validation points), Balanced seed17 (+0.120),
+Energy-Saver seeds29/43 (+0.070/+0.100). The other14 select epoch 0. Selection
+includes epoch 0 and strictly higher validation accuracy, so nonnegative selected
+validation deltas are partly by construction and are not independent evidence
+of improved generalization.
+
+All 18 full-validation and 18 subsequent full-test comparisons pass with zero
+integer error at every recorded intermediate, zero changed logits/predictions,
+and zero group-choice differences. They cover102,078 validation and 125,568 test
+example evaluations across seeds/modes. Test sets are explicitly previously
+observed; all selected export and validation hashes were fixed before this
+subsequent test evaluation. Auxiliary verification of completed modes overlapped
+other training under the same protocol, and completed comparisons were reused.
+
+HAR selected integer test accuracies remain93.474/93.055/93.360 percent for
+Quality/Balanced/Energy-Saver. Speech becomes92.328/90.998/90.586 percent, with
+paired mean test changes−0.051/+0.012/−0.030 points versus the original integer
+checkpoints. Thus the numerical agreement objective is achieved for independent
+modes, but the limited fine-tuning budget does not provide consistent test
+accuracy gains. Shared-weight alignment was not performed.
+
+All 37 local unit tests pass. The expanded code-checkpoint 31857ff also passed
+GitHub CI: https://github.com/Markvsid/EAT_FPGA/actions/runs/39994862071.
+The evidence audit independently recomputes selected weight/bias/gamma/position
+quantization in NumPy, verifies unchanged calibration/tables/multipliers, checks
+checkpoint selection and all hashes, recomputes class metrics, and confirms the
+original frozen study remains unchanged. Its result is `audit.json`.
+
+Generated and visually inspected validation trajectories and validation/test
+accuracy figures, with PDF/PNG exports. The updated manuscript preserves the
+initial study and adds the new contract, negative fine-tuning findings and
+previously-observed-test disclosure. Main report:
+`paper/aligned_numerics_results.md`. Methods, raw histories, checkpoints, integer
+exports, every final logit/label, per-point errors, golden vectors, environment,
+phase timestamps and complete logs are retained under `results/alignment_study`.
+No RTL, board, energy, hardware timing or global G2 completion is claimed.

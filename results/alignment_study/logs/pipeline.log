@@ -1,0 +1,212 @@
+PHASE {'command': ['model.alignment_study', 'train', '--dataset', 'har', '--mode', 'quality'], 'started_utc': '2026-10-23T16:45:44.751464+00:00'}
+har_quality_seed17 epoch0 0.9316678912564291
+har_quality_seed43 epoch0 0.9346069066862601
+har_quality_seed29 epoch0 0.9397501836884644
+har_quality_seed29 epoch 1 validation 0.9397501836884644 seconds 67.67621999979019
+har_quality_seed17 epoch 1 validation 0.925789860396767 seconds 67.99567958340049
+har_quality_seed43 epoch 1 validation 0.9155033063923586 seconds 68.26949537545443
+har_quality_seed17 epoch 2 validation 0.922850844966936 seconds 74.87771074846387
+har_quality_seed29 epoch 2 validation 0.9360764144011756 seconds 75.07834574952722
+har_quality_seed43 epoch 2 validation 0.9147685525349009 seconds 75.56369204446673
+har_quality_seed29 epoch 3 validation 0.9382806759735489 seconds 68.02128104306757
+har_quality_seed17 epoch 3 validation 0.922850844966936 seconds 68.70478595606983
+har_quality_seed17 complete
+har_quality_seed29 complete
+har_quality_seed43 epoch 3 validation 0.9162380602498164 seconds 67.9671154152602
+har_quality_seed43 complete
+PHASE {'command': ['golden.alignment_evaluate', '--partition', 'validation', '--dataset', 'har', '--mode', 'quality'], 'started_utc': '2026-10-23T16:49:30.678109+00:00'}
+har_quality_seed29 validation 64 / 1361
+har_quality_seed17 validation 64 / 1361
+har_quality_seed43 validation 64 / 1361
+har_quality_seed17 exact validation
+har_quality_seed29 exact validation
+har_quality_seed43 exact validation
+PHASE {'command': ['model.alignment_study', 'train', '--dataset', 'har'], 'started_utc': '2026-10-23T16:49:58.069540+00:00'}
+har_quality_seed17 reused
+har_quality_seed29 reused
+har_quality_seed43 reused
+har_balanced_seed43 epoch0 0.9434239529757531
+har_balanced_seed17 epoch0 0.9191770756796473
+har_balanced_seed29 epoch0 0.9581190301249082
+har_balanced_seed17 epoch 1 validation 0.9125642909625276 seconds 45.26053624972701
+har_balanced_seed43 epoch 1 validation 0.9301983835415136 seconds 45.507476791739464
+har_balanced_seed29 epoch 1 validation 0.9581190301249082 seconds 45.36833158135414
+har_balanced_seed43 epoch 2 validation 0.9309331373989713 seconds 44.720429291948676
+har_balanced_seed29 epoch 2 validation 0.9559147685525349 seconds 44.99801958166063
+har_balanced_seed17 epoch 2 validation 0.9155033063923586 seconds 45.1957818325609
+har_balanced_seed43 epoch 3 validation 0.9309331373989713 seconds 46.067050125449896
+har_balanced_seed17 epoch 3 validation 0.9118295371050698 seconds 48.06053741835058
+har_balanced_seed17 complete
+har_balanced_seed29 epoch 3 validation 0.9544452608376194 seconds 48.18131791613996
+har_balanced_seed29 complete
+har_balanced_seed43 complete
+har_energy_saver_seed17 epoch0 0.9184423218221895
+har_energy_saver_seed29 epoch0 0.9478324761204996
+har_energy_saver_seed43 epoch0 0.9301983835415136
+har_energy_saver_seed29 epoch 1 validation 0.9382806759735489 seconds 32.85111379250884
+har_energy_saver_seed17 epoch 1 validation 0.9103600293901543 seconds 34.24514741636813
+har_energy_saver_seed43 epoch 1 validation 0.9110947832476121 seconds 33.68925949931145
+har_energy_saver_seed29 epoch 2 validation 0.9331373989713446 seconds 31.07381908223033
+har_energy_saver_seed17 epoch 2 validation 0.9103600293901543 seconds 31.30713720805943
+har_energy_saver_seed43 epoch 2 validation 0.9118295371050698 seconds 31.189569083973765
+har_energy_saver_seed29 epoch 3 validation 0.9301983835415136 seconds 22.323262333869934
+har_energy_saver_seed17 epoch 3 validation 0.9081557678177811 seconds 22.56600779108703
+har_energy_saver_seed17 complete
+har_energy_saver_seed29 complete
+har_energy_saver_seed43 epoch 3 validation 0.9110947832476121 seconds 22.17007470689714
+har_energy_saver_seed43 complete
+PHASE {'command': ['golden.alignment_evaluate', '--partition', 'validation', '--dataset', 'har'], 'started_utc': '2026-10-23T16:54:02.457209+00:00'}
+har_quality_seed17 reused
+har_quality_seed29 reused
+har_quality_seed43 reused
+har_balanced_seed43 validation 64 / 1361
+har_balanced_seed29 validation 64 / 1361
+har_balanced_seed17 validation 64 / 1361
+har_balanced_seed17 exact validation
+har_balanced_seed29 exact validation
+har_balanced_seed43 exact validation
+har_energy_saver_seed17 validation 64 / 1361
+har_energy_saver_seed29 validation 64 / 1361
+har_energy_saver_seed43 validation 64 / 1361
+har_energy_saver_seed17 exact validation
+har_energy_saver_seed29 exact validation
+har_energy_saver_seed43 exact validation
+PHASE {'command': ['model.alignment_study', 'train', '--dataset', 'speech'], 'started_utc': '2026-10-23T16:54:42.994774+00:00'}
+speech_quality_seed17 epoch0 0.931269411882577
+speech_quality_seed43 epoch0 0.9281635106702735
+speech_quality_seed29 epoch0 0.9318705540527001
+speech_quality_seed17 epoch 1 batch 200 / 663
+speech_quality_seed43 epoch 1 batch 200 / 663
+speech_quality_seed29 epoch 1 batch 200 / 663
+speech_quality_seed43 epoch 1 batch 400 / 663
+speech_quality_seed17 epoch 1 batch 400 / 663
+speech_quality_seed29 epoch 1 batch 400 / 663
+speech_quality_seed43 epoch 1 batch 600 / 663
+speech_quality_seed17 epoch 1 batch 600 / 663
+speech_quality_seed29 epoch 1 batch 600 / 663
+speech_quality_seed43 epoch 1 validation 0.9275623685001503 seconds 1211.791887709871
+speech_quality_seed17 epoch 1 validation 0.9307684600741408 seconds 1217.9498765002936
+speech_quality_seed17 complete
+speech_quality_seed29 epoch 1 validation 0.932271315499449 seconds 1219.126363582909
+speech_quality_seed29 complete
+speech_quality_seed43 complete
+speech_balanced_seed17 epoch0 0.9198477106502354
+speech_balanced_seed29 epoch0 0.9204488528203587
+speech_balanced_seed43 epoch0 0.9175433323314297
+speech_balanced_seed17 epoch 1 batch 200 / 663
+speech_balanced_seed29 epoch 1 batch 200 / 663
+speech_balanced_seed43 epoch 1 batch 200 / 663
+speech_balanced_seed17 epoch 1 batch 400 / 663
+speech_balanced_seed29 epoch 1 batch 400 / 663
+speech_balanced_seed43 epoch 1 batch 400 / 663
+speech_balanced_seed17 epoch 1 batch 600 / 663
+speech_balanced_seed29 epoch 1 batch 600 / 663
+speech_balanced_seed43 epoch 1 batch 600 / 663
+speech_balanced_seed17 epoch 1 validation 0.9210499949904819 seconds 857.3576096240431
+speech_balanced_seed17 complete
+speech_balanced_seed29 epoch 1 validation 0.9168419997996192 seconds 859.7160186246037
+speech_balanced_seed29 complete
+speech_balanced_seed43 epoch 1 validation 0.9166416190762449 seconds 858.7523764576763
+speech_balanced_seed43 complete
+speech_energy_saver_seed17 reused
+speech_energy_saver_seed29 reused
+speech_energy_saver_seed43 reused
+PHASE {'command': ['golden.alignment_evaluate', '--partition', 'validation', '--dataset', 'speech'], 'started_utc': '2026-10-23T17:32:23.758866+00:00'}
+speech_quality_seed17 reused
+speech_quality_seed29 reused
+speech_quality_seed43 reused
+speech_balanced_seed29 validation 64 / 9981
+speech_balanced_seed43 validation 64 / 9981
+speech_balanced_seed17 validation 64 / 9981
+speech_balanced_seed43 validation 2112 / 9981
+speech_balanced_seed29 validation 2112 / 9981
+speech_balanced_seed17 validation 2112 / 9981
+speech_balanced_seed43 validation 4160 / 9981
+speech_balanced_seed29 validation 4160 / 9981
+speech_balanced_seed17 validation 4160 / 9981
+speech_balanced_seed29 validation 6208 / 9981
+speech_balanced_seed17 validation 6208 / 9981
+speech_balanced_seed43 validation 6208 / 9981
+speech_balanced_seed17 validation 8256 / 9981
+speech_balanced_seed43 validation 8256 / 9981
+speech_balanced_seed29 validation 8256 / 9981
+speech_balanced_seed17 exact validation
+speech_balanced_seed29 exact validation
+speech_balanced_seed43 exact validation
+speech_energy_saver_seed17 reused
+speech_energy_saver_seed29 reused
+speech_energy_saver_seed43 reused
+PHASE {'command': ['golden.alignment_evaluate', '--partition', 'test'], 'started_utc': '2026-10-23T17:35:38.671715+00:00'}
+har_quality_seed43 test 64 / 2947
+har_quality_seed29 test 64 / 2947
+har_quality_seed17 test 64 / 2947
+har_quality_seed43 test 2112 / 2947
+har_quality_seed29 test 2112 / 2947
+har_quality_seed17 test 2112 / 2947
+har_quality_seed17 exact test
+har_quality_seed29 exact test
+har_quality_seed43 exact test
+har_balanced_seed17 test 64 / 2947
+har_balanced_seed29 test 64 / 2947
+har_balanced_seed43 test 64 / 2947
+har_balanced_seed17 test 2112 / 2947
+har_balanced_seed29 test 2112 / 2947
+har_balanced_seed43 test 2112 / 2947
+har_balanced_seed17 exact test
+har_balanced_seed29 exact test
+har_energy_saver_seed17 test 64 / 2947
+har_balanced_seed43 exact test
+har_energy_saver_seed29 test 64 / 2947
+har_energy_saver_seed43 test 64 / 2947
+har_energy_saver_seed17 test 2112 / 2947
+har_energy_saver_seed29 test 2112 / 2947
+har_energy_saver_seed43 test 2112 / 2947
+har_energy_saver_seed17 exact test
+har_energy_saver_seed29 exact test
+speech_quality_seed17 test 64 / 11005
+har_energy_saver_seed43 exact test
+speech_quality_seed29 test 64 / 11005
+speech_quality_seed43 test 64 / 11005
+speech_quality_seed17 test 2112 / 11005
+speech_quality_seed29 test 2112 / 11005
+speech_quality_seed43 test 2112 / 11005
+speech_quality_seed29 test 4160 / 11005
+speech_quality_seed17 test 4160 / 11005
+speech_quality_seed43 test 4160 / 11005
+speech_quality_seed29 test 6208 / 11005
+speech_quality_seed17 test 6208 / 11005
+speech_quality_seed43 test 6208 / 11005
+speech_quality_seed29 test 8256 / 11005
+speech_quality_seed17 test 8256 / 11005
+speech_quality_seed43 test 8256 / 11005
+speech_quality_seed29 test 10304 / 11005
+speech_quality_seed17 test 10304 / 11005
+speech_quality_seed43 test 10304 / 11005
+speech_balanced_seed17 test 64 / 11005
+speech_quality_seed17 exact test
+speech_quality_seed29 exact test
+speech_balanced_seed29 test 64 / 11005
+speech_quality_seed43 exact test
+speech_balanced_seed43 test 64 / 11005
+speech_balanced_seed17 test 2112 / 11005
+speech_balanced_seed29 test 2112 / 11005
+speech_balanced_seed43 test 2112 / 11005
+speech_balanced_seed17 test 4160 / 11005
+speech_balanced_seed29 test 4160 / 11005
+speech_balanced_seed43 test 4160 / 11005
+speech_balanced_seed17 test 6208 / 11005
+speech_balanced_seed29 test 6208 / 11005
+speech_balanced_seed43 test 6208 / 11005
+speech_balanced_seed17 test 8256 / 11005
+speech_balanced_seed29 test 8256 / 11005
+speech_balanced_seed43 test 8256 / 11005
+speech_balanced_seed17 test 10304 / 11005
+speech_balanced_seed29 test 10304 / 11005
+speech_balanced_seed43 test 10304 / 11005
+speech_balanced_seed17 exact test
+speech_balanced_seed29 exact test
+speech_balanced_seed43 exact test
+speech_energy_saver_seed17 reused
+speech_energy_saver_seed29 reused
+speech_energy_saver_seed43 reused
+All aligned study phases complete

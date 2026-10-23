@@ -1,0 +1,13 @@
+{
+  "platform": "macOS-14.4-arm64-arm-64bit",
+  "cpu": "Apple M3 Pro",
+  "python": "3.12.13",
+  "torch": "2.14.1",
+  "numpy": "2.5.4",
+  "training_device": "cpu",
+  "threads_per_worker": 1,
+  "concurrent_training_workers_maximum": 6,
+  "overlap": "Speech Energy-Saver training overlapped Quality; selected Energy-Saver/Quality validation overlapped remaining speech training; Energy-Saver test overlapped other tests; identical frozen settings and completed outputs reused",
+  "code_checkpoint_git_commit": "96270444f5ea68e862820f16e6b0f5028ae0dd7c",
+  "training_plan_sha256": "6ef2d2147004c824e02150e8906366b0cba61edebe42746b9c96f384b9e76c2e"
+}

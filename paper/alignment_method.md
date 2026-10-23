@@ -46,7 +46,7 @@ exported, rather than the previous dynamic fake-quantized values.
 
 Bounded matrix products use floating GEMM only with a proof of integer exactness.
 INT8 products with at most 256 summands have absolute partial sums at most2^22,
-below the FP32 exact-integer limit 2^24. Signed24 QK products over32 elements
+below the FP32 exact-integer limit 2^24. Signed24 QK products over 32 elements
 have at most51-bit partial sums, below the FP64 limit 2^53. Q20 probabilities
 and signed24 values over eight-key tiles have at most46-bit partial sums.
 The implementation checks operand ranges/shapes and requires highest FP32
@@ -87,9 +87,9 @@ CPU with one thread per worker and deterministic algorithms. The objective is
 primary cross-entropy; no auxiliary-head loss is added. These are limited-budget
 fine-tuning runs, not an optimizer sweep or a convergence claim.
 
-Validation selection includes epoch0. Strict accuracy improvement replaces the
+Validation selection includes epoch 0. Strict accuracy improvement replaces the
 current checkpoint and ties retain the earliest one. All later losses/metrics
-are retained even if epoch0 wins. The initial full-validation predictions must
+are retained even if epoch 0 wins. The initial full-validation predictions must
 reproduce the previously recorded integer predictions before training starts.
 
 HAR Quality is trained and fully verified first. HAR adaptive modes follow;
