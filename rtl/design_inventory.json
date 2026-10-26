@@ -1,0 +1,5877 @@
+{
+  "schema_version": 1,
+  "status": "proposed_nonfunctional_skeleton",
+  "packages": [
+    "rtl/pkg/eat_config_pkg.vhd",
+    "rtl/pkg/eat_types_pkg.vhd",
+    "rtl/pkg/eat_registers_pkg.vhd"
+  ],
+  "modules": [
+    {
+      "name": "eat_reset_sync",
+      "path": "rtl/common/eat_reset_sync.vhd",
+      "group": "common",
+      "role": "Convert platform active-low asynchronous reset to core reset; no other CDC is assumed.",
+      "status": "stub",
+      "stage": 1,
+      "generics": [],
+      "ports": [
+        {
+          "name": "clk_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "arst_n_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "rst_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        }
+      ],
+      "dependencies": [],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+    },
+    {
+      "name": "eat_rv_fifo",
+      "path": "rtl/common/eat_rv_fifo.vhd",
+      "group": "common",
+      "role": "Elastic buffering and flush; no data accepted by the stub.",
+      "status": "stub",
+      "stage": 1,
+      "generics": [
+        {
+          "name": "G_DATA_BITS",
+          "type": "positive",
+          "default": "256"
+        },
+        {
+          "name": "G_DEPTH",
+          "type": "positive",
+          "default": "4"
+        }
+      ],
+      "ports": [
+        {
+          "name": "clk_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "rst_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "flush_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_data_i",
+          "direction": "in",
+          "type": "std_logic_vector(G_DATA_BITS-1 downto 0)",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "m_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "m_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "m_data_o",
+          "direction": "out",
+          "type": "std_logic_vector(G_DATA_BITS-1 downto 0)",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "occupancy_o",
+          "direction": "out",
+          "type": "natural range 0 to G_DEPTH",
+          "idle": "0"
+        }
+      ],
+      "dependencies": [],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+    },
+    {
+      "name": "eat_stream_register",
+      "path": "rtl/common/eat_stream_register.vhd",
+      "group": "common",
+      "role": "One elastic state beat, stable under backpressure.",
+      "status": "stub",
+      "stage": 1,
+      "generics": [],
+      "ports": [
+        {
+          "name": "clk_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "rst_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_data_i",
+          "direction": "in",
+          "type": "state_beat_t",
+          "idle": "C_STATE_BEAT_IDLE"
+        },
+        {
+          "name": "m_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "m_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "m_data_o",
+          "direction": "out",
+          "type": "state_beat_t",
+          "idle": "C_STATE_BEAT_IDLE"
+        }
+      ],
+      "dependencies": [
+        "eat_rv_fifo"
+      ],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+    },
+    {
+      "name": "eat_round_shift",
+      "path": "rtl/arithmetic/eat_round_shift.vhd",
+      "group": "arithmetic",
+      "role": "Nearest-even signed right shift or checked left shift; explicit output saturation.",
+      "status": "stub",
+      "stage": 1,
+      "generics": [
+        {
+          "name": "G_IN_BITS",
+          "type": "positive",
+          "default": "72"
+        },
+        {
+          "name": "G_OUT_BITS",
+          "type": "positive",
+          "default": "24"
+        }
+      ],
+      "ports": [
+        {
+          "name": "clk_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "rst_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "x_i",
+          "direction": "in",
+          "type": "signed(G_IN_BITS-1 downto 0)",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "shift_i",
+          "direction": "in",
+          "type": "shift_t",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "m_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "m_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "y_o",
+          "direction": "out",
+          "type": "signed(G_OUT_BITS-1 downto 0)",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "saturated_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "overflow_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        }
+      ],
+      "dependencies": [],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+    },
+    {
+      "name": "eat_round_divide",
+      "path": "rtl/arithmetic/eat_round_divide.vhd",
+      "group": "arithmetic",
+      "role": "Nearest-even signed numerator/positive denominator division; no truncating divide.",
+      "status": "stub",
+      "stage": 1,
+      "generics": [],
+      "ports": [
+        {
+          "name": "clk_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "rst_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "numerator_i",
+          "direction": "in",
+          "type": "wide_t",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "denominator_i",
+          "direction": "in",
+          "type": "unsigned(63 downto 0)",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "m_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "m_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "quotient_o",
+          "direction": "out",
+          "type": "wide_t",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "divide_by_zero_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "overflow_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        }
+      ],
+      "dependencies": [],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+    },
+    {
+      "name": "eat_reduction_tree",
+      "path": "rtl/arithmetic/eat_reduction_tree.vhd",
+      "group": "arithmetic",
+      "role": "Masked wide sum with overflow check; used by norm/attention/vector reductions.",
+      "status": "stub",
+      "stage": 1,
+      "generics": [],
+      "ports": [
+        {
+          "name": "clk_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "rst_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "values_i",
+          "direction": "in",
+          "type": "wide_vec_t(0 to C_LANES-1)",
+          "idle": "(others => (others => '0'))"
+        },
+        {
+          "name": "keep_i",
+          "direction": "in",
+          "type": "lane_mask_t",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "m_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "m_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "sum_o",
+          "direction": "out",
+          "type": "wide_t",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "overflow_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        }
+      ],
+      "dependencies": [],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+    },
+    {
+      "name": "eat_leading_one",
+      "path": "rtl/arithmetic/eat_leading_one.vhd",
+      "group": "arithmetic",
+      "role": "Leading-one normalization for nonnegative variance; explicit zero flag.",
+      "status": "stub",
+      "stage": 1,
+      "generics": [],
+      "ports": [
+        {
+          "name": "clk_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "rst_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "value_i",
+          "direction": "in",
+          "type": "unsigned(63 downto 0)",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "m_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "m_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "exponent_o",
+          "direction": "out",
+          "type": "unsigned(5 downto 0)",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "zero_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        }
+      ],
+      "dependencies": [],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+    },
+    {
+      "name": "eat_exp_lut",
+      "path": "rtl/arithmetic/eat_exp_lut.vhd",
+      "group": "arithmetic",
+      "role": "Rounded Q8 address into 4097-entry Q20 exp table; zero outside supported range.",
+      "status": "stub",
+      "stage": 3,
+      "generics": [],
+      "ports": [
+        {
+          "name": "clk_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "rst_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "negative_argument_i",
+          "direction": "in",
+          "type": "score_t",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "table_base_i",
+          "direction": "in",
+          "type": "mem_addr_t",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "bank_i",
+          "direction": "in",
+          "type": "bank_id_t",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "m_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "m_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "exp_o",
+          "direction": "out",
+          "type": "exp_t",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "param_req_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "param_req_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "param_req_o",
+          "direction": "out",
+          "type": "param_req_t",
+          "idle": "C_PARAM_REQ_IDLE"
+        },
+        {
+          "name": "param_rsp_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "param_rsp_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "param_rsp_i",
+          "direction": "in",
+          "type": "param_rsp_t",
+          "idle": "C_PARAM_RSP_IDLE"
+        }
+      ],
+      "dependencies": [
+        "eat_round_shift",
+        "eat_parameter_store"
+      ],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+    },
+    {
+      "name": "eat_rsqrt_lut",
+      "path": "rtl/arithmetic/eat_rsqrt_lut.vhd",
+      "group": "arithmetic",
+      "role": "Read 1024 Q30 mantissa coefficients; exponent/parity correction belongs to RMSNorm.",
+      "status": "stub",
+      "stage": 2,
+      "generics": [],
+      "ports": [
+        {
+          "name": "clk_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "rst_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "address_i",
+          "direction": "in",
+          "type": "unsigned(C_RSQRT_ADDR_BITS-1 downto 0)",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "table_base_i",
+          "direction": "in",
+          "type": "mem_addr_t",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "bank_i",
+          "direction": "in",
+          "type": "bank_id_t",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "m_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "m_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "coefficient_q30_o",
+          "direction": "out",
+          "type": "unsigned(30 downto 0)",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "param_req_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "param_req_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "param_req_o",
+          "direction": "out",
+          "type": "param_req_t",
+          "idle": "C_PARAM_REQ_IDLE"
+        },
+        {
+          "name": "param_rsp_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "param_rsp_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "param_rsp_i",
+          "direction": "in",
+          "type": "param_rsp_t",
+          "idle": "C_PARAM_RSP_IDLE"
+        }
+      ],
+      "dependencies": [
+        "eat_parameter_store"
+      ],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+    },
+    {
+      "name": "eat_pwl_silu",
+      "path": "rtl/arithmetic/eat_pwl_silu.vhd",
+      "group": "arithmetic",
+      "role": "Nine rounded knots; preserve exact tails and interpolation rounding.",
+      "status": "stub",
+      "stage": 2,
+      "generics": [],
+      "ports": [
+        {
+          "name": "clk_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "rst_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "cmd_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "cmd_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "cmd_i",
+          "direction": "in",
+          "type": "vector_cmd_t",
+          "idle": "C_VECTOR_CMD_IDLE"
+        },
+        {
+          "name": "done_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "done_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "status_o",
+          "direction": "out",
+          "type": "status_t",
+          "idle": "C_STATUS_IDLE"
+        },
+        {
+          "name": "s_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_data_i",
+          "direction": "in",
+          "type": "state_beat_t",
+          "idle": "C_STATE_BEAT_IDLE"
+        },
+        {
+          "name": "m_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "m_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "m_data_o",
+          "direction": "out",
+          "type": "state_beat_t",
+          "idle": "C_STATE_BEAT_IDLE"
+        },
+        {
+          "name": "param_req_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "param_req_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "param_req_o",
+          "direction": "out",
+          "type": "param_req_t",
+          "idle": "C_PARAM_REQ_IDLE"
+        },
+        {
+          "name": "param_rsp_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "param_rsp_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "param_rsp_i",
+          "direction": "in",
+          "type": "param_rsp_t",
+          "idle": "C_PARAM_RSP_IDLE"
+        }
+      ],
+      "dependencies": [
+        "eat_round_divide",
+        "eat_parameter_store"
+      ],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+    },
+    {
+      "name": "eat_memory_arbiter",
+      "path": "rtl/memory/eat_memory_arbiter.vhd",
+      "group": "memory",
+      "role": "Tagged logical memory requests; physical banking/ports remain a design decision.",
+      "status": "stub",
+      "stage": 2,
+      "generics": [
+        {
+          "name": "G_CLIENTS",
+          "type": "positive",
+          "default": "8"
+        }
+      ],
+      "ports": [
+        {
+          "name": "clk_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "rst_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "client_valid_i",
+          "direction": "in",
+          "type": "std_logic_vector(G_CLIENTS-1 downto 0)",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "client_ready_o",
+          "direction": "out",
+          "type": "std_logic_vector(G_CLIENTS-1 downto 0)",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "client_req_i",
+          "direction": "in",
+          "type": "mem_req_array_t(0 to G_CLIENTS-1)",
+          "idle": "(others => C_MEM_REQ_IDLE)"
+        },
+        {
+          "name": "client_rsp_valid_o",
+          "direction": "out",
+          "type": "std_logic_vector(G_CLIENTS-1 downto 0)",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "client_rsp_ready_i",
+          "direction": "in",
+          "type": "std_logic_vector(G_CLIENTS-1 downto 0)",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "client_rsp_o",
+          "direction": "out",
+          "type": "mem_rsp_array_t(0 to G_CLIENTS-1)",
+          "idle": "(others => C_MEM_RSP_IDLE)"
+        },
+        {
+          "name": "mem_req_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "mem_req_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "mem_req_o",
+          "direction": "out",
+          "type": "mem_req_t",
+          "idle": "C_MEM_REQ_IDLE"
+        },
+        {
+          "name": "mem_rsp_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "mem_rsp_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "mem_rsp_i",
+          "direction": "in",
+          "type": "mem_rsp_t",
+          "idle": "C_MEM_RSP_IDLE"
+        }
+      ],
+      "dependencies": [
+        "eat_rv_fifo"
+      ],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+    },
+    {
+      "name": "eat_input_buffer",
+      "path": "rtl/memory/eat_input_buffer.vhd",
+      "group": "memory",
+      "role": "Raw signed INT8 host window, separate from Q12 activation storage.",
+      "status": "stub",
+      "stage": 2,
+      "generics": [],
+      "ports": [
+        {
+          "name": "clk_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "rst_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "req_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "req_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "req_i",
+          "direction": "in",
+          "type": "mem_req_t",
+          "idle": "C_MEM_REQ_IDLE"
+        },
+        {
+          "name": "rsp_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "rsp_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "rsp_o",
+          "direction": "out",
+          "type": "mem_rsp_t",
+          "idle": "C_MEM_RSP_IDLE"
+        }
+      ],
+      "dependencies": [],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+    },
+    {
+      "name": "eat_weight_buffer_banked",
+      "path": "rtl/memory/eat_weight_buffer_banked.vhd",
+      "group": "memory",
+      "role": "On-chip packed W4/W8 parameter banks; no automatic DSP packing assumption.",
+      "status": "stub",
+      "stage": 2,
+      "generics": [],
+      "ports": [
+        {
+          "name": "clk_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "rst_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "req_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "req_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "req_i",
+          "direction": "in",
+          "type": "mem_req_t",
+          "idle": "C_MEM_REQ_IDLE"
+        },
+        {
+          "name": "rsp_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "rsp_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "rsp_o",
+          "direction": "out",
+          "type": "mem_rsp_t",
+          "idle": "C_MEM_RSP_IDLE"
+        }
+      ],
+      "dependencies": [],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+    },
+    {
+      "name": "eat_activation_buffer_pingpong",
+      "path": "rtl/memory/eat_activation_buffer_pingpong.vhd",
+      "group": "memory",
+      "role": "Q12 activations and residual ping-pong storage; tags and bank swaps on legal boundaries.",
+      "status": "stub",
+      "stage": 2,
+      "generics": [],
+      "ports": [
+        {
+          "name": "clk_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "rst_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "req_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "req_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "req_i",
+          "direction": "in",
+          "type": "mem_req_t",
+          "idle": "C_MEM_REQ_IDLE"
+        },
+        {
+          "name": "rsp_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "rsp_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "rsp_o",
+          "direction": "out",
+          "type": "mem_rsp_t",
+          "idle": "C_MEM_RSP_IDLE"
+        }
+      ],
+      "dependencies": [],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+    },
+    {
+      "name": "eat_attention_state_buffer",
+      "path": "rtl/memory/eat_attention_state_buffer.vhd",
+      "group": "memory",
+      "role": "Per-head/query row maxima, normalizers and weighted-value state.",
+      "status": "stub",
+      "stage": 2,
+      "generics": [],
+      "ports": [
+        {
+          "name": "clk_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "rst_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "req_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "req_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "req_i",
+          "direction": "in",
+          "type": "mem_req_t",
+          "idle": "C_MEM_REQ_IDLE"
+        },
+        {
+          "name": "rsp_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "rsp_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "rsp_o",
+          "direction": "out",
+          "type": "mem_rsp_t",
+          "idle": "C_MEM_RSP_IDLE"
+        }
+      ],
+      "dependencies": [],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+    },
+    {
+      "name": "eat_token_index_buffer",
+      "path": "rtl/memory/eat_token_index_buffer.vhd",
+      "group": "memory",
+      "role": "Original token/group indices and summary provenance for compaction.",
+      "status": "stub",
+      "stage": 2,
+      "generics": [],
+      "ports": [
+        {
+          "name": "clk_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "rst_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "req_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "req_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "req_i",
+          "direction": "in",
+          "type": "mem_req_t",
+          "idle": "C_MEM_REQ_IDLE"
+        },
+        {
+          "name": "rsp_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "rsp_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "rsp_o",
+          "direction": "out",
+          "type": "mem_rsp_t",
+          "idle": "C_MEM_RSP_IDLE"
+        }
+      ],
+      "dependencies": [],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+    },
+    {
+      "name": "eat_parameter_store",
+      "path": "rtl/memory/eat_parameter_store.vhd",
+      "group": "memory",
+      "role": "Typed view of biases, multipliers, gamma, shifts, positions and nonlinear tables.",
+      "status": "stub",
+      "stage": 2,
+      "generics": [],
+      "ports": [
+        {
+          "name": "clk_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "rst_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "req_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "req_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "req_i",
+          "direction": "in",
+          "type": "param_req_t",
+          "idle": "C_PARAM_REQ_IDLE"
+        },
+        {
+          "name": "rsp_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "rsp_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "rsp_o",
+          "direction": "out",
+          "type": "param_rsp_t",
+          "idle": "C_PARAM_RSP_IDLE"
+        },
+        {
+          "name": "mem_req_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "mem_req_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "mem_req_o",
+          "direction": "out",
+          "type": "mem_req_t",
+          "idle": "C_MEM_REQ_IDLE"
+        },
+        {
+          "name": "mem_rsp_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "mem_rsp_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "mem_rsp_i",
+          "direction": "in",
+          "type": "mem_rsp_t",
+          "idle": "C_MEM_RSP_IDLE"
+        }
+      ],
+      "dependencies": [
+        "eat_memory_arbiter"
+      ],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+    },
+    {
+      "name": "eat_constant_loader",
+      "path": "rtl/memory/eat_constant_loader.vhd",
+      "group": "memory",
+      "role": "Range-check 64-bit containers, populate banks, attach host-verified identity; no SHA engine.",
+      "status": "stub",
+      "stage": 2,
+      "generics": [],
+      "ports": [
+        {
+          "name": "clk_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "rst_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "cmd_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "cmd_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "cmd_i",
+          "direction": "in",
+          "type": "transfer_cmd_t",
+          "idle": "C_TRANSFER_CMD_IDLE"
+        },
+        {
+          "name": "done_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "done_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "status_o",
+          "direction": "out",
+          "type": "status_t",
+          "idle": "C_STATUS_IDLE"
+        },
+        {
+          "name": "s_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_data_i",
+          "direction": "in",
+          "type": "std_logic_vector(63 downto 0)",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "s_keep_i",
+          "direction": "in",
+          "type": "std_logic_vector(7 downto 0)",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "s_last_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "identity_i",
+          "direction": "in",
+          "type": "identity_t",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "loaded_identity_o",
+          "direction": "out",
+          "type": "identity_t",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "bank_valid_o",
+          "direction": "out",
+          "type": "std_logic_vector(C_MODEL_BANKS-1 downto 0)",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "mem_req_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "mem_req_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "mem_req_o",
+          "direction": "out",
+          "type": "mem_req_t",
+          "idle": "C_MEM_REQ_IDLE"
+        },
+        {
+          "name": "mem_rsp_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "mem_rsp_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "mem_rsp_i",
+          "direction": "in",
+          "type": "mem_rsp_t",
+          "idle": "C_MEM_RSP_IDLE"
+        }
+      ],
+      "dependencies": [
+        "eat_parameter_store",
+        "eat_weight_buffer_banked"
+      ],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+    },
+    {
+      "name": "eat_address_generator",
+      "path": "rtl/tensor/eat_address_generator.vhd",
+      "group": "tensor",
+      "role": "Generate actual row/column/reduction addresses and lane masks, including 26-token tails.",
+      "status": "stub",
+      "stage": 2,
+      "generics": [],
+      "ports": [
+        {
+          "name": "clk_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "rst_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "cmd_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "cmd_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "cmd_i",
+          "direction": "in",
+          "type": "matrix_cmd_t",
+          "idle": "C_MATRIX_CMD_IDLE"
+        },
+        {
+          "name": "done_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "done_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "status_o",
+          "direction": "out",
+          "type": "status_t",
+          "idle": "C_STATUS_IDLE"
+        },
+        {
+          "name": "step_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "step_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "activation_addr_o",
+          "direction": "out",
+          "type": "mem_addr_t",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "weight_addr_o",
+          "direction": "out",
+          "type": "mem_addr_t",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "row_mask_o",
+          "direction": "out",
+          "type": "std_logic_vector(C_ARRAY_ROWS-1 downto 0)",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "column_mask_o",
+          "direction": "out",
+          "type": "std_logic_vector(C_ARRAY_COLS-1 downto 0)",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "first_k_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "last_k_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        }
+      ],
+      "dependencies": [],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+    },
+    {
+      "name": "eat_patch_reader",
+      "path": "rtl/tensor/eat_patch_reader.vhd",
+      "group": "tensor",
+      "role": "Read 32 patch rows (HAR K36, speech K80), adapting host scale to embedding input scale.",
+      "status": "stub",
+      "stage": 2,
+      "generics": [],
+      "ports": [
+        {
+          "name": "clk_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "rst_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "cmd_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "cmd_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "cmd_i",
+          "direction": "in",
+          "type": "matrix_cmd_t",
+          "idle": "C_MATRIX_CMD_IDLE"
+        },
+        {
+          "name": "done_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "done_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "status_o",
+          "direction": "out",
+          "type": "status_t",
+          "idle": "C_STATUS_IDLE"
+        },
+        {
+          "name": "host_input_q12_shift_i",
+          "direction": "in",
+          "type": "shift_t",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "m_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "m_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "m_data_o",
+          "direction": "out",
+          "type": "act_beat_t",
+          "idle": "C_ACT_BEAT_IDLE"
+        },
+        {
+          "name": "mem_req_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "mem_req_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "mem_req_o",
+          "direction": "out",
+          "type": "mem_req_t",
+          "idle": "C_MEM_REQ_IDLE"
+        },
+        {
+          "name": "mem_rsp_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "mem_rsp_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "mem_rsp_i",
+          "direction": "in",
+          "type": "mem_rsp_t",
+          "idle": "C_MEM_RSP_IDLE"
+        }
+      ],
+      "dependencies": [
+        "eat_input_buffer",
+        "eat_address_generator",
+        "eat_round_shift"
+      ],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+    },
+    {
+      "name": "eat_activation_quantizer",
+      "path": "rtl/tensor/eat_activation_quantizer.vhd",
+      "group": "tensor",
+      "role": "Q12 state to fixed-scale INT8; nearest-even shift and counted saturation.",
+      "status": "stub",
+      "stage": 2,
+      "generics": [],
+      "ports": [
+        {
+          "name": "clk_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "rst_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "shift_i",
+          "direction": "in",
+          "type": "shift_t",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "s_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_data_i",
+          "direction": "in",
+          "type": "state_beat_t",
+          "idle": "C_STATE_BEAT_IDLE"
+        },
+        {
+          "name": "m_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "m_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "m_data_o",
+          "direction": "out",
+          "type": "act_beat_t",
+          "idle": "C_ACT_BEAT_IDLE"
+        },
+        {
+          "name": "saturation_events_o",
+          "direction": "out",
+          "type": "unsigned(15 downto 0)",
+          "idle": "(others => '0')"
+        }
+      ],
+      "dependencies": [
+        "eat_round_shift"
+      ],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+    },
+    {
+      "name": "eat_weight_unpack",
+      "path": "rtl/tensor/eat_weight_unpack.vhd",
+      "group": "tensor",
+      "role": "Low nibble first INT4 sign extension or INT8 lanes; reject other precisions.",
+      "status": "stub",
+      "stage": 2,
+      "generics": [],
+      "ports": [
+        {
+          "name": "clk_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "rst_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "packed_i",
+          "direction": "in",
+          "type": "std_logic_vector(63 downto 0)",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "half_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "weight_bits_i",
+          "direction": "in",
+          "type": "natural range 0 to 8",
+          "idle": "0"
+        },
+        {
+          "name": "keep_i",
+          "direction": "in",
+          "type": "lane_mask_t",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "m_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "m_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "weights_o",
+          "direction": "out",
+          "type": "act_vec_t(0 to C_LANES-1)",
+          "idle": "(others => (others => '0'))"
+        },
+        {
+          "name": "keep_o",
+          "direction": "out",
+          "type": "lane_mask_t",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "error_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        }
+      ],
+      "dependencies": [],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+    },
+    {
+      "name": "eat_mac_lane",
+      "path": "rtl/tensor/eat_mac_lane.vhd",
+      "group": "tensor",
+      "role": "One enabled INT8 product and checked 40-bit K accumulation; W4 is sign-extended.",
+      "status": "stub",
+      "stage": 2,
+      "generics": [],
+      "ports": [
+        {
+          "name": "clk_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "rst_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "activation_i",
+          "direction": "in",
+          "type": "act_t",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "weight_i",
+          "direction": "in",
+          "type": "act_t",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "enable_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "first_k_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "last_k_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "m_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "m_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "accumulator_o",
+          "direction": "out",
+          "type": "acc_t",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "overflow_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        }
+      ],
+      "dependencies": [],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+    },
+    {
+      "name": "eat_mac_array",
+      "path": "rtl/tensor/eat_mac_array.vhd",
+      "group": "tensor",
+      "role": "Candidate 8x8 PE array with row/column broadcast and disabled padded lanes.",
+      "status": "stub",
+      "stage": 2,
+      "generics": [],
+      "ports": [
+        {
+          "name": "clk_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "rst_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "activations_i",
+          "direction": "in",
+          "type": "act_vec_t(0 to C_ARRAY_ROWS-1)",
+          "idle": "(others => (others => '0'))"
+        },
+        {
+          "name": "weights_i",
+          "direction": "in",
+          "type": "act_vec_t(0 to C_ARRAY_COLS-1)",
+          "idle": "(others => (others => '0'))"
+        },
+        {
+          "name": "row_mask_i",
+          "direction": "in",
+          "type": "std_logic_vector(C_ARRAY_ROWS-1 downto 0)",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "column_mask_i",
+          "direction": "in",
+          "type": "std_logic_vector(C_ARRAY_COLS-1 downto 0)",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "first_k_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "last_k_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "m_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "m_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "accumulators_o",
+          "direction": "out",
+          "type": "acc_tile_t",
+          "idle": "(others => (others => (others => '0')))"
+        },
+        {
+          "name": "active_products_o",
+          "direction": "out",
+          "type": "unsigned(15 downto 0)",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "overflow_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        }
+      ],
+      "dependencies": [
+        "eat_mac_lane"
+      ],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+    },
+    {
+      "name": "eat_requantizer",
+      "path": "rtl/tensor/eat_requantizer.vhd",
+      "group": "tensor",
+      "role": "Add bias in accumulator domain, check 40 bits, multiply Q24, round and saturate state.",
+      "status": "stub",
+      "stage": 2,
+      "generics": [],
+      "ports": [
+        {
+          "name": "clk_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "rst_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "accumulators_i",
+          "direction": "in",
+          "type": "acc_vec_t(0 to C_LANES-1)",
+          "idle": "(others => (others => '0'))"
+        },
+        {
+          "name": "bias_i",
+          "direction": "in",
+          "type": "acc_vec_t(0 to C_LANES-1)",
+          "idle": "(others => (others => '0'))"
+        },
+        {
+          "name": "multipliers_i",
+          "direction": "in",
+          "type": "multiplier_vec_t(0 to C_LANES-1)",
+          "idle": "(others => (others => '0'))"
+        },
+        {
+          "name": "keep_i",
+          "direction": "in",
+          "type": "lane_mask_t",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "token_i",
+          "direction": "in",
+          "type": "token_index_t",
+          "idle": "0"
+        },
+        {
+          "name": "feature_base_i",
+          "direction": "in",
+          "type": "feature_index_t",
+          "idle": "0"
+        },
+        {
+          "name": "last_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "ctx_i",
+          "direction": "in",
+          "type": "context_t",
+          "idle": "C_CONTEXT_IDLE"
+        },
+        {
+          "name": "m_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "m_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "m_data_o",
+          "direction": "out",
+          "type": "state_beat_t",
+          "idle": "C_STATE_BEAT_IDLE"
+        },
+        {
+          "name": "saturation_events_o",
+          "direction": "out",
+          "type": "unsigned(15 downto 0)",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "overflow_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        }
+      ],
+      "dependencies": [
+        "eat_round_shift"
+      ],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+    },
+    {
+      "name": "eat_tensor_engine",
+      "path": "rtl/tensor/eat_tensor_engine.vhd",
+      "group": "tensor",
+      "role": "Reusable embedding/QKV/projection/FFN/scorer/classifier matrix core.",
+      "status": "stub",
+      "stage": 2,
+      "generics": [],
+      "ports": [
+        {
+          "name": "clk_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "rst_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "cmd_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "cmd_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "cmd_i",
+          "direction": "in",
+          "type": "matrix_cmd_t",
+          "idle": "C_MATRIX_CMD_IDLE"
+        },
+        {
+          "name": "done_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "done_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "status_o",
+          "direction": "out",
+          "type": "status_t",
+          "idle": "C_STATUS_IDLE"
+        },
+        {
+          "name": "m_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "m_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "m_data_o",
+          "direction": "out",
+          "type": "state_beat_t",
+          "idle": "C_STATE_BEAT_IDLE"
+        },
+        {
+          "name": "mem_req_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "mem_req_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "mem_req_o",
+          "direction": "out",
+          "type": "mem_req_t",
+          "idle": "C_MEM_REQ_IDLE"
+        },
+        {
+          "name": "mem_rsp_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "mem_rsp_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "mem_rsp_i",
+          "direction": "in",
+          "type": "mem_rsp_t",
+          "idle": "C_MEM_RSP_IDLE"
+        },
+        {
+          "name": "param_req_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "param_req_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "param_req_o",
+          "direction": "out",
+          "type": "param_req_t",
+          "idle": "C_PARAM_REQ_IDLE"
+        },
+        {
+          "name": "param_rsp_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "param_rsp_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "param_rsp_i",
+          "direction": "in",
+          "type": "param_rsp_t",
+          "idle": "C_PARAM_RSP_IDLE"
+        }
+      ],
+      "dependencies": [
+        "eat_address_generator",
+        "eat_patch_reader",
+        "eat_activation_quantizer",
+        "eat_weight_unpack",
+        "eat_mac_array",
+        "eat_requantizer"
+      ],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+    },
+    {
+      "name": "eat_position_add",
+      "path": "rtl/vector/eat_position_add.vhd",
+      "group": "vector",
+      "role": "Saturating Q12 learned-position addition before block one.",
+      "status": "stub",
+      "stage": 2,
+      "generics": [],
+      "ports": [
+        {
+          "name": "clk_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "rst_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "cmd_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "cmd_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "cmd_i",
+          "direction": "in",
+          "type": "vector_cmd_t",
+          "idle": "C_VECTOR_CMD_IDLE"
+        },
+        {
+          "name": "done_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "done_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "status_o",
+          "direction": "out",
+          "type": "status_t",
+          "idle": "C_STATUS_IDLE"
+        },
+        {
+          "name": "s_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_data_i",
+          "direction": "in",
+          "type": "state_beat_t",
+          "idle": "C_STATE_BEAT_IDLE"
+        },
+        {
+          "name": "m_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "m_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "m_data_o",
+          "direction": "out",
+          "type": "state_beat_t",
+          "idle": "C_STATE_BEAT_IDLE"
+        },
+        {
+          "name": "param_req_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "param_req_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "param_req_o",
+          "direction": "out",
+          "type": "param_req_t",
+          "idle": "C_PARAM_REQ_IDLE"
+        },
+        {
+          "name": "param_rsp_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "param_rsp_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "param_rsp_i",
+          "direction": "in",
+          "type": "param_rsp_t",
+          "idle": "C_PARAM_RSP_IDLE"
+        }
+      ],
+      "dependencies": [
+        "eat_parameter_store"
+      ],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+    },
+    {
+      "name": "eat_residual_add",
+      "path": "rtl/vector/eat_residual_add.vhd",
+      "group": "vector",
+      "role": "Rendezvous matching token/feature/context beats; saturating signed24 addition.",
+      "status": "stub",
+      "stage": 2,
+      "generics": [],
+      "ports": [
+        {
+          "name": "clk_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "rst_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "cmd_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "cmd_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "cmd_i",
+          "direction": "in",
+          "type": "vector_cmd_t",
+          "idle": "C_VECTOR_CMD_IDLE"
+        },
+        {
+          "name": "done_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "done_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "status_o",
+          "direction": "out",
+          "type": "status_t",
+          "idle": "C_STATUS_IDLE"
+        },
+        {
+          "name": "a_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "a_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "a_data_i",
+          "direction": "in",
+          "type": "state_beat_t",
+          "idle": "C_STATE_BEAT_IDLE"
+        },
+        {
+          "name": "b_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "b_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "b_data_i",
+          "direction": "in",
+          "type": "state_beat_t",
+          "idle": "C_STATE_BEAT_IDLE"
+        },
+        {
+          "name": "m_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "m_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "m_data_o",
+          "direction": "out",
+          "type": "state_beat_t",
+          "idle": "C_STATE_BEAT_IDLE"
+        },
+        {
+          "name": "saturation_events_o",
+          "direction": "out",
+          "type": "unsigned(15 downto 0)",
+          "idle": "(others => '0')"
+        }
+      ],
+      "dependencies": [
+        "eat_rv_fifo"
+      ],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+    },
+    {
+      "name": "eat_mean_pool",
+      "path": "rtl/vector/eat_mean_pool.vhd",
+      "group": "vector",
+      "role": "Sum actual 20/26/32 token rows, then nearest-even division, independently per feature.",
+      "status": "stub",
+      "stage": 2,
+      "generics": [],
+      "ports": [
+        {
+          "name": "clk_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "rst_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "cmd_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "cmd_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "cmd_i",
+          "direction": "in",
+          "type": "vector_cmd_t",
+          "idle": "C_VECTOR_CMD_IDLE"
+        },
+        {
+          "name": "done_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "done_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "status_o",
+          "direction": "out",
+          "type": "status_t",
+          "idle": "C_STATUS_IDLE"
+        },
+        {
+          "name": "s_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_data_i",
+          "direction": "in",
+          "type": "state_beat_t",
+          "idle": "C_STATE_BEAT_IDLE"
+        },
+        {
+          "name": "m_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "m_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "m_data_o",
+          "direction": "out",
+          "type": "state_beat_t",
+          "idle": "C_STATE_BEAT_IDLE"
+        }
+      ],
+      "dependencies": [
+        "eat_reduction_tree",
+        "eat_round_divide"
+      ],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+    },
+    {
+      "name": "eat_rmsnorm",
+      "path": "rtl/vector/eat_rmsnorm.vhd",
+      "group": "vector",
+      "role": "Two-pass row norm: mean square, epsilon168, rsqrt LUT/parity, Q14 gamma and saturation.",
+      "status": "stub",
+      "stage": 2,
+      "generics": [],
+      "ports": [
+        {
+          "name": "clk_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "rst_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "cmd_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "cmd_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "cmd_i",
+          "direction": "in",
+          "type": "vector_cmd_t",
+          "idle": "C_VECTOR_CMD_IDLE"
+        },
+        {
+          "name": "done_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "done_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "status_o",
+          "direction": "out",
+          "type": "status_t",
+          "idle": "C_STATUS_IDLE"
+        },
+        {
+          "name": "s_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_data_i",
+          "direction": "in",
+          "type": "state_beat_t",
+          "idle": "C_STATE_BEAT_IDLE"
+        },
+        {
+          "name": "m_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "m_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "m_data_o",
+          "direction": "out",
+          "type": "state_beat_t",
+          "idle": "C_STATE_BEAT_IDLE"
+        },
+        {
+          "name": "param_req_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "param_req_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "param_req_o",
+          "direction": "out",
+          "type": "param_req_t",
+          "idle": "C_PARAM_REQ_IDLE"
+        },
+        {
+          "name": "param_rsp_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "param_rsp_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "param_rsp_i",
+          "direction": "in",
+          "type": "param_rsp_t",
+          "idle": "C_PARAM_RSP_IDLE"
+        },
+        {
+          "name": "mem_req_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "mem_req_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "mem_req_o",
+          "direction": "out",
+          "type": "mem_req_t",
+          "idle": "C_MEM_REQ_IDLE"
+        },
+        {
+          "name": "mem_rsp_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "mem_rsp_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "mem_rsp_i",
+          "direction": "in",
+          "type": "mem_rsp_t",
+          "idle": "C_MEM_RSP_IDLE"
+        }
+      ],
+      "dependencies": [
+        "eat_reduction_tree",
+        "eat_leading_one",
+        "eat_rsqrt_lut",
+        "eat_round_shift",
+        "eat_activation_buffer_pingpong"
+      ],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+    },
+    {
+      "name": "eat_qkv_quantizer",
+      "path": "rtl/attention/eat_qkv_quantizer.vhd",
+      "group": "attention",
+      "role": "Split QKV and quantize Q/K/V independently to INT8 with recorded exponents.",
+      "status": "stub",
+      "stage": 3,
+      "generics": [],
+      "ports": [
+        {
+          "name": "clk_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "rst_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "cmd_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "cmd_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "cmd_i",
+          "direction": "in",
+          "type": "attention_cmd_t",
+          "idle": "C_ATTENTION_CMD_IDLE"
+        },
+        {
+          "name": "done_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "done_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "status_o",
+          "direction": "out",
+          "type": "status_t",
+          "idle": "C_STATUS_IDLE"
+        },
+        {
+          "name": "s_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_data_i",
+          "direction": "in",
+          "type": "state_beat_t",
+          "idle": "C_STATE_BEAT_IDLE"
+        },
+        {
+          "name": "q_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "q_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "q_data_o",
+          "direction": "out",
+          "type": "act_beat_t",
+          "idle": "C_ACT_BEAT_IDLE"
+        },
+        {
+          "name": "k_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "k_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "k_data_o",
+          "direction": "out",
+          "type": "act_beat_t",
+          "idle": "C_ACT_BEAT_IDLE"
+        },
+        {
+          "name": "v_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "v_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "v_data_o",
+          "direction": "out",
+          "type": "act_beat_t",
+          "idle": "C_ACT_BEAT_IDLE"
+        }
+      ],
+      "dependencies": [
+        "eat_activation_quantizer"
+      ],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+    },
+    {
+      "name": "eat_qk_tile_engine",
+      "path": "rtl/attention/eat_qk_tile_engine.vhd",
+      "group": "attention",
+      "role": "INT8 QK dot, restore both exponents to checked Q24; no fused scaling-rounding shortcut.",
+      "status": "stub",
+      "stage": 3,
+      "generics": [],
+      "ports": [
+        {
+          "name": "clk_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "rst_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "cmd_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "cmd_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "cmd_i",
+          "direction": "in",
+          "type": "attention_cmd_t",
+          "idle": "C_ATTENTION_CMD_IDLE"
+        },
+        {
+          "name": "done_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "done_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "status_o",
+          "direction": "out",
+          "type": "status_t",
+          "idle": "C_STATUS_IDLE"
+        },
+        {
+          "name": "q_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "q_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "q_data_i",
+          "direction": "in",
+          "type": "act_beat_t",
+          "idle": "C_ACT_BEAT_IDLE"
+        },
+        {
+          "name": "k_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "k_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "k_data_i",
+          "direction": "in",
+          "type": "act_beat_t",
+          "idle": "C_ACT_BEAT_IDLE"
+        },
+        {
+          "name": "m_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "m_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "qk_q24_o",
+          "direction": "out",
+          "type": "qk_acc_t",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "query_token_o",
+          "direction": "out",
+          "type": "token_index_t",
+          "idle": "0"
+        },
+        {
+          "name": "key_token_o",
+          "direction": "out",
+          "type": "token_index_t",
+          "idle": "0"
+        },
+        {
+          "name": "head_o",
+          "direction": "out",
+          "type": "natural range 0 to C_HEADS-1",
+          "idle": "0"
+        },
+        {
+          "name": "last_tile_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "overflow_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        }
+      ],
+      "dependencies": [
+        "eat_reduction_tree"
+      ],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+    },
+    {
+      "name": "eat_score_scale",
+      "path": "rtl/attention/eat_score_scale.vhd",
+      "group": "attention",
+      "role": "Q24 to Q12 rounding followed by Q20 1/sqrt(head-width) multiplier and rounding.",
+      "status": "stub",
+      "stage": 3,
+      "generics": [],
+      "ports": [
+        {
+          "name": "clk_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "rst_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "qk_q24_i",
+          "direction": "in",
+          "type": "qk_acc_t",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "scale_multiplier_q20_i",
+          "direction": "in",
+          "type": "unsigned(31 downto 0)",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "m_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "m_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "score_q12_o",
+          "direction": "out",
+          "type": "score_t",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "overflow_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        }
+      ],
+      "dependencies": [
+        "eat_round_shift"
+      ],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+    },
+    {
+      "name": "eat_rowmax_exp",
+      "path": "rtl/attention/eat_rowmax_exp.vhd",
+      "group": "attention",
+      "role": "Mask padded keys, compute tile maximum, alpha and per-key Q20 exponentials.",
+      "status": "stub",
+      "stage": 3,
+      "generics": [],
+      "ports": [
+        {
+          "name": "clk_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "rst_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "cmd_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "cmd_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "cmd_i",
+          "direction": "in",
+          "type": "attention_cmd_t",
+          "idle": "C_ATTENTION_CMD_IDLE"
+        },
+        {
+          "name": "done_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "done_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "status_o",
+          "direction": "out",
+          "type": "status_t",
+          "idle": "C_STATUS_IDLE"
+        },
+        {
+          "name": "s_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_data_i",
+          "direction": "in",
+          "type": "score_beat_t",
+          "idle": "C_SCORE_BEAT_IDLE"
+        },
+        {
+          "name": "previous_max_i",
+          "direction": "in",
+          "type": "score_t",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "previous_max_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "m_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "m_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "m_data_o",
+          "direction": "out",
+          "type": "exp_beat_t",
+          "idle": "C_EXP_BEAT_IDLE"
+        },
+        {
+          "name": "new_max_o",
+          "direction": "out",
+          "type": "score_t",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "alpha_o",
+          "direction": "out",
+          "type": "exp_t",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "param_req_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "param_req_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "param_req_o",
+          "direction": "out",
+          "type": "param_req_t",
+          "idle": "C_PARAM_REQ_IDLE"
+        },
+        {
+          "name": "param_rsp_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "param_rsp_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "param_rsp_i",
+          "direction": "in",
+          "type": "param_rsp_t",
+          "idle": "C_PARAM_RSP_IDLE"
+        }
+      ],
+      "dependencies": [
+        "eat_exp_lut"
+      ],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+    },
+    {
+      "name": "eat_running_normalizer",
+      "path": "rtl/attention/eat_running_normalizer.vhd",
+      "group": "attention",
+      "role": "Rescale previous Q20 denominator and add valid exponentials; checked signed32.",
+      "status": "stub",
+      "stage": 3,
+      "generics": [],
+      "ports": [
+        {
+          "name": "clk_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "rst_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "previous_i",
+          "direction": "in",
+          "type": "normalizer_t",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "alpha_i",
+          "direction": "in",
+          "type": "exp_t",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "probabilities_i",
+          "direction": "in",
+          "type": "exp_beat_t",
+          "idle": "C_EXP_BEAT_IDLE"
+        },
+        {
+          "name": "m_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "m_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "normalizer_o",
+          "direction": "out",
+          "type": "normalizer_t",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "overflow_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        }
+      ],
+      "dependencies": [
+        "eat_round_shift",
+        "eat_reduction_tree"
+      ],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+    },
+    {
+      "name": "eat_av_tile_engine",
+      "path": "rtl/attention/eat_av_tile_engine.vhd",
+      "group": "attention",
+      "role": "Q20 coefficient times INT8 V with restored exponent; round each tile before state update.",
+      "status": "stub",
+      "stage": 3,
+      "generics": [],
+      "ports": [
+        {
+          "name": "clk_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "rst_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "cmd_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "cmd_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "cmd_i",
+          "direction": "in",
+          "type": "attention_cmd_t",
+          "idle": "C_ATTENTION_CMD_IDLE"
+        },
+        {
+          "name": "done_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "done_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "status_o",
+          "direction": "out",
+          "type": "status_t",
+          "idle": "C_STATUS_IDLE"
+        },
+        {
+          "name": "p_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "p_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "p_data_i",
+          "direction": "in",
+          "type": "exp_beat_t",
+          "idle": "C_EXP_BEAT_IDLE"
+        },
+        {
+          "name": "v_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "v_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "v_data_i",
+          "direction": "in",
+          "type": "act_beat_t",
+          "idle": "C_ACT_BEAT_IDLE"
+        },
+        {
+          "name": "previous_state_i",
+          "direction": "in",
+          "type": "av_vec_t(0 to C_LANES-1)",
+          "idle": "(others => (others => '0'))"
+        },
+        {
+          "name": "alpha_i",
+          "direction": "in",
+          "type": "exp_t",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "m_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "m_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "weighted_state_o",
+          "direction": "out",
+          "type": "av_vec_t(0 to C_LANES-1)",
+          "idle": "(others => (others => '0'))"
+        },
+        {
+          "name": "overflow_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        }
+      ],
+      "dependencies": [
+        "eat_round_shift",
+        "eat_reduction_tree"
+      ],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+    },
+    {
+      "name": "eat_attention_finalize",
+      "path": "rtl/attention/eat_attention_finalize.vhd",
+      "group": "attention",
+      "role": "Round weighted-value numerator times2^20 divided by final normalizer to Q12.",
+      "status": "stub",
+      "stage": 3,
+      "generics": [],
+      "ports": [
+        {
+          "name": "clk_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "rst_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "weighted_state_i",
+          "direction": "in",
+          "type": "av_vec_t(0 to C_LANES-1)",
+          "idle": "(others => (others => '0'))"
+        },
+        {
+          "name": "normalizer_i",
+          "direction": "in",
+          "type": "normalizer_t",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "keep_i",
+          "direction": "in",
+          "type": "lane_mask_t",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "token_i",
+          "direction": "in",
+          "type": "token_index_t",
+          "idle": "0"
+        },
+        {
+          "name": "feature_base_i",
+          "direction": "in",
+          "type": "feature_index_t",
+          "idle": "0"
+        },
+        {
+          "name": "ctx_i",
+          "direction": "in",
+          "type": "context_t",
+          "idle": "C_CONTEXT_IDLE"
+        },
+        {
+          "name": "m_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "m_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "m_data_o",
+          "direction": "out",
+          "type": "state_beat_t",
+          "idle": "C_STATE_BEAT_IDLE"
+        },
+        {
+          "name": "overflow_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        }
+      ],
+      "dependencies": [
+        "eat_round_divide"
+      ],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+    },
+    {
+      "name": "eat_streaming_attention_engine",
+      "path": "rtl/attention/eat_streaming_attention_engine.vhd",
+      "group": "attention",
+      "role": "Orchestrate head/query/key tiles and online state; never allocate a full score matrix.",
+      "status": "stub",
+      "stage": 3,
+      "generics": [],
+      "ports": [
+        {
+          "name": "clk_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "rst_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "cmd_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "cmd_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "cmd_i",
+          "direction": "in",
+          "type": "attention_cmd_t",
+          "idle": "C_ATTENTION_CMD_IDLE"
+        },
+        {
+          "name": "done_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "done_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "status_o",
+          "direction": "out",
+          "type": "status_t",
+          "idle": "C_STATUS_IDLE"
+        },
+        {
+          "name": "m_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "m_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "m_data_o",
+          "direction": "out",
+          "type": "state_beat_t",
+          "idle": "C_STATE_BEAT_IDLE"
+        },
+        {
+          "name": "mem_req_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "mem_req_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "mem_req_o",
+          "direction": "out",
+          "type": "mem_req_t",
+          "idle": "C_MEM_REQ_IDLE"
+        },
+        {
+          "name": "mem_rsp_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "mem_rsp_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "mem_rsp_i",
+          "direction": "in",
+          "type": "mem_rsp_t",
+          "idle": "C_MEM_RSP_IDLE"
+        },
+        {
+          "name": "param_req_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "param_req_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "param_req_o",
+          "direction": "out",
+          "type": "param_req_t",
+          "idle": "C_PARAM_REQ_IDLE"
+        },
+        {
+          "name": "param_rsp_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "param_rsp_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "param_rsp_i",
+          "direction": "in",
+          "type": "param_rsp_t",
+          "idle": "C_PARAM_RSP_IDLE"
+        }
+      ],
+      "dependencies": [
+        "eat_qkv_quantizer",
+        "eat_qk_tile_engine",
+        "eat_score_scale",
+        "eat_rowmax_exp",
+        "eat_running_normalizer",
+        "eat_av_tile_engine",
+        "eat_attention_finalize",
+        "eat_attention_state_buffer"
+      ],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+    },
+    {
+      "name": "eat_group_scorer",
+      "path": "rtl/tokens/eat_group_scorer.vhd",
+      "group": "tokens",
+      "role": "Consume shared tensor OP_SCORE results, store token scores and sum exact groups of four.",
+      "status": "stub",
+      "stage": 4,
+      "generics": [],
+      "ports": [
+        {
+          "name": "clk_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "rst_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "cmd_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "cmd_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "cmd_i",
+          "direction": "in",
+          "type": "gate_cmd_t",
+          "idle": "C_GATE_CMD_IDLE"
+        },
+        {
+          "name": "done_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "done_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "status_o",
+          "direction": "out",
+          "type": "status_t",
+          "idle": "C_STATUS_IDLE"
+        },
+        {
+          "name": "token_scores_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "token_scores_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "token_scores_i",
+          "direction": "in",
+          "type": "state_beat_t",
+          "idle": "C_STATE_BEAT_IDLE"
+        },
+        {
+          "name": "scores_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "scores_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "score_o",
+          "direction": "out",
+          "type": "group_score_t",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "group_index_o",
+          "direction": "out",
+          "type": "natural range 0 to C_MAX_TOKENS/C_GROUP_SIZE-1",
+          "idle": "0"
+        },
+        {
+          "name": "last_group_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "mem_req_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "mem_req_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "mem_req_o",
+          "direction": "out",
+          "type": "mem_req_t",
+          "idle": "C_MEM_REQ_IDLE"
+        },
+        {
+          "name": "mem_rsp_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "mem_rsp_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "mem_rsp_i",
+          "direction": "in",
+          "type": "mem_rsp_t",
+          "idle": "C_MEM_RSP_IDLE"
+        },
+        {
+          "name": "param_req_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "param_req_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "param_req_o",
+          "direction": "out",
+          "type": "param_req_t",
+          "idle": "C_PARAM_REQ_IDLE"
+        },
+        {
+          "name": "param_rsp_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "param_rsp_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "param_rsp_i",
+          "direction": "in",
+          "type": "param_rsp_t",
+          "idle": "C_PARAM_RSP_IDLE"
+        }
+      ],
+      "dependencies": [
+        "eat_tensor_engine"
+      ],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+    },
+    {
+      "name": "eat_group_selector",
+      "path": "rtl/tokens/eat_group_selector.vhd",
+      "group": "tokens",
+      "role": "Stable top-k group selection; earlier group wins ties; no scores rounded to a mean.",
+      "status": "stub",
+      "stage": 4,
+      "generics": [],
+      "ports": [
+        {
+          "name": "clk_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "rst_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "cmd_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "cmd_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "cmd_i",
+          "direction": "in",
+          "type": "gate_cmd_t",
+          "idle": "C_GATE_CMD_IDLE"
+        },
+        {
+          "name": "done_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "done_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "status_o",
+          "direction": "out",
+          "type": "status_t",
+          "idle": "C_STATUS_IDLE"
+        },
+        {
+          "name": "scores_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "scores_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "score_i",
+          "direction": "in",
+          "type": "group_score_t",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "group_index_i",
+          "direction": "in",
+          "type": "natural range 0 to C_MAX_TOKENS/C_GROUP_SIZE-1",
+          "idle": "0"
+        },
+        {
+          "name": "last_group_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "decision_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "decision_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "decision_o",
+          "direction": "out",
+          "type": "group_decision_t",
+          "idle": "C_GROUP_DECISION_IDLE"
+        }
+      ],
+      "dependencies": [],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+    },
+    {
+      "name": "eat_rts_summary",
+      "path": "rtl/tokens/eat_rts_summary.vhd",
+      "group": "tokens",
+      "role": "Per dropped group: abs(Q12 score)+4096 weights, checked signed53 numerator, nearest-even divide.",
+      "status": "stub",
+      "stage": 4,
+      "generics": [],
+      "ports": [
+        {
+          "name": "clk_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "rst_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "cmd_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "cmd_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "cmd_i",
+          "direction": "in",
+          "type": "gate_cmd_t",
+          "idle": "C_GATE_CMD_IDLE"
+        },
+        {
+          "name": "done_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "done_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "status_o",
+          "direction": "out",
+          "type": "status_t",
+          "idle": "C_STATUS_IDLE"
+        },
+        {
+          "name": "s_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_data_i",
+          "direction": "in",
+          "type": "state_beat_t",
+          "idle": "C_STATE_BEAT_IDLE"
+        },
+        {
+          "name": "score_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "score_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "token_score_i",
+          "direction": "in",
+          "type": "state_t",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "m_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "m_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "m_data_o",
+          "direction": "out",
+          "type": "state_beat_t",
+          "idle": "C_STATE_BEAT_IDLE"
+        },
+        {
+          "name": "overflow_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        }
+      ],
+      "dependencies": [
+        "eat_reduction_tree",
+        "eat_round_divide"
+      ],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+    },
+    {
+      "name": "eat_token_compactor",
+      "path": "rtl/tokens/eat_token_compactor.vhd",
+      "group": "tokens",
+      "role": "Chronological retained groups/summary emission with original-index tracking and actual count.",
+      "status": "stub",
+      "stage": 4,
+      "generics": [],
+      "ports": [
+        {
+          "name": "clk_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "rst_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "cmd_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "cmd_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "cmd_i",
+          "direction": "in",
+          "type": "gate_cmd_t",
+          "idle": "C_GATE_CMD_IDLE"
+        },
+        {
+          "name": "done_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "done_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "status_o",
+          "direction": "out",
+          "type": "status_t",
+          "idle": "C_STATUS_IDLE"
+        },
+        {
+          "name": "decision_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "decision_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "decision_i",
+          "direction": "in",
+          "type": "group_decision_t",
+          "idle": "C_GROUP_DECISION_IDLE"
+        },
+        {
+          "name": "s_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_data_i",
+          "direction": "in",
+          "type": "state_beat_t",
+          "idle": "C_STATE_BEAT_IDLE"
+        },
+        {
+          "name": "m_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "m_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "m_data_o",
+          "direction": "out",
+          "type": "state_beat_t",
+          "idle": "C_STATE_BEAT_IDLE"
+        },
+        {
+          "name": "mem_req_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "mem_req_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "mem_req_o",
+          "direction": "out",
+          "type": "mem_req_t",
+          "idle": "C_MEM_REQ_IDLE"
+        },
+        {
+          "name": "mem_rsp_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "mem_rsp_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "mem_rsp_i",
+          "direction": "in",
+          "type": "mem_rsp_t",
+          "idle": "C_MEM_RSP_IDLE"
+        }
+      ],
+      "dependencies": [
+        "eat_rts_summary",
+        "eat_token_index_buffer",
+        "eat_activation_buffer_pingpong"
+      ],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+    },
+    {
+      "name": "eat_mode_controller",
+      "path": "rtl/control/eat_mode_controller.vhd",
+      "group": "control",
+      "role": "Latch mode/bank/identity only at idle boundary; reject busy/invalid starts.",
+      "status": "stub",
+      "stage": 2,
+      "generics": [],
+      "ports": [
+        {
+          "name": "clk_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "rst_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "request_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "request_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "request_i",
+          "direction": "in",
+          "type": "control_request_t",
+          "idle": "C_CONTROL_REQUEST_IDLE"
+        },
+        {
+          "name": "core_idle_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "loaded_identity_i",
+          "direction": "in",
+          "type": "identity_t",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "bank_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "active_context_o",
+          "direction": "out",
+          "type": "context_t",
+          "idle": "C_CONTEXT_IDLE"
+        },
+        {
+          "name": "active_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "active_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "status_o",
+          "direction": "out",
+          "type": "status_t",
+          "idle": "C_STATUS_IDLE"
+        }
+      ],
+      "dependencies": [],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+    },
+    {
+      "name": "eat_encoder_sequencer",
+      "path": "rtl/control/eat_encoder_sequencer.vhd",
+      "group": "control",
+      "role": "Issue embedding/position, pre-norm attention/FFN/residuals, block-one gate, final norm/pool/head.",
+      "status": "stub",
+      "stage": 3,
+      "generics": [],
+      "ports": [
+        {
+          "name": "clk_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "rst_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "start_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "start_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "ctx_i",
+          "direction": "in",
+          "type": "context_t",
+          "idle": "C_CONTEXT_IDLE"
+        },
+        {
+          "name": "matrix_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "matrix_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "matrix_o",
+          "direction": "out",
+          "type": "matrix_cmd_t",
+          "idle": "C_MATRIX_CMD_IDLE"
+        },
+        {
+          "name": "vector_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "vector_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "vector_o",
+          "direction": "out",
+          "type": "vector_cmd_t",
+          "idle": "C_VECTOR_CMD_IDLE"
+        },
+        {
+          "name": "attention_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "attention_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "attention_o",
+          "direction": "out",
+          "type": "attention_cmd_t",
+          "idle": "C_ATTENTION_CMD_IDLE"
+        },
+        {
+          "name": "gate_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "gate_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "gate_o",
+          "direction": "out",
+          "type": "gate_cmd_t",
+          "idle": "C_GATE_CMD_IDLE"
+        },
+        {
+          "name": "unit_status_i",
+          "direction": "in",
+          "type": "status_t",
+          "idle": "C_STATUS_IDLE"
+        },
+        {
+          "name": "unit_done_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "unit_done_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "output_accepted_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "status_o",
+          "direction": "out",
+          "type": "status_t",
+          "idle": "C_STATUS_IDLE"
+        }
+      ],
+      "dependencies": [
+        "eat_mode_controller",
+        "eat_tensor_engine",
+        "eat_rmsnorm",
+        "eat_position_add",
+        "eat_streaming_attention_engine",
+        "eat_residual_add",
+        "eat_pwl_silu",
+        "eat_group_scorer",
+        "eat_group_selector",
+        "eat_token_compactor",
+        "eat_mean_pool"
+      ],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+    },
+    {
+      "name": "eat_performance_counters",
+      "path": "rtl/control/eat_performance_counters.vhd",
+      "group": "control",
+      "role": "Per-inference active/stall/saturation/traffic counters with atomic completion snapshot.",
+      "status": "stub",
+      "stage": 2,
+      "generics": [],
+      "ports": [
+        {
+          "name": "clk_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "rst_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "start_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "complete_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "clear_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "event_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "event_i",
+          "direction": "in",
+          "type": "counter_event_t",
+          "idle": "EV_CYCLE"
+        },
+        {
+          "name": "event_count_i",
+          "direction": "in",
+          "type": "unsigned(31 downto 0)",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "snapshot_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "snapshot_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "snapshot_o",
+          "direction": "out",
+          "type": "counter_snapshot_t",
+          "idle": "C_COUNTERS_IDLE"
+        }
+      ],
+      "dependencies": [],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+    },
+    {
+      "name": "eat_axi_ctrl_regs",
+      "path": "rtl/host/eat_axi_ctrl_regs.vhd",
+      "group": "host",
+      "role": "AXI4-Lite register front end; independent AW/W buffering, identity and snapshots.",
+      "status": "stub",
+      "stage": 2,
+      "generics": [],
+      "ports": [
+        {
+          "name": "clk_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "rst_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_axi_awaddr_i",
+          "direction": "in",
+          "type": "std_logic_vector(C_AXIL_ADDR_BITS-1 downto 0)",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "s_axi_awvalid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_axi_awready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_axi_wdata_i",
+          "direction": "in",
+          "type": "std_logic_vector(C_AXIL_DATA_BITS-1 downto 0)",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "s_axi_wstrb_i",
+          "direction": "in",
+          "type": "std_logic_vector(C_AXIL_DATA_BITS/8-1 downto 0)",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "s_axi_wvalid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_axi_wready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_axi_bresp_o",
+          "direction": "out",
+          "type": "std_logic_vector(1 downto 0)",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "s_axi_bvalid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_axi_bready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_axi_araddr_i",
+          "direction": "in",
+          "type": "std_logic_vector(C_AXIL_ADDR_BITS-1 downto 0)",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "s_axi_arvalid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_axi_arready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_axi_rdata_o",
+          "direction": "out",
+          "type": "std_logic_vector(C_AXIL_DATA_BITS-1 downto 0)",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "s_axi_rresp_o",
+          "direction": "out",
+          "type": "std_logic_vector(1 downto 0)",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "s_axi_rvalid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_axi_rready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "request_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "request_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "request_o",
+          "direction": "out",
+          "type": "control_request_t",
+          "idle": "C_CONTROL_REQUEST_IDLE"
+        },
+        {
+          "name": "transfer_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "transfer_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "transfer_o",
+          "direction": "out",
+          "type": "transfer_cmd_t",
+          "idle": "C_TRANSFER_CMD_IDLE"
+        },
+        {
+          "name": "status_i",
+          "direction": "in",
+          "type": "status_t",
+          "idle": "C_STATUS_IDLE"
+        },
+        {
+          "name": "loaded_identity_i",
+          "direction": "in",
+          "type": "identity_t",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "counters_i",
+          "direction": "in",
+          "type": "counter_snapshot_t",
+          "idle": "C_COUNTERS_IDLE"
+        },
+        {
+          "name": "interrupt_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        }
+      ],
+      "dependencies": [
+        "eat_rv_fifo"
+      ],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+    },
+    {
+      "name": "eat_dma_descriptor_engine",
+      "path": "rtl/host/eat_dma_descriptor_engine.vhd",
+      "group": "host",
+      "role": "PL transfer counts/routing for PS AXI DMA; not a custom DDR AXI master.",
+      "status": "stub",
+      "stage": 2,
+      "generics": [],
+      "ports": [
+        {
+          "name": "clk_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "rst_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "cmd_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "cmd_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "cmd_i",
+          "direction": "in",
+          "type": "transfer_cmd_t",
+          "idle": "C_TRANSFER_CMD_IDLE"
+        },
+        {
+          "name": "done_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "done_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "status_o",
+          "direction": "out",
+          "type": "status_t",
+          "idle": "C_STATUS_IDLE"
+        },
+        {
+          "name": "stream_bytes_accepted_i",
+          "direction": "in",
+          "type": "unsigned(15 downto 0)",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "stream_last_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "frame_error_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "active_transfer_o",
+          "direction": "out",
+          "type": "transfer_cmd_t",
+          "idle": "C_TRANSFER_CMD_IDLE"
+        },
+        {
+          "name": "active_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        }
+      ],
+      "dependencies": [],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+    },
+    {
+      "name": "eat_axi_stream_input",
+      "path": "rtl/host/eat_axi_stream_input.vhd",
+      "group": "host",
+      "role": "Unpack 128-bit TKEEP/TLAST framed input/constant transfers into byte streams.",
+      "status": "stub",
+      "stage": 2,
+      "generics": [],
+      "ports": [
+        {
+          "name": "clk_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "rst_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_axis_tdata_i",
+          "direction": "in",
+          "type": "std_logic_vector(C_AXIS_BITS-1 downto 0)",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "s_axis_tkeep_i",
+          "direction": "in",
+          "type": "std_logic_vector(C_AXIS_BITS/8-1 downto 0)",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "s_axis_tlast_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_axis_tvalid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_axis_tready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "transfer_i",
+          "direction": "in",
+          "type": "transfer_cmd_t",
+          "idle": "C_TRANSFER_CMD_IDLE"
+        },
+        {
+          "name": "transfer_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "input_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "input_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "input_data_o",
+          "direction": "out",
+          "type": "act_beat_t",
+          "idle": "C_ACT_BEAT_IDLE"
+        },
+        {
+          "name": "constant_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "constant_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "constant_data_o",
+          "direction": "out",
+          "type": "std_logic_vector(63 downto 0)",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "constant_keep_o",
+          "direction": "out",
+          "type": "std_logic_vector(7 downto 0)",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "constant_last_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "frame_error_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        }
+      ],
+      "dependencies": [
+        "eat_rv_fifo",
+        "eat_dma_descriptor_engine"
+      ],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+    },
+    {
+      "name": "eat_axi_stream_output",
+      "path": "rtl/host/eat_axi_stream_output.vhd",
+      "group": "host",
+      "role": "Pack class-order signed24 logits into sign-extended 32-bit words; TLAST on final word.",
+      "status": "stub",
+      "stage": 2,
+      "generics": [],
+      "ports": [
+        {
+          "name": "clk_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "rst_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_data_i",
+          "direction": "in",
+          "type": "state_beat_t",
+          "idle": "C_STATE_BEAT_IDLE"
+        },
+        {
+          "name": "classes_i",
+          "direction": "in",
+          "type": "natural range 0 to C_MAX_CLASSES",
+          "idle": "0"
+        },
+        {
+          "name": "output_accepted_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "m_axis_tdata_o",
+          "direction": "out",
+          "type": "std_logic_vector(C_AXIS_BITS-1 downto 0)",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "m_axis_tkeep_o",
+          "direction": "out",
+          "type": "std_logic_vector(C_AXIS_BITS/8-1 downto 0)",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "m_axis_tlast_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "m_axis_tvalid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "m_axis_tready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        }
+      ],
+      "dependencies": [
+        "eat_rv_fifo"
+      ],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+    },
+    {
+      "name": "eat_encoder_core",
+      "path": "rtl/top/eat_encoder_core.vhd",
+      "group": "top",
+      "role": "Logical core integration boundary; child interconnect is not wired in this skeleton.",
+      "status": "stub",
+      "stage": 3,
+      "generics": [],
+      "ports": [
+        {
+          "name": "clk_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "rst_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "start_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "start_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "request_i",
+          "direction": "in",
+          "type": "control_request_t",
+          "idle": "C_CONTROL_REQUEST_IDLE"
+        },
+        {
+          "name": "logits_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "logits_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "logits_o",
+          "direction": "out",
+          "type": "state_beat_t",
+          "idle": "C_STATE_BEAT_IDLE"
+        },
+        {
+          "name": "status_o",
+          "direction": "out",
+          "type": "status_t",
+          "idle": "C_STATUS_IDLE"
+        },
+        {
+          "name": "event_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "event_o",
+          "direction": "out",
+          "type": "counter_event_t",
+          "idle": "EV_CYCLE"
+        },
+        {
+          "name": "event_count_o",
+          "direction": "out",
+          "type": "unsigned(31 downto 0)",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "mem_req_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "mem_req_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "mem_req_o",
+          "direction": "out",
+          "type": "mem_req_t",
+          "idle": "C_MEM_REQ_IDLE"
+        },
+        {
+          "name": "mem_rsp_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "mem_rsp_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "mem_rsp_i",
+          "direction": "in",
+          "type": "mem_rsp_t",
+          "idle": "C_MEM_RSP_IDLE"
+        },
+        {
+          "name": "param_req_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "param_req_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "param_req_o",
+          "direction": "out",
+          "type": "param_req_t",
+          "idle": "C_PARAM_REQ_IDLE"
+        },
+        {
+          "name": "param_rsp_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "param_rsp_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "param_rsp_i",
+          "direction": "in",
+          "type": "param_rsp_t",
+          "idle": "C_PARAM_RSP_IDLE"
+        }
+      ],
+      "dependencies": [
+        "eat_encoder_sequencer",
+        "eat_tensor_engine",
+        "eat_rmsnorm",
+        "eat_streaming_attention_engine",
+        "eat_group_scorer",
+        "eat_group_selector",
+        "eat_token_compactor",
+        "eat_residual_add",
+        "eat_mean_pool",
+        "eat_position_add"
+      ],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+    },
+    {
+      "name": "eat_fpga_top",
+      "path": "rtl/top/eat_fpga_top.vhd",
+      "group": "top",
+      "role": "Single-clock PL peripheral: control, transfer/storage and encoder/output boundaries; not connected yet.",
+      "status": "stub",
+      "stage": 5,
+      "generics": [],
+      "ports": [
+        {
+          "name": "clk_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "rst_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_axi_awaddr_i",
+          "direction": "in",
+          "type": "std_logic_vector(C_AXIL_ADDR_BITS-1 downto 0)",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "s_axi_awvalid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_axi_awready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_axi_wdata_i",
+          "direction": "in",
+          "type": "std_logic_vector(C_AXIL_DATA_BITS-1 downto 0)",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "s_axi_wstrb_i",
+          "direction": "in",
+          "type": "std_logic_vector(C_AXIL_DATA_BITS/8-1 downto 0)",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "s_axi_wvalid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_axi_wready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_axi_bresp_o",
+          "direction": "out",
+          "type": "std_logic_vector(1 downto 0)",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "s_axi_bvalid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_axi_bready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_axi_araddr_i",
+          "direction": "in",
+          "type": "std_logic_vector(C_AXIL_ADDR_BITS-1 downto 0)",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "s_axi_arvalid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_axi_arready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_axi_rdata_o",
+          "direction": "out",
+          "type": "std_logic_vector(C_AXIL_DATA_BITS-1 downto 0)",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "s_axi_rresp_o",
+          "direction": "out",
+          "type": "std_logic_vector(1 downto 0)",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "s_axi_rvalid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_axi_rready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_axis_tdata_i",
+          "direction": "in",
+          "type": "std_logic_vector(C_AXIS_BITS-1 downto 0)",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "s_axis_tkeep_i",
+          "direction": "in",
+          "type": "std_logic_vector(C_AXIS_BITS/8-1 downto 0)",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "s_axis_tlast_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_axis_tvalid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_axis_tready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "m_axis_tdata_o",
+          "direction": "out",
+          "type": "std_logic_vector(C_AXIS_BITS-1 downto 0)",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "m_axis_tkeep_o",
+          "direction": "out",
+          "type": "std_logic_vector(C_AXIS_BITS/8-1 downto 0)",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "m_axis_tlast_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "m_axis_tvalid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "m_axis_tready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "interrupt_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        }
+      ],
+      "dependencies": [
+        "eat_axi_ctrl_regs",
+        "eat_dma_descriptor_engine",
+        "eat_axi_stream_input",
+        "eat_input_buffer",
+        "eat_constant_loader",
+        "eat_parameter_store",
+        "eat_weight_buffer_banked",
+        "eat_activation_buffer_pingpong",
+        "eat_memory_arbiter",
+        "eat_mode_controller",
+        "eat_encoder_core",
+        "eat_axi_stream_output",
+        "eat_performance_counters"
+      ],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+    },
+    {
+      "name": "eat_platform_wrapper",
+      "path": "rtl/platform/eat_platform_wrapper.vhd",
+      "group": "platform",
+      "role": "PS/block-design-facing adapter; board pin/DDR/MIO wrapper is generated by Vivado.",
+      "status": "stub",
+      "stage": 5,
+      "generics": [],
+      "ports": [
+        {
+          "name": "clk_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "arst_n_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_axi_awaddr_i",
+          "direction": "in",
+          "type": "std_logic_vector(C_AXIL_ADDR_BITS-1 downto 0)",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "s_axi_awvalid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_axi_awready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_axi_wdata_i",
+          "direction": "in",
+          "type": "std_logic_vector(C_AXIL_DATA_BITS-1 downto 0)",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "s_axi_wstrb_i",
+          "direction": "in",
+          "type": "std_logic_vector(C_AXIL_DATA_BITS/8-1 downto 0)",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "s_axi_wvalid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_axi_wready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_axi_bresp_o",
+          "direction": "out",
+          "type": "std_logic_vector(1 downto 0)",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "s_axi_bvalid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_axi_bready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_axi_araddr_i",
+          "direction": "in",
+          "type": "std_logic_vector(C_AXIL_ADDR_BITS-1 downto 0)",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "s_axi_arvalid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_axi_arready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_axi_rdata_o",
+          "direction": "out",
+          "type": "std_logic_vector(C_AXIL_DATA_BITS-1 downto 0)",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "s_axi_rresp_o",
+          "direction": "out",
+          "type": "std_logic_vector(1 downto 0)",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "s_axi_rvalid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_axi_rready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_axis_tdata_i",
+          "direction": "in",
+          "type": "std_logic_vector(C_AXIS_BITS-1 downto 0)",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "s_axis_tkeep_i",
+          "direction": "in",
+          "type": "std_logic_vector(C_AXIS_BITS/8-1 downto 0)",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "s_axis_tlast_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_axis_tvalid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_axis_tready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "m_axis_tdata_o",
+          "direction": "out",
+          "type": "std_logic_vector(C_AXIS_BITS-1 downto 0)",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "m_axis_tkeep_o",
+          "direction": "out",
+          "type": "std_logic_vector(C_AXIS_BITS/8-1 downto 0)",
+          "idle": "(others => '0')"
+        },
+        {
+          "name": "m_axis_tlast_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "m_axis_tvalid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "m_axis_tready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "interrupt_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        }
+      ],
+      "dependencies": [
+        "eat_reset_sync",
+        "eat_fpga_top"
+      ],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+    }
+  ],
+  "deferred": [
+    "INT2/ternary/W4A4",
+    "2:4 weight mask decoder and sparse PE scheduling until G2",
+    "head gating and learned runtime energy policy (Paper2)",
+    "multi-clock CDC until platform clocks are agreed"
+  ],
+  "vendor_generated": [
+    "Kria PS/DDR/MIO block design wrapper",
+    "AXI DMA, AXI interconnect, clocks/reset IP",
+    "RAM primitives if inference is insufficient"
+  ],
+  "dependency_semantics": "Planned service dependencies, not instantiated ownership. One tensor engine is shared by projections, scorer and classifier."
+}

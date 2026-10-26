@@ -1,0 +1,67 @@
+-- NONFUNCTIONAL SKELETON. Proposed interfaces; no transactions accepted.
+-- Single-clock PL peripheral: control, transfer/storage and encoder/output boundaries; not connected yet.
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+use work.eat_config_pkg.all;
+use work.eat_types_pkg.all;
+
+entity eat_fpga_top is
+  generic (
+    G_ALLOW_STUB_SIM : boolean := false
+  );
+  port (
+    clk_i : in std_logic;
+    rst_i : in std_logic;
+    s_axi_awaddr_i : in std_logic_vector(C_AXIL_ADDR_BITS-1 downto 0);
+    s_axi_awvalid_i : in std_logic;
+    s_axi_awready_o : out std_logic;
+    s_axi_wdata_i : in std_logic_vector(C_AXIL_DATA_BITS-1 downto 0);
+    s_axi_wstrb_i : in std_logic_vector(C_AXIL_DATA_BITS/8-1 downto 0);
+    s_axi_wvalid_i : in std_logic;
+    s_axi_wready_o : out std_logic;
+    s_axi_bresp_o : out std_logic_vector(1 downto 0);
+    s_axi_bvalid_o : out std_logic;
+    s_axi_bready_i : in std_logic;
+    s_axi_araddr_i : in std_logic_vector(C_AXIL_ADDR_BITS-1 downto 0);
+    s_axi_arvalid_i : in std_logic;
+    s_axi_arready_o : out std_logic;
+    s_axi_rdata_o : out std_logic_vector(C_AXIL_DATA_BITS-1 downto 0);
+    s_axi_rresp_o : out std_logic_vector(1 downto 0);
+    s_axi_rvalid_o : out std_logic;
+    s_axi_rready_i : in std_logic;
+    s_axis_tdata_i : in std_logic_vector(C_AXIS_BITS-1 downto 0);
+    s_axis_tkeep_i : in std_logic_vector(C_AXIS_BITS/8-1 downto 0);
+    s_axis_tlast_i : in std_logic;
+    s_axis_tvalid_i : in std_logic;
+    s_axis_tready_o : out std_logic;
+    m_axis_tdata_o : out std_logic_vector(C_AXIS_BITS-1 downto 0);
+    m_axis_tkeep_o : out std_logic_vector(C_AXIS_BITS/8-1 downto 0);
+    m_axis_tlast_o : out std_logic;
+    m_axis_tvalid_o : out std_logic;
+    m_axis_tready_i : in std_logic;
+    interrupt_o : out std_logic
+  );
+end entity;
+
+architecture stub of eat_fpga_top is
+begin
+  -- synthesis translate_off
+  assert G_ALLOW_STUB_SIM report "UNIMPLEMENTED_STUB: eat_fpga_top" severity failure;
+  -- synthesis translate_on
+  s_axi_awready_o <= '0';
+  s_axi_wready_o <= '0';
+  s_axi_bresp_o <= (others => '0');
+  s_axi_bvalid_o <= '0';
+  s_axi_arready_o <= '0';
+  s_axi_rdata_o <= (others => '0');
+  s_axi_rresp_o <= (others => '0');
+  s_axi_rvalid_o <= '0';
+  s_axis_tready_o <= '0';
+  m_axis_tdata_o <= (others => '0');
+  m_axis_tkeep_o <= (others => '0');
+  m_axis_tlast_o <= '0';
+  m_axis_tvalid_o <= '0';
+  interrupt_o <= '0';
+  -- TODO: implement after interface review; replace this architecture and inventory status.
+end architecture;

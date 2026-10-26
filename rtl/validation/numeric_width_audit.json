@@ -1,0 +1,2640 @@
+{
+  "status": "export_boundary_width_checks_passed_not_rtl_equivalence",
+  "models": 27,
+  "catalog_sha256": "fcfe067000e095196135422feb5aaba94bc8b98d74cc53c628e3c4c79b5084ad",
+  "observed_ranges": {
+    "weight": {
+      "minimum": -128,
+      "maximum": 127,
+      "proposed_signed_bits": 8
+    },
+    "bias": {
+      "minimum": -4251,
+      "maximum": 4607,
+      "proposed_signed_bits": 40
+    },
+    "multiplier": {
+      "minimum": 1093296,
+      "maximum": 281527584,
+      "proposed_signed_bits": 32
+    },
+    "gamma": {
+      "minimum": 13787,
+      "maximum": 27366,
+      "proposed_signed_bits": 24
+    },
+    "position": {
+      "minimum": -1974,
+      "maximum": 1851,
+      "proposed_signed_bits": 24
+    }
+  },
+  "linear_bounds": [
+    {
+      "model": "har_quality_seed17",
+      "linear": "embedding",
+      "max_abs_accumulator_bound_all_int8_inputs": 355147,
+      "conservative_product_bound": 4641537248127
+    },
+    {
+      "model": "har_quality_seed17",
+      "linear": "blocks.0.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 1153210,
+      "conservative_product_bound": 6396486842800
+    },
+    {
+      "model": "har_quality_seed17",
+      "linear": "blocks.0.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 1136433,
+      "conservative_product_bound": 2332230987054
+    },
+    {
+      "model": "har_quality_seed17",
+      "linear": "blocks.0.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 1109517,
+      "conservative_product_bound": 4674501634632
+    },
+    {
+      "model": "har_quality_seed17",
+      "linear": "blocks.0.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 1967580,
+      "conservative_product_bound": 3271770727200
+    },
+    {
+      "model": "har_quality_seed17",
+      "linear": "blocks.1.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 1075510,
+      "conservative_product_bound": 4948036477420
+    },
+    {
+      "model": "har_quality_seed17",
+      "linear": "blocks.1.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 1112610,
+      "conservative_product_bound": 2233532309310
+    },
+    {
+      "model": "har_quality_seed17",
+      "linear": "blocks.1.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 1072797,
+      "conservative_product_bound": 5076061304358
+    },
+    {
+      "model": "har_quality_seed17",
+      "linear": "blocks.1.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 1957599,
+      "conservative_product_bound": 6412937716080
+    },
+    {
+      "model": "har_quality_seed17",
+      "linear": "blocks.2.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 1172674,
+      "conservative_product_bound": 5035504372264
+    },
+    {
+      "model": "har_quality_seed17",
+      "linear": "blocks.2.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 1115798,
+      "conservative_product_bound": 2066369747958
+    },
+    {
+      "model": "har_quality_seed17",
+      "linear": "blocks.2.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 1189773,
+      "conservative_product_bound": 4870689138081
+    },
+    {
+      "model": "har_quality_seed17",
+      "linear": "blocks.2.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 2035203,
+      "conservative_product_bound": 2929780549056
+    },
+    {
+      "model": "har_quality_seed17",
+      "linear": "blocks.3.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 1181103,
+      "conservative_product_bound": 4922405020302
+    },
+    {
+      "model": "har_quality_seed17",
+      "linear": "blocks.3.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 1115539,
+      "conservative_product_bound": 2009274265091
+    },
+    {
+      "model": "har_quality_seed17",
+      "linear": "blocks.3.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 1149944,
+      "conservative_product_bound": 5157353947056
+    },
+    {
+      "model": "har_quality_seed17",
+      "linear": "blocks.3.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 2132952,
+      "conservative_product_bound": 6800435404848
+    },
+    {
+      "model": "har_quality_seed17",
+      "linear": "classifier",
+      "max_abs_accumulator_bound_all_int8_inputs": 1051429,
+      "conservative_product_bound": 2656944260136
+    },
+    {
+      "model": "har_quality_seed17",
+      "linear": "exit_classifier",
+      "max_abs_accumulator_bound_all_int8_inputs": 1034143,
+      "conservative_product_bound": 3008441947588
+    },
+    {
+      "model": "har_balanced_seed17",
+      "linear": "embedding",
+      "max_abs_accumulator_bound_all_int8_inputs": 19218,
+      "conservative_product_bound": 4665340463328
+    },
+    {
+      "model": "har_balanced_seed17",
+      "linear": "blocks.0.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 63826,
+      "conservative_product_bound": 6484010833664
+    },
+    {
+      "model": "har_balanced_seed17",
+      "linear": "blocks.0.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 63250,
+      "conservative_product_bound": 2425104429000
+    },
+    {
+      "model": "har_balanced_seed17",
+      "linear": "blocks.0.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 59866,
+      "conservative_product_bound": 4789767069776
+    },
+    {
+      "model": "har_balanced_seed17",
+      "linear": "blocks.0.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 105960,
+      "conservative_product_bound": 3239127690240
+    },
+    {
+      "model": "har_balanced_seed17",
+      "linear": "blocks.1.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 59779,
+      "conservative_product_bound": 5016741196456
+    },
+    {
+      "model": "har_balanced_seed17",
+      "linear": "blocks.1.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 61680,
+      "conservative_product_bound": 2321374170240
+    },
+    {
+      "model": "har_balanced_seed17",
+      "linear": "blocks.1.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 59819,
+      "conservative_product_bound": 5200792590488
+    },
+    {
+      "model": "har_balanced_seed17",
+      "linear": "blocks.1.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 107302,
+      "conservative_product_bound": 6661049347576
+    },
+    {
+      "model": "har_balanced_seed17",
+      "linear": "blocks.2.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 64601,
+      "conservative_product_bound": 4942896418240
+    },
+    {
+      "model": "har_balanced_seed17",
+      "linear": "blocks.2.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 61894,
+      "conservative_product_bound": 2087696503648
+    },
+    {
+      "model": "har_balanced_seed17",
+      "linear": "blocks.2.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 65615,
+      "conservative_product_bound": 4892004538080
+    },
+    {
+      "model": "har_balanced_seed17",
+      "linear": "blocks.2.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 110287,
+      "conservative_product_bound": 2934851768480
+    },
+    {
+      "model": "har_balanced_seed17",
+      "linear": "blocks.3.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 65894,
+      "conservative_product_bound": 4716048867408
+    },
+    {
+      "model": "har_balanced_seed17",
+      "linear": "blocks.3.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 61091,
+      "conservative_product_bound": 2040417162876
+    },
+    {
+      "model": "har_balanced_seed17",
+      "linear": "blocks.3.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 61850,
+      "conservative_product_bound": 5366694812000
+    },
+    {
+      "model": "har_balanced_seed17",
+      "linear": "blocks.3.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 115233,
+      "conservative_product_bound": 3343050144726
+    },
+    {
+      "model": "har_balanced_seed17",
+      "linear": "gate.scorer",
+      "max_abs_accumulator_bound_all_int8_inputs": 45218,
+      "conservative_product_bound": 3215199120944
+    },
+    {
+      "model": "har_balanced_seed17",
+      "linear": "classifier",
+      "max_abs_accumulator_bound_all_int8_inputs": 58510,
+      "conservative_product_bound": 2897321115920
+    },
+    {
+      "model": "har_balanced_seed17",
+      "linear": "exit_classifier",
+      "max_abs_accumulator_bound_all_int8_inputs": 57594,
+      "conservative_product_bound": 3446240659200
+    },
+    {
+      "model": "har_energy_saver_seed17",
+      "linear": "embedding",
+      "max_abs_accumulator_bound_all_int8_inputs": 19220,
+      "conservative_product_bound": 4685106562560
+    },
+    {
+      "model": "har_energy_saver_seed17",
+      "linear": "blocks.0.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 63442,
+      "conservative_product_bound": 6593052006304
+    },
+    {
+      "model": "har_energy_saver_seed17",
+      "linear": "blocks.0.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 62865,
+      "conservative_product_bound": 2409745203360
+    },
+    {
+      "model": "har_energy_saver_seed17",
+      "linear": "blocks.0.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 59865,
+      "conservative_product_bound": 4817247949800
+    },
+    {
+      "model": "har_energy_saver_seed17",
+      "linear": "blocks.0.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 107205,
+      "conservative_product_bound": 3322709625900
+    },
+    {
+      "model": "har_energy_saver_seed17",
+      "linear": "blocks.1.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 59651,
+      "conservative_product_bound": 5140578585976
+    },
+    {
+      "model": "har_energy_saver_seed17",
+      "linear": "blocks.1.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 60089,
+      "conservative_product_bound": 2269874954224
+    },
+    {
+      "model": "har_energy_saver_seed17",
+      "linear": "blocks.1.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 58920,
+      "conservative_product_bound": 5418935562240
+    },
+    {
+      "model": "har_energy_saver_seed17",
+      "linear": "blocks.1.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 106019,
+      "conservative_product_bound": 6874686282252
+    },
+    {
+      "model": "har_energy_saver_seed17",
+      "linear": "gate.scorer",
+      "max_abs_accumulator_bound_all_int8_inputs": 47634,
+      "conservative_product_bound": 3290755258512
+    },
+    {
+      "model": "har_energy_saver_seed17",
+      "linear": "exit_classifier",
+      "max_abs_accumulator_bound_all_int8_inputs": 57330,
+      "conservative_product_bound": 3454323982200
+    },
+    {
+      "model": "har_quality_seed29",
+      "linear": "embedding",
+      "max_abs_accumulator_bound_all_int8_inputs": 356307,
+      "conservative_product_bound": 5025529943658
+    },
+    {
+      "model": "har_quality_seed29",
+      "linear": "blocks.0.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 1122171,
+      "conservative_product_bound": 6861759212778
+    },
+    {
+      "model": "har_quality_seed29",
+      "linear": "blocks.0.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 1079899,
+      "conservative_product_bound": 2161103597891
+    },
+    {
+      "model": "har_quality_seed29",
+      "linear": "blocks.0.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 1129459,
+      "conservative_product_bound": 5414267278038
+    },
+    {
+      "model": "har_quality_seed29",
+      "linear": "blocks.0.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 1970132,
+      "conservative_product_bound": 6465437348096
+    },
+    {
+      "model": "har_quality_seed29",
+      "linear": "blocks.1.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 1089426,
+      "conservative_product_bound": 5321695669212
+    },
+    {
+      "model": "har_quality_seed29",
+      "linear": "blocks.1.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 1069496,
+      "conservative_product_bound": 2350040993160
+    },
+    {
+      "model": "har_quality_seed29",
+      "linear": "blocks.1.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 1101130,
+      "conservative_product_bound": 5787072400880
+    },
+    {
+      "model": "har_quality_seed29",
+      "linear": "blocks.1.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 1915788,
+      "conservative_product_bound": 7027899688656
+    },
+    {
+      "model": "har_quality_seed29",
+      "linear": "blocks.2.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 1103222,
+      "conservative_product_bound": 4731694887116
+    },
+    {
+      "model": "har_quality_seed29",
+      "linear": "blocks.2.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 1153533,
+      "conservative_product_bound": 2125401855495
+    },
+    {
+      "model": "har_quality_seed29",
+      "linear": "blocks.2.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 1133103,
+      "conservative_product_bound": 5303833054812
+    },
+    {
+      "model": "har_quality_seed29",
+      "linear": "blocks.2.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 2034094,
+      "conservative_product_bound": 6223029888028
+    },
+    {
+      "model": "har_quality_seed29",
+      "linear": "blocks.3.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 1103417,
+      "conservative_product_bound": 4636823054080
+    },
+    {
+      "model": "har_quality_seed29",
+      "linear": "blocks.3.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 1126745,
+      "conservative_product_bound": 2121938014270
+    },
+    {
+      "model": "har_quality_seed29",
+      "linear": "blocks.3.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 1117605,
+      "conservative_product_bound": 5164728753435
+    },
+    {
+      "model": "har_quality_seed29",
+      "linear": "blocks.3.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 1955045,
+      "conservative_product_bound": 6425986579330
+    },
+    {
+      "model": "har_quality_seed29",
+      "linear": "classifier",
+      "max_abs_accumulator_bound_all_int8_inputs": 1031909,
+      "conservative_product_bound": 3714913676360
+    },
+    {
+      "model": "har_balanced_seed29",
+      "linear": "embedding",
+      "max_abs_accumulator_bound_all_int8_inputs": 19631,
+      "conservative_product_bound": 5135194766000
+    },
+    {
+      "model": "har_balanced_seed29",
+      "linear": "blocks.0.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 60761,
+      "conservative_product_bound": 6614188722064
+    },
+    {
+      "model": "har_balanced_seed29",
+      "linear": "blocks.0.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 60241,
+      "conservative_product_bound": 2191924447684
+    },
+    {
+      "model": "har_balanced_seed29",
+      "linear": "blocks.0.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 60089,
+      "conservative_product_bound": 5223910283224
+    },
+    {
+      "model": "har_balanced_seed29",
+      "linear": "blocks.0.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 109470,
+      "conservative_product_bound": 6625895506680
+    },
+    {
+      "model": "har_balanced_seed29",
+      "linear": "blocks.1.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 58599,
+      "conservative_product_bound": 5109353694576
+    },
+    {
+      "model": "har_balanced_seed29",
+      "linear": "blocks.1.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 58279,
+      "conservative_product_bound": 2261359707932
+    },
+    {
+      "model": "har_balanced_seed29",
+      "linear": "blocks.1.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 62135,
+      "conservative_product_bound": 6192997935400
+    },
+    {
+      "model": "har_balanced_seed29",
+      "linear": "blocks.1.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 104674,
+      "conservative_product_bound": 7047774110496
+    },
+    {
+      "model": "har_balanced_seed29",
+      "linear": "blocks.2.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 59934,
+      "conservative_product_bound": 4878183608928
+    },
+    {
+      "model": "har_balanced_seed29",
+      "linear": "blocks.2.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 62399,
+      "conservative_product_bound": 2131201154388
+    },
+    {
+      "model": "har_balanced_seed29",
+      "linear": "blocks.2.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 61228,
+      "conservative_product_bound": 5703665930208
+    },
+    {
+      "model": "har_balanced_seed29",
+      "linear": "blocks.2.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 111122,
+      "conservative_product_bound": 6192877953680
+    },
+    {
+      "model": "har_balanced_seed29",
+      "linear": "blocks.3.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 61531,
+      "conservative_product_bound": 4669750031840
+    },
+    {
+      "model": "har_balanced_seed29",
+      "linear": "blocks.3.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 60376,
+      "conservative_product_bound": 2062043021856
+    },
+    {
+      "model": "har_balanced_seed29",
+      "linear": "blocks.3.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 61838,
+      "conservative_product_bound": 5394159906352
+    },
+    {
+      "model": "har_balanced_seed29",
+      "linear": "blocks.3.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 111790,
+      "conservative_product_bound": 6753546912000
+    },
+    {
+      "model": "har_balanced_seed29",
+      "linear": "gate.scorer",
+      "max_abs_accumulator_bound_all_int8_inputs": 52941,
+      "conservative_product_bound": 3326422794240
+    },
+    {
+      "model": "har_balanced_seed29",
+      "linear": "classifier",
+      "max_abs_accumulator_bound_all_int8_inputs": 56921,
+      "conservative_product_bound": 3796955605068
+    },
+    {
+      "model": "har_energy_saver_seed29",
+      "linear": "embedding",
+      "max_abs_accumulator_bound_all_int8_inputs": 19889,
+      "conservative_product_bound": 4767277148240
+    },
+    {
+      "model": "har_energy_saver_seed29",
+      "linear": "blocks.0.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 62321,
+      "conservative_product_bound": 6510001304632
+    },
+    {
+      "model": "har_energy_saver_seed29",
+      "linear": "blocks.0.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 60301,
+      "conservative_product_bound": 2092862706532
+    },
+    {
+      "model": "har_energy_saver_seed29",
+      "linear": "blocks.0.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 60740,
+      "conservative_product_bound": 5235767105440
+    },
+    {
+      "model": "har_energy_saver_seed29",
+      "linear": "blocks.0.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 107806,
+      "conservative_product_bound": 6308802807760
+    },
+    {
+      "model": "har_energy_saver_seed29",
+      "linear": "blocks.1.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 60207,
+      "conservative_product_bound": 4981636997568
+    },
+    {
+      "model": "har_energy_saver_seed29",
+      "linear": "blocks.1.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 59814,
+      "conservative_product_bound": 2203478375760
+    },
+    {
+      "model": "har_energy_saver_seed29",
+      "linear": "blocks.1.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 61110,
+      "conservative_product_bound": 5674708821600
+    },
+    {
+      "model": "har_energy_saver_seed29",
+      "linear": "blocks.1.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 107055,
+      "conservative_product_bound": 6963400611180
+    },
+    {
+      "model": "har_energy_saver_seed29",
+      "linear": "gate.scorer",
+      "max_abs_accumulator_bound_all_int8_inputs": 56012,
+      "conservative_product_bound": 3382403813536
+    },
+    {
+      "model": "har_energy_saver_seed29",
+      "linear": "exit_classifier",
+      "max_abs_accumulator_bound_all_int8_inputs": 54782,
+      "conservative_product_bound": 2955438500560
+    },
+    {
+      "model": "har_quality_seed43",
+      "linear": "embedding",
+      "max_abs_accumulator_bound_all_int8_inputs": 363494,
+      "conservative_product_bound": 5241778676278
+    },
+    {
+      "model": "har_quality_seed43",
+      "linear": "blocks.0.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 1085865,
+      "conservative_product_bound": 6427634533320
+    },
+    {
+      "model": "har_quality_seed43",
+      "linear": "blocks.0.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 1116906,
+      "conservative_product_bound": 2267907789462
+    },
+    {
+      "model": "har_quality_seed43",
+      "linear": "blocks.0.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 1087026,
+      "conservative_product_bound": 4965828265020
+    },
+    {
+      "model": "har_quality_seed43",
+      "linear": "blocks.0.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 1939868,
+      "conservative_product_bound": 6507525809764
+    },
+    {
+      "model": "har_quality_seed43",
+      "linear": "blocks.1.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 1123698,
+      "conservative_product_bound": 6405251649492
+    },
+    {
+      "model": "har_quality_seed43",
+      "linear": "blocks.1.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 1102037,
+      "conservative_product_bound": 2253029789651
+    },
+    {
+      "model": "har_quality_seed43",
+      "linear": "blocks.1.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 1108187,
+      "conservative_product_bound": 4947711417030
+    },
+    {
+      "model": "har_quality_seed43",
+      "linear": "blocks.1.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 1933979,
+      "conservative_product_bound": 7071367937957
+    },
+    {
+      "model": "har_quality_seed43",
+      "linear": "blocks.2.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 1091404,
+      "conservative_product_bound": 5006361825936
+    },
+    {
+      "model": "har_quality_seed43",
+      "linear": "blocks.2.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 1136094,
+      "conservative_product_bound": 2137725594630
+    },
+    {
+      "model": "har_quality_seed43",
+      "linear": "blocks.2.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 1135192,
+      "conservative_product_bound": 4485103860280
+    },
+    {
+      "model": "har_quality_seed43",
+      "linear": "blocks.2.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 2007382,
+      "conservative_product_bound": 2930289926174
+    },
+    {
+      "model": "har_quality_seed43",
+      "linear": "blocks.3.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 1121287,
+      "conservative_product_bound": 5135184984788
+    },
+    {
+      "model": "har_quality_seed43",
+      "linear": "blocks.3.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 1114283,
+      "conservative_product_bound": 2107661837368
+    },
+    {
+      "model": "har_quality_seed43",
+      "linear": "blocks.3.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 1105659,
+      "conservative_product_bound": 5207443814790
+    },
+    {
+      "model": "har_quality_seed43",
+      "linear": "blocks.3.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 1990553,
+      "conservative_product_bound": 6843666524369
+    },
+    {
+      "model": "har_quality_seed43",
+      "linear": "classifier",
+      "max_abs_accumulator_bound_all_int8_inputs": 1125251,
+      "conservative_product_bound": 3290105645386
+    },
+    {
+      "model": "har_balanced_seed43",
+      "linear": "embedding",
+      "max_abs_accumulator_bound_all_int8_inputs": 19475,
+      "conservative_product_bound": 5002900032000
+    },
+    {
+      "model": "har_balanced_seed43",
+      "linear": "blocks.0.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 62044,
+      "conservative_product_bound": 6350649124096
+    },
+    {
+      "model": "har_balanced_seed43",
+      "linear": "blocks.0.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 62489,
+      "conservative_product_bound": 2230310896184
+    },
+    {
+      "model": "har_balanced_seed43",
+      "linear": "blocks.0.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 62354,
+      "conservative_product_bound": 4979801445936
+    },
+    {
+      "model": "har_balanced_seed43",
+      "linear": "blocks.0.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 107477,
+      "conservative_product_bound": 5997705835304
+    },
+    {
+      "model": "har_balanced_seed43",
+      "linear": "blocks.1.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 62177,
+      "conservative_product_bound": 6279726780368
+    },
+    {
+      "model": "har_balanced_seed43",
+      "linear": "blocks.1.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 61173,
+      "conservative_product_bound": 2224457044740
+    },
+    {
+      "model": "har_balanced_seed43",
+      "linear": "blocks.1.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 63069,
+      "conservative_product_bound": 5092506909552
+    },
+    {
+      "model": "har_balanced_seed43",
+      "linear": "blocks.1.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 111947,
+      "conservative_product_bound": 3584212696350
+    },
+    {
+      "model": "har_balanced_seed43",
+      "linear": "blocks.2.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 60733,
+      "conservative_product_bound": 4884267868408
+    },
+    {
+      "model": "har_balanced_seed43",
+      "linear": "blocks.2.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 63031,
+      "conservative_product_bound": 2101572164342
+    },
+    {
+      "model": "har_balanced_seed43",
+      "linear": "blocks.2.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 62977,
+      "conservative_product_bound": 4258212022904
+    },
+    {
+      "model": "har_balanced_seed43",
+      "linear": "blocks.2.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 112644,
+      "conservative_product_bound": 2865972680424
+    },
+    {
+      "model": "har_balanced_seed43",
+      "linear": "blocks.3.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 62500,
+      "conservative_product_bound": 4614644500000
+    },
+    {
+      "model": "har_balanced_seed43",
+      "linear": "blocks.3.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 62459,
+      "conservative_product_bound": 2153619048516
+    },
+    {
+      "model": "har_balanced_seed43",
+      "linear": "blocks.3.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 60588,
+      "conservative_product_bound": 4549624171488
+    },
+    {
+      "model": "har_balanced_seed43",
+      "linear": "blocks.3.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 111921,
+      "conservative_product_bound": 3226432398486
+    },
+    {
+      "model": "har_balanced_seed43",
+      "linear": "gate.scorer",
+      "max_abs_accumulator_bound_all_int8_inputs": 56977,
+      "conservative_product_bound": 3038974728036
+    },
+    {
+      "model": "har_balanced_seed43",
+      "linear": "classifier",
+      "max_abs_accumulator_bound_all_int8_inputs": 60849,
+      "conservative_product_bound": 2508515845740
+    },
+    {
+      "model": "har_energy_saver_seed43",
+      "linear": "embedding",
+      "max_abs_accumulator_bound_all_int8_inputs": 19860,
+      "conservative_product_bound": 5225148205440
+    },
+    {
+      "model": "har_energy_saver_seed43",
+      "linear": "blocks.0.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 59778,
+      "conservative_product_bound": 6553779680736
+    },
+    {
+      "model": "har_energy_saver_seed43",
+      "linear": "blocks.0.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 60952,
+      "conservative_product_bound": 2341186068448
+    },
+    {
+      "model": "har_energy_saver_seed43",
+      "linear": "blocks.0.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 59927,
+      "conservative_product_bound": 5248263314616
+    },
+    {
+      "model": "har_energy_saver_seed43",
+      "linear": "blocks.0.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 106204,
+      "conservative_product_bound": 6266415785504
+    },
+    {
+      "model": "har_energy_saver_seed43",
+      "linear": "blocks.1.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 62305,
+      "conservative_product_bound": 6180427714480
+    },
+    {
+      "model": "har_energy_saver_seed43",
+      "linear": "blocks.1.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 60535,
+      "conservative_product_bound": 2230162912940
+    },
+    {
+      "model": "har_energy_saver_seed43",
+      "linear": "blocks.1.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 61284,
+      "conservative_product_bound": 5320285152672
+    },
+    {
+      "model": "har_energy_saver_seed43",
+      "linear": "blocks.1.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 108837,
+      "conservative_product_bound": 7777155060648
+    },
+    {
+      "model": "har_energy_saver_seed43",
+      "linear": "gate.scorer",
+      "max_abs_accumulator_bound_all_int8_inputs": 47491,
+      "conservative_product_bound": 3027976199468
+    },
+    {
+      "model": "har_energy_saver_seed43",
+      "linear": "exit_classifier",
+      "max_abs_accumulator_bound_all_int8_inputs": 56059,
+      "conservative_product_bound": 3497364044800
+    },
+    {
+      "model": "speech_quality_seed17",
+      "linear": "embedding",
+      "max_abs_accumulator_bound_all_int8_inputs": 664371,
+      "conservative_product_bound": 4086790509528
+    },
+    {
+      "model": "speech_quality_seed17",
+      "linear": "blocks.0.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 1033366,
+      "conservative_product_bound": 7744668957064
+    },
+    {
+      "model": "speech_quality_seed17",
+      "linear": "blocks.0.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 906804,
+      "conservative_product_bound": 2605762956672
+    },
+    {
+      "model": "speech_quality_seed17",
+      "linear": "blocks.0.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 869009,
+      "conservative_product_bound": 7366700526152
+    },
+    {
+      "model": "speech_quality_seed17",
+      "linear": "blocks.0.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 1535788,
+      "conservative_product_bound": 10279821550608
+    },
+    {
+      "model": "speech_quality_seed17",
+      "linear": "blocks.1.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 963858,
+      "conservative_product_bound": 7897461125652
+    },
+    {
+      "model": "speech_quality_seed17",
+      "linear": "blocks.1.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 941339,
+      "conservative_product_bound": 2654045064804
+    },
+    {
+      "model": "speech_quality_seed17",
+      "linear": "blocks.1.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 880000,
+      "conservative_product_bound": 7545142880000
+    },
+    {
+      "model": "speech_quality_seed17",
+      "linear": "blocks.1.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 1513151,
+      "conservative_product_bound": 9825773123184
+    },
+    {
+      "model": "speech_quality_seed17",
+      "linear": "blocks.2.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 931435,
+      "conservative_product_bound": 10224213896835
+    },
+    {
+      "model": "speech_quality_seed17",
+      "linear": "blocks.2.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 944269,
+      "conservative_product_bound": 2634372646726
+    },
+    {
+      "model": "speech_quality_seed17",
+      "linear": "blocks.2.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 945916,
+      "conservative_product_bound": 7191288553360
+    },
+    {
+      "model": "speech_quality_seed17",
+      "linear": "blocks.2.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 1570647,
+      "conservative_product_bound": 8164216823412
+    },
+    {
+      "model": "speech_quality_seed17",
+      "linear": "blocks.3.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 959747,
+      "conservative_product_bound": 8952718683629
+    },
+    {
+      "model": "speech_quality_seed17",
+      "linear": "blocks.3.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 963422,
+      "conservative_product_bound": 2492736887516
+    },
+    {
+      "model": "speech_quality_seed17",
+      "linear": "blocks.3.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 896227,
+      "conservative_product_bound": 7622916107028
+    },
+    {
+      "model": "speech_quality_seed17",
+      "linear": "blocks.3.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 1513517,
+      "conservative_product_bound": 9930328821115
+    },
+    {
+      "model": "speech_quality_seed17",
+      "linear": "classifier",
+      "max_abs_accumulator_bound_all_int8_inputs": 1003446,
+      "conservative_product_bound": 9054534774240
+    },
+    {
+      "model": "speech_balanced_seed17",
+      "linear": "embedding",
+      "max_abs_accumulator_bound_all_int8_inputs": 36590,
+      "conservative_product_bound": 4083523034400
+    },
+    {
+      "model": "speech_balanced_seed17",
+      "linear": "blocks.0.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 57754,
+      "conservative_product_bound": 7370399610512
+    },
+    {
+      "model": "speech_balanced_seed17",
+      "linear": "blocks.0.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 49713,
+      "conservative_product_bound": 2603473190484
+    },
+    {
+      "model": "speech_balanced_seed17",
+      "linear": "blocks.0.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 50134,
+      "conservative_product_bound": 8006506485152
+    },
+    {
+      "model": "speech_balanced_seed17",
+      "linear": "blocks.0.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 87481,
+      "conservative_product_bound": 10961395194376
+    },
+    {
+      "model": "speech_balanced_seed17",
+      "linear": "blocks.1.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 52680,
+      "conservative_product_bound": 8569828995840
+    },
+    {
+      "model": "speech_balanced_seed17",
+      "linear": "blocks.1.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 50078,
+      "conservative_product_bound": 2613417581320
+    },
+    {
+      "model": "speech_balanced_seed17",
+      "linear": "blocks.1.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 47792,
+      "conservative_product_bound": 7338980047616
+    },
+    {
+      "model": "speech_balanced_seed17",
+      "linear": "blocks.1.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 84764,
+      "conservative_product_bound": 10375483171040
+    },
+    {
+      "model": "speech_balanced_seed17",
+      "linear": "blocks.2.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 53580,
+      "conservative_product_bound": 10214037698880
+    },
+    {
+      "model": "speech_balanced_seed17",
+      "linear": "blocks.2.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 51634,
+      "conservative_product_bound": 2572808625200
+    },
+    {
+      "model": "speech_balanced_seed17",
+      "linear": "blocks.2.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 52656,
+      "conservative_product_bound": 7114443992064
+    },
+    {
+      "model": "speech_balanced_seed17",
+      "linear": "blocks.2.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 90516,
+      "conservative_product_bound": 8912723835648
+    },
+    {
+      "model": "speech_balanced_seed17",
+      "linear": "blocks.3.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 53679,
+      "conservative_product_bound": 8927701471056
+    },
+    {
+      "model": "speech_balanced_seed17",
+      "linear": "blocks.3.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 53639,
+      "conservative_product_bound": 2516031914196
+    },
+    {
+      "model": "speech_balanced_seed17",
+      "linear": "blocks.3.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 50612,
+      "conservative_product_bound": 7415581972672
+    },
+    {
+      "model": "speech_balanced_seed17",
+      "linear": "blocks.3.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 88499,
+      "conservative_product_bound": 10277085849424
+    },
+    {
+      "model": "speech_balanced_seed17",
+      "linear": "gate.scorer",
+      "max_abs_accumulator_bound_all_int8_inputs": 45023,
+      "conservative_product_bound": 4589057159896
+    },
+    {
+      "model": "speech_balanced_seed17",
+      "linear": "classifier",
+      "max_abs_accumulator_bound_all_int8_inputs": 53941,
+      "conservative_product_bound": 8602392441328
+    },
+    {
+      "model": "speech_energy_saver_seed17",
+      "linear": "embedding",
+      "max_abs_accumulator_bound_all_int8_inputs": 36587,
+      "conservative_product_bound": 4038838637304
+    },
+    {
+      "model": "speech_energy_saver_seed17",
+      "linear": "blocks.0.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 56211,
+      "conservative_product_bound": 7281874230960
+    },
+    {
+      "model": "speech_energy_saver_seed17",
+      "linear": "blocks.0.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 50450,
+      "conservative_product_bound": 2539874374600
+    },
+    {
+      "model": "speech_energy_saver_seed17",
+      "linear": "blocks.0.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 50449,
+      "conservative_product_bound": 8158142498912
+    },
+    {
+      "model": "speech_energy_saver_seed17",
+      "linear": "blocks.0.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 80918,
+      "conservative_product_bound": 9827174548784
+    },
+    {
+      "model": "speech_energy_saver_seed17",
+      "linear": "blocks.1.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 54220,
+      "conservative_product_bound": 8994725833920
+    },
+    {
+      "model": "speech_energy_saver_seed17",
+      "linear": "blocks.1.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 50845,
+      "conservative_product_bound": 2565122521560
+    },
+    {
+      "model": "speech_energy_saver_seed17",
+      "linear": "blocks.1.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 47243,
+      "conservative_product_bound": 7509896189936
+    },
+    {
+      "model": "speech_energy_saver_seed17",
+      "linear": "blocks.1.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 81671,
+      "conservative_product_bound": 9413191688976
+    },
+    {
+      "model": "speech_energy_saver_seed17",
+      "linear": "gate.scorer",
+      "max_abs_accumulator_bound_all_int8_inputs": 41411,
+      "conservative_product_bound": 3679778478408
+    },
+    {
+      "model": "speech_energy_saver_seed17",
+      "linear": "exit_classifier",
+      "max_abs_accumulator_bound_all_int8_inputs": 48147,
+      "conservative_product_bound": 13554708586848
+    },
+    {
+      "model": "speech_quality_seed29",
+      "linear": "embedding",
+      "max_abs_accumulator_bound_all_int8_inputs": 651360,
+      "conservative_product_bound": 3902936092800
+    },
+    {
+      "model": "speech_quality_seed29",
+      "linear": "blocks.0.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 938930,
+      "conservative_product_bound": 7092962654720
+    },
+    {
+      "model": "speech_quality_seed29",
+      "linear": "blocks.0.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 960380,
+      "conservative_product_bound": 2451503442820
+    },
+    {
+      "model": "speech_quality_seed29",
+      "linear": "blocks.0.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 938276,
+      "conservative_product_bound": 8506745180532
+    },
+    {
+      "model": "speech_quality_seed29",
+      "linear": "blocks.0.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 1520442,
+      "conservative_product_bound": 9563717019780
+    },
+    {
+      "model": "speech_quality_seed29",
+      "linear": "blocks.1.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 958106,
+      "conservative_product_bound": 7723476422352
+    },
+    {
+      "model": "speech_quality_seed29",
+      "linear": "blocks.1.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 969438,
+      "conservative_product_bound": 3041826940236
+    },
+    {
+      "model": "speech_quality_seed29",
+      "linear": "blocks.1.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 936467,
+      "conservative_product_bound": 9508806318305
+    },
+    {
+      "model": "speech_quality_seed29",
+      "linear": "blocks.1.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 1515264,
+      "conservative_product_bound": 9705150759936
+    },
+    {
+      "model": "speech_quality_seed29",
+      "linear": "blocks.2.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 980068,
+      "conservative_product_bound": 8794685281128
+    },
+    {
+      "model": "speech_quality_seed29",
+      "linear": "blocks.2.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 1024130,
+      "conservative_product_bound": 2704534793560
+    },
+    {
+      "model": "speech_quality_seed29",
+      "linear": "blocks.2.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 899992,
+      "conservative_product_bound": 6989074174344
+    },
+    {
+      "model": "speech_quality_seed29",
+      "linear": "blocks.2.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 1673036,
+      "conservative_product_bound": 9685911425192
+    },
+    {
+      "model": "speech_quality_seed29",
+      "linear": "blocks.3.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 941499,
+      "conservative_product_bound": 9250727610969
+    },
+    {
+      "model": "speech_quality_seed29",
+      "linear": "blocks.3.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 943278,
+      "conservative_product_bound": 2688199865022
+    },
+    {
+      "model": "speech_quality_seed29",
+      "linear": "blocks.3.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 967293,
+      "conservative_product_bound": 7452116197542
+    },
+    {
+      "model": "speech_quality_seed29",
+      "linear": "blocks.3.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 1556172,
+      "conservative_product_bound": 9894294080856
+    },
+    {
+      "model": "speech_quality_seed29",
+      "linear": "classifier",
+      "max_abs_accumulator_bound_all_int8_inputs": 958290,
+      "conservative_product_bound": 9215129380380
+    },
+    {
+      "model": "speech_balanced_seed29",
+      "linear": "embedding",
+      "max_abs_accumulator_bound_all_int8_inputs": 37166,
+      "conservative_product_bound": 4104888365728
+    },
+    {
+      "model": "speech_balanced_seed29",
+      "linear": "blocks.0.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 51251,
+      "conservative_product_bound": 6902436299056
+    },
+    {
+      "model": "speech_balanced_seed29",
+      "linear": "blocks.0.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 54584,
+      "conservative_product_bound": 2503169402688
+    },
+    {
+      "model": "speech_balanced_seed29",
+      "linear": "blocks.0.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 51365,
+      "conservative_product_bound": 8772528085520
+    },
+    {
+      "model": "speech_balanced_seed29",
+      "linear": "blocks.0.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 84006,
+      "conservative_product_bound": 10666574483760
+    },
+    {
+      "model": "speech_balanced_seed29",
+      "linear": "blocks.1.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 53814,
+      "conservative_product_bound": 8089182716160
+    },
+    {
+      "model": "speech_balanced_seed29",
+      "linear": "blocks.1.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 52965,
+      "conservative_product_bound": 2837115351180
+    },
+    {
+      "model": "speech_balanced_seed29",
+      "linear": "blocks.1.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 50477,
+      "conservative_product_bound": 8730148984816
+    },
+    {
+      "model": "speech_balanced_seed29",
+      "linear": "blocks.1.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 87350,
+      "conservative_product_bound": 10060500611200
+    },
+    {
+      "model": "speech_balanced_seed29",
+      "linear": "blocks.2.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 57098,
+      "conservative_product_bound": 10098940617792
+    },
+    {
+      "model": "speech_balanced_seed29",
+      "linear": "blocks.2.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 57478,
+      "conservative_product_bound": 2705865596032
+    },
+    {
+      "model": "speech_balanced_seed29",
+      "linear": "blocks.2.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 51153,
+      "conservative_product_bound": 7122128766864
+    },
+    {
+      "model": "speech_balanced_seed29",
+      "linear": "blocks.2.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 89858,
+      "conservative_product_bound": 9376405537360
+    },
+    {
+      "model": "speech_balanced_seed29",
+      "linear": "blocks.3.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 52011,
+      "conservative_product_bound": 8537331864096
+    },
+    {
+      "model": "speech_balanced_seed29",
+      "linear": "blocks.3.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 52387,
+      "conservative_product_bound": 2831981289272
+    },
+    {
+      "model": "speech_balanced_seed29",
+      "linear": "blocks.3.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 52066,
+      "conservative_product_bound": 7478092129088
+    },
+    {
+      "model": "speech_balanced_seed29",
+      "linear": "blocks.3.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 85179,
+      "conservative_product_bound": 9478638029592
+    },
+    {
+      "model": "speech_balanced_seed29",
+      "linear": "gate.scorer",
+      "max_abs_accumulator_bound_all_int8_inputs": 44381,
+      "conservative_product_bound": 4495923827376
+    },
+    {
+      "model": "speech_balanced_seed29",
+      "linear": "classifier",
+      "max_abs_accumulator_bound_all_int8_inputs": 51485,
+      "conservative_product_bound": 8665733608560
+    },
+    {
+      "model": "speech_energy_saver_seed29",
+      "linear": "embedding",
+      "max_abs_accumulator_bound_all_int8_inputs": 35969,
+      "conservative_product_bound": 3893024144440
+    },
+    {
+      "model": "speech_energy_saver_seed29",
+      "linear": "blocks.0.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 53211,
+      "conservative_product_bound": 7193797717488
+    },
+    {
+      "model": "speech_energy_saver_seed29",
+      "linear": "blocks.0.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 51712,
+      "conservative_product_bound": 2405982504960
+    },
+    {
+      "model": "speech_energy_saver_seed29",
+      "linear": "blocks.0.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 53283,
+      "conservative_product_bound": 9058234469088
+    },
+    {
+      "model": "speech_energy_saver_seed29",
+      "linear": "blocks.0.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 82734,
+      "conservative_product_bound": 10436142213408
+    },
+    {
+      "model": "speech_energy_saver_seed29",
+      "linear": "blocks.1.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 54072,
+      "conservative_product_bound": 7827050042496
+    },
+    {
+      "model": "speech_energy_saver_seed29",
+      "linear": "blocks.1.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 54391,
+      "conservative_product_bound": 2885308965704
+    },
+    {
+      "model": "speech_energy_saver_seed29",
+      "linear": "blocks.1.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 51402,
+      "conservative_product_bound": 9368757978528
+    },
+    {
+      "model": "speech_energy_saver_seed29",
+      "linear": "blocks.1.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 88004,
+      "conservative_product_bound": 11054159910976
+    },
+    {
+      "model": "speech_energy_saver_seed29",
+      "linear": "gate.scorer",
+      "max_abs_accumulator_bound_all_int8_inputs": 43836,
+      "conservative_product_bound": 3721282928064
+    },
+    {
+      "model": "speech_energy_saver_seed29",
+      "linear": "exit_classifier",
+      "max_abs_accumulator_bound_all_int8_inputs": 45722,
+      "conservative_product_bound": 11574085368800
+    },
+    {
+      "model": "speech_quality_seed43",
+      "linear": "embedding",
+      "max_abs_accumulator_bound_all_int8_inputs": 679210,
+      "conservative_product_bound": 3893127121660
+    },
+    {
+      "model": "speech_quality_seed43",
+      "linear": "blocks.0.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 948753,
+      "conservative_product_bound": 7285625138727
+    },
+    {
+      "model": "speech_quality_seed43",
+      "linear": "blocks.0.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 913600,
+      "conservative_product_bound": 2399123649600
+    },
+    {
+      "model": "speech_quality_seed43",
+      "linear": "blocks.0.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 909466,
+      "conservative_product_bound": 6930516533584
+    },
+    {
+      "model": "speech_quality_seed43",
+      "linear": "blocks.0.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 1645348,
+      "conservative_product_bound": 9606775635000
+    },
+    {
+      "model": "speech_quality_seed43",
+      "linear": "blocks.1.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 931945,
+      "conservative_product_bound": 9238975617305
+    },
+    {
+      "model": "speech_quality_seed43",
+      "linear": "blocks.1.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 911896,
+      "conservative_product_bound": 2773039260160
+    },
+    {
+      "model": "speech_quality_seed43",
+      "linear": "blocks.1.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 919893,
+      "conservative_product_bound": 10210583246643
+    },
+    {
+      "model": "speech_quality_seed43",
+      "linear": "blocks.1.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 1568216,
+      "conservative_product_bound": 9112978450368
+    },
+    {
+      "model": "speech_quality_seed43",
+      "linear": "blocks.2.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 957987,
+      "conservative_product_bound": 8756363299086
+    },
+    {
+      "model": "speech_quality_seed43",
+      "linear": "blocks.2.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 938673,
+      "conservative_product_bound": 2533656774870
+    },
+    {
+      "model": "speech_quality_seed43",
+      "linear": "blocks.2.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 972243,
+      "conservative_product_bound": 8250343262298
+    },
+    {
+      "model": "speech_quality_seed43",
+      "linear": "blocks.2.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 1549392,
+      "conservative_product_bound": 8460352756128
+    },
+    {
+      "model": "speech_quality_seed43",
+      "linear": "blocks.3.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 986695,
+      "conservative_product_bound": 9585277191655
+    },
+    {
+      "model": "speech_quality_seed43",
+      "linear": "blocks.3.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 1003756,
+      "conservative_product_bound": 2594070871184
+    },
+    {
+      "model": "speech_quality_seed43",
+      "linear": "blocks.3.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 879564,
+      "conservative_product_bound": 7936874170344
+    },
+    {
+      "model": "speech_quality_seed43",
+      "linear": "blocks.3.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 1519719,
+      "conservative_product_bound": 8715147746490
+    },
+    {
+      "model": "speech_quality_seed43",
+      "linear": "classifier",
+      "max_abs_accumulator_bound_all_int8_inputs": 988988,
+      "conservative_product_bound": 9046289059808
+    },
+    {
+      "model": "speech_balanced_seed43",
+      "linear": "embedding",
+      "max_abs_accumulator_bound_all_int8_inputs": 36041,
+      "conservative_product_bound": 3824982314240
+    },
+    {
+      "model": "speech_balanced_seed43",
+      "linear": "blocks.0.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 51512,
+      "conservative_product_bound": 7209256875520
+    },
+    {
+      "model": "speech_balanced_seed43",
+      "linear": "blocks.0.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 49215,
+      "conservative_product_bound": 2282984238840
+    },
+    {
+      "model": "speech_balanced_seed43",
+      "linear": "blocks.0.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 49794,
+      "conservative_product_bound": 6860719298112
+    },
+    {
+      "model": "speech_balanced_seed43",
+      "linear": "blocks.0.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 86324,
+      "conservative_product_bound": 9195524600416
+    },
+    {
+      "model": "speech_balanced_seed43",
+      "linear": "blocks.1.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 51016,
+      "conservative_product_bound": 8819206118016
+    },
+    {
+      "model": "speech_balanced_seed43",
+      "linear": "blocks.1.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 49702,
+      "conservative_product_bound": 2776145369216
+    },
+    {
+      "model": "speech_balanced_seed43",
+      "linear": "blocks.1.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 49192,
+      "conservative_product_bound": 9943429248896
+    },
+    {
+      "model": "speech_balanced_seed43",
+      "linear": "blocks.1.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 83260,
+      "conservative_product_bound": 8800173692960
+    },
+    {
+      "model": "speech_balanced_seed43",
+      "linear": "blocks.2.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 54994,
+      "conservative_product_bound": 9039480807232
+    },
+    {
+      "model": "speech_balanced_seed43",
+      "linear": "blocks.2.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 53184,
+      "conservative_product_bound": 2749726188288
+    },
+    {
+      "model": "speech_balanced_seed43",
+      "linear": "blocks.2.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 56490,
+      "conservative_product_bound": 8668101271200
+    },
+    {
+      "model": "speech_balanced_seed43",
+      "linear": "blocks.2.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 87463,
+      "conservative_product_bound": 8544187700784
+    },
+    {
+      "model": "speech_balanced_seed43",
+      "linear": "blocks.3.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 53443,
+      "conservative_product_bound": 9063980684928
+    },
+    {
+      "model": "speech_balanced_seed43",
+      "linear": "blocks.3.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 58101,
+      "conservative_product_bound": 2707431765912
+    },
+    {
+      "model": "speech_balanced_seed43",
+      "linear": "blocks.3.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 49032,
+      "conservative_product_bound": 7897847051520
+    },
+    {
+      "model": "speech_balanced_seed43",
+      "linear": "blocks.3.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 85407,
+      "conservative_product_bound": 9059887786488
+    },
+    {
+      "model": "speech_balanced_seed43",
+      "linear": "gate.scorer",
+      "max_abs_accumulator_bound_all_int8_inputs": 47149,
+      "conservative_product_bound": 4546467175552
+    },
+    {
+      "model": "speech_balanced_seed43",
+      "linear": "classifier",
+      "max_abs_accumulator_bound_all_int8_inputs": 55580,
+      "conservative_product_bound": 8803550969920
+    },
+    {
+      "model": "speech_energy_saver_seed43",
+      "linear": "embedding",
+      "max_abs_accumulator_bound_all_int8_inputs": 36811,
+      "conservative_product_bound": 3937785753392
+    },
+    {
+      "model": "speech_energy_saver_seed43",
+      "linear": "blocks.0.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 51003,
+      "conservative_product_bound": 7141908471552
+    },
+    {
+      "model": "speech_energy_saver_seed43",
+      "linear": "blocks.0.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 50772,
+      "conservative_product_bound": 2386307761296
+    },
+    {
+      "model": "speech_energy_saver_seed43",
+      "linear": "blocks.0.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 49118,
+      "conservative_product_bound": 6649383436128
+    },
+    {
+      "model": "speech_energy_saver_seed43",
+      "linear": "blocks.0.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 85908,
+      "conservative_product_bound": 9034543685088
+    },
+    {
+      "model": "speech_energy_saver_seed43",
+      "linear": "blocks.1.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 50756,
+      "conservative_product_bound": 8324543534144
+    },
+    {
+      "model": "speech_energy_saver_seed43",
+      "linear": "blocks.1.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 49188,
+      "conservative_product_bound": 2651164336800
+    },
+    {
+      "model": "speech_energy_saver_seed43",
+      "linear": "blocks.1.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 50734,
+      "conservative_product_bound": 10339111894528
+    },
+    {
+      "model": "speech_energy_saver_seed43",
+      "linear": "blocks.1.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 82874,
+      "conservative_product_bound": 9199836110080
+    },
+    {
+      "model": "speech_energy_saver_seed43",
+      "linear": "gate.scorer",
+      "max_abs_accumulator_bound_all_int8_inputs": 51598,
+      "conservative_product_bound": 3664033420896
+    },
+    {
+      "model": "speech_energy_saver_seed43",
+      "linear": "exit_classifier",
+      "max_abs_accumulator_bound_all_int8_inputs": 50821,
+      "conservative_product_bound": 13554451834144
+    },
+    {
+      "model": "har_joint_quality_seed17",
+      "linear": "embedding",
+      "max_abs_accumulator_bound_all_int8_inputs": 353654,
+      "conservative_product_bound": 4662232352582
+    },
+    {
+      "model": "har_joint_quality_seed17",
+      "linear": "blocks.0.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 1153358,
+      "conservative_product_bound": 6367237401664
+    },
+    {
+      "model": "har_joint_quality_seed17",
+      "linear": "blocks.0.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 1141685,
+      "conservative_product_bound": 2424177436105
+    },
+    {
+      "model": "har_joint_quality_seed17",
+      "linear": "blocks.0.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 1096045,
+      "conservative_product_bound": 4654440584010
+    },
+    {
+      "model": "har_joint_quality_seed17",
+      "linear": "blocks.0.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 1978652,
+      "conservative_product_bound": 3289131027468
+    },
+    {
+      "model": "har_joint_quality_seed17",
+      "linear": "blocks.1.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 1079229,
+      "conservative_product_bound": 5106572750094
+    },
+    {
+      "model": "har_joint_quality_seed17",
+      "linear": "blocks.1.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 1109710,
+      "conservative_product_bound": 2286354378070
+    },
+    {
+      "model": "har_joint_quality_seed17",
+      "linear": "blocks.1.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 1069712,
+      "conservative_product_bound": 5126630060496
+    },
+    {
+      "model": "har_joint_quality_seed17",
+      "linear": "blocks.1.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 1891631,
+      "conservative_product_bound": 6325778635897
+    },
+    {
+      "model": "har_joint_quality_seed17",
+      "linear": "blocks.2.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 1193385,
+      "conservative_product_bound": 4856357338845
+    },
+    {
+      "model": "har_joint_quality_seed17",
+      "linear": "blocks.2.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 1114528,
+      "conservative_product_bound": 2075398253696
+    },
+    {
+      "model": "har_joint_quality_seed17",
+      "linear": "blocks.2.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 1171332,
+      "conservative_product_bound": 4768248934944
+    },
+    {
+      "model": "har_joint_quality_seed17",
+      "linear": "blocks.2.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 2024493,
+      "conservative_product_bound": 2952265505082
+    },
+    {
+      "model": "har_joint_quality_seed17",
+      "linear": "blocks.3.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 1175705,
+      "conservative_product_bound": 4608841196530
+    },
+    {
+      "model": "har_joint_quality_seed17",
+      "linear": "blocks.3.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 1114086,
+      "conservative_product_bound": 2008353919512
+    },
+    {
+      "model": "har_joint_quality_seed17",
+      "linear": "blocks.3.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 1128405,
+      "conservative_product_bound": 5188433271720
+    },
+    {
+      "model": "har_joint_quality_seed17",
+      "linear": "blocks.3.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 2144223,
+      "conservative_product_bound": 3409548290307
+    },
+    {
+      "model": "har_joint_quality_seed17",
+      "linear": "classifier",
+      "max_abs_accumulator_bound_all_int8_inputs": 1055932,
+      "conservative_product_bound": 2615883574104
+    },
+    {
+      "model": "har_joint_balanced_seed17",
+      "linear": "embedding",
+      "max_abs_accumulator_bound_all_int8_inputs": 19733,
+      "conservative_product_bound": 4719697263904
+    },
+    {
+      "model": "har_joint_balanced_seed17",
+      "linear": "blocks.0.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 63570,
+      "conservative_product_bound": 6367145772000
+    },
+    {
+      "model": "har_joint_balanced_seed17",
+      "linear": "blocks.0.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 62737,
+      "conservative_product_bound": 2416838028736
+    },
+    {
+      "model": "har_joint_balanced_seed17",
+      "linear": "blocks.0.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 60748,
+      "conservative_product_bound": 4680333547872
+    },
+    {
+      "model": "har_joint_balanced_seed17",
+      "linear": "blocks.0.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 108658,
+      "conservative_product_bound": 3277020316372
+    },
+    {
+      "model": "har_joint_balanced_seed17",
+      "linear": "blocks.1.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 60163,
+      "conservative_product_bound": 5164771668856
+    },
+    {
+      "model": "har_joint_balanced_seed17",
+      "linear": "blocks.1.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 61366,
+      "conservative_product_bound": 2293862798248
+    },
+    {
+      "model": "har_joint_balanced_seed17",
+      "linear": "blocks.1.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 59528,
+      "conservative_product_bound": 5175974362944
+    },
+    {
+      "model": "har_joint_balanced_seed17",
+      "linear": "blocks.1.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 104477,
+      "conservative_product_bound": 6338754992192
+    },
+    {
+      "model": "har_joint_balanced_seed17",
+      "linear": "blocks.2.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 66228,
+      "conservative_product_bound": 4889645559264
+    },
+    {
+      "model": "har_joint_balanced_seed17",
+      "linear": "blocks.2.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 61512,
+      "conservative_product_bound": 2078145274656
+    },
+    {
+      "model": "har_joint_balanced_seed17",
+      "linear": "blocks.2.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 64846,
+      "conservative_product_bound": 4789252688032
+    },
+    {
+      "model": "har_joint_balanced_seed17",
+      "linear": "blocks.2.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 111284,
+      "conservative_product_bound": 2944270166976
+    },
+    {
+      "model": "har_joint_balanced_seed17",
+      "linear": "blocks.3.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 64612,
+      "conservative_product_bound": 4595283491296
+    },
+    {
+      "model": "har_joint_balanced_seed17",
+      "linear": "blocks.3.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 61537,
+      "conservative_product_bound": 2012628383556
+    },
+    {
+      "model": "har_joint_balanced_seed17",
+      "linear": "blocks.3.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 62362,
+      "conservative_product_bound": 5202319360048
+    },
+    {
+      "model": "har_joint_balanced_seed17",
+      "linear": "blocks.3.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 118567,
+      "conservative_product_bound": 3420553611040
+    },
+    {
+      "model": "har_joint_balanced_seed17",
+      "linear": "gate.scorer",
+      "max_abs_accumulator_bound_all_int8_inputs": 47267,
+      "conservative_product_bound": 3123875840932
+    },
+    {
+      "model": "har_joint_balanced_seed17",
+      "linear": "classifier",
+      "max_abs_accumulator_bound_all_int8_inputs": 57744,
+      "conservative_product_bound": 2595344269824
+    },
+    {
+      "model": "har_joint_energy_saver_seed17",
+      "linear": "embedding",
+      "max_abs_accumulator_bound_all_int8_inputs": 19733,
+      "conservative_product_bound": 4719697263904
+    },
+    {
+      "model": "har_joint_energy_saver_seed17",
+      "linear": "blocks.0.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 63570,
+      "conservative_product_bound": 6367145772000
+    },
+    {
+      "model": "har_joint_energy_saver_seed17",
+      "linear": "blocks.0.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 62737,
+      "conservative_product_bound": 2416838028736
+    },
+    {
+      "model": "har_joint_energy_saver_seed17",
+      "linear": "blocks.0.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 60748,
+      "conservative_product_bound": 4680333547872
+    },
+    {
+      "model": "har_joint_energy_saver_seed17",
+      "linear": "blocks.0.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 108658,
+      "conservative_product_bound": 3277020316372
+    },
+    {
+      "model": "har_joint_energy_saver_seed17",
+      "linear": "blocks.1.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 60163,
+      "conservative_product_bound": 5164771668856
+    },
+    {
+      "model": "har_joint_energy_saver_seed17",
+      "linear": "blocks.1.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 61366,
+      "conservative_product_bound": 2293862798248
+    },
+    {
+      "model": "har_joint_energy_saver_seed17",
+      "linear": "blocks.1.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 59528,
+      "conservative_product_bound": 5175974362944
+    },
+    {
+      "model": "har_joint_energy_saver_seed17",
+      "linear": "blocks.1.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 104477,
+      "conservative_product_bound": 6338754992192
+    },
+    {
+      "model": "har_joint_energy_saver_seed17",
+      "linear": "gate.scorer",
+      "max_abs_accumulator_bound_all_int8_inputs": 47267,
+      "conservative_product_bound": 3123875840932
+    },
+    {
+      "model": "har_joint_energy_saver_seed17",
+      "linear": "exit_classifier",
+      "max_abs_accumulator_bound_all_int8_inputs": 57717,
+      "conservative_product_bound": 3127434199956
+    },
+    {
+      "model": "har_joint_quality_seed29",
+      "linear": "embedding",
+      "max_abs_accumulator_bound_all_int8_inputs": 362504,
+      "conservative_product_bound": 4774883837792
+    },
+    {
+      "model": "har_joint_quality_seed29",
+      "linear": "blocks.0.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 1149823,
+      "conservative_product_bound": 6642896564183
+    },
+    {
+      "model": "har_joint_quality_seed29",
+      "linear": "blocks.0.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 1089806,
+      "conservative_product_bound": 2110019168452
+    },
+    {
+      "model": "har_joint_quality_seed29",
+      "linear": "blocks.0.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 1083868,
+      "conservative_product_bound": 5124731671184
+    },
+    {
+      "model": "har_joint_quality_seed29",
+      "linear": "blocks.0.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 1969823,
+      "conservative_product_bound": 3148572962492
+    },
+    {
+      "model": "har_joint_quality_seed29",
+      "linear": "blocks.1.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 1115993,
+      "conservative_product_bound": 5174553758918
+    },
+    {
+      "model": "har_joint_quality_seed29",
+      "linear": "blocks.1.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 1073082,
+      "conservative_product_bound": 2214934606134
+    },
+    {
+      "model": "har_joint_quality_seed29",
+      "linear": "blocks.1.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 1116804,
+      "conservative_product_bound": 5471642714304
+    },
+    {
+      "model": "har_joint_quality_seed29",
+      "linear": "blocks.1.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 1948233,
+      "conservative_product_bound": 6932755958772
+    },
+    {
+      "model": "har_joint_quality_seed29",
+      "linear": "blocks.2.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 1113984,
+      "conservative_product_bound": 4436102628864
+    },
+    {
+      "model": "har_joint_quality_seed29",
+      "linear": "blocks.2.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 1136480,
+      "conservative_product_bound": 2075131789920
+    },
+    {
+      "model": "har_joint_quality_seed29",
+      "linear": "blocks.2.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 1126582,
+      "conservative_product_bound": 5158219041390
+    },
+    {
+      "model": "har_joint_quality_seed29",
+      "linear": "blocks.2.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 2100166,
+      "conservative_product_bound": 3068210215542
+    },
+    {
+      "model": "har_joint_quality_seed29",
+      "linear": "blocks.3.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 1123645,
+      "conservative_product_bound": 4384186373330
+    },
+    {
+      "model": "har_joint_quality_seed29",
+      "linear": "blocks.3.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 1125893,
+      "conservative_product_bound": 2051332010280
+    },
+    {
+      "model": "har_joint_quality_seed29",
+      "linear": "blocks.3.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 1123614,
+      "conservative_product_bound": 4617682747380
+    },
+    {
+      "model": "har_joint_quality_seed29",
+      "linear": "blocks.3.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 2025163,
+      "conservative_product_bound": 3108602928207
+    },
+    {
+      "model": "har_joint_quality_seed29",
+      "linear": "classifier",
+      "max_abs_accumulator_bound_all_int8_inputs": 1067231,
+      "conservative_product_bound": 3004392937799
+    },
+    {
+      "model": "har_joint_balanced_seed29",
+      "linear": "embedding",
+      "max_abs_accumulator_bound_all_int8_inputs": 20146,
+      "conservative_product_bound": 4814425968128
+    },
+    {
+      "model": "har_joint_balanced_seed29",
+      "linear": "blocks.0.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 63452,
+      "conservative_product_bound": 6650854883008
+    },
+    {
+      "model": "har_joint_balanced_seed29",
+      "linear": "blocks.0.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 60685,
+      "conservative_product_bound": 2131690490900
+    },
+    {
+      "model": "har_joint_balanced_seed29",
+      "linear": "blocks.0.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 59962,
+      "conservative_product_bound": 5143710652080
+    },
+    {
+      "model": "har_joint_balanced_seed29",
+      "linear": "blocks.0.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 108601,
+      "conservative_product_bound": 3149387948822
+    },
+    {
+      "model": "har_joint_balanced_seed29",
+      "linear": "blocks.1.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 61615,
+      "conservative_product_bound": 5183267234360
+    },
+    {
+      "model": "har_joint_balanced_seed29",
+      "linear": "blocks.1.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 59301,
+      "conservative_product_bound": 2220729940440
+    },
+    {
+      "model": "har_joint_balanced_seed29",
+      "linear": "blocks.1.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 62144,
+      "conservative_product_bound": 5523898627072
+    },
+    {
+      "model": "har_joint_balanced_seed29",
+      "linear": "blocks.1.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 106599,
+      "conservative_product_bound": 6882144434940
+    },
+    {
+      "model": "har_joint_balanced_seed29",
+      "linear": "blocks.2.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 61966,
+      "conservative_product_bound": 4476945841584
+    },
+    {
+      "model": "har_joint_balanced_seed29",
+      "linear": "blocks.2.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 61886,
+      "conservative_product_bound": 2050132920792
+    },
+    {
+      "model": "har_joint_balanced_seed29",
+      "linear": "blocks.2.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 62360,
+      "conservative_product_bound": 5180226741440
+    },
+    {
+      "model": "har_joint_balanced_seed29",
+      "linear": "blocks.2.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 115104,
+      "conservative_product_bound": 3050897589696
+    },
+    {
+      "model": "har_joint_balanced_seed29",
+      "linear": "blocks.3.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 61379,
+      "conservative_product_bound": 4344956066872
+    },
+    {
+      "model": "har_joint_balanced_seed29",
+      "linear": "blocks.3.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 62044,
+      "conservative_product_bound": 2050899412816
+    },
+    {
+      "model": "har_joint_balanced_seed29",
+      "linear": "blocks.3.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 62011,
+      "conservative_product_bound": 2311805550292
+    },
+    {
+      "model": "har_joint_balanced_seed29",
+      "linear": "blocks.3.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 111449,
+      "conservative_product_bound": 3103752785614
+    },
+    {
+      "model": "har_joint_balanced_seed29",
+      "linear": "gate.scorer",
+      "max_abs_accumulator_bound_all_int8_inputs": 57303,
+      "conservative_product_bound": 3362398845408
+    },
+    {
+      "model": "har_joint_balanced_seed29",
+      "linear": "classifier",
+      "max_abs_accumulator_bound_all_int8_inputs": 59091,
+      "conservative_product_bound": 3018041861316
+    },
+    {
+      "model": "har_joint_energy_saver_seed29",
+      "linear": "embedding",
+      "max_abs_accumulator_bound_all_int8_inputs": 20146,
+      "conservative_product_bound": 4814425968128
+    },
+    {
+      "model": "har_joint_energy_saver_seed29",
+      "linear": "blocks.0.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 63452,
+      "conservative_product_bound": 6650854883008
+    },
+    {
+      "model": "har_joint_energy_saver_seed29",
+      "linear": "blocks.0.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 60685,
+      "conservative_product_bound": 2131690490900
+    },
+    {
+      "model": "har_joint_energy_saver_seed29",
+      "linear": "blocks.0.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 59962,
+      "conservative_product_bound": 5143710652080
+    },
+    {
+      "model": "har_joint_energy_saver_seed29",
+      "linear": "blocks.0.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 108601,
+      "conservative_product_bound": 3149387948822
+    },
+    {
+      "model": "har_joint_energy_saver_seed29",
+      "linear": "blocks.1.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 61615,
+      "conservative_product_bound": 5183267234360
+    },
+    {
+      "model": "har_joint_energy_saver_seed29",
+      "linear": "blocks.1.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 59301,
+      "conservative_product_bound": 2220729940440
+    },
+    {
+      "model": "har_joint_energy_saver_seed29",
+      "linear": "blocks.1.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 62144,
+      "conservative_product_bound": 5523898627072
+    },
+    {
+      "model": "har_joint_energy_saver_seed29",
+      "linear": "blocks.1.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 106599,
+      "conservative_product_bound": 6882144434940
+    },
+    {
+      "model": "har_joint_energy_saver_seed29",
+      "linear": "gate.scorer",
+      "max_abs_accumulator_bound_all_int8_inputs": 57303,
+      "conservative_product_bound": 3362398845408
+    },
+    {
+      "model": "har_joint_energy_saver_seed29",
+      "linear": "exit_classifier",
+      "max_abs_accumulator_bound_all_int8_inputs": 54909,
+      "conservative_product_bound": 2897719246080
+    },
+    {
+      "model": "har_joint_quality_seed43",
+      "linear": "embedding",
+      "max_abs_accumulator_bound_all_int8_inputs": 350043,
+      "conservative_product_bound": 4953828488451
+    },
+    {
+      "model": "har_joint_quality_seed43",
+      "linear": "blocks.0.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 1137916,
+      "conservative_product_bound": 6426496677432
+    },
+    {
+      "model": "har_joint_quality_seed43",
+      "linear": "blocks.0.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 1117764,
+      "conservative_product_bound": 2223271717740
+    },
+    {
+      "model": "har_joint_quality_seed43",
+      "linear": "blocks.0.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 1115616,
+      "conservative_product_bound": 4870788380928
+    },
+    {
+      "model": "har_joint_quality_seed43",
+      "linear": "blocks.0.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 1950335,
+      "conservative_product_bound": 6083997870105
+    },
+    {
+      "model": "har_joint_quality_seed43",
+      "linear": "blocks.1.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 1110744,
+      "conservative_product_bound": 6092282000304
+    },
+    {
+      "model": "har_joint_quality_seed43",
+      "linear": "blocks.1.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 1097433,
+      "conservative_product_bound": 2154191840721
+    },
+    {
+      "model": "har_joint_quality_seed43",
+      "linear": "blocks.1.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 1133707,
+      "conservative_product_bound": 5055109950147
+    },
+    {
+      "model": "har_joint_quality_seed43",
+      "linear": "blocks.1.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 2078145,
+      "conservative_product_bound": 7219205571150
+    },
+    {
+      "model": "har_joint_quality_seed43",
+      "linear": "blocks.2.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 1091585,
+      "conservative_product_bound": 4694920184020
+    },
+    {
+      "model": "har_joint_quality_seed43",
+      "linear": "blocks.2.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 1140437,
+      "conservative_product_bound": 2089280584000
+    },
+    {
+      "model": "har_joint_quality_seed43",
+      "linear": "blocks.2.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 1137427,
+      "conservative_product_bound": 4275776905882
+    },
+    {
+      "model": "har_joint_quality_seed43",
+      "linear": "blocks.2.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 2033743,
+      "conservative_product_bound": 2834537441222
+    },
+    {
+      "model": "har_joint_quality_seed43",
+      "linear": "blocks.3.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 1122437,
+      "conservative_product_bound": 4542571007657
+    },
+    {
+      "model": "har_joint_quality_seed43",
+      "linear": "blocks.3.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 1128491,
+      "conservative_product_bound": 2125328854467
+    },
+    {
+      "model": "har_joint_quality_seed43",
+      "linear": "blocks.3.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 1111195,
+      "conservative_product_bound": 4614671714745
+    },
+    {
+      "model": "har_joint_quality_seed43",
+      "linear": "blocks.3.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 2065400,
+      "conservative_product_bound": 3289626607400
+    },
+    {
+      "model": "har_joint_quality_seed43",
+      "linear": "classifier",
+      "max_abs_accumulator_bound_all_int8_inputs": 1092992,
+      "conservative_product_bound": 2444678811520
+    },
+    {
+      "model": "har_joint_balanced_seed43",
+      "linear": "embedding",
+      "max_abs_accumulator_bound_all_int8_inputs": 19347,
+      "conservative_product_bound": 4967511574944
+    },
+    {
+      "model": "har_joint_balanced_seed43",
+      "linear": "blocks.0.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 62044,
+      "conservative_product_bound": 6357253087456
+    },
+    {
+      "model": "har_joint_balanced_seed43",
+      "linear": "blocks.0.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 61593,
+      "conservative_product_bound": 2222692794168
+    },
+    {
+      "model": "har_joint_balanced_seed43",
+      "linear": "blocks.0.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 61843,
+      "conservative_product_bound": 4898698810608
+    },
+    {
+      "model": "har_joint_balanced_seed43",
+      "linear": "blocks.0.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 107733,
+      "conservative_product_bound": 6097253851476
+    },
+    {
+      "model": "har_joint_balanced_seed43",
+      "linear": "blocks.1.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 61665,
+      "conservative_product_bound": 6136355188080
+    },
+    {
+      "model": "har_joint_balanced_seed43",
+      "linear": "blocks.1.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 60790,
+      "conservative_product_bound": 2164931777520
+    },
+    {
+      "model": "har_joint_balanced_seed43",
+      "linear": "blocks.1.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 62337,
+      "conservative_product_bound": 5042911197720
+    },
+    {
+      "model": "har_joint_balanced_seed43",
+      "linear": "blocks.1.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 115150,
+      "conservative_product_bound": 3628718034900
+    },
+    {
+      "model": "har_joint_balanced_seed43",
+      "linear": "blocks.2.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 60733,
+      "conservative_product_bound": 4739157296848
+    },
+    {
+      "model": "har_joint_balanced_seed43",
+      "linear": "blocks.2.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 63158,
+      "conservative_product_bound": 2099227161864
+    },
+    {
+      "model": "har_joint_balanced_seed43",
+      "linear": "blocks.2.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 62593,
+      "conservative_product_bound": 4268969288232
+    },
+    {
+      "model": "har_joint_balanced_seed43",
+      "linear": "blocks.2.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 111748,
+      "conservative_product_bound": 2825736810624
+    },
+    {
+      "model": "har_joint_balanced_seed43",
+      "linear": "blocks.3.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 62116,
+      "conservative_product_bound": 4560882207840
+    },
+    {
+      "model": "har_joint_balanced_seed43",
+      "linear": "blocks.3.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 61818,
+      "conservative_product_bound": 2112266412888
+    },
+    {
+      "model": "har_joint_balanced_seed43",
+      "linear": "blocks.3.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 61144,
+      "conservative_product_bound": 2303456633888
+    },
+    {
+      "model": "har_joint_balanced_seed43",
+      "linear": "blocks.3.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 113712,
+      "conservative_product_bound": 3285899958432
+    },
+    {
+      "model": "har_joint_balanced_seed43",
+      "linear": "gate.scorer",
+      "max_abs_accumulator_bound_all_int8_inputs": 56591,
+      "conservative_product_bound": 3036551049804
+    },
+    {
+      "model": "har_joint_balanced_seed43",
+      "linear": "classifier",
+      "max_abs_accumulator_bound_all_int8_inputs": 60330,
+      "conservative_product_bound": 2448182471160
+    },
+    {
+      "model": "har_joint_energy_saver_seed43",
+      "linear": "embedding",
+      "max_abs_accumulator_bound_all_int8_inputs": 19347,
+      "conservative_product_bound": 4967511574944
+    },
+    {
+      "model": "har_joint_energy_saver_seed43",
+      "linear": "blocks.0.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 62044,
+      "conservative_product_bound": 6357253087456
+    },
+    {
+      "model": "har_joint_energy_saver_seed43",
+      "linear": "blocks.0.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 61593,
+      "conservative_product_bound": 2222692794168
+    },
+    {
+      "model": "har_joint_energy_saver_seed43",
+      "linear": "blocks.0.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 61843,
+      "conservative_product_bound": 4898698810608
+    },
+    {
+      "model": "har_joint_energy_saver_seed43",
+      "linear": "blocks.0.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 107733,
+      "conservative_product_bound": 6097253851476
+    },
+    {
+      "model": "har_joint_energy_saver_seed43",
+      "linear": "blocks.1.qkv",
+      "max_abs_accumulator_bound_all_int8_inputs": 61665,
+      "conservative_product_bound": 6136355188080
+    },
+    {
+      "model": "har_joint_energy_saver_seed43",
+      "linear": "blocks.1.projection",
+      "max_abs_accumulator_bound_all_int8_inputs": 60790,
+      "conservative_product_bound": 2164931777520
+    },
+    {
+      "model": "har_joint_energy_saver_seed43",
+      "linear": "blocks.1.fc1",
+      "max_abs_accumulator_bound_all_int8_inputs": 62337,
+      "conservative_product_bound": 5042911197720
+    },
+    {
+      "model": "har_joint_energy_saver_seed43",
+      "linear": "blocks.1.fc2",
+      "max_abs_accumulator_bound_all_int8_inputs": 115150,
+      "conservative_product_bound": 3628718034900
+    },
+    {
+      "model": "har_joint_energy_saver_seed43",
+      "linear": "gate.scorer",
+      "max_abs_accumulator_bound_all_int8_inputs": 56591,
+      "conservative_product_bound": 3036551049804
+    },
+    {
+      "model": "har_joint_energy_saver_seed43",
+      "linear": "exit_classifier",
+      "max_abs_accumulator_bound_all_int8_inputs": 56732,
+      "conservative_product_bound": 2871705988528
+    }
+  ],
+  "physical_fit_proven": false,
+  "all_nonlinear_internal_widths_proven": false
+}

@@ -1,0 +1,48 @@
+name: VHDL skeleton checks
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  structural:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+      - name: Install VHDL analyzer and array reader
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ghdl
+          python -m pip install numpy==2.5.4
+      - name: Check inventory, ports, widths, analysis, elaboration and stub guards
+        run: python rtl/scripts/check_vhdl.py
+      - name: Confirm synthesis is blocked for unimplemented modules
+        run: |
+          if python rtl/scripts/check_scaffold.py --require-implemented eat_fpga_top > rtl/build/synthesis_guard.log 2>&1; then
+            echo "Unexpected synthesis approval for stub design"
+            exit 1
+          fi
+          cat rtl/build/synthesis_guard.log
+      - name: Replay and serialize dense, RTS, early-exit and speech golden cases
+        run: |
+          for case in har_quality_seed17 har_balanced_seed17 har_energy_saver_seed17 speech_quality_seed17; do
+            python rtl/scripts/export_vectors.py --vectors results/alignment_study/test/$case/golden_vectors.npz --export results/alignment_study/exports/$case --output rtl/build/vectors/$case
+          done
+      - uses: actions/upload-artifact@v7.0.2
+        if: always()
+        with:
+          name: vhdl-structural-checks
+          path: |
+            rtl/build/**/*.json
+            rtl/build/**/*.log
+
+# This workflow checks skeleton structure, not arithmetic, synthesis or board behavior.

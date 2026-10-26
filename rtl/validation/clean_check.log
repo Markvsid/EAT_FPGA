@@ -1,0 +1,5 @@
+rm -rf build
+../.venv/bin/python scripts/check_vhdl.py
+Inventory valid: 52 entities, 3 packages; interfaces proposed
+Numeric boundary audit passed for 27 exports
+{"status": "structural_checks_passed_not_functional_rtl", "platform": "macOS-14.4-arm64-arm-64bit", "entities_analyzed_elaborated": 52, "packages_analyzed": 3, "inert_stub_smoke": "passed", "default_stub_failure": "passed", "numerical_equivalence": "not_implemented", "synthesis": "blocked_while_stubs_exist"}

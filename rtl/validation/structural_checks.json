@@ -1,0 +1,11 @@
+{
+  "status": "structural_checks_passed_not_functional_rtl",
+  "ghdl": "GHDL 6.0.0 (6.0.0.r0.ge589c698c) [Dunoon edition]\n Compiled with GNAT Version: 14.2.0\n llvm 22.1.0 code generator\nWritten by Tristan Gingold.\n\nCopyright (C) 2003 - 2026 Tristan Gingold.\nGHDL is free software, covered by the GNU General Public License.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n",
+  "platform": "macOS-14.4-arm64-arm-64bit",
+  "entities_analyzed_elaborated": 52,
+  "packages_analyzed": 3,
+  "inert_stub_smoke": "passed",
+  "default_stub_failure": "passed",
+  "numerical_equivalence": "not_implemented",
+  "synthesis": "blocked_while_stubs_exist"
+}

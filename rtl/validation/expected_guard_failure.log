@@ -1,0 +1,4 @@
+/Users/marksidorov/Documents/ECE4250/Research/EAT_FPGA/rtl/top/eat_fpga_top.vhd:50:3:@0ms:(assertion failure): UNIMPLEMENTED_STUB: eat_fpga_top
+./tb_stub_guard:error: assertion failed
+  instance: .tb_stub_guard(structural_test).u_eat_fpga_top@eat_fpga_top(stub).P0
+./tb_stub_guard:error: simulation failed

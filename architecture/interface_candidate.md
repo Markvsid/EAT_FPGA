@@ -16,8 +16,10 @@ input/output transfer, and accelerator work.
 HAR input order is time-major then channel-major, 128 by 9 bytes. Speech input
 order is frame-major then mel-channel-major, 64 by 40 bytes. The model/config and
 export hashes select the matching channel, patch, scale, and label definitions.
-The classifier emits six or 35 signed-Q12 logits in class order. A physical
-AXI stream packing width and control-register addresses are not yet assigned.
+The classifier emits six or 35 signed-Q12 logits in class order. The subsequent
+[draft RTL interfaces](../rtl/docs/INTERFACES.md) propose 128-bit streams,
+sign-extended 32-bit logits and register offsets. These remain unagreed; the PS
+base address, physical bank mapping and platform integration are unassigned.
 
 ## Logical block interfaces
 

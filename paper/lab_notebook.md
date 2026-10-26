@@ -286,3 +286,37 @@ audit. All three generated PNG figures were visually inspected, with matching
 PDF exports retained. Generated report and interpretation notes are linked from
 README, manuscript and completion checklist. Hardware G2, RTL, board measurements
 and other full-paper requirements remain outstanding.
+
+
+## 2026-10-26 — Lite RTL outline and interface skeleton
+
+Re-read the controlling Word plan's module hierarchy, Week 1 skeleton deliverable
+and G1 restriction on implementation using unagreed interfaces. Scoped 52 VHDL
+entities covering host/control, memories, tensor/vector arithmetic, streaming
+attention, group selection/RTS, and platform integration. Added three packages
+for candidate constants, types and register offsets, plus two structural test
+benches. All entity architectures are explicitly nonfunctional stubs and the
+hierarchy is not wired. Default simulation fails on a stub; opt-in structural
+smoke keeps ready/valid inactive. The supplied synthesis entry point rejects
+reachable stubs. G1/G2 remain open. No functional RTL or FPGA result is claimed.
+
+The interface draft records candidate clock/reset, tagged ready/valid streams,
+AXI-Lite registers, 128-bit AXI streams, width/rounding contracts, partial tiles,
+model identity and memory ownership. Bank layout, platform/part selection and
+error recovery require review. Sparse/INT2 extensions remain deferred. Existing
+frozen software models and numeric configuration were not changed.
+
+Local GHDL 6.0.0 (LLVM, Apple Silicon) analyzed and elaborated all 52 entities
+and three packages. The inert-stub smoke, expected default simulation failure
+and expected synthesis rejection passed. A numerical boundary audit passed for
+all 27 release exports; it is not a full nonlinear overflow proof. Four golden
+cases (HAR Quality/Balanced/Energy-Saver and Speech Quality, seed 17) replayed
+exactly through the separate Python integer reference and serialized to checked
+hex widths, with 95/101/59/95 trace arrays. These are future RTL stimuli, not RTL
+numerical comparisons. Compiler provenance and source hashes are archived under
+`rtl/validation/`; downloaded tools and generated hex/build files are ignored.
+
+See `rtl/RTL_OUTLINE.md`, `rtl/docs/INTERFACES.md` and
+`rtl/docs/VERIFICATION.md` for the complete inventory and staged implementation
+plan. Start with agreed interfaces, rounding/division, FIFO behavior and dense
+W8 tensor primitives before attention, token control and full-model equivalence.

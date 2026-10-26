@@ -209,3 +209,18 @@ set, while mode-specific calibration and encoded constants remain distinct.
 independent family as its default and publishes all three seeds for each option.
 The shared family is verified without new training. Test and robustness data
 were previously observed. This software freeze does not approve hardware G2.
+
+## RTL outline and skeleton
+
+The [complete VHDL outline](rtl/RTL_OUTLINE.md), [draft interfaces](rtl/docs/INTERFACES.md)
+and [verification milestones](rtl/docs/VERIFICATION.md) scope the next hardware phase.
+There are 52 nonfunctional entity skeletons, three packages and two structural
+test benches. The hierarchy is not wired and no arithmetic datapath is implemented.
+This is a reviewable interface proposal; G1/G2 hardware approval remains pending.
+
+```sh
+make -C rtl check
+```
+
+See [RTL setup and limitations](rtl/README.md) and the archived local evidence in
+`rtl/validation/`. Structural compilation is not RTL/model numerical equivalence.
