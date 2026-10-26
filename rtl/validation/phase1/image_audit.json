@@ -1,0 +1,224 @@
+{
+  "status": "passed",
+  "models": [
+    {
+      "case": "har_quality_seed17",
+      "family": "independent",
+      "identity": "580ff31c284a15cce2b7e8be604b36019ed362c13637b0b2cf96aa4ae0f359bf",
+      "exact_parameter_values": 537880,
+      "payload_words": 84327,
+      "status": "passed"
+    },
+    {
+      "case": "har_balanced_seed17",
+      "family": "independent",
+      "identity": "4eef937faf519d99069da6feaba8c86b9b4827585fd24cd61e9ecd26b441cce0",
+      "exact_parameter_values": 538010,
+      "payload_words": 51185,
+      "status": "passed"
+    },
+    {
+      "case": "har_energy_saver_seed17",
+      "family": "independent",
+      "identity": "c014e35defeba0111225baea264aceb7e9a1e3f4b053bd9a0c68f42ea75fc604",
+      "exact_parameter_values": 271502,
+      "payload_words": 30639,
+      "status": "passed"
+    },
+    {
+      "case": "har_quality_seed29",
+      "family": "independent",
+      "identity": "43db3940c63725ca8166a2fcab1fd387d0b072b50308eb7cf1d43d43baf5676e",
+      "exact_parameter_values": 537100,
+      "payload_words": 84219,
+      "status": "passed"
+    },
+    {
+      "case": "har_balanced_seed29",
+      "family": "independent",
+      "identity": "68d6b3a20a97565311dc38dc1825ad263b35b4ff642d0e0cc7d5833d03418189",
+      "exact_parameter_values": 537230,
+      "payload_words": 51125,
+      "status": "passed"
+    },
+    {
+      "case": "har_energy_saver_seed29",
+      "family": "independent",
+      "identity": "abe3e5e8134d72b87d18047ac2d777ede92d842606627e350c4ffd3775f82829",
+      "exact_parameter_values": 271502,
+      "payload_words": 30639,
+      "status": "passed"
+    },
+    {
+      "case": "har_quality_seed43",
+      "family": "independent",
+      "identity": "07d1d71ddac3605dc6373f60a75c57f5fabc34527e8ed8b0359f0a05c237e4e0",
+      "exact_parameter_values": 537100,
+      "payload_words": 84219,
+      "status": "passed"
+    },
+    {
+      "case": "har_balanced_seed43",
+      "family": "independent",
+      "identity": "be5de1788d42e6d9c3375832cd1f765f5f84c354ee3e2a9185f504c0de817476",
+      "exact_parameter_values": 537230,
+      "payload_words": 51125,
+      "status": "passed"
+    },
+    {
+      "case": "har_energy_saver_seed43",
+      "family": "independent",
+      "identity": "ff785370c8e89ba4811f0de1bb43df660d83684e8a293aa601edc64a0b14de16",
+      "exact_parameter_values": 271502,
+      "payload_words": 30639,
+      "status": "passed"
+    },
+    {
+      "case": "speech_quality_seed17",
+      "family": "independent",
+      "identity": "ce7884f7e794e87baa5e4739864b1578f9f690df73ddf56d7aa3079bfea8d437",
+      "exact_parameter_values": 546502,
+      "payload_words": 85445,
+      "status": "passed"
+    },
+    {
+      "case": "speech_balanced_seed17",
+      "family": "independent",
+      "identity": "d73074f68912b744e95f3396c2464ea3fc0e57c9d5645b71a1c261c303bfed65",
+      "exact_parameter_values": 546632,
+      "payload_words": 51767,
+      "status": "passed"
+    },
+    {
+      "case": "speech_energy_saver_seed17",
+      "family": "independent",
+      "identity": "10dfa3f1e600cda5d5b56f41dac1fb66ffc0741a3e992f87bb3aa1dec2d8d180",
+      "exact_parameter_values": 280904,
+      "payload_words": 31281,
+      "status": "passed"
+    },
+    {
+      "case": "speech_quality_seed29",
+      "family": "independent",
+      "identity": "5dd79b4a657d5270fd04e0858c86d50c55067567439ca2187c7db9d3b6c8ea55",
+      "exact_parameter_values": 546502,
+      "payload_words": 85445,
+      "status": "passed"
+    },
+    {
+      "case": "speech_balanced_seed29",
+      "family": "independent",
+      "identity": "f0847ead1d8b0219fb3b603ce51c8593d7b07d6fe545c48eff944f0e7bfe1f81",
+      "exact_parameter_values": 546632,
+      "payload_words": 51767,
+      "status": "passed"
+    },
+    {
+      "case": "speech_energy_saver_seed29",
+      "family": "independent",
+      "identity": "bb02a883b1c74ee8b41d710db7d859542ce0f28abb67e26d631dd640b1d855bf",
+      "exact_parameter_values": 280904,
+      "payload_words": 31281,
+      "status": "passed"
+    },
+    {
+      "case": "speech_quality_seed43",
+      "family": "independent",
+      "identity": "0f2565abdae562c889eb45fd499ed4a3982bd3ecaa53fd63731e5108932d2696",
+      "exact_parameter_values": 546502,
+      "payload_words": 85445,
+      "status": "passed"
+    },
+    {
+      "case": "speech_balanced_seed43",
+      "family": "independent",
+      "identity": "693f8f259297da92d90e9c46cca770e6cee8334a7b00ad516bb84a9a910ddecc",
+      "exact_parameter_values": 546632,
+      "payload_words": 51767,
+      "status": "passed"
+    },
+    {
+      "case": "speech_energy_saver_seed43",
+      "family": "independent",
+      "identity": "ea08b1972982e4f598614aea835948fa7f2ca493bfd04d8ff21a38a0d02345c8",
+      "exact_parameter_values": 280904,
+      "payload_words": 31281,
+      "status": "passed"
+    },
+    {
+      "case": "har_joint_quality_seed17",
+      "family": "shared",
+      "identity": "332fc39ae058b6f33586a2e95395d6005680c6e33115ae7fb0158e55978067c5",
+      "exact_parameter_values": 537100,
+      "payload_words": 84219,
+      "status": "passed"
+    },
+    {
+      "case": "har_joint_balanced_seed17",
+      "family": "shared",
+      "identity": "f6e1576130e27e025dce0f769b6cddbc80885ec463746ddb372fcf06b947c1b9",
+      "exact_parameter_values": 537230,
+      "payload_words": 51125,
+      "status": "passed"
+    },
+    {
+      "case": "har_joint_energy_saver_seed17",
+      "family": "shared",
+      "identity": "bd1e4ec13c780fe9e179a0e2498f9c2b91a9a6d365e48038f15c780313a5dbfc",
+      "exact_parameter_values": 271502,
+      "payload_words": 30639,
+      "status": "passed"
+    },
+    {
+      "case": "har_joint_quality_seed29",
+      "family": "shared",
+      "identity": "02140908bb4fc8bc8887585cc48ee6df43d52aeddefa867d0e2b8415d5c92865",
+      "exact_parameter_values": 537100,
+      "payload_words": 84219,
+      "status": "passed"
+    },
+    {
+      "case": "har_joint_balanced_seed29",
+      "family": "shared",
+      "identity": "4d6bb8d4cf0c01c7897db2bcf7adc36fcb6db744607d498440cb8b305703a92b",
+      "exact_parameter_values": 537230,
+      "payload_words": 51125,
+      "status": "passed"
+    },
+    {
+      "case": "har_joint_energy_saver_seed29",
+      "family": "shared",
+      "identity": "23849b301d13f8720badc4d1b6558dce688ebd6738860818c6e56b8a6becef35",
+      "exact_parameter_values": 271502,
+      "payload_words": 30639,
+      "status": "passed"
+    },
+    {
+      "case": "har_joint_quality_seed43",
+      "family": "shared",
+      "identity": "5c88d4f27692b4cce433c3188585ffd384a0e0a7d2874453b562b972676ae667",
+      "exact_parameter_values": 537100,
+      "payload_words": 84219,
+      "status": "passed"
+    },
+    {
+      "case": "har_joint_balanced_seed43",
+      "family": "shared",
+      "identity": "f0b740fef5f7719ce6f731458df8f9f88a8192b0212b516531ac4c4efcf6d8be",
+      "exact_parameter_values": 537230,
+      "payload_words": 51125,
+      "status": "passed"
+    },
+    {
+      "case": "har_joint_energy_saver_seed43",
+      "family": "shared",
+      "identity": "6bc79f66e731eae306c936235f6c0d04bf33a6b9d1bc5362d542ac29dbaf854c",
+      "exact_parameter_values": 271502,
+      "payload_words": 30639,
+      "status": "passed"
+    }
+  ],
+  "schema_sha256": "d913695559fc213d32d845431497b6a7903dcdf794628d1a4b7630b9e926a423",
+  "exporter_sha256": "8d8a5506758d19194dda0b83f3e6820cbca043e887a418e86136bbd25fc4658d",
+  "limits": "Host serialization/descriptor audit only; no physical memory placement or whole-RTL equivalence."
+}

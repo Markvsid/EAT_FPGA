@@ -1,10 +1,11 @@
--- NONFUNCTIONAL SKELETON. Proposed interfaces; no transactions accepted.
+-- Functional VHDL-2008; synchronous reset and accepted-transfer state updates.
 -- Round weighted-value numerator times2^20 divided by final normalizer to Q12.
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 use work.eat_config_pkg.all;
 use work.eat_types_pkg.all;
+use work.eat_math_pkg.all;
 
 entity eat_attention_finalize is
   generic (
@@ -28,14 +29,35 @@ entity eat_attention_finalize is
   );
 end entity;
 
-architecture stub of eat_attention_finalize is
+architecture rtl of eat_attention_finalize is
+  signal full : std_logic := '0';
 begin
-  -- synthesis translate_off
-  assert G_ALLOW_STUB_SIM report "UNIMPLEMENTED_STUB: eat_attention_finalize" severity failure;
-  -- synthesis translate_on
-  s_ready_o <= '0';
-  m_valid_o <= '0';
-  m_data_o <= C_STATE_BEAT_IDLE;
-  overflow_o <= '0';
-  -- TODO: implement after interface review; replace this architecture and inventory status.
+  s_ready_o <= (not full or m_ready_i) and not rst_i;
+  m_valid_o <= full and not rst_i;
+  process(clk_i)
+    variable numerator,result_value : signed(63 downto 0);
+    variable beat : state_beat_t;
+    variable bad : boolean;
+  begin
+    if rising_edge(clk_i) then
+      if rst_i='1' then full<='0';
+      elsif s_ready_o='1' then
+        full<=s_valid_i;
+        if s_valid_i='1' then
+          beat:=C_STATE_BEAT_IDLE;beat.keep:=keep_i;beat.token:=token_i;
+          beat.feature_base:=feature_base_i;beat.ctx:=ctx_i;
+          bad:=normalizer_i<=0;
+          for i in 0 to C_LANES-1 loop
+            if keep_i(i)='1' then
+              numerator:=shift_left(resize(weighted_state_i(i),64),C_EXP_FRAC);
+              result_value:=divide_even(numerator,unsigned(normalizer_i));
+              bad:=bad or not fits(numerator,62) or not fits(result_value,C_STATE_BITS);
+              beat.data(i):=sat(result_value,C_STATE_BITS);
+            end if;
+          end loop;
+          m_data_o<=beat;overflow_o<=flag(bad);
+        end if;
+      end if;
+    end if;
+  end process;
 end architecture;

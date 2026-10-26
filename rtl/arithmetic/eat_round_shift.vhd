@@ -1,10 +1,11 @@
--- NONFUNCTIONAL SKELETON. Proposed interfaces; no transactions accepted.
+-- Functional VHDL-2008; synchronous reset and accepted-transfer state updates.
 -- Nearest-even signed right shift or checked left shift; explicit output saturation.
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 use work.eat_config_pkg.all;
 use work.eat_types_pkg.all;
+use work.eat_math_pkg.all;
 
 entity eat_round_shift is
   generic (
@@ -27,15 +28,27 @@ entity eat_round_shift is
   );
 end entity;
 
-architecture stub of eat_round_shift is
+architecture rtl of eat_round_shift is
+  signal full : std_logic := '0';
 begin
-  -- synthesis translate_off
-  assert G_ALLOW_STUB_SIM report "UNIMPLEMENTED_STUB: eat_round_shift" severity failure;
-  -- synthesis translate_on
-  s_ready_o <= '0';
-  m_valid_o <= '0';
-  y_o <= (others => '0');
-  saturated_o <= '0';
-  overflow_o <= '0';
-  -- TODO: implement after interface review; replace this architecture and inventory status.
+  s_ready_o <= (not full or m_ready_i) and not rst_i;
+  m_valid_o <= full and not rst_i;
+  process(clk_i)
+    variable shifted : signed(G_IN_BITS+50 downto 0);
+    variable sh : integer;
+  begin
+    if rising_edge(clk_i) then
+      if rst_i='1' then full<='0';
+      elsif s_ready_o='1' then
+        full<=s_valid_i;
+        if s_valid_i='1' then
+          sh:=to_integer(shift_i);
+          shifted:=shift_even(resize(x_i,shifted'length),sh);
+          y_o<=sat(shifted,G_OUT_BITS);
+          saturated_o<=flag(not fits(shifted,G_OUT_BITS));
+          overflow_o<=flag((sh < -50 or sh > 50) or (sh<0 and not fits(shifted,63)));
+        end if;
+      end if;
+    end if;
+  end process;
 end architecture;

@@ -2,23 +2,25 @@
 
 ## Current evidence
 
-All 52 entity skeletons analyze and elaborate. The structural bench instantiates
-every proposed port interface with stub simulation explicitly enabled, asserts
-requests, and confirms no ready/valid transaction can complete. The negative
-bench checks default simulation fails with `UNIMPLEMENTED_STUB`. The supplied
-synthesis guard rejects reachable stubs. These checks establish structural
-consistency only. There is no functional RTL or RTL/Python numerical result.
+Functional phase 1 implements 38 of 53 entities. Exact regressions cover 2,622
+primitive cases, 965 service cases, 64 routed arbiter responses, eight matrix
+cases, 30 vector cases, 11 streamed-attention cases, eight connected token-gate
+cases and four QKV routing cases. Cases include frozen tensors, signed limits,
+rounding ties, actual token/feature tails, independent stalls and reset flushing.
+Test drivers are `rtl/scripts/test_*.py`; archived results and source fingerprints
+are under `rtl/validation/phase1/`.
 
-`audit_numerics.py` checks all 27 frozen exports against the proposed boundary
-types and conservatively bounds linear accumulators/products for every possible
-INT8 input vector. This does not prove nonlinear internal widths or resource fit.
+GHDL netlist generation passes for 13 primitive units. No Vivado mapping, target
+utilization, routed timing or whole-model RTL result is claimed. The remaining
+15 skeletons still fail default simulation, and the top synthesis guard rejects
+them. The 27-export boundary audit and ABI2 parameter-image audit both pass.
 
 ## Implementation sequence
 
 | Milestone | Implement | Exit evidence |
 | --- | --- | --- |
-| M0 current | Types, draft ports, inventory, build/CI and vector bridge | Structural checks and explicit stub guards only |
-| M1 after interface agreement | FIFO/flush, nearest-even shift/divide, reduction, leading-one | Primitive golden tests, signed limits, stalls/reset and overflow assertions |
+| M0 established | Types, draft ports, inventory, build/CI and vector bridge | Structural checks and explicit stub guards only |
+| M1 primitives implemented | FIFO/flush, nearest-even shift/divide, reduction, leading-one | Exact primitive tests and GHDL synthesis-front-end checks pass; broaden integration corner cases as units are connected |
 | M2 dense building blocks | W8/W4 unpack, MAC lane/array, bias/requant, SRAM wrappers, positions, RMSNorm/PWL, residual/pool, host loopback | Every block matches exact integer arrays and counts; width/load/protocol tests |
 | M3 dense W8 encoder | QKV, streaming attention, full four-block schedule, classifier and output framing | Dense full-layer/model traces match; actual cycle counts; same-RTL dense baseline |
 | M4 adaptive Lite | Scoring, stable group selection, RTS/compaction, W4 mode and block 2 exit | All 3 modes/workloads,20/26/32 tokens, mode/bank switching and exact vectors |

@@ -320,3 +320,34 @@ See `rtl/RTL_OUTLINE.md`, `rtl/docs/INTERFACES.md` and
 `rtl/docs/VERIFICATION.md` for the complete inventory and staged implementation
 plan. Start with agreed interfaces, rounding/division, FIFO behavior and dense
 W8 tensor primitives before attention, token control and full-model equivalence.
+
+
+## 2026-10-26 — Functional RTL subsystem checkpoint
+
+Implemented 38 of 53 entities; the extra entity specializes the shared row vector
+engine for position, RMSNorm and PWL. Exact GHDL regressions pass for 2,622
+primitive cases, 965 service cases, 64 arbiter responses, eight matrix cases,
+30 vector cases, 11 streamed-attention cases, eight connected scorer/selector/RTS
+compactor cases and four QKV-routing cases. Full arrays and metadata are checked,
+not merely labels. Tests cover frozen HAR/Speech mode tensors, actual 20/26-token
+tails, extreme signed values, negative rounding ties, masked lanes, independent
+stalls and reset flushing. Archive: `rtl/validation/phase1/`.
+
+GHDL netlist generation passes for 13 primitive units. An unsupported dynamic
+integer absolute expression was replaced by equivalent signed comparisons;
+a GHDL synthesis crash on dynamic W4 slicing was avoided with a half-word mux
+followed by fixed slices. Full functional checks pass after these changes. These
+front-end results are not Vivado resource counts or routed timing. No board
+results or full-model RTL equivalence are claimed.
+
+The user explicitly agreed to integration contract v2 during this phase. It
+adds the model profile, typed image map, loader arming/identity, raw-input byte
+addressing and sequencer routing needed for the remaining integration. The first
+image audit found 3,724 bias/multiplier values in a Quality export, so the initial
+2,048-word proposal was corrected to 4,096 before the ABI was released. All 27
+frozen exports now reconstruct their serialized weights/biases/multipliers
+exactly. Frozen model weights and software numerics were not changed.
+
+Fifteen skeletons remain, including the core, sequencer, host/platform and loading
+path. Broader G1/G2 requirements, full inference equivalence, physical banking,
+Vivado mapping/timing and board measurements remain open.

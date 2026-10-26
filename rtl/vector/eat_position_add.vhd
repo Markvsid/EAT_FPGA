@@ -1,10 +1,11 @@
--- NONFUNCTIONAL SKELETON. Proposed interfaces; no transactions accepted.
+-- Functional VHDL-2008; synchronous reset and accepted-transfer state updates.
 -- Saturating Q12 learned-position addition before block one.
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 use work.eat_config_pkg.all;
 use work.eat_types_pkg.all;
+use work.eat_math_pkg.all;
 
 entity eat_position_add is
   generic (
@@ -34,19 +35,9 @@ entity eat_position_add is
   );
 end entity;
 
-architecture stub of eat_position_add is
+architecture rtl of eat_position_add is
+
 begin
-  -- synthesis translate_off
-  assert G_ALLOW_STUB_SIM report "UNIMPLEMENTED_STUB: eat_position_add" severity failure;
-  -- synthesis translate_on
-  cmd_ready_o <= '0';
-  done_valid_o <= '0';
-  status_o <= C_STATUS_STUB;
-  s_ready_o <= '0';
-  m_valid_o <= '0';
-  m_data_o <= C_STATE_BEAT_IDLE;
-  param_req_valid_o <= '0';
-  param_req_o <= C_PARAM_REQ_IDLE;
-  param_rsp_ready_o <= '0';
-  -- TODO: implement after interface review; replace this architecture and inventory status.
+  unit:entity work.eat_vector_engine(rtl) generic map(G_OPERATION=>"position")
+    port map(clk_i=>clk_i,rst_i=>rst_i,cmd_valid_i=>cmd_valid_i,cmd_ready_o=>cmd_ready_o,cmd_i=>cmd_i,done_valid_o=>done_valid_o,done_ready_i=>done_ready_i,status_o=>status_o,s_valid_i=>s_valid_i,s_ready_o=>s_ready_o,s_data_i=>s_data_i,m_valid_o=>m_valid_o,m_ready_i=>m_ready_i,m_data_o=>m_data_o,param_req_valid_o=>param_req_valid_o,param_req_ready_i=>param_req_ready_i,param_req_o=>param_req_o,param_rsp_valid_i=>param_rsp_valid_i,param_rsp_ready_o=>param_rsp_ready_o,param_rsp_i=>param_rsp_i);
 end architecture;

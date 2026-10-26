@@ -1,4 +1,4 @@
-name: VHDL skeleton checks
+name: VHDL checks
 
 on:
   push:
@@ -45,4 +45,31 @@ jobs:
             rtl/build/**/*.json
             rtl/build/**/*.log
 
-# This workflow checks skeleton structure, not arithmetic, synthesis or board behavior.
+# Structural and exact functional subsystem tests; no full encoder, Vivado timing or board equivalence.
+
+  functional:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+      - name: Install simulator and integer array reader
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ghdl
+          python -m pip install numpy==2.5.4
+      - name: Exact primitive and subsystem regressions
+        run: python rtl/scripts/test_rtl.py
+      - name: Audit all frozen model parameter images
+        run: python rtl/scripts/test_images.py
+      - uses: actions/upload-artifact@v7.0.2
+        if: always()
+        with:
+          name: vhdl-functional-checks
+          path: |
+            rtl/build/**/*.json
+            rtl/build/**/*.log

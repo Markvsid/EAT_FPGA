@@ -1,13 +1,14 @@
 # EAT FPGA Lite VHDL outline and skeleton
 
-**Status: interface proposal and nonfunctional skeletons.** There are 52 entity
-skeletons, three packages and two structural test benches. No arithmetic datapath,
-connected encoder, AXI peripheral or FPGA inference is implemented.
+**Status: functional subsystems; full accelerator integration remains incomplete.**
+There are 38 implemented entities and 15 remaining skeletons, plus four packages.
+The compute path has exact primitive, tensor, vector, streaming-attention, QKV
+and connected RTS-gate regressions. No connected full encoder or FPGA inference
+is claimed. See [current implementation status](IMPLEMENTATION_STATUS.md).
 
-The controlling Word plan, Section 14.7 Week 1, explicitly calls for interface
-specifications and skeleton modules. Its G1 condition prohibits RTL implementation
-on unagreed interfaces. This directory provides a concrete draft for that review;
-it does not declare G1/G2 passed or replace the tested software numerical contract.
+The user agreed to [integration contract v2](docs/INTEGRATION_CONTRACT_V2.md) on
+2026-10-26. Its typed model images pass reconstruction audits for all 27 frozen
+exports. Broader hardware G1/G2 requirements remain open.
 
 ## Review these first
 
@@ -17,27 +18,31 @@ it does not declare G1/G2 passed or replace the tested software numerical contra
 - [Machine-readable module and port inventory](design_inventory.json)
 - [Candidate RTL configuration](config/rtl_candidate.json)
 
-Every entity exposes named ports and has an explicitly named `stub` architecture.
+Remaining skeletons have an explicitly named `stub` architecture.
 Stubs hold ready/valid outputs low and report `ERR_STUB` where status is exposed.
 They never accept a command or return dummy inference results. By default they
 fail simulation at time zero. `G_ALLOW_STUB_SIM => true` is only for structural
 inspection. The supplied synthesis entry point refuses any reachable stub.
-The logical hierarchy is **not wired together** yet.
+Functional blocks are connected within tensor/vector/gate subsystems. The encoder
+and host/platform hierarchy is not wired yet.
 
-## Check the skeleton
+## Run structural and functional checks
 
 With the repository Python environment and GHDL installed:
 
 ```sh
 make -C rtl check
+make -C rtl functional
+make -C rtl synthesis-frontend
 ```
 
 This checks generated constants, all port declarations, compile-order inventory,
 export boundary widths, analysis and elaboration of every entity, inert stub
 behavior, and expected failure when a stub is simulated without explicit opt-in.
-It does **not** test arithmetic, ready/valid implementation, RTL/Python equivalence,
-synthesis, timing, memory banking or board behavior. Those tests are scoped in
-the verification document.
+The structural command does not establish arithmetic correctness. `functional`
+runs exact numerical and stalled-channel scoreboards. `synthesis-frontend`
+generates GHDL netlists for 13 primitive units; it does not run Vivado target
+mapping, physical banking, routed timing or board tests.
 
 ```sh
 # Expected to fail while the top or any dependency is still a skeleton:
@@ -83,10 +88,9 @@ evidence, checks the skeleton and replays four representative golden cases. Loca
 check evidence is archived under `validation/`. Different compiler versions are
 recorded rather than represented as one pinned cross-platform toolchain.
 
-## First implementation step
+## Remaining integration work
 
-Review the proposed ABI, memory image mapping and ownership before coding a
-datapath. Then implement/test `eat_round_shift`, `eat_round_divide`, FIFO/flush,
-weight unpack, MAC lane and requantizer. Build a same-RTL dense W8 path before
-enabling token selection, RTS or early exit. No unverified W4 DSP packing or
-structured weight sparsity is assumed.
+Implement the agreed profile provider/loader, host ingress/control, sequencer and
+core interconnect, then prove full-model RTL equivalence. Existing exact block
+results do not substitute for that final regression. Target memory/resource
+feasibility, timing, DMA recovery and board measurements remain outstanding.

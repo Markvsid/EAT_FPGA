@@ -1,0 +1,19 @@
+{
+  "abi_version": 131072,
+  "magic": 1161909298,
+  "bank_words": 131072,
+  "banks": 8,
+  "profile_words": 164,
+  "regions": [
+    {"kind": "WEIGHT", "offset": 0, "words": 98304},
+    {"kind": "BIAS", "offset": 98304, "words": 4096},
+    {"kind": "MULTIPLIER", "offset": 102400, "words": 4096},
+    {"kind": "GAMMA", "offset": 106496, "words": 2048},
+    {"kind": "POSITION", "offset": 108544, "words": 4096},
+    {"kind": "SHIFT", "offset": 112640, "words": 128},
+    {"kind": "EXP", "offset": 112768, "words": 4097},
+    {"kind": "RSQRT", "offset": 116865, "words": 1024},
+    {"kind": "PWL", "offset": 117889, "words": 9},
+    {"kind": "PROFILE", "offset": 130048, "words": 1024}
+  ]
+}

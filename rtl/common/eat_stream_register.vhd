@@ -1,10 +1,11 @@
--- NONFUNCTIONAL SKELETON. Proposed interfaces; no transactions accepted.
+-- Functional VHDL-2008; synchronous reset and accepted-transfer state updates.
 -- One elastic state beat, stable under backpressure.
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 use work.eat_config_pkg.all;
 use work.eat_types_pkg.all;
+use work.eat_math_pkg.all;
 
 entity eat_stream_register is
   generic (
@@ -22,13 +23,22 @@ entity eat_stream_register is
   );
 end entity;
 
-architecture stub of eat_stream_register is
+architecture rtl of eat_stream_register is
+  signal full : std_logic := '0';
+
 begin
-  -- synthesis translate_off
-  assert G_ALLOW_STUB_SIM report "UNIMPLEMENTED_STUB: eat_stream_register" severity failure;
-  -- synthesis translate_on
-  s_ready_o <= '0';
-  m_valid_o <= '0';
-  m_data_o <= C_STATE_BEAT_IDLE;
-  -- TODO: implement after interface review; replace this architecture and inventory status.
+  s_ready_o <= (not full or m_ready_i) and not rst_i;
+  m_valid_o <= full and not rst_i;
+  process(clk_i)
+  begin
+    if rising_edge(clk_i) then
+      if rst_i='1' then full<='0';
+      elsif s_ready_o='1' then
+        full<=s_valid_i;
+        if s_valid_i='1' then
+          m_data_o<=s_data_i;
+        end if;
+      end if;
+    end if;
+  end process;
 end architecture;

@@ -214,13 +214,15 @@ were previously observed. This software freeze does not approve hardware G2.
 
 The [complete VHDL outline](rtl/RTL_OUTLINE.md), [draft interfaces](rtl/docs/INTERFACES.md)
 and [verification milestones](rtl/docs/VERIFICATION.md) scope the next hardware phase.
-There are 52 nonfunctional entity skeletons, three packages and two structural
-test benches. The hierarchy is not wired and no arithmetic datapath is implemented.
-This is a reviewable interface proposal; G1/G2 hardware approval remains pending.
+There are 38 implemented entities and 15 remaining skeletons. Exact regressions
+cover tensor/vector arithmetic, streaming attention, QKV routing and the connected
+RTS token gate. Full encoder/host integration and hardware G1/G2 remain open.
+The user agreed to [integration contract v2](rtl/docs/INTEGRATION_CONTRACT_V2.md).
 
 ```sh
 make -C rtl check
 ```
 
 See [RTL setup and limitations](rtl/README.md) and the archived local evidence in
-`rtl/validation/`. Structural compilation is not RTL/model numerical equivalence.
+`rtl/validation/`. See [implementation status](rtl/IMPLEMENTATION_STATUS.md) for exact tested scope.
+Block equivalence is not full-model RTL equivalence.

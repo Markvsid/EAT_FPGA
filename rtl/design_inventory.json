@@ -1,10 +1,11 @@
 {
   "schema_version": 1,
-  "status": "proposed_nonfunctional_skeleton",
+  "status": "functional_subsystems_top_integration_incomplete",
   "packages": [
     "rtl/pkg/eat_config_pkg.vhd",
     "rtl/pkg/eat_types_pkg.vhd",
-    "rtl/pkg/eat_registers_pkg.vhd"
+    "rtl/pkg/eat_registers_pkg.vhd",
+    "rtl/pkg/eat_math_pkg.vhd"
   ],
   "modules": [
     {
@@ -12,7 +13,7 @@
       "path": "rtl/common/eat_reset_sync.vhd",
       "group": "common",
       "role": "Convert platform active-low asynchronous reset to core reset; no other CDC is assumed.",
-      "status": "stub",
+      "status": "implemented",
       "stage": 1,
       "generics": [],
       "ports": [
@@ -36,14 +37,17 @@
         }
       ],
       "dependencies": [],
-      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md",
+      "functional_tests": [
+        "rtl/scripts/test_primitives.py"
+      ]
     },
     {
       "name": "eat_rv_fifo",
       "path": "rtl/common/eat_rv_fifo.vhd",
       "group": "common",
       "role": "Elastic buffering and flush; no data accepted by the stub.",
-      "status": "stub",
+      "status": "implemented",
       "stage": 1,
       "generics": [
         {
@@ -120,14 +124,17 @@
         }
       ],
       "dependencies": [],
-      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md",
+      "functional_tests": [
+        "rtl/scripts/test_primitives.py"
+      ]
     },
     {
       "name": "eat_stream_register",
       "path": "rtl/common/eat_stream_register.vhd",
       "group": "common",
       "role": "One elastic state beat, stable under backpressure.",
-      "status": "stub",
+      "status": "implemented",
       "stage": 1,
       "generics": [],
       "ports": [
@@ -180,17 +187,18 @@
           "idle": "C_STATE_BEAT_IDLE"
         }
       ],
-      "dependencies": [
-        "eat_rv_fifo"
-      ],
-      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+      "dependencies": [],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md",
+      "functional_tests": [
+        "rtl/scripts/test_primitives.py"
+      ]
     },
     {
       "name": "eat_round_shift",
       "path": "rtl/arithmetic/eat_round_shift.vhd",
       "group": "arithmetic",
       "role": "Nearest-even signed right shift or checked left shift; explicit output saturation.",
-      "status": "stub",
+      "status": "implemented",
       "stage": 1,
       "generics": [
         {
@@ -273,14 +281,17 @@
         }
       ],
       "dependencies": [],
-      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md",
+      "functional_tests": [
+        "rtl/scripts/test_primitives.py"
+      ]
     },
     {
       "name": "eat_round_divide",
       "path": "rtl/arithmetic/eat_round_divide.vhd",
       "group": "arithmetic",
       "role": "Nearest-even signed numerator/positive denominator division; no truncating divide.",
-      "status": "stub",
+      "status": "implemented",
       "stage": 1,
       "generics": [],
       "ports": [
@@ -352,14 +363,17 @@
         }
       ],
       "dependencies": [],
-      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md",
+      "functional_tests": [
+        "rtl/scripts/test_primitives.py"
+      ]
     },
     {
       "name": "eat_reduction_tree",
       "path": "rtl/arithmetic/eat_reduction_tree.vhd",
       "group": "arithmetic",
       "role": "Masked wide sum with overflow check; used by norm/attention/vector reductions.",
-      "status": "stub",
+      "status": "implemented",
       "stage": 1,
       "generics": [],
       "ports": [
@@ -425,14 +439,17 @@
         }
       ],
       "dependencies": [],
-      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md",
+      "functional_tests": [
+        "rtl/scripts/test_primitives.py"
+      ]
     },
     {
       "name": "eat_leading_one",
       "path": "rtl/arithmetic/eat_leading_one.vhd",
       "group": "arithmetic",
       "role": "Leading-one normalization for nonnegative variance; explicit zero flag.",
-      "status": "stub",
+      "status": "implemented",
       "stage": 1,
       "generics": [],
       "ports": [
@@ -492,14 +509,17 @@
         }
       ],
       "dependencies": [],
-      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md",
+      "functional_tests": [
+        "rtl/scripts/test_primitives.py"
+      ]
     },
     {
       "name": "eat_exp_lut",
       "path": "rtl/arithmetic/eat_exp_lut.vhd",
       "group": "arithmetic",
       "role": "Rounded Q8 address into 4097-entry Q20 exp table; zero outside supported range.",
-      "status": "stub",
+      "status": "implemented",
       "stage": 3,
       "generics": [],
       "ports": [
@@ -598,20 +618,26 @@
           "direction": "in",
           "type": "param_rsp_t",
           "idle": "C_PARAM_RSP_IDLE"
+        },
+        {
+          "name": "error_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
         }
       ],
-      "dependencies": [
-        "eat_round_shift",
-        "eat_parameter_store"
-      ],
-      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+      "dependencies": [],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md",
+      "functional_tests": [
+        "rtl/scripts/test_services.py"
+      ]
     },
     {
       "name": "eat_rsqrt_lut",
       "path": "rtl/arithmetic/eat_rsqrt_lut.vhd",
       "group": "arithmetic",
       "role": "Read 1024 Q30 mantissa coefficients; exponent/parity correction belongs to RMSNorm.",
-      "status": "stub",
+      "status": "implemented",
       "stage": 2,
       "generics": [],
       "ports": [
@@ -710,19 +736,162 @@
           "direction": "in",
           "type": "param_rsp_t",
           "idle": "C_PARAM_RSP_IDLE"
+        },
+        {
+          "name": "error_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
         }
       ],
-      "dependencies": [
-        "eat_parameter_store"
+      "dependencies": [],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md",
+      "functional_tests": [
+        "rtl/scripts/test_services.py"
+      ]
+    },
+    {
+      "name": "eat_vector_engine",
+      "path": "rtl/vector/eat_vector_engine.vhd",
+      "group": "vector",
+      "role": "Sequential exact RMSNorm/position/PWL specialization; one row buffered.",
+      "status": "implemented",
+      "stage": 2,
+      "generics": [],
+      "ports": [
+        {
+          "name": "clk_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "rst_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "cmd_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "cmd_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "cmd_i",
+          "direction": "in",
+          "type": "vector_cmd_t",
+          "idle": "C_VECTOR_CMD_IDLE"
+        },
+        {
+          "name": "done_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "done_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "status_o",
+          "direction": "out",
+          "type": "status_t",
+          "idle": "C_STATUS_IDLE"
+        },
+        {
+          "name": "s_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "s_data_i",
+          "direction": "in",
+          "type": "state_beat_t",
+          "idle": "C_STATE_BEAT_IDLE"
+        },
+        {
+          "name": "m_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "m_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "m_data_o",
+          "direction": "out",
+          "type": "state_beat_t",
+          "idle": "C_STATE_BEAT_IDLE"
+        },
+        {
+          "name": "param_req_valid_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "param_req_ready_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "param_req_o",
+          "direction": "out",
+          "type": "param_req_t",
+          "idle": "C_PARAM_REQ_IDLE"
+        },
+        {
+          "name": "param_rsp_valid_i",
+          "direction": "in",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "param_rsp_ready_o",
+          "direction": "out",
+          "type": "std_logic",
+          "idle": "'0'"
+        },
+        {
+          "name": "param_rsp_i",
+          "direction": "in",
+          "type": "param_rsp_t",
+          "idle": "C_PARAM_RSP_IDLE"
+        }
       ],
-      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+      "dependencies": [],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md",
+      "functional_tests": [
+        "rtl/scripts/test_vectors.py"
+      ]
     },
     {
       "name": "eat_pwl_silu",
       "path": "rtl/arithmetic/eat_pwl_silu.vhd",
       "group": "arithmetic",
       "role": "Nine rounded knots; preserve exact tails and interpolation rounding.",
-      "status": "stub",
+      "status": "implemented",
       "stage": 2,
       "generics": [],
       "ports": [
@@ -848,17 +1017,19 @@
         }
       ],
       "dependencies": [
-        "eat_round_divide",
-        "eat_parameter_store"
+        "eat_vector_engine"
       ],
-      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md",
+      "functional_tests": [
+        "rtl/scripts/test_vectors.py"
+      ]
     },
     {
       "name": "eat_memory_arbiter",
       "path": "rtl/memory/eat_memory_arbiter.vhd",
       "group": "memory",
       "role": "Tagged logical memory requests; physical banking/ports remain a design decision.",
-      "status": "stub",
+      "status": "implemented",
       "stage": 2,
       "generics": [
         {
@@ -953,19 +1124,26 @@
           "idle": "C_MEM_RSP_IDLE"
         }
       ],
-      "dependencies": [
-        "eat_rv_fifo"
-      ],
-      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+      "dependencies": [],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md",
+      "functional_tests": [
+        "rtl/scripts/test_arbiter.py"
+      ]
     },
     {
       "name": "eat_input_buffer",
       "path": "rtl/memory/eat_input_buffer.vhd",
       "group": "memory",
       "role": "Raw signed INT8 host window, separate from Q12 activation storage.",
-      "status": "stub",
+      "status": "implemented",
       "stage": 2,
-      "generics": [],
+      "generics": [
+        {
+          "name": "G_WORDS",
+          "type": "positive",
+          "default": "320"
+        }
+      ],
       "ports": [
         {
           "name": "clk_i",
@@ -1017,16 +1195,25 @@
         }
       ],
       "dependencies": [],
-      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md",
+      "functional_tests": [
+        "rtl/scripts/test_services.py"
+      ]
     },
     {
       "name": "eat_weight_buffer_banked",
       "path": "rtl/memory/eat_weight_buffer_banked.vhd",
       "group": "memory",
       "role": "On-chip packed W4/W8 parameter banks; no automatic DSP packing assumption.",
-      "status": "stub",
+      "status": "implemented",
       "stage": 2,
-      "generics": [],
+      "generics": [
+        {
+          "name": "G_WORDS",
+          "type": "positive",
+          "default": "131072"
+        }
+      ],
       "ports": [
         {
           "name": "clk_i",
@@ -1078,16 +1265,25 @@
         }
       ],
       "dependencies": [],
-      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md",
+      "functional_tests": [
+        "rtl/scripts/test_services.py"
+      ]
     },
     {
       "name": "eat_activation_buffer_pingpong",
       "path": "rtl/memory/eat_activation_buffer_pingpong.vhd",
       "group": "memory",
       "role": "Q12 activations and residual ping-pong storage; tags and bank swaps on legal boundaries.",
-      "status": "stub",
+      "status": "implemented",
       "stage": 2,
-      "generics": [],
+      "generics": [
+        {
+          "name": "G_WORDS",
+          "type": "positive",
+          "default": "12288"
+        }
+      ],
       "ports": [
         {
           "name": "clk_i",
@@ -1139,16 +1335,25 @@
         }
       ],
       "dependencies": [],
-      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md",
+      "functional_tests": [
+        "rtl/scripts/test_services.py"
+      ]
     },
     {
       "name": "eat_attention_state_buffer",
       "path": "rtl/memory/eat_attention_state_buffer.vhd",
       "group": "memory",
       "role": "Per-head/query row maxima, normalizers and weighted-value state.",
-      "status": "stub",
+      "status": "implemented",
       "stage": 2,
-      "generics": [],
+      "generics": [
+        {
+          "name": "G_WORDS",
+          "type": "positive",
+          "default": "8192"
+        }
+      ],
       "ports": [
         {
           "name": "clk_i",
@@ -1200,16 +1405,25 @@
         }
       ],
       "dependencies": [],
-      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md",
+      "functional_tests": [
+        "rtl/scripts/test_services.py"
+      ]
     },
     {
       "name": "eat_token_index_buffer",
       "path": "rtl/memory/eat_token_index_buffer.vhd",
       "group": "memory",
       "role": "Original token/group indices and summary provenance for compaction.",
-      "status": "stub",
+      "status": "implemented",
       "stage": 2,
-      "generics": [],
+      "generics": [
+        {
+          "name": "G_WORDS",
+          "type": "positive",
+          "default": "64"
+        }
+      ],
       "ports": [
         {
           "name": "clk_i",
@@ -1261,7 +1475,10 @@
         }
       ],
       "dependencies": [],
-      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md",
+      "functional_tests": [
+        "rtl/scripts/test_services.py"
+      ]
     },
     {
       "name": "eat_parameter_store",
@@ -1749,7 +1966,7 @@
       "path": "rtl/tensor/eat_activation_quantizer.vhd",
       "group": "tensor",
       "role": "Q12 state to fixed-scale INT8; nearest-even shift and counted saturation.",
-      "status": "stub",
+      "status": "implemented",
       "stage": 2,
       "generics": [],
       "ports": [
@@ -1814,17 +2031,18 @@
           "idle": "(others => '0')"
         }
       ],
-      "dependencies": [
-        "eat_round_shift"
-      ],
-      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+      "dependencies": [],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md",
+      "functional_tests": [
+        "rtl/scripts/test_primitives.py"
+      ]
     },
     {
       "name": "eat_weight_unpack",
       "path": "rtl/tensor/eat_weight_unpack.vhd",
       "group": "tensor",
       "role": "Low nibble first INT4 sign extension or INT8 lanes; reject other precisions.",
-      "status": "stub",
+      "status": "implemented",
       "stage": 2,
       "generics": [],
       "ports": [
@@ -1908,14 +2126,17 @@
         }
       ],
       "dependencies": [],
-      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md",
+      "functional_tests": [
+        "rtl/scripts/test_primitives.py"
+      ]
     },
     {
       "name": "eat_mac_lane",
       "path": "rtl/tensor/eat_mac_lane.vhd",
       "group": "tensor",
       "role": "One enabled INT8 product and checked 40-bit K accumulation; W4 is sign-extended.",
-      "status": "stub",
+      "status": "implemented",
       "stage": 2,
       "generics": [],
       "ports": [
@@ -1999,14 +2220,17 @@
         }
       ],
       "dependencies": [],
-      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md",
+      "functional_tests": [
+        "rtl/scripts/test_primitives.py"
+      ]
     },
     {
       "name": "eat_mac_array",
       "path": "rtl/tensor/eat_mac_array.vhd",
       "group": "tensor",
       "role": "Candidate 8x8 PE array with row/column broadcast and disabled padded lanes.",
-      "status": "stub",
+      "status": "implemented",
       "stage": 2,
       "generics": [],
       "ports": [
@@ -2101,17 +2325,18 @@
           "idle": "'0'"
         }
       ],
-      "dependencies": [
-        "eat_mac_lane"
-      ],
-      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+      "dependencies": [],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md",
+      "functional_tests": [
+        "rtl/scripts/test_primitives.py"
+      ]
     },
     {
       "name": "eat_requantizer",
       "path": "rtl/tensor/eat_requantizer.vhd",
       "group": "tensor",
       "role": "Add bias in accumulator domain, check 40 bits, multiply Q24, round and saturate state.",
-      "status": "stub",
+      "status": "implemented",
       "stage": 2,
       "generics": [],
       "ports": [
@@ -2218,17 +2443,18 @@
           "idle": "'0'"
         }
       ],
-      "dependencies": [
-        "eat_round_shift"
-      ],
-      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+      "dependencies": [],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md",
+      "functional_tests": [
+        "rtl/scripts/test_primitives.py"
+      ]
     },
     {
       "name": "eat_tensor_engine",
       "path": "rtl/tensor/eat_tensor_engine.vhd",
       "group": "tensor",
       "role": "Reusable embedding/QKV/projection/FFN/scorer/classifier matrix core.",
-      "status": "stub",
+      "status": "implemented",
       "stage": 2,
       "generics": [],
       "ports": [
@@ -2372,21 +2598,19 @@
         }
       ],
       "dependencies": [
-        "eat_address_generator",
-        "eat_patch_reader",
-        "eat_activation_quantizer",
-        "eat_weight_unpack",
-        "eat_mac_array",
-        "eat_requantizer"
+        "eat_mac_array"
       ],
-      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md",
+      "functional_tests": [
+        "rtl/scripts/test_tensor.py"
+      ]
     },
     {
       "name": "eat_position_add",
       "path": "rtl/vector/eat_position_add.vhd",
       "group": "vector",
       "role": "Saturating Q12 learned-position addition before block one.",
-      "status": "stub",
+      "status": "implemented",
       "stage": 2,
       "generics": [],
       "ports": [
@@ -2512,16 +2736,19 @@
         }
       ],
       "dependencies": [
-        "eat_parameter_store"
+        "eat_vector_engine"
       ],
-      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md",
+      "functional_tests": [
+        "rtl/scripts/test_vectors.py"
+      ]
     },
     {
       "name": "eat_residual_add",
       "path": "rtl/vector/eat_residual_add.vhd",
       "group": "vector",
       "role": "Rendezvous matching token/feature/context beats; saturating signed24 addition.",
-      "status": "stub",
+      "status": "implemented",
       "stage": 2,
       "generics": [],
       "ports": [
@@ -2634,17 +2861,18 @@
           "idle": "(others => '0')"
         }
       ],
-      "dependencies": [
-        "eat_rv_fifo"
-      ],
-      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+      "dependencies": [],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md",
+      "functional_tests": [
+        "rtl/scripts/test_vectors.py"
+      ]
     },
     {
       "name": "eat_mean_pool",
       "path": "rtl/vector/eat_mean_pool.vhd",
       "group": "vector",
       "role": "Sum actual 20/26/32 token rows, then nearest-even division, independently per feature.",
-      "status": "stub",
+      "status": "implemented",
       "stage": 2,
       "generics": [],
       "ports": [
@@ -2733,18 +2961,18 @@
           "idle": "C_STATE_BEAT_IDLE"
         }
       ],
-      "dependencies": [
-        "eat_reduction_tree",
-        "eat_round_divide"
-      ],
-      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+      "dependencies": [],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md",
+      "functional_tests": [
+        "rtl/scripts/test_vectors.py"
+      ]
     },
     {
       "name": "eat_rmsnorm",
       "path": "rtl/vector/eat_rmsnorm.vhd",
       "group": "vector",
       "role": "Two-pass row norm: mean square, epsilon168, rsqrt LUT/parity, Q14 gamma and saturation.",
-      "status": "stub",
+      "status": "implemented",
       "stage": 2,
       "generics": [],
       "ports": [
@@ -2906,20 +3134,19 @@
         }
       ],
       "dependencies": [
-        "eat_reduction_tree",
-        "eat_leading_one",
-        "eat_rsqrt_lut",
-        "eat_round_shift",
-        "eat_activation_buffer_pingpong"
+        "eat_vector_engine"
       ],
-      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md",
+      "functional_tests": [
+        "rtl/scripts/test_vectors.py"
+      ]
     },
     {
       "name": "eat_qkv_quantizer",
       "path": "rtl/attention/eat_qkv_quantizer.vhd",
       "group": "attention",
       "role": "Split QKV and quantize Q/K/V independently to INT8 with recorded exponents.",
-      "status": "stub",
+      "status": "implemented",
       "stage": 3,
       "generics": [],
       "ports": [
@@ -3044,10 +3271,11 @@
           "idle": "C_ACT_BEAT_IDLE"
         }
       ],
-      "dependencies": [
-        "eat_activation_quantizer"
-      ],
-      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+      "dependencies": [],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md",
+      "functional_tests": [
+        "rtl/scripts/test_qkv.py"
+      ]
     },
     {
       "name": "eat_qk_tile_engine",
@@ -3201,7 +3429,7 @@
       "path": "rtl/attention/eat_score_scale.vhd",
       "group": "attention",
       "role": "Q24 to Q12 rounding followed by Q20 1/sqrt(head-width) multiplier and rounding.",
-      "status": "stub",
+      "status": "implemented",
       "stage": 3,
       "generics": [],
       "ports": [
@@ -3266,10 +3494,11 @@
           "idle": "'0'"
         }
       ],
-      "dependencies": [
-        "eat_round_shift"
-      ],
-      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+      "dependencies": [],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md",
+      "functional_tests": [
+        "rtl/scripts/test_primitives.py"
+      ]
     },
     {
       "name": "eat_rowmax_exp",
@@ -3435,7 +3664,7 @@
       "path": "rtl/attention/eat_running_normalizer.vhd",
       "group": "attention",
       "role": "Rescale previous Q20 denominator and add valid exponentials; checked signed32.",
-      "status": "stub",
+      "status": "implemented",
       "stage": 3,
       "generics": [],
       "ports": [
@@ -3506,11 +3735,11 @@
           "idle": "'0'"
         }
       ],
-      "dependencies": [
-        "eat_round_shift",
-        "eat_reduction_tree"
-      ],
-      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+      "dependencies": [],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md",
+      "functional_tests": [
+        "rtl/scripts/test_services.py"
+      ]
     },
     {
       "name": "eat_av_tile_engine",
@@ -3653,7 +3882,7 @@
       "path": "rtl/attention/eat_attention_finalize.vhd",
       "group": "attention",
       "role": "Round weighted-value numerator times2^20 divided by final normalizer to Q12.",
-      "status": "stub",
+      "status": "implemented",
       "stage": 3,
       "generics": [],
       "ports": [
@@ -3742,17 +3971,18 @@
           "idle": "'0'"
         }
       ],
-      "dependencies": [
-        "eat_round_divide"
-      ],
-      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+      "dependencies": [],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md",
+      "functional_tests": [
+        "rtl/scripts/test_services.py"
+      ]
     },
     {
       "name": "eat_streaming_attention_engine",
       "path": "rtl/attention/eat_streaming_attention_engine.vhd",
       "group": "attention",
       "role": "Orchestrate head/query/key tiles and online state; never allocate a full score matrix.",
-      "status": "stub",
+      "status": "implemented",
       "stage": 3,
       "generics": [],
       "ports": [
@@ -3895,24 +4125,18 @@
           "idle": "C_PARAM_RSP_IDLE"
         }
       ],
-      "dependencies": [
-        "eat_qkv_quantizer",
-        "eat_qk_tile_engine",
-        "eat_score_scale",
-        "eat_rowmax_exp",
-        "eat_running_normalizer",
-        "eat_av_tile_engine",
-        "eat_attention_finalize",
-        "eat_attention_state_buffer"
-      ],
-      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+      "dependencies": [],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md",
+      "functional_tests": [
+        "rtl/scripts/test_attention.py"
+      ]
     },
     {
       "name": "eat_group_scorer",
       "path": "rtl/tokens/eat_group_scorer.vhd",
       "group": "tokens",
       "role": "Consume shared tensor OP_SCORE results, store token scores and sum exact groups of four.",
-      "status": "stub",
+      "status": "implemented",
       "stage": 4,
       "generics": [],
       "ports": [
@@ -4085,17 +4309,18 @@
           "idle": "C_PARAM_RSP_IDLE"
         }
       ],
-      "dependencies": [
-        "eat_tensor_engine"
-      ],
-      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+      "dependencies": [],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md",
+      "functional_tests": [
+        "rtl/scripts/test_gate.py"
+      ]
     },
     {
       "name": "eat_group_selector",
       "path": "rtl/tokens/eat_group_selector.vhd",
       "group": "tokens",
       "role": "Stable top-k group selection; earlier group wins ties; no scores rounded to a mean.",
-      "status": "stub",
+      "status": "implemented",
       "stage": 4,
       "generics": [],
       "ports": [
@@ -4197,7 +4422,11 @@
         }
       ],
       "dependencies": [],
-      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md",
+      "functional_tests": [
+        "rtl/scripts/test_services.py",
+        "rtl/scripts/test_gate.py"
+      ]
     },
     {
       "name": "eat_rts_summary",
@@ -4328,7 +4557,7 @@
       "path": "rtl/tokens/eat_token_compactor.vhd",
       "group": "tokens",
       "role": "Chronological retained groups/summary emission with original-index tracking and actual count.",
-      "status": "stub",
+      "status": "implemented",
       "stage": 4,
       "generics": [],
       "ports": [
@@ -4471,19 +4700,18 @@
           "idle": "C_MEM_RSP_IDLE"
         }
       ],
-      "dependencies": [
-        "eat_rts_summary",
-        "eat_token_index_buffer",
-        "eat_activation_buffer_pingpong"
-      ],
-      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+      "dependencies": [],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md",
+      "functional_tests": [
+        "rtl/scripts/test_gate.py"
+      ]
     },
     {
       "name": "eat_mode_controller",
       "path": "rtl/control/eat_mode_controller.vhd",
       "group": "control",
       "role": "Latch mode/bank/identity only at idle boundary; reject busy/invalid starts.",
-      "status": "stub",
+      "status": "implemented",
       "stage": 2,
       "generics": [],
       "ports": [
@@ -4561,7 +4789,10 @@
         }
       ],
       "dependencies": [],
-      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md",
+      "functional_tests": [
+        "rtl/scripts/test_services.py"
+      ]
     },
     {
       "name": "eat_encoder_sequencer",
@@ -4725,7 +4956,7 @@
       "path": "rtl/control/eat_performance_counters.vhd",
       "group": "control",
       "role": "Per-inference active/stall/saturation/traffic counters with atomic completion snapshot.",
-      "status": "stub",
+      "status": "implemented",
       "stage": 2,
       "generics": [],
       "ports": [
@@ -4797,7 +5028,10 @@
         }
       ],
       "dependencies": [],
-      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md",
+      "functional_tests": [
+        "rtl/scripts/test_services.py"
+      ]
     },
     {
       "name": "eat_axi_ctrl_regs",
@@ -5208,7 +5442,7 @@
       "path": "rtl/host/eat_axi_stream_output.vhd",
       "group": "host",
       "role": "Pack class-order signed24 logits into sign-extended 32-bit words; TLAST on final word.",
-      "status": "stub",
+      "status": "implemented",
       "stage": 2,
       "generics": [],
       "ports": [
@@ -5285,10 +5519,11 @@
           "idle": "'0'"
         }
       ],
-      "dependencies": [
-        "eat_rv_fifo"
-      ],
-      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md"
+      "dependencies": [],
+      "verification": "Exact golden vectors plus stalls/reset/tails; see RTL_OUTLINE.md",
+      "functional_tests": [
+        "rtl/scripts/test_services.py"
+      ]
     },
     {
       "name": "eat_encoder_core",
@@ -5873,5 +6108,5 @@
     "AXI DMA, AXI interconnect, clocks/reset IP",
     "RAM primitives if inference is insufficient"
   ],
-  "dependency_semantics": "Planned service dependencies, not instantiated ownership. One tensor engine is shared by projections, scorer and classifier."
+  "dependency_semantics": "Actual direct entity instantiations for implemented modules; planned services for remaining skeletons. Packages are always analyzed first."
 }

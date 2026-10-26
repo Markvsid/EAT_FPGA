@@ -1,6 +1,7 @@
 rtl/pkg/eat_config_pkg.vhd
 rtl/pkg/eat_types_pkg.vhd
 rtl/pkg/eat_registers_pkg.vhd
+rtl/pkg/eat_math_pkg.vhd
 rtl/common/eat_reset_sync.vhd
 rtl/common/eat_rv_fifo.vhd
 rtl/common/eat_stream_register.vhd
@@ -10,6 +11,7 @@ rtl/arithmetic/eat_reduction_tree.vhd
 rtl/arithmetic/eat_leading_one.vhd
 rtl/arithmetic/eat_exp_lut.vhd
 rtl/arithmetic/eat_rsqrt_lut.vhd
+rtl/vector/eat_vector_engine.vhd
 rtl/arithmetic/eat_pwl_silu.vhd
 rtl/memory/eat_memory_arbiter.vhd
 rtl/memory/eat_input_buffer.vhd

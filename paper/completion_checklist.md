@@ -16,9 +16,9 @@ cannot replace board measurements.
 | RTS versus plain dropping at equal processed-token budgets | Three-seed 20-token comparison, retention controls, and same-checkpoint counterfactual complete in software |
 | Exact full-model integer reference | Independent and shared aligned families cover 27 settings per full partition with zero intermediate/logit/group errors; original comparisons preserved; no RTL/board equivalence |
 | Frozen scales, widths, approximation sweeps, exports, vectors | Training-calibrated scales, version-2 candidate widths, LUT/PWL sweeps, packed images and traces exist; G2 freeze pending |
-| RTL tensor engine and fixed-point streamed attention | Draft ports and nonfunctional skeletons present; arithmetic and G1 interface agreement pending |
-| RTL controller, compactor, RTS, nonlinear units, buffers | Draft ports and nonfunctional skeletons present; behavior and wiring pending |
-| Unit, layer, full-model RTL equivalence and backpressure | Structural compile/elaboration and stub guards pass; functional tests pending |
+| RTL tensor engine and fixed-point streamed attention | Tensor and streaming-attention blocks pass exact functional regressions; full core integration and target synthesis pending |
+| RTL controller, compactor, RTS, nonlinear units, buffers | 38 entities implemented; connected RTS gate and vector units pass; 15 skeletons and host/core integration remain |
+| Unit, layer, full-model RTL equivalence and backpressure | Exact primitive/subsystem and stall regressions pass; full-model RTL and board equivalence pending |
 | Calibrated cycle model within about 10–15 percent of RTL | Operator schedule with tails/nonlinear/memory assumptions and 54-point DSE exists; RTL calibration pending |
 | KV260 dense and adaptive bitstreams; nonnegative routed slack | Board and Vivado access missing |
 | Accuracy over three seeds per workload and numeric stage | Original full-test study in `python_test_results.md`; validation-selected aligned study in `aligned_numerics_results.md`, with previously observed test disclosure; board stage pending |

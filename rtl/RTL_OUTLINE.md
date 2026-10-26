@@ -3,8 +3,10 @@
 The controlling Word plan is the authority: Sections 7.1–7.5, 8, 14.2 and 14.7–14.8.
 This is the Week 1 interface/skeleton deliverable, authorized by the RTL scoping
 request. It does not approve interfaces, resource sizing or full G1/G2 completion.
-All 52 entities have nonfunctional guarded architectures. Their ports compile;
-there is no connected accelerator or numerical RTL implementation.
+The original outline had 52 skeletons. The current design has 53 entities: 38
+implemented and 15 remaining skeletons. A shared vector specialization helper
+was added. Exact block/subsystem regressions pass; the connected encoder and
+host/platform integration remain incomplete. See `IMPLEMENTATION_STATUS.md`.
 
 ## In scope for Paper 1 Lite
 
@@ -43,7 +45,8 @@ flowchart TD
   Tensor --> Output["Class logits → 32-bit words → AXI stream"]
 ```
 
-The skeleton does not instantiate this graph. Explicit shared-resource arbitration,
+The full encoder does not instantiate this graph yet. Tensor, vector and gate
+subsystems now instantiate their implemented children. Explicit shared-resource arbitration,
 operand/metadata FIFOs, buffer lifetimes and physical bank mapping are review work.
 Do not interpret a dependency edge in the inventory as another physical engine.
 
@@ -59,6 +62,7 @@ proposed block. Stage numbers refer to the verification/implementation milestone
 | [eat_config_pkg](pkg/eat_config_pkg.vhd) | Generated numerical widths, dimensions, lanes and draft bus sizes |
 | [eat_types_pkg](pkg/eat_types_pkg.vhd) | Signed formats, beats, descriptors, memory requests, contexts and events |
 | [eat_registers_pkg](pkg/eat_registers_pkg.vhd) | Proposed host offsets and command bits; no PS base address |
+| [eat_vector_engine](vector/eat_vector_engine.vhd) | Row-buffered specialization shared by RMSNorm, position and PWL wrappers |
 
 ## Common modules
 

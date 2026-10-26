@@ -1,10 +1,11 @@
--- NONFUNCTIONAL SKELETON. Proposed interfaces; no transactions accepted.
+-- Functional VHDL-2008; synchronous reset and accepted-transfer state updates.
 -- Q24 to Q12 rounding followed by Q20 1/sqrt(head-width) multiplier and rounding.
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 use work.eat_config_pkg.all;
 use work.eat_types_pkg.all;
+use work.eat_math_pkg.all;
 
 entity eat_score_scale is
   generic (
@@ -24,14 +25,27 @@ entity eat_score_scale is
   );
 end entity;
 
-architecture stub of eat_score_scale is
+architecture rtl of eat_score_scale is
+  signal full : std_logic := '0';
 begin
-  -- synthesis translate_off
-  assert G_ALLOW_STUB_SIM report "UNIMPLEMENTED_STUB: eat_score_scale" severity failure;
-  -- synthesis translate_on
-  s_ready_o <= '0';
-  m_valid_o <= '0';
-  score_q12_o <= (others => '0');
-  overflow_o <= '0';
-  -- TODO: implement after interface review; replace this architecture and inventory status.
+  s_ready_o <= (not full or m_ready_i) and not rst_i;
+  m_valid_o <= full and not rst_i;
+  process(clk_i)
+    variable first : qk_acc_t;
+    variable product : signed(C_QK_ACC_BITS+32 downto 0);
+    variable result_value : signed(C_QK_ACC_BITS+32 downto 0);
+  begin
+    if rising_edge(clk_i) then
+      if rst_i='1' then full<='0';
+      elsif s_ready_o='1' then
+        full<=s_valid_i;
+        if s_valid_i='1' then
+          first:=rshift_even(qk_q24_i,C_STATE_FRAC);
+          product:=first*signed('0'&scale_multiplier_q20_i);
+          result_value:=rshift_even(product,20);
+          score_q12_o<=result_value(C_SCORE_BITS-1 downto 0);overflow_o<=flag(not fits(result_value,C_SCORE_BITS));
+        end if;
+      end if;
+    end if;
+  end process;
 end architecture;

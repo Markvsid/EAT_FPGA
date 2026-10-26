@@ -1,10 +1,11 @@
--- NONFUNCTIONAL SKELETON. Proposed interfaces; no transactions accepted.
+-- Functional VHDL-2008; synchronous reset and accepted-transfer state updates.
 -- Masked wide sum with overflow check; used by norm/attention/vector reductions.
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 use work.eat_config_pkg.all;
 use work.eat_types_pkg.all;
+use work.eat_math_pkg.all;
 
 entity eat_reduction_tree is
   generic (
@@ -24,14 +25,26 @@ entity eat_reduction_tree is
   );
 end entity;
 
-architecture stub of eat_reduction_tree is
+architecture rtl of eat_reduction_tree is
+  signal full : std_logic := '0';
 begin
-  -- synthesis translate_off
-  assert G_ALLOW_STUB_SIM report "UNIMPLEMENTED_STUB: eat_reduction_tree" severity failure;
-  -- synthesis translate_on
-  s_ready_o <= '0';
-  m_valid_o <= '0';
-  sum_o <= (others => '0');
-  overflow_o <= '0';
-  -- TODO: implement after interface review; replace this architecture and inventory status.
+  s_ready_o <= (not full or m_ready_i) and not rst_i;
+  m_valid_o <= full and not rst_i;
+  process(clk_i)
+    variable total : signed(66 downto 0);
+  begin
+    if rising_edge(clk_i) then
+      if rst_i='1' then full<='0';
+      elsif s_ready_o='1' then
+        full<=s_valid_i;
+        if s_valid_i='1' then
+          total:=(others=>'0');
+          for i in 0 to C_LANES-1 loop
+            if keep_i(i)='1' then total:=total+resize(values_i(i),67);end if;
+          end loop;
+          sum_o<=total(63 downto 0);overflow_o<=flag(not fits(total,64));
+        end if;
+      end if;
+    end if;
+  end process;
 end architecture;

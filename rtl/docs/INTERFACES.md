@@ -1,6 +1,10 @@
 # Proposed RTL interfaces and host ABI
 
-This is draft ABI 1, not an agreed hardware contract. Constants and records are
+This records the initial ABI1 proposal. The user agreed to the
+[ABI2 integration contract](INTEGRATION_CONTRACT_V2.md) on 2026-10-26; it governs
+the remaining integration changes. This initial document remains useful for
+existing compute stream/width semantics, but its unassigned host fields are
+superseded by that contract. It is not hardware G1/G2 approval. Constants and records are
 in `eat_config_pkg`, `eat_types_pkg` and `eat_registers_pkg`. The exact per-entity
 ports are in VHDL and `design_inventory.json`; the checker keeps them consistent.
 
@@ -190,3 +194,13 @@ overflow behavior, interrupt acknowledgement and error-clear semantics need revi
 | ABI |128-bit streams,32-bit logits, offsets above | Agree register fields, PS base address and completion/counter semantics |
 
 These review items are not silently marked agreed by creating skeleton files.
+
+## Implemented phase 1 amendments
+
+Exp/rsqrt table fetches have explicit `error_o` ports. Logical RAMs use a
+`G_WORDS` capacity and 64-bit storage, retain data on reset and clear responses;
+physical narrowing/banking is pending. Scorer and compactor share `G_SCORE_BASE`
+(default 32768). RMSNorm buffers its row internally and ties off its old external
+scratch interface. Tensor output is tile-major and QKV routing accepts that
+order; row vector units require row-major beats. The connected compactor now
+performs RTS directly; a separate summary unit remains a skeleton.
