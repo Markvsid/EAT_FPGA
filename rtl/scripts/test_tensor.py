@@ -6,7 +6,6 @@ ROOT=Path(__file__).resolve().parents[2]
 import sys
 sys.path.insert(0,str(ROOT))
 BUILD=ROOT/'rtl/build/tensor'
-
 def write(path,values):
     path.write_text(''.join(f'{int(x)%(1<<64):016x}\n' for x in (values.flat if isinstance(values,np.ndarray) else values)))
 def prepare(path,x,w,b,m,expected,bits,shift):
@@ -25,7 +24,6 @@ def main():
         return p.stdout+p.stderr
     sources=(ROOT/'rtl/sources.f').read_text().splitlines(); initial_hashes={p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in sources}
     run(['-a','--std=08',*[str(ROOT/p) for p in sources],str(ROOT/'rtl/tb/tb_tensor_engine.vhd')],'analyze')
-    run(['-e','--std=08','tb_tensor_engine'],'elaborate')
     cases=[];rng=np.random.default_rng(4250)
     for rows,cols,k,bits in [(9,13,36,4),(26,35,80,8),(20,6,128,4),(1,9,256,8)]:
         x=rng.integers(-128,128,(rows,k),dtype=np.int64);w=rng.integers(-(1<<(bits-1)),1<<(bits-1),(cols,k),dtype=np.int64)
@@ -42,7 +40,7 @@ def main():
         args=prepare(BUILD/case,x,const[layer+'.weight'],const[layer+'.bias'],const[layer+'.multiplier'],v[layer],bits,shift);cases.append((case,args))
     reports=[]
     for name,args in cases:
-        log=run(['-r','--std=08','tb_tensor_engine',*args,'--assert-level=error','--max-stack-alloc=0'],name)
+        log=run(['--elab-run','--std=08','tb_tensor_engine',*args,'--assert-level=error','--max-stack-alloc=0'],name)
         match=re.search(r'TENSOR_ENGINE_PASS cycles=(\d+) values=(\d+)',log);assert match,log
         reports.append({'case':name,'cycles_simulated':int(match[1]),'exact_output_values':int(match[2]),'status':'passed'})
         print(name,'passed',flush=True)

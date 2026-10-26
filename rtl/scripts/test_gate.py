@@ -10,7 +10,7 @@ def main():
   p=subprocess.run([ghdl,*args],cwd=BUILD,text=True,capture_output=True);(BUILD/(name+'.log')).write_text(p.stdout+p.stderr)
   if p.returncode:raise RuntimeError(p.stdout+p.stderr)
   return p.stdout+p.stderr
- sources=(ROOT/'rtl/sources.f').read_text().splitlines(); initial_hashes={p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in sources};run(['-a','--std=08',*[str(ROOT/p) for p in sources],str(ROOT/'rtl/tb/tb_token_gate.vhd')],'analyze');run(['-e','--std=08','tb_token_gate'],'elaborate')
+ sources=(ROOT/'rtl/sources.f').read_text().splitlines(); initial_hashes={p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in sources};run(['-a','--std=08',*[str(ROOT/p) for p in sources],str(ROOT/'rtl/tb/tb_token_gate.vhd')],'analyze')
  cases=[]
  for case in ['har_balanced_seed17','har_energy_saver_seed17','speech_balanced_seed17','speech_energy_saver_seed17']:
   v=np.load(ROOT/'results/alignment_study/test'/case/'golden_vectors.npz');m=json.loads((ROOT/'results/alignment_study/exports'/case/'manifest.json').read_text())
@@ -33,7 +33,7 @@ def main():
   args=[f'-gG_KEEP={keep}',f"-gG_RTS={'1' if rts else '0'}",f'-gG_OUTPUT_TOKENS={len(expected)}',f'-gG_MASK={mask}',f'-gG_PATH={path}/']
   # std_logic command-line generics require a VHDL character literal.
   args[1]="-gG_RTS="+("'1'" if rts else "'0'")
-  log=run(['-r','--std=08','tb_token_gate',*args,'--assert-level=error','--max-stack-alloc=0'],name);m=re.search(r'TOKEN_GATE_PASS cycles=(\d+) values=(\d+)',log);assert m,log
+  log=run(['--elab-run','--std=08','tb_token_gate',*args,'--assert-level=error','--max-stack-alloc=0'],name);m=re.search(r'TOKEN_GATE_PASS cycles=(\d+) values=(\d+)',log);assert m,log
   reports.append({'case':name,'cycles_simulated':int(m[1]),'exact_output_values':int(m[2]),'output_tokens':len(expected),'status':'passed'});print(name,'passed',flush=True)
  (BUILD/'gate_results.json').write_text(json.dumps({'status':'passed','seed':4253,'cases':reports,'source_sha256':{p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in sources},'limits':'Connected token-gate subsystem with simulated score memory; scorer linear projection is separately provided by the shared tensor engine.'},indent=2)+'\n')
 if __name__=='__main__':main()

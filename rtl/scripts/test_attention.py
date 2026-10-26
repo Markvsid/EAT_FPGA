@@ -12,7 +12,7 @@ def main():
         if p.returncode:raise RuntimeError(p.stdout+p.stderr)
         return p.stdout+p.stderr
     sources=(ROOT/'rtl/sources.f').read_text().splitlines(); initial_hashes={p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in sources}
-    run(['-a','--std=08',*[str(ROOT/p) for p in sources],str(ROOT/'rtl/tb/tb_attention.vhd')],'analyze');run(['-e','--std=08','tb_attention'],'elaborate')
+    run(['-a','--std=08',*[str(ROOT/p) for p in sources],str(ROOT/'rtl/tb/tb_attention.vhd')],'analyze')
     cases=[];rng=np.random.default_rng(4252)
     manifest=json.loads((ROOT/'results/alignment_study/exports/har_quality_seed17/manifest.json').read_text())
     table=np.load(ROOT/'results/alignment_study/exports/har_quality_seed17/constants.npz')['exp_table']
@@ -36,7 +36,7 @@ def main():
         words=np.concatenate([x.transpose(1,0,2).reshape(n,128).ravel() for x in raw])
         for filename,values in [('input',words),('expected',expected),('exp',table)]:write(path/(filename+'.hex'),values)
         args=[f'-gG_TOKENS={n}',f'-gG_Q_SHIFT={shifts[0]}',f'-gG_K_SHIFT={shifts[1]}',f'-gG_V_SHIFT={shifts[2]}',f'-gG_PATH={path}/']
-        log=run(['-r','--std=08','tb_attention',*args,'--assert-level=error','--max-stack-alloc=0'],name)
+        log=run(['--elab-run','--std=08','tb_attention',*args,'--assert-level=error','--max-stack-alloc=0'],name)
         match=re.search(r'ATTENTION_PASS cycles=(\d+) values=(\d+)',log);assert match,log
         reports.append({'case':name,'tokens':n,'cycles_simulated':int(match[1]),'exact_output_values':int(match[2]),'status':'passed'});print(name,'passed',flush=True)
     assert initial_hashes=={p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in sources},'RTL changed during regression'

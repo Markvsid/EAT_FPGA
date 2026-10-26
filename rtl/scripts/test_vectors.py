@@ -12,14 +12,14 @@ def main():
   if p.returncode:raise RuntimeError(p.stdout+p.stderr)
   return p.stdout+p.stderr
  sources=(ROOT/'rtl/sources.f').read_text().splitlines();hashes={p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in sources}
- run(['-a','--std=08',*[str(ROOT/p) for p in sources],str(ROOT/'rtl/tb/tb_vector_units.vhd')],'analyze');run(['-e','--std=08','tb_vector_units'],'elaborate')
+ run(['-a','--std=08',*[str(ROOT/p) for p in sources],str(ROOT/'rtl/tb/tb_vector_units.vhd')],'analyze')
  reports=[]
  def check(name,op,x,expected,params,rsqrt,second=None):
   expected=expected.reshape(-1,x.shape[1]);path=BUILD/name;path.mkdir(parents=True,exist_ok=True)
   write(path/'second.hex',np.zeros_like(x) if second is None else second)
   for f,a in [('input',x),('expected',expected),('param',params),('rsqrt',rsqrt)]:write(path/(f+'.hex'),a)
   args=[f'-gG_OUTPUT_ROWS={expected.shape[0]}',f'-gG_ROWS={x.shape[0]}',f'-gG_FEATURES={x.shape[1]}',f'-gG_PARAM_COUNT={params.size}',f'-gG_OPERATION={op}',f'-gG_PATH={path}/']
-  log=run(['-r','--std=08','tb_vector_units',*args,'--assert-level=error','--max-stack-alloc=0'],name)
+  log=run(['--elab-run','--std=08','tb_vector_units',*args,'--assert-level=error','--max-stack-alloc=0'],name)
   m=re.search(r'VECTOR_UNITS_PASS cycles=(\d+) values=(\d+)',log);assert m,log
   reports.append({'case':name,'operation':op,'cycles_simulated':int(m[1]),'exact_output_values':int(m[2]),'status':'passed'});print(name,'passed',flush=True)
  for case in ['har_quality_seed17','har_balanced_seed17','har_energy_saver_seed17','speech_quality_seed17']:

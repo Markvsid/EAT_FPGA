@@ -1,6 +1,6 @@
 {
   "status": "software_research_package_hardware_gates_incomplete",
-  "parent_git_commit_at_capture": "80c18cbee1afb3bdf686fc706db152925df38d1e",
+  "parent_git_commit_at_capture": "42c0a5aeea9c46c4b95ac1c1a957619ec30fcef4",
   "completed_training_runs": 49,
   "completed_independent_integer_comparisons": 18,
   "completed_shared_family_integer_comparisons": 9,
@@ -13422,12 +13422,12 @@
       "sha256": "31f737b6e40c3e25bbed4355c971c285e8ffb373627b26681147fb4f1ac1dc74"
     },
     "rtl/scripts/test_attention.py": {
-      "bytes": 3844,
-      "sha256": "fb86370af245baf06175f438bc4f3824bc4d0352a19294af4f27fc47c19f0495"
+      "bytes": 3802,
+      "sha256": "9e4dc5d13a2acee9a20bf1d666b80a7af50f33bab2cb4f4df06be9ec581e5009"
     },
     "rtl/scripts/test_gate.py": {
-      "bytes": 3254,
-      "sha256": "89dccc5721599b18d2dca8b48a94f24ac44904597294997e7360ecd49bb147ef"
+      "bytes": 3211,
+      "sha256": "a8731300e6e20114064cf1677ac923d08af9ec117e854ee214de9813aaebecbd"
     },
     "rtl/scripts/test_images.py": {
       "bytes": 2592,
@@ -13438,8 +13438,8 @@
       "sha256": "08b8aec91505e46f2fcd63c449fc99a527ac4a9efb3f8f2fa47d826a4937b703"
     },
     "rtl/scripts/test_qkv.py": {
-      "bytes": 2270,
-      "sha256": "f4eb6917381ff862fb83d310cec94c7347779ba0f64122a895853d8bbb342d27"
+      "bytes": 2224,
+      "sha256": "1b05e749976d69f5c2a6c6ecb49022db16964c96c81e993eabbc627046e1a930"
     },
     "rtl/scripts/test_rtl.py": {
       "bytes": 776,
@@ -13450,12 +13450,12 @@
       "sha256": "478a8015e5180ebf2fe822493dcc41ac3c8275fae07ef1e183be2b7b53cf8048"
     },
     "rtl/scripts/test_tensor.py": {
-      "bytes": 4006,
-      "sha256": "0e8833e8a4b14a9109d01e46982b8d26c7553aba55e7bbd230a7219165d85b11"
+      "bytes": 3955,
+      "sha256": "077117eac3aee2cb7dc8efa061b576a126fe195a04d09f66404499bfbc6c2988"
     },
     "rtl/scripts/test_vectors.py": {
-      "bytes": 4450,
-      "sha256": "6238ced8c6eb339b917660432bf4943d79925451c215a6dae7746f1423bed6e0"
+      "bytes": 4405,
+      "sha256": "f886e38e941f972300ee9956a8db85b9fe93b10d645ed8d2e23740247a312316"
     },
     "rtl/sources.f": {
       "bytes": 1944,
