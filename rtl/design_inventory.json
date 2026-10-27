@@ -47,7 +47,7 @@
       "name": "eat_rv_fifo",
       "path": "rtl/common/eat_rv_fifo.vhd",
       "group": "common",
-      "role": "Elastic buffering and flush; no data accepted by the stub.",
+      "role": "Elastic ready/valid FIFO with synchronous flush and held stalled outputs.",
       "status": "implemented",
       "stage": 1,
       "generics": [
@@ -5026,7 +5026,7 @@
       "name": "eat_encoder_core",
       "path": "rtl/top/eat_encoder_core.vhd",
       "group": "top",
-      "role": "Logical core integration boundary; child interconnect is not wired in this skeleton.",
+      "role": "Connected encoder schedule, shared tensor/vector/attention/gate services, private state banks and diagnostic events.",
       "status": "implemented",
       "stage": 3,
       "generics": [],
