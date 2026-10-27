@@ -1,6 +1,6 @@
 {
   "status": "software_and_functional_rtl_package_target_hardware_gates_incomplete",
-  "parent_git_commit_at_capture": "15899523fab866894bd8c1b26550f23f9a9d9471",
+  "parent_git_commit_at_capture": "2fd61b39fb4529b0ec72e482734b6ebc80788621",
   "completed_training_runs": 49,
   "completed_independent_integer_comparisons": 18,
   "completed_shared_family_integer_comparisons": 9,
@@ -22,8 +22,8 @@
       "sha256": "d593df03cf9767b59bc61ce9b79e54f8477bbc2e19db48f7c6eeac7eccad8d20"
     },
     ".github/workflows/vhdl-skeleton.yml": {
-      "bytes": 3965,
-      "sha256": "9bceb39f23ee82cc7a5336a97295922e81e32ec154f3ad7ab9f9be52528d6d58"
+      "bytes": 4425,
+      "sha256": "25b35a08586306eaa9d66b3083eee44b0235903ce7283080198d1832d1ef8994"
     },
     ".gitignore": {
       "bytes": 126,
@@ -13420,6 +13420,10 @@
     "rtl/scripts/export_vectors.py": {
       "bytes": 3563,
       "sha256": "8054e66a9af8d519000370d40bcbba5b843df73b4db96ef95d5b2f0b4b7f3ada"
+    },
+    "rtl/scripts/report_results.py": {
+      "bytes": 7994,
+      "sha256": "9efd6a7633b8ba329e40f4a2d09a36e2dc6671694d6bed68f1d7e9f14335eebb"
     },
     "rtl/scripts/report_status.py": {
       "bytes": 1592,

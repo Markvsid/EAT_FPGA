@@ -2,7 +2,19 @@ name: VHDL checks
 
 on:
   push:
+    paths: &rtl_paths
+      - 'rtl/**/*.vhd'
+      - 'rtl/**/*.py'
+      - 'rtl/config/**'
+      - 'rtl/sources.f'
+      - 'rtl/design_inventory.json'
+      - 'config/**'
+      - 'golden/**'
+      - 'results/**/exports/**'
+      - 'results/software_release_v1/catalog.json'
+      - '.github/workflows/vhdl-skeleton.yml'
   pull_request:
+    paths: *rtl_paths
 
 permissions:
   contents: read
@@ -86,6 +98,8 @@ jobs:
             command: python rtl/scripts/test_core.py --case har_energy_saver_seed17 --input-pattern checkerboard
           - name: platform-repeat
             command: python rtl/scripts/test_system.py --case har_energy_saver_seed17 --repeat 2
+          - name: platform-balanced
+            command: python rtl/scripts/test_system.py --case har_balanced_seed17
           - name: platform-speech
             command: python rtl/scripts/test_system.py --case speech_quality_seed17
     steps:
