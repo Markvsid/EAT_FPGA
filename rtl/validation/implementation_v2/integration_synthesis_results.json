@@ -1,0 +1,83 @@
+{
+  "status": "passed",
+  "tops": [
+    {
+      "top": "eat_model_memory",
+      "status": "passed",
+      "netlist_retained": false
+    },
+    {
+      "top": "eat_tensor_engine",
+      "status": "passed",
+      "netlist_retained": false
+    },
+    {
+      "top": "eat_vector_engine",
+      "status": "passed",
+      "netlist_retained": false
+    },
+    {
+      "top": "eat_streaming_attention_engine",
+      "status": "passed",
+      "netlist_retained": false
+    },
+    {
+      "top": "eat_token_compactor",
+      "status": "passed",
+      "netlist_retained": false
+    },
+    {
+      "top": "eat_encoder_core",
+      "status": "passed",
+      "netlist_retained": false
+    },
+    {
+      "top": "eat_fpga_top",
+      "status": "passed",
+      "netlist_retained": false
+    },
+    {
+      "top": "eat_platform_wrapper",
+      "status": "passed",
+      "netlist_retained": false
+    }
+  ],
+  "tool": "GHDL 6.0.0 (6.0.0.r0.ge589c698c) [Dunoon edition]\n Compiled with GNAT Version: 14.2.0\n llvm 22.1.0 code generator\nWritten by Tristan Gingold.\n\nCopyright (C) 2003 - 2026 Tristan Gingold.\nGHDL is free software, covered by the GNU General Public License.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n",
+  "source_sha256": {
+    "rtl/pkg/eat_config_pkg.vhd": "d0edea71f9827ec2243626a8966fd08dd388009b80c9379e83a3fd6e4234bf1e",
+    "rtl/pkg/eat_types_pkg.vhd": "d7324b317af14a767c63313fc2c7e7652540334767bec797d2a14ecdb213af85",
+    "rtl/pkg/eat_registers_pkg.vhd": "d593caff4f49ab7f77e6eec55db2a63114ced95142b5d66e4b24a34637635404",
+    "rtl/pkg/eat_math_pkg.vhd": "6956afa5654dbd7b9c5545f3039e86a2bed8dc09a505c1f5a38d1614b77c333c",
+    "rtl/pkg/eat_image_pkg.vhd": "258a16da9acbcbd81236961e72a81cbf19c99286cf4dba924a76a8f349c9f40e",
+    "rtl/common/eat_reset_sync.vhd": "26c7b3d00e49a0c8899c834542554a98c6f6b8dd97fddcd3b32036f3773e0522",
+    "rtl/arithmetic/eat_round_divide.vhd": "ed3da648cedad2060255ede837007da57a8423a872dfaca274aaf9dea8769e5b",
+    "rtl/vector/eat_vector_engine.vhd": "9601cba6285b69c209c6080d7df8dac1b32cd5e31f79e133ecf0fd2de26d8539",
+    "rtl/arithmetic/eat_pwl_silu.vhd": "70a9ab2e68fa3be09f79554b1846e73cb344c207f8fd51a0d6eb8cb9026a971b",
+    "rtl/memory/eat_memory_arbiter.vhd": "eb32ff6f33689488a1a84b67488c1d995872616f3ad67e56dc320eac00bbe3e0",
+    "rtl/memory/eat_input_buffer.vhd": "afe52e77d98c98f8e04fa099473eaf59dbb94ce89a1e5f9994bb643ae0b7a139",
+    "rtl/memory/eat_model_memory.vhd": "d7699cd7704ea089fc73ede0c857cdff62ac926dc4e2b43668e4584b043b5607",
+    "rtl/memory/eat_parameter_store.vhd": "d2d69b5ba54ef3ca2a57d7fb24c992bbf7880c96fb009df38f9e1b3df5efd80e",
+    "rtl/memory/eat_constant_loader.vhd": "d11e2ac68f67072118e8c15f4442310133eb02fb11248b4354f80af7a6bf9785",
+    "rtl/tensor/eat_mac_array.vhd": "b63695dbab02b2a277452deea90d3ddaa6e45a817bbc1b203c243666bb01507c",
+    "rtl/tensor/eat_tensor_engine.vhd": "d8d5fcc82f61a7f054daa50340d5a5a972b5108140c815ffa7408f4f71367b59",
+    "rtl/vector/eat_position_add.vhd": "79252475a50afcb8cb3f4af5380ff39650514c17dd3222c9c1828398af3442d9",
+    "rtl/vector/eat_residual_add.vhd": "61f8e9e5a1eb57669e1eb6280f630403bb38e6f7a98071764e090f9344042e89",
+    "rtl/vector/eat_mean_pool.vhd": "5c9d69da15fda860678c7f652c155f511ad8b55cc09d1b1a257d1e7ccedf03e9",
+    "rtl/vector/eat_rmsnorm.vhd": "0ad13ec4ce6dfa7c05dc943890a8f5c22c90005a52af6e91a7d15625f3d083a0",
+    "rtl/attention/eat_streaming_attention_engine.vhd": "726b159ab879d8093e553b65d2fb134b254194a31382b3394e139062c9ff013f",
+    "rtl/tokens/eat_group_scorer.vhd": "572e52424664e73e39a981107abf18dd1feceaba8ec010f4b98b3e7f5ba581b9",
+    "rtl/tokens/eat_group_selector.vhd": "0c84137f9a52bcf9b393ace8b34e41d2c61e7fc1a9d0a96fe86b598c9a07147b",
+    "rtl/tokens/eat_token_compactor.vhd": "c0f3c25fc0bfe6185e57ef22c4e7976a240270276bfb36823d47a5b0ec786960",
+    "rtl/control/eat_mode_controller.vhd": "aceb8ca857b6ed272e9a0f4c4f2cc20627341beba35e0618ebe5b310f74412f7",
+    "rtl/control/eat_encoder_sequencer.vhd": "e2851b31d4d23fd0b26ef87dcb961fb0a2e10b5bc7fee0231c3b797ddee71324",
+    "rtl/control/eat_performance_counters.vhd": "496e16914dd2b59f9c19ff1e792eb70e80316a514a1e6cd715487c79adac02be",
+    "rtl/host/eat_axi_ctrl_regs.vhd": "1fbff76fbe3fd3bb923663bc9bf65a1315b3a5c438d9d0902f4f58899af03bf9",
+    "rtl/host/eat_dma_descriptor_engine.vhd": "70bb8775dc2e0017ec0a7bba80277bc7f0daaa83eb7ce776fd0e65b31081e744",
+    "rtl/host/eat_axi_stream_input.vhd": "28b63fcaac4a0199a89c16b896ff162f758aab6a19ebd1718bfbc67a3730e775",
+    "rtl/host/eat_axi_stream_output.vhd": "4cf9050cd154768be0cef6e078566129b4eec192572737cec65affd282ce2bf7",
+    "rtl/top/eat_encoder_core.vhd": "bb97ad2398003a96217c494566e5ba42345a346f42029621e9ff88625f0be184",
+    "rtl/top/eat_fpga_top.vhd": "5d729ab8c8d346a209227da05a8feced15e640463f87fbf96436006431a1616a",
+    "rtl/platform/eat_platform_wrapper.vhd": "7eff6100409dac5077c243534ca693f5c2e0f3603762db4c142b26ebf597965a"
+  },
+  "limits": "GHDL netlist generation only. No Vivado target mapping, DSP/BRAM count, routed Fmax or board result."
+}

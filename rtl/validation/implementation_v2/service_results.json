@@ -1,0 +1,41 @@
+{
+  "status": "passed",
+  "seed": 4251,
+  "cases": {
+    "eat_exp_lut": 71,
+    "eat_rsqrt_lut": 34,
+    "eat_running_normalizer": 150,
+    "eat_attention_finalize": 150,
+    "eat_mode_controller": 5,
+    "eat_performance_counters": 13,
+    "eat_group_selector": 40,
+    "eat_input_buffer": 91,
+    "eat_weight_buffer_banked": 91,
+    "eat_activation_buffer_pingpong": 91,
+    "eat_attention_state_buffer": 91,
+    "eat_token_index_buffer": 91,
+    "eat_axi_stream_output": 48
+  },
+  "total_cases": 966,
+  "source_sha256": {
+    "rtl/pkg/eat_config_pkg.vhd": "d0edea71f9827ec2243626a8966fd08dd388009b80c9379e83a3fd6e4234bf1e",
+    "rtl/pkg/eat_types_pkg.vhd": "d7324b317af14a767c63313fc2c7e7652540334767bec797d2a14ecdb213af85",
+    "rtl/pkg/eat_registers_pkg.vhd": "d593caff4f49ab7f77e6eec55db2a63114ced95142b5d66e4b24a34637635404",
+    "rtl/pkg/eat_math_pkg.vhd": "6956afa5654dbd7b9c5545f3039e86a2bed8dc09a505c1f5a38d1614b77c333c",
+    "rtl/pkg/eat_image_pkg.vhd": "258a16da9acbcbd81236961e72a81cbf19c99286cf4dba924a76a8f349c9f40e",
+    "rtl/arithmetic/eat_exp_lut.vhd": "0f30d05fce4690b057ad9c4609683004c1f0919a53c3d38ad5b3bc823d5d43aa",
+    "rtl/arithmetic/eat_rsqrt_lut.vhd": "d35f5a7d877c0f85581cbc75eb99de2175ee33b1d4caa136e6e37551e5c4bc3d",
+    "rtl/memory/eat_input_buffer.vhd": "afe52e77d98c98f8e04fa099473eaf59dbb94ce89a1e5f9994bb643ae0b7a139",
+    "rtl/memory/eat_weight_buffer_banked.vhd": "1b71f5ea6cfcd4c69505ce17d5ffb9bb24f3a9a3acc306661465a37503b795d7",
+    "rtl/memory/eat_activation_buffer_pingpong.vhd": "c8665f87ef996280d9d8991b2633ac5235d13494a6d552f29b86d38ed3b1507b",
+    "rtl/memory/eat_attention_state_buffer.vhd": "e85515457d781296bd0cbb39d80aed68cebb62a171dd70b2f3286c276bde8813",
+    "rtl/memory/eat_token_index_buffer.vhd": "38a652ad9262e0df9bd63a3890cbd06b7959e5a07d06d5e8caccca8ba0b255ba",
+    "rtl/attention/eat_running_normalizer.vhd": "d1d3b5e47287353e426c759fe1d1fe9823bf011a19361af2183bc73d22a57b43",
+    "rtl/attention/eat_attention_finalize.vhd": "ae3f5bc1c83fcea0bd5311609ab1b64412acd438f4d95ae4db3683e1a70c2d6e",
+    "rtl/tokens/eat_group_selector.vhd": "0c84137f9a52bcf9b393ace8b34e41d2c61e7fc1a9d0a96fe86b598c9a07147b",
+    "rtl/control/eat_mode_controller.vhd": "aceb8ca857b6ed272e9a0f4c4f2cc20627341beba35e0618ebe5b310f74412f7",
+    "rtl/control/eat_performance_counters.vhd": "496e16914dd2b59f9c19ff1e792eb70e80316a514a1e6cd715487c79adac02be",
+    "rtl/host/eat_axi_stream_output.vhd": "4cf9050cd154768be0cef6e078566129b4eec192572737cec65affd282ce2bf7"
+  },
+  "limits": "Isolated services only; RAM tests use 16 words; physical banking and full encoder remain unverified."
+}

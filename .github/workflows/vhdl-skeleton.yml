@@ -90,17 +90,35 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - name: core-har
-            command: python rtl/scripts/test_core.py --case har_quality_seed17 --case har_balanced_seed17 --case har_energy_saver_seed17
-          - name: core-speech
-            command: python rtl/scripts/test_core.py --case speech_quality_seed17 --case speech_balanced_seed17 --case speech_energy_saver_seed17
+          - name: core-har-quality
+            backend: llvm
+            command: python rtl/scripts/test_core.py --case har_quality_seed17
+          - name: core-har-balanced
+            backend: llvm
+            command: python rtl/scripts/test_core.py --case har_balanced_seed17
+          - name: core-har-energy_saver
+            backend: llvm
+            command: python rtl/scripts/test_core.py --case har_energy_saver_seed17
+          - name: core-speech-quality
+            backend: llvm
+            command: python rtl/scripts/test_core.py --case speech_quality_seed17
+          - name: core-speech-balanced
+            backend: llvm
+            command: python rtl/scripts/test_core.py --case speech_balanced_seed17
+          - name: core-speech-energy_saver
+            backend: llvm
+            command: python rtl/scripts/test_core.py --case speech_energy_saver_seed17
           - name: core-saturation
+            backend: mcode
             command: python rtl/scripts/test_core.py --case har_energy_saver_seed17 --input-pattern checkerboard
           - name: platform-repeat
+            backend: llvm
             command: python rtl/scripts/test_system.py --case har_energy_saver_seed17 --repeat 2
           - name: platform-balanced
+            backend: llvm
             command: python rtl/scripts/test_system.py --case har_balanced_seed17
           - name: platform-speech
+            backend: llvm
             command: python rtl/scripts/test_system.py --case speech_quality_seed17
     steps:
       - uses: actions/checkout@v7
@@ -112,8 +130,14 @@ jobs:
       - name: Install simulator and reference dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y ghdl
+          sudo apt-get install -y ghdl ghdl-llvm
           python -m pip install numpy==2.5.4
+          mkdir -p "$RUNNER_TEMP/eat-ghdl"
+          printf '%s\n' '#!/bin/sh' 'exec /usr/bin/ghdl-${{ matrix.backend }} "$@"' > "$RUNNER_TEMP/eat-ghdl/ghdl"
+          chmod +x "$RUNNER_TEMP/eat-ghdl/ghdl"
+          echo "$RUNNER_TEMP/eat-ghdl" >> "$GITHUB_PATH"
+      - name: Record selected backend
+        run: ghdl --version
       - name: Exact full inference regression
         run: ${{ matrix.command }}
       - uses: actions/upload-artifact@v7.0.2

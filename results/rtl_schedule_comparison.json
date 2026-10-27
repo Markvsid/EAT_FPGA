@@ -1,0 +1,47 @@
+{
+  "status": "uncalibrated_model_fails_template_tolerance",
+  "comparisons": [
+    {
+      "case": "har_energy_saver_seed17",
+      "boundary": "core_bench_with_simulated_services",
+      "analytical_cycles": 291739,
+      "rtl_cycles": 4888803,
+      "rtl_to_estimate_ratio": 16.757454437013905,
+      "absolute_error_percent_of_rtl": 94.032506525626
+    },
+    {
+      "case": "har_balanced_seed17",
+      "boundary": "core_bench_with_simulated_services",
+      "analytical_cycles": 619003,
+      "rtl_cycles": 10478003,
+      "rtl_to_estimate_ratio": 16.927224908441477,
+      "absolute_error_percent_of_rtl": 94.09235710277999
+    },
+    {
+      "case": "har_quality_seed17",
+      "boundary": "core_bench_with_simulated_services",
+      "analytical_cycles": 666439,
+      "rtl_cycles": 11485824,
+      "rtl_to_estimate_ratio": 17.23462162328435,
+      "absolute_error_percent_of_rtl": 94.19772582271851
+    },
+    {
+      "case": "har_balanced_seed17",
+      "boundary": "actual_PL_kernel_counter_excluding_loading",
+      "analytical_cycles": 619003,
+      "rtl_cycles": 20178232,
+      "rtl_to_estimate_ratio": 32.597955098763656,
+      "absolute_error_percent_of_rtl": 96.93232291114504
+    },
+    {
+      "case": "har_energy_saver_seed17",
+      "boundary": "actual_PL_kernel_counter_excluding_loading",
+      "analytical_cycles": 291739,
+      "rtl_cycles": 9249768,
+      "rtl_to_estimate_ratio": 31.705627290146328,
+      "absolute_error_percent_of_rtl": 96.84598575877796
+    }
+  ],
+  "template_target_percent": "approximately 10\u201315",
+  "limits": "Different explicit simulation boundaries; no achieved frequency, seconds, power or energy. Original estimates are preserved."
+}

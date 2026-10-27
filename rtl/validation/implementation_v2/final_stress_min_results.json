@@ -1,0 +1,45 @@
+{
+  "status": "passed",
+  "cases": [
+    {
+      "case": "har_energy_saver_seed17_minimum",
+      "model": "har_energy_saver_seed17",
+      "input_pattern": "minimum",
+      "input_sha256": "dd69b56c5d746141870f47d466c6fdba3dc94d361b6a1e32e2cd35430a264dc5",
+      "status": "passed",
+      "identity": "c014e35defeba0111225baea264aceb7e9a1e3f4b053bd9a0c68f42ea75fc604",
+      "exact_logits": 6,
+      "cycles_simulated": 4888803,
+      "diagnostic_counters": {
+        "bubble": 3839221,
+        "memory_wait": 6452,
+        "nonlinear_wait": 874494
+      },
+      "active_mac_products": 7332608,
+      "boundary_saturations": 1632,
+      "vectors_sha256": null
+    }
+  ],
+  "source_sha256": {
+    "rtl/top/eat_encoder_core.vhd": "bb97ad2398003a96217c494566e5ba42345a346f42029621e9ff88625f0be184",
+    "rtl/control/eat_encoder_sequencer.vhd": "e2851b31d4d23fd0b26ef87dcb961fb0a2e10b5bc7fee0231c3b797ddee71324",
+    "rtl/tokens/eat_group_scorer.vhd": "572e52424664e73e39a981107abf18dd1feceaba8ec010f4b98b3e7f5ba581b9",
+    "rtl/tokens/eat_group_selector.vhd": "0c84137f9a52bcf9b393ace8b34e41d2c61e7fc1a9d0a96fe86b598c9a07147b",
+    "rtl/tensor/eat_mac_array.vhd": "b63695dbab02b2a277452deea90d3ddaa6e45a817bbc1b203c243666bb01507c",
+    "rtl/vector/eat_mean_pool.vhd": "5c9d69da15fda860678c7f652c155f511ad8b55cc09d1b1a257d1e7ccedf03e9",
+    "rtl/vector/eat_position_add.vhd": "79252475a50afcb8cb3f4af5380ff39650514c17dd3222c9c1828398af3442d9",
+    "rtl/arithmetic/eat_pwl_silu.vhd": "70a9ab2e68fa3be09f79554b1846e73cb344c207f8fd51a0d6eb8cb9026a971b",
+    "rtl/vector/eat_residual_add.vhd": "61f8e9e5a1eb57669e1eb6280f630403bb38e6f7a98071764e090f9344042e89",
+    "rtl/vector/eat_rmsnorm.vhd": "0ad13ec4ce6dfa7c05dc943890a8f5c22c90005a52af6e91a7d15625f3d083a0",
+    "rtl/arithmetic/eat_round_divide.vhd": "ed3da648cedad2060255ede837007da57a8423a872dfaca274aaf9dea8769e5b",
+    "rtl/attention/eat_streaming_attention_engine.vhd": "726b159ab879d8093e553b65d2fb134b254194a31382b3394e139062c9ff013f",
+    "rtl/tensor/eat_tensor_engine.vhd": "d8d5fcc82f61a7f054daa50340d5a5a972b5108140c815ffa7408f4f71367b59",
+    "rtl/tokens/eat_token_compactor.vhd": "c0f3c25fc0bfe6185e57ef22c4e7976a240270276bfb36823d47a5b0ec786960",
+    "rtl/vector/eat_vector_engine.vhd": "9601cba6285b69c209c6080d7df8dac1b32cd5e31f79e133ecf0fd2de26d8539",
+    "rtl/pkg/eat_config_pkg.vhd": "d0edea71f9827ec2243626a8966fd08dd388009b80c9379e83a3fd6e4234bf1e",
+    "rtl/pkg/eat_types_pkg.vhd": "d7324b317af14a767c63313fc2c7e7652540334767bec797d2a14ecdb213af85",
+    "rtl/pkg/eat_math_pkg.vhd": "6956afa5654dbd7b9c5545f3039e86a2bed8dc09a505c1f5a38d1614b77c333c",
+    "rtl/pkg/eat_image_pkg.vhd": "258a16da9acbcbd81236961e72a81cbf19c99286cf4dba924a76a8f349c9f40e"
+  },
+  "limits": "Full model for the listed saved examples with simulated parameter/input services; not full dataset, physical memory, Vivado timing or board equivalence."
+}

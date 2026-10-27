@@ -2,7 +2,7 @@
 
 48 of 48 entities have functional implementations and named regression suites. 0 remain explicit skeletons.
 
-A module implementation is not evidence of complete accelerator integration, physical resource fit or timing. Full encoder and AXI platform simulations are recorded separately from unit regressions. User agreement covers integration contract v2; broader hardware G1/G2 remain open.
+A module implementation is not evidence of complete accelerator integration, physical resource fit or timing. Full encoder and AXI platform simulations are recorded separately from unit regressions. Ten complete encoder and four loaded-platform inferences pass for the archived cases. User agreement covers integration contract v2; broader hardware G1/G2 remain open.
 
 | Entity | Status | Functional regression |
 | --- | --- | --- |

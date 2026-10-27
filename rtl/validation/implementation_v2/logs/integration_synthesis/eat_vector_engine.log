@@ -1,0 +1,6 @@
+/Users/marksidorov/Documents/ECE4250/Research/EAT_FPGA/rtl/vector/eat_vector_engine.vhd:51:10:warning: signal "knot_index" is never assigned [-Wnowrite]
+  signal knot_index : natural range 0 to 7 := 0;
+         ^
+/Users/marksidorov/Documents/ECE4250/Research/EAT_FPGA/rtl/vector/eat_vector_engine.vhd:52:10:warning: signal "first_knot" is never assigned and has no default value [-Wnowrite]
+  signal first_knot : state_t;
+         ^

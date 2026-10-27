@@ -1,0 +1,33 @@
+../../src/ieee2008/numeric_std-body.vhdl:3053:7:@0ms:(assertion warning): NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+../../src/ieee2008/numeric_std-body.vhdl:3053:7:@0ms:(assertion warning): NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+../../src/ieee2008/numeric_std-body.vhdl:3053:7:@0ms:(assertion warning): NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+../../src/ieee2008/numeric_std-body.vhdl:3053:7:@0ms:(assertion warning): NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+../../src/ieee2008/numeric_std-body.vhdl:3053:7:@0ms:(assertion warning): NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+../../src/ieee2008/numeric_std-body.vhdl:1793:7:@0ms:(assertion warning): NUMERIC_STD."=": metavalue detected, returning FALSE
+../../src/ieee2008/numeric_std-body.vhdl:3053:7:@0ms:(assertion warning): NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+../../src/ieee2008/numeric_std-body.vhdl:3053:7:@0ms:(assertion warning): NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+../../src/ieee2008/numeric_std-body.vhdl:2042:7:@0ms:(assertion warning): NUMERIC_STD."/=": metavalue detected, returning TRUE
+../../src/ieee2008/numeric_std-body.vhdl:1890:7:@0ms:(assertion warning): NUMERIC_STD."=": metavalue detected, returning FALSE
+/Users/marksidorov/Documents/ECE4250/Research/EAT_FPGA/rtl/tb/tb_platform_system.vhd:29:32:@5ns:(report note): PLATFORM_PROGRESS cycle=0
+/Users/marksidorov/Documents/ECE4250/Research/EAT_FPGA/rtl/tb/tb_platform_system.vhd:98:22:@10266ns:(report note): TOP_LOADED const_profile words=164
+/Users/marksidorov/Documents/ECE4250/Research/EAT_FPGA/rtl/tb/tb_platform_system.vhd:98:22:@19596ns:(report note): TOP_LOADED const_profile words=164
+/Users/marksidorov/Documents/ECE4250/Research/EAT_FPGA/rtl/tb/tb_platform_system.vhd:98:22:@1678116ns:(report note): TOP_LOADED const_weight words=33160
+/Users/marksidorov/Documents/ECE4250/Research/EAT_FPGA/rtl/tb/tb_platform_system.vhd:98:22:@1864886ns:(report note): TOP_LOADED const_bias words=3725
+/Users/marksidorov/Documents/ECE4250/Research/EAT_FPGA/rtl/tb/tb_platform_system.vhd:98:22:@2051656ns:(report note): TOP_LOADED const_multiplier words=3725
+/Users/marksidorov/Documents/ECE4250/Research/EAT_FPGA/rtl/tb/tb_platform_system.vhd:98:22:@2109776ns:(report note): TOP_LOADED const_gamma words=1152
+/Users/marksidorov/Documents/ECE4250/Research/EAT_FPGA/rtl/tb/tb_platform_system.vhd:98:22:@2315096ns:(report note): TOP_LOADED const_position words=4096
+/Users/marksidorov/Documents/ECE4250/Research/EAT_FPGA/rtl/tb/tb_platform_system.vhd:98:22:@2317266ns:(report note): TOP_LOADED const_shift words=33
+/Users/marksidorov/Documents/ECE4250/Research/EAT_FPGA/rtl/tb/tb_platform_system.vhd:98:22:@2522636ns:(report note): TOP_LOADED const_exp words=4097
+/Users/marksidorov/Documents/ECE4250/Research/EAT_FPGA/rtl/tb/tb_platform_system.vhd:98:22:@2574356ns:(report note): TOP_LOADED const_rsqrt words=1024
+/Users/marksidorov/Documents/ECE4250/Research/EAT_FPGA/rtl/tb/tb_platform_system.vhd:98:22:@2575326ns:(report note): TOP_LOADED const_pwl words=9
+/Users/marksidorov/Documents/ECE4250/Research/EAT_FPGA/rtl/tb/tb_platform_system.vhd:122:4:@2582786ns:(report note): TOP_INFERENCE_START run=0
+/Users/marksidorov/Documents/ECE4250/Research/EAT_FPGA/rtl/tb/tb_platform_system.vhd:29:32:@50000005ns:(report note): PLATFORM_PROGRESS cycle=5000000
+/Users/marksidorov/Documents/ECE4250/Research/EAT_FPGA/rtl/tb/tb_platform_system.vhd:29:32:@100000005ns:(report note): PLATFORM_PROGRESS cycle=10000000
+/Users/marksidorov/Documents/ECE4250/Research/EAT_FPGA/rtl/tb/tb_platform_system.vhd:29:32:@150000005ns:(report note): PLATFORM_PROGRESS cycle=15000000
+/Users/marksidorov/Documents/ECE4250/Research/EAT_FPGA/rtl/tb/tb_platform_system.vhd:29:32:@200000005ns:(report note): PLATFORM_PROGRESS cycle=20000000
+/Users/marksidorov/Documents/ECE4250/Research/EAT_FPGA/rtl/tb/tb_platform_system.vhd:128:5:@204365396ns:(report note): TOP_COUNTER event=3 count=17598068
+/Users/marksidorov/Documents/ECE4250/Research/EAT_FPGA/rtl/tb/tb_platform_system.vhd:128:5:@204365426ns:(report note): TOP_COUNTER event=4 count=9712600
+/Users/marksidorov/Documents/ECE4250/Research/EAT_FPGA/rtl/tb/tb_platform_system.vhd:128:5:@204365456ns:(report note): TOP_COUNTER event=5 count=2249198
+/Users/marksidorov/Documents/ECE4250/Research/EAT_FPGA/rtl/tb/tb_platform_system.vhd:132:4:@204365576ns:(report note): TOP_INFERENCE_PASS run=0 cycles=20178232
+/Users/marksidorov/Documents/ECE4250/Research/EAT_FPGA/rtl/tb/tb_platform_system.vhd:136:3:@204365946ns:(report note): PLATFORM_SYSTEM_PASS inferences=1 logits_per_inference=6
+simulation stopped @204365946ns

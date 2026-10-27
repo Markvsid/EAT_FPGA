@@ -20,20 +20,59 @@ are unchanged. No new training was required for the RTL work. Model weights and
 input data are supplied to the RTL; computed logits are compared to a separate
 integer Python reference. Predicted-label agreement alone is insufficient.
 
-## Current verification checkpoint
+## Final functional verification
 
-All 48 entities analyze/elaborate. GHDL synthesis-front-end checks pass for 13
-primitive units and eight integration tops, including the complete platform.
-The tensor engine originally triggered a GHDL 6 internal error on variable slices;
-shifting to a fixed slice resolves it. This is not a Vivado resource/timing result.
-All 39 software tests pass. Exact primitive tests pass 2,622 directed/random cases.
+All 48 entities analyze/elaborate. GHDL synthesis-front-end checks pass for
+13 primitive units and eight integration tops, including the complete platform.
+All 39 software tests pass. The final exact unit/protocol suites pass: 2,622
+primitive cases, 966 service cases, 64 arbiter responses, eight tensor cases,
+30 vector cases, 11 attention cases, eight gate cases, four QKV cases, 27
+image audits, four loader/resident-image cases each, 42 compact-bank access
+transactions, 83 AXI-Lite transactions and 32 stream/DMA frames.
 
-The final full-inference suites are running after diagnostic-counter integration.
-Their results will be archived with source fingerprints under
-`rtl/validation/implementation_v2/`. Historical reports in `integration_v1/`
-passed six saved-example encoder cases and repeated HAR Energy-Saver platform
-inference before the final pipeline/counter changes; their cycle counts must not
-be presented as current-source measurements.
+The final source runs ten complete encoder inferences: six saved examples
+(HAR/Speech × Quality/Balanced/Energy-Saver, seed 17) plus four directed
+stress examples. Every final integer logit matches the separate Python
+reference exactly; MAC/saturation counts and byte/token totals also match.
+The memory-wait event equals an independently counted handshake scoreboard.
+These are **176 checked core logits**, not a full-dataset RTL accuracy study.
+
+| Encoder case | Input | Simulated bench cycles | MAC products | Saturations |
+| --- | --- | ---: | ---: | ---: |
+| har_energy_saver | golden | 4,888,803 | 7,332,608 | 0 |
+| har_balanced | golden | 10,478,003 | 15,351,552 | 0 |
+| har_quality | golden | 11,485,824 | 17,974,016 | 0 |
+| speech_balanced | golden | 10,580,427 | 15,535,488 | 0 |
+| speech_energy_saver | golden | 4,991,305 | 7,516,544 | 0 |
+| speech_quality | golden | 11,587,795 | 18,157,952 | 0 |
+| har_energy_saver | checkerboard | 4,888,803 | 7,332,608 | 1,376 |
+| har_energy_saver | maximum | 4,888,803 | 7,332,608 | 1,632 |
+| har_energy_saver | minimum | 4,888,803 | 7,332,608 | 1,632 |
+| speech_energy_saver | checkerboard | 4,991,510 | 7,516,544 | 320 |
+
+Core cycles are the bench clock count through completion, including its
+short reset/start interval and deterministic input/parameter/output stalls.
+Parameter/input services in this bench are simulated. The platform below
+uses the actual loader, parameter store, arbiters, compact RAM and serializer.
+
+| Loaded platform case | Inferences | Exact logits each | Kernel cycles per inference |
+| --- | ---: | ---: | --- |
+| har_balanced | 1 | 6 | 20,178,232 |
+| har_energy_saver | 2 | 6 | 9,249,768, 9,249,767 |
+| speech_quality | 1 | 35 | 21,597,486 |
+
+The four platform inferences check another **53 logits**. Protocol checks
+include malformed transfers, range errors, explicit arming/identity, busy
+write rejection, AXIS backpressure/TKEEP/TLAST, repeat input reuse, previous
+snapshot retention, coherent counter reads and reset-invalidated residency.
+
+Platform cycle counters cover accepted kernel start through final serialized
+output acceptance. They exclude parameter/raw DMA loading. The first integration
+checkpoint predates the final pipelines/counters; its cycles are historical.
+
+Reports, input/model identities, source hashes and full-inference logs are in
+[the final archive](../rtl/validation/implementation_v2/). GHDL 6 LLVM on macOS
+is recorded separately from Ubuntu CI; no target Fmax is inferred.
 
 ## Findings and limits
 
@@ -65,3 +104,24 @@ files and PS/DMA setup. The OOC script can synthesize and optionally route a
 confirmed target, but has not been run with Vivado. Inspect activation RAM mapping,
 route/timing/resource reports, calibrate the model, then run board equivalence,
 latency/power measurements and the plan's controlled ablations.
+
+## Cycle-model discrepancy
+
+The original HAR schedule materially underestimates this implementation.
+Its bandwidth/overlap assumptions do not match the serial request/response
+service and iterative divisions. It fails the template calibration target.
+A constant fitted to these examples would not establish predictive accuracy.
+
+| HAR mode | Boundary | Old estimate | RTL cycles | RTL/estimate | Error relative to RTL |
+| --- | --- | ---: | ---: | ---: | ---: |
+| energy_saver | Core bench | 291,739 | 4,888,803 | 16.76× | 94.03% |
+| balanced | Core bench | 619,003 | 10,478,003 | 16.93× | 94.09% |
+| quality | Core bench | 666,439 | 11,485,824 | 17.23× | 94.20% |
+| balanced | Loaded PL kernel | 619,003 | 20,178,232 | 32.60× | 96.93% |
+| energy_saver | Loaded PL kernel | 291,739 | 9,249,768 | 31.71× | 96.85% |
+
+The original estimates remain unchanged in `results/schedule_estimates.json`.
+The comparison is saved in `results/rtl_schedule_comparison.json`. Future
+calibration must model the actual transaction schedule and validate predictions
+on held-out configurations. These cycle counts establish no board latency or
+energy advantage.

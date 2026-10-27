@@ -375,3 +375,35 @@ Compact memory tests cover all three banks, bounds/capacity, byte writes,
 response stalls and reset metadata. Original Python/model/export files are
 unchanged; 39 software tests pass. See `paper/rtl_results.md` for current evidence,
 cycle-model discrepancy, precise counter definitions and physical validation gaps.
+
+
+## 2026-10-26 — Final functional RTL verification
+
+Archived 30 passing current-source reports in
+`rtl/validation/implementation_v2/`, with full-inference logs and source hashes.
+Ten core inferences cover six seed-17 HAR/Speech × mode saved examples and four
+maximum/minimum/checkerboard stress inputs. All 176 core logits match the separate
+integer reference; MAC products, saturation counts and payload/token totals match.
+The independently observed memory-wait scoreboard also agrees exactly.
+
+Actual loaded-platform runs pass HAR Energy-Saver twice, HAR Balanced once and
+Speech Quality once: another 53 exact logits. They exercise real loader/store/
+arbiter/compact-memory services, independent AXI channels, framing/error recovery,
+backpressure, final-output completion, retained-input reuse, coherent previous
+snapshots and reset-invalidated residency. All local unit/protocol suites pass,
+as do 39 Python tests and full-platform GHDL synthesis-front-end checks.
+
+The 48 entity files contain 4,979 physical lines; five packages contain 444;
+12 tracked VHDL benches contain 1,235. Compact formatting means these counts are
+not comparable to the earlier 8,000–15,000 planning range without qualifications.
+Vendor-generated PS/DMA/board code is outside these handwritten sources.
+
+The old HAR analytical schedule fails the template calibration requirement.
+Core counts are 16.76–17.23 times the estimates and actual loaded-PL kernel counts
+31.71–32.60 times the estimates; relative errors are about 94–97 percent. Preserve
+`results/schedule_estimates.json`; the explicit comparison is
+`results/rtl_schedule_comparison.json`. Serial operand/parameter services and
+iterative operators differ from the earlier bandwidth/overlap assumptions.
+These are simulated cycles with specified boundaries, not board milliseconds,
+achieved Fmax or energy. Physical target memory mapping, routing, board equivalence,
+full-dataset/layer-trace RTL evaluation and measured ablations remain open.

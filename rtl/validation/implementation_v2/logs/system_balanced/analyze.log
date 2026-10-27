@@ -1,0 +1,6 @@
+/Users/marksidorov/Documents/ECE4250/Research/EAT_FPGA/rtl/tb/tb_platform_system.vhd:55:75:warning: declaration of "expected" hides constant "EXPECTED" [-Whide]
+  procedure write_reg(address:natural;value:std_logic_vector(31 downto 0);expected:std_logic_vector(1 downto 0):="00") is
+                                                                          ^
+/Users/marksidorov/Documents/ECE4250/Research/EAT_FPGA/rtl/tb/tb_platform_system.vhd:64:48:warning: declaration of "expected" hides constant "EXPECTED" [-Whide]
+  procedure write_number(address,value:natural;expected:std_logic_vector(1 downto 0):="00") is
+                                               ^

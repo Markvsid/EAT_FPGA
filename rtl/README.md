@@ -1,7 +1,9 @@
 # EAT FPGA Lite VHDL implementation
 
 There are 48 functional VHDL-2008 entities and five packages, with no remaining
-stubs. The design connects a shared 8×8 tensor engine, row-vector operations,
+stubs. Final local verification passes ten full-core and four loaded-platform inferences,
+checking 229 integer logits exactly. See [results and limits](../paper/rtl_results.md).
+The design connects a shared 8×8 tensor engine, row-vector operations,
 tiled online attention, stable group selection/RTS compaction, encoder schedule,
 compact model RAM and AXI host interface. No logits are supplied by software at
 runtime. The testbench supplies input data and parameters and checks the results
@@ -15,6 +17,7 @@ The user approved [integration contract v2](docs/INTEGRATION_CONTRACT_V2.md) on
 - [Interfaces](docs/INTERFACES.md) and [host sequence](docs/HOST_PROGRAMMING.md)
 - [Verification scope](docs/VERIFICATION.md) and [archived evidence](validation/README.md)
 - [Consolidated skeleton boundaries](docs/CONSOLIDATED_MODULES.md)
+- [Physical implementation handoff](docs/TARGET_VALIDATION.md)
 
 ## Reproduce
 
@@ -42,6 +45,8 @@ agreement does not establish full-dataset RTL accuracy or board equivalence.
 Entity files are ordinary editable VHDL. Keep ports, dependencies, functional test
 references and compile order synchronized in `design_inventory.json`/`sources.f`.
 Generated configuration/image packages are checked with `make -C rtl generated`.
+`rtl_candidate.json` retains the original proposal metadata; the implemented
+hierarchy/status is authoritative in `design_inventory.json`.
 The original software numeric contract and frozen exports are preserved.
 
 ## Memory and pipeline choices
@@ -70,7 +75,10 @@ See the [official release](https://github.com/ghdl/ghdl/releases/tag/v6.0.0) and
 
 GitHub CI separately installs GHDL on Ubuntu, records its version in the build
 evidence, checks all implemented entities, and runs subsystem, full-model and
-platform inference jobs. Local
+platform inference jobs. Unit/structural suites and one full saturation case use
+mcode; large inference jobs use LLVM, one golden case per job.
+See [GHDL backend documentation](https://ghdl.github.io/ghdl/getting.html) and
+[Ubuntu LLVM package](https://packages.ubuntu.com/en/noble/ghdl-llvm). Local
 check evidence is archived under `validation/`. Different compiler versions are
 recorded rather than represented as one pinned cross-platform toolchain.
 

@@ -1,0 +1,8 @@
+/Users/marksidorov/Documents/ECE4250/Research/EAT_FPGA/rtl/tb/tb_encoder_core.vhd:29:32:@5ns:(report note): CORE_PROGRESS cycle=0
+/Users/marksidorov/Documents/ECE4250/Research/EAT_FPGA/rtl/tb/tb_encoder_core.vhd:29:32:@10000005ns:(report note): CORE_PROGRESS cycle=1000000
+/Users/marksidorov/Documents/ECE4250/Research/EAT_FPGA/rtl/tb/tb_encoder_core.vhd:29:32:@20000005ns:(report note): CORE_PROGRESS cycle=2000000
+/Users/marksidorov/Documents/ECE4250/Research/EAT_FPGA/rtl/tb/tb_encoder_core.vhd:29:32:@30000005ns:(report note): CORE_PROGRESS cycle=3000000
+/Users/marksidorov/Documents/ECE4250/Research/EAT_FPGA/rtl/tb/tb_encoder_core.vhd:29:32:@40000005ns:(report note): CORE_PROGRESS cycle=4000000
+/Users/marksidorov/Documents/ECE4250/Research/EAT_FPGA/rtl/tb/tb_encoder_core.vhd:90:5:@49913055ns:(report note): CORE_COUNTERS bubble=3937977 memory_wait=6777 nonlinear_wait=874284
+/Users/marksidorov/Documents/ECE4250/Research/EAT_FPGA/rtl/tb/tb_encoder_core.vhd:91:5:@49913055ns:(report note): ENCODER_CORE_PASS cycles=4991305 logits=35
+simulation stopped @49913055ns

@@ -182,22 +182,22 @@ assumed. Byte strobes and delayed B/R acceptance need dedicated tests.
 | 0x74 | TRANSFER_KIND | RW raw input 0, typed constants 1 |
 | 0x100+8*n | COUNTER[n] | RO low/high32-bit words of a64-bit completed snapshot |
 
-Snapshot data must remain coherent while the CPU reads both halves; proposal is
-to retain the last completed snapshot during the next inference. Counter
-definitions are in `counter_event_t`. Units, per-layer versus global granularity,
-overflow behavior, interrupt acknowledgement and error-clear semantics need review.
+Reading SNAPSHOT_ID freezes a coherent counter-read snapshot; the last completed
+inference remains available while the next runs. Counter event definitions, units,
+overlap, interrupt acknowledgement and error recovery are specified in
+[HOST_PROGRAMMING.md](HOST_PROGRAMMING.md).
 
 ## Initial review decisions and current resolution
 
 | Decision | Concrete current proposal | Still required |
 | --- | --- | --- |
 | Platform | KV260/K26, one PL clock | Confirm Vivado part/board files, PS clock/reset/DMA setup |
-| Numeric ABI | Existing v2 arithmetic,32-bit multipliers,24-bit gamma | Approve width/range and overflow behavior with export tests |
-| Tensor parallelism | 8x8, no unproven W4 DSP packing | Bank schedule, bandwidth and per-block synthesis feasibility |
-| Image format | Host-generated banked weights, checked typed constants | Exact bank/address schema and loader/driver round trip |
-| Core ownership | One shared tensor engine and explicit operand rendezvous | Detailed arbitration, buffer lifetimes and outstanding-request limits |
-| Busy/reset/error | Reject busy changes; reset invalidates bank identity | Uniform host/RTL errors, DMA recovery and reset persistence tests |
-| ABI |128-bit streams,32-bit logits, offsets above | Agree register fields, PS base address and completion/counter semantics |
+| Numeric ABI | Existing v2 arithmetic,32-bit multipliers,24-bit gamma | ABI2 approved; all 27 export bounds audited; broader hardware G2 pending |
+| Tensor parallelism | 8x8, no unproven W4 DSP packing | Functional bank/serial schedule implemented; target RAM/DSP/bandwidth review pending |
+| Image format | Host-generated banked weights, checked typed constants | ABI2 map and loader/resident-RAM round trips implemented and tested |
+| Core ownership | One shared tensor engine and explicit operand rendezvous | Single-outstanding arbiters, registered readers and buffer lifetimes implemented |
+| Busy/reset/error | Reject busy changes; reset invalidates bank identity | Host error/drain/reset tests implemented; vendor DMA/board bring-up pending |
+| ABI |128-bit streams,32-bit logits, offsets above | Register/completion/counter ABI2 implemented; PS base address pending |
 
 The user explicitly approved integration ABI2 on 2026-10-26. Its final typed
 image and programming semantics supersede the initial proposals above; see

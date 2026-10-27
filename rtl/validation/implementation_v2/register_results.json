@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "seed": 4255,
+  "axi_transactions": 83,
+  "source_sha256": {
+    "rtl/pkg/eat_config_pkg.vhd": "d0edea71f9827ec2243626a8966fd08dd388009b80c9379e83a3fd6e4234bf1e",
+    "rtl/pkg/eat_types_pkg.vhd": "d7324b317af14a767c63313fc2c7e7652540334767bec797d2a14ecdb213af85",
+    "rtl/pkg/eat_math_pkg.vhd": "6956afa5654dbd7b9c5545f3039e86a2bed8dc09a505c1f5a38d1614b77c333c",
+    "rtl/pkg/eat_registers_pkg.vhd": "d593caff4f49ab7f77e6eec55db2a63114ced95142b5d66e4b24a34637635404",
+    "rtl/host/eat_axi_ctrl_regs.vhd": "1fbff76fbe3fd3bb923663bc9bf65a1315b3a5c438d9d0902f4f58899af03bf9"
+  },
+  "limits": "AXI-Lite front end with controlled downstream services; top integration is tested separately."
+}

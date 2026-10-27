@@ -1,0 +1,54 @@
+/Users/marksidorov/Documents/ECE4250/Research/EAT_FPGA/rtl/common/eat_reset_sync.vhd:24:13:warning: unhandled attribute "async_reg" [-Wunhandled-attribute]
+  attribute ASYNC_REG of sync : signal is "TRUE";
+            ^
+/Users/marksidorov/Documents/ECE4250/Research/EAT_FPGA/rtl/top/eat_encoder_core.vhd:57:23:note: found RAM "score_scratch", width: 24 bits, depth: 32
+  signal score_values,score_scratch : state_vec_t(0 to C_MAX_TOKENS-1);
+                      ^
+/Users/marksidorov/Documents/ECE4250/Research/EAT_FPGA/rtl/memory/eat_model_memory.vhd:27:12:note: found RAM "n291533.ram", width: 64 bits, depth: 270336
+  variable ram:ram_t;
+           ^
+/Users/marksidorov/Documents/ECE4250/Research/EAT_FPGA/rtl/memory/eat_input_buffer.vhd:29:10:note: found RAM "ram", width: 64 bits, depth: 320
+  signal ram : ram_t;
+         ^
+/Users/marksidorov/Documents/ECE4250/Research/EAT_FPGA/rtl/vector/eat_vector_engine.vhd:51:10:warning: signal "knot_index" is never assigned [-Wnowrite]
+  signal knot_index : natural range 0 to 7 := 0;
+         ^
+/Users/marksidorov/Documents/ECE4250/Research/EAT_FPGA/rtl/vector/eat_vector_engine.vhd:52:10:warning: signal "first_knot" is never assigned and has no default value [-Wnowrite]
+  signal first_knot : state_t;
+         ^
+/Users/marksidorov/Documents/ECE4250/Research/EAT_FPGA/rtl/vector/eat_vector_engine.vhd:51:10:warning: signal "knot_index" is never assigned [-Wnowrite]
+  signal knot_index : natural range 0 to 7 := 0;
+         ^
+/Users/marksidorov/Documents/ECE4250/Research/EAT_FPGA/rtl/vector/eat_vector_engine.vhd:52:10:warning: signal "first_knot" is never assigned and has no default value [-Wnowrite]
+  signal first_knot : state_t;
+         ^
+/Users/marksidorov/Documents/ECE4250/Research/EAT_FPGA/rtl/vector/eat_vector_engine.vhd:54:10:warning: signal "divide_ready" is never assigned and has no default value [-Wnowrite]
+  signal divide_ready,divide_valid,divide_zero,divide_overflow : std_logic;
+         ^
+/Users/marksidorov/Documents/ECE4250/Research/EAT_FPGA/rtl/vector/eat_vector_engine.vhd:54:23:warning: signal "divide_valid" is never assigned and has no default value [-Wnowrite]
+  signal divide_ready,divide_valid,divide_zero,divide_overflow : std_logic;
+                      ^
+/Users/marksidorov/Documents/ECE4250/Research/EAT_FPGA/rtl/vector/eat_vector_engine.vhd:54:36:warning: signal "divide_zero" is never assigned and has no default value [-Wnowrite]
+  signal divide_ready,divide_valid,divide_zero,divide_overflow : std_logic;
+                                   ^
+/Users/marksidorov/Documents/ECE4250/Research/EAT_FPGA/rtl/vector/eat_vector_engine.vhd:54:48:warning: signal "divide_overflow" is never assigned and has no default value [-Wnowrite]
+  signal divide_ready,divide_valid,divide_zero,divide_overflow : std_logic;
+                                               ^
+/Users/marksidorov/Documents/ECE4250/Research/EAT_FPGA/rtl/vector/eat_vector_engine.vhd:55:10:warning: signal "divide_result" is never assigned and has no default value [-Wnowrite]
+  signal divide_result : wide_t;
+         ^
+/Users/marksidorov/Documents/ECE4250/Research/EAT_FPGA/rtl/vector/eat_vector_engine.vhd:54:10:warning: signal "divide_ready" is never assigned and has no default value [-Wnowrite]
+  signal divide_ready,divide_valid,divide_zero,divide_overflow : std_logic;
+         ^
+/Users/marksidorov/Documents/ECE4250/Research/EAT_FPGA/rtl/vector/eat_vector_engine.vhd:54:23:warning: signal "divide_valid" is never assigned and has no default value [-Wnowrite]
+  signal divide_ready,divide_valid,divide_zero,divide_overflow : std_logic;
+                      ^
+/Users/marksidorov/Documents/ECE4250/Research/EAT_FPGA/rtl/vector/eat_vector_engine.vhd:54:36:warning: signal "divide_zero" is never assigned and has no default value [-Wnowrite]
+  signal divide_ready,divide_valid,divide_zero,divide_overflow : std_logic;
+                                   ^
+/Users/marksidorov/Documents/ECE4250/Research/EAT_FPGA/rtl/vector/eat_vector_engine.vhd:54:48:warning: signal "divide_overflow" is never assigned and has no default value [-Wnowrite]
+  signal divide_ready,divide_valid,divide_zero,divide_overflow : std_logic;
+                                               ^
+/Users/marksidorov/Documents/ECE4250/Research/EAT_FPGA/rtl/vector/eat_vector_engine.vhd:55:10:warning: signal "divide_result" is never assigned and has no default value [-Wnowrite]
+  signal divide_result : wide_t;
+         ^

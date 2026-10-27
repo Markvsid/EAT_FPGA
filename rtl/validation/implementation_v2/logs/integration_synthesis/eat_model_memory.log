@@ -1,0 +1,3 @@
+/Users/marksidorov/Documents/ECE4250/Research/EAT_FPGA/rtl/memory/eat_model_memory.vhd:27:12:note: found RAM "n15.ram", width: 64 bits, depth: 270336
+  variable ram:ram_t;
+           ^

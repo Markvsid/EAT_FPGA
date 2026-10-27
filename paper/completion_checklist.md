@@ -16,10 +16,10 @@ cannot replace board measurements.
 | RTS versus plain dropping at equal processed-token budgets | Three-seed 20-token comparison, retention controls, and same-checkpoint counterfactual complete in software |
 | Exact full-model integer reference | Independent and shared aligned families cover 27 settings per full partition with zero intermediate/logit/group errors; original comparisons preserved; saved-example RTL evidence is separate; full-dataset RTL/board equivalence pending |
 | Frozen scales, widths, approximation sweeps, exports, vectors | Training-calibrated scales, version-2 candidate widths, LUT/PWL sweeps, packed images and traces exist; G2 freeze pending |
-| RTL tensor engine and fixed-point streamed attention | Tensor and streaming-attention blocks pass exact functional regressions; full core integrated; target synthesis pending |
-| RTL controller, compactor, RTS, nonlinear units, buffers | 48 functional entities, no remaining stubs; core and AXI platform integrated; see RTL evidence archive |
-| Unit, layer, full-model RTL equivalence and backpressure | Exact primitive/subsystem and stall regressions pass; full-model saved/stress-example RTL suites implemented; full-dataset RTL and board equivalence pending |
-| Calibrated cycle model within about 10–15 percent of RTL | Operator schedule with tails/nonlinear/memory assumptions and 54-point DSE exists; RTL calibration pending |
+| RTL tensor engine and fixed-point streamed attention | Tensor and streaming-attention blocks pass exact functional regressions; full core integrated; ten saved/stress inferences exact; GHDL full-platform netlist generation passes; Vivado mapping pending |
+| RTL controller, compactor, RTS, nonlinear units, buffers | 48 functional entities, no stubs; core and AXI platform integrated; all nine aggregate counter events connected |
+| Unit, layer, full-model RTL equivalence and backpressure | Exact primitive/subsystem and stall regressions pass; ten full-core and four loaded-platform inferences pass exactly; full-dataset/layer-trace RTL and board equivalence pending |
+| Calibrated cycle model within about 10–15 percent of RTL | Old HAR estimates underpredict by about 17× (core) and 32× (loaded peripheral), with about 94–97% relative error; tolerance fails; see rtl_results.md |
 | KV260 dense and adaptive bitstreams; nonnegative routed slack | Board and Vivado access missing |
 | Accuracy over three seeds per workload and numeric stage | Original full-test study in `python_test_results.md`; validation-selected aligned study in `aligned_numerics_results.md`, with previously observed test disclosure; board stage pending |
 | LUT, FF, DSP, BRAM, URAM, routed Fmax, WNS and per-block costs | Pending implementation |
