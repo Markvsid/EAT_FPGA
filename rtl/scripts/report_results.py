@@ -66,7 +66,7 @@ def main():
     body = '\n'.join(lines)
     paper = ROOT / 'paper/rtl_results.md'
     text = paper.read_text()
-    start = text.index('## Current verification checkpoint')
+    start = text.index('## Current verification checkpoint') if '## Current verification checkpoint' in text else text.index('## Final functional verification')
     end = text.index('## Findings and limits', start)
     paper.write_text(text[:start] + '## Final functional verification\n\n' + body + '\n' + text[end:])
     # Preserve the original analytical model; quantify the failure to predict this implementation.
