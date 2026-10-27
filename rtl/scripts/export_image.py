@@ -32,7 +32,9 @@ def packed_weights(values,bits):
  return result
 
 def build(export):
- m=json.loads((export/'manifest.json').read_text());c=np.load(export/'constants.npz');config=m['config'];mode=m['mode'];depth=mode['exit_block']
+ m=json.loads((export/'manifest.json').read_text())
+ if hashlib.sha256((export/'constants.npz').read_bytes()).hexdigest()!=m['constants_sha256']:raise ValueError('Export constants checksum mismatch')
+ c=np.load(export/'constants.npz');config=m['config'];mode=m['mode'];depth=mode['exit_block']
  if (config['width'],config['heads'],config['layers'],config['ffn_ratio'],config['group_size'])!=(128,4,4,2,4):raise ValueError('Unsupported model shape')
  if config['window_samples']//config['patch_samples']!=32 or m['attention_scale_multiplier_q20']!=185364 or m['spec']['version']!=2:raise ValueError('Unsupported numeric contract')
  workload=0 if config['classes']==6 else 1 if config['classes']==35 else -1

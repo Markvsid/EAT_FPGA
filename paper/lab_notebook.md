@@ -351,3 +351,27 @@ exactly. Frozen model weights and software numerics were not changed.
 Fifteen skeletons remain, including the core, sequencer, host/platform and loading
 path. Broader G1/G2 requirements, full inference equivalence, physical banking,
 Vivado mapping/timing and board measurements remain open.
+
+## 2026-10-26 — Connected encoder and ABI2 platform implementation
+
+Completed 48 functional entities and five packages, consolidating six unused
+skeleton boundaries into implemented consumers. Added the complete encoder,
+sequencer, parameter/profile services, compact resident banks, AXI-Lite registers,
+framed DMA ingress and real platform interconnect. The user explicitly approved
+integration contract v2; broader G1/G2 conditions remain open.
+
+Initial connected simulations passed all six HAR/Speech × mode saved examples and
+repeated loaded HAR Energy-Saver inference. Those source-fingerprinted reports
+are retained in `rtl/validation/integration_v1/`. Subsequently pipelined private
+memory reads and QKV routing, replaced wide combinational division on the actual
+path with iterative services, and completed diagnostic event instrumentation.
+Final-source suites are being refreshed and will be archived separately.
+
+GHDL synthesis initially crashed on a variable slice in weight unpacking.
+Isolating each tensor-engine state located the construct; shifting the packed
+word then taking a fixed slice resolved it. Netlist generation now passes for
+the full platform. This does not validate target RAM mapping or routing.
+Compact memory tests cover all three banks, bounds/capacity, byte writes,
+response stalls and reset metadata. Original Python/model/export files are
+unchanged; 39 software tests pass. See `paper/rtl_results.md` for current evidence,
+cycle-model discrepancy, precise counter definitions and physical validation gaps.

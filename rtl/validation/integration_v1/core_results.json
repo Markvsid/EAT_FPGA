@@ -1,0 +1,86 @@
+{
+  "status": "passed",
+  "cases": [
+    {
+      "case": "har_energy_saver_seed17",
+      "status": "passed",
+      "identity": "c014e35defeba0111225baea264aceb7e9a1e3f4b053bd9a0c68f42ea75fc604",
+      "exact_logits": 6,
+      "cycles_simulated": 4378966,
+      "active_mac_products": 7332608,
+      "boundary_saturations": 0,
+      "vectors_sha256": "e5a035d9e0eba63eebf78a525c15924ac7090d5b3d0735589d55cb8f09e57037"
+    },
+    {
+      "case": "har_quality_seed17",
+      "status": "passed",
+      "identity": "580ff31c284a15cce2b7e8be604b36019ed362c13637b0b2cf96aa4ae0f359bf",
+      "exact_logits": 6,
+      "cycles_simulated": 10327373,
+      "active_mac_products": 17974016,
+      "boundary_saturations": 0,
+      "vectors_sha256": "f881044327fb1166eb93dfa2f9279e30735f88ed6dd43cebed278c2ad5753067"
+    },
+    {
+      "case": "har_balanced_seed17",
+      "status": "passed",
+      "identity": "4eef937faf519d99069da6feaba8c86b9b4827585fd24cd61e9ecd26b441cce0",
+      "exact_logits": 6,
+      "cycles_simulated": 9464647,
+      "active_mac_products": 15351552,
+      "boundary_saturations": 0,
+      "vectors_sha256": "d18578a5782ea4d88e6a000c47a8a8c7fdf20dbee9015b628508d47a328373f5"
+    },
+    {
+      "case": "speech_quality_seed17",
+      "status": "passed",
+      "identity": "ce7884f7e794e87baa5e4739864b1578f9f690df73ddf56d7aa3079bfea8d437",
+      "exact_logits": 35,
+      "cycles_simulated": 10429463,
+      "active_mac_products": 18157952,
+      "boundary_saturations": 0,
+      "vectors_sha256": "d390464bb7fe433b1cbc1e7cb70c941a5c5cffbd78050485246ededa7c3ad235"
+    },
+    {
+      "case": "speech_balanced_seed17",
+      "status": "passed",
+      "identity": "d73074f68912b744e95f3396c2464ea3fc0e57c9d5645b71a1c261c303bfed65",
+      "exact_logits": 35,
+      "cycles_simulated": 9567069,
+      "active_mac_products": 15535488,
+      "boundary_saturations": 0,
+      "vectors_sha256": "c093fb21566a43b868e08d2c03b02252059aebfa624724691b4b3c8c8373d71d"
+    },
+    {
+      "case": "speech_energy_saver_seed17",
+      "status": "passed",
+      "identity": "10dfa3f1e600cda5d5b56f41dac1fb66ffc0741a3e992f87bb3aa1dec2d8d180",
+      "exact_logits": 35,
+      "cycles_simulated": 4481436,
+      "active_mac_products": 7516544,
+      "boundary_saturations": 0,
+      "vectors_sha256": "a2cf42705fd60bb02ba6ca02af321d14ecf6367140c44f5999d98004ce9cfa52"
+    }
+  ],
+  "source_sha256": {
+    "rtl/top/eat_encoder_core.vhd": "8a11cf33ef5500047acf66f9e92b443385231a635bdc0aac106b3e3f210dc7b3",
+    "rtl/control/eat_encoder_sequencer.vhd": "e2851b31d4d23fd0b26ef87dcb961fb0a2e10b5bc7fee0231c3b797ddee71324",
+    "rtl/tokens/eat_group_scorer.vhd": "572e52424664e73e39a981107abf18dd1feceaba8ec010f4b98b3e7f5ba581b9",
+    "rtl/tokens/eat_group_selector.vhd": "0c84137f9a52bcf9b393ace8b34e41d2c61e7fc1a9d0a96fe86b598c9a07147b",
+    "rtl/tensor/eat_mac_array.vhd": "b63695dbab02b2a277452deea90d3ddaa6e45a817bbc1b203c243666bb01507c",
+    "rtl/vector/eat_mean_pool.vhd": "ef0655c5b2bd3884db8ec636e9e2a50651f54ccb31fd47c3b1d591d0705f87d9",
+    "rtl/vector/eat_position_add.vhd": "79252475a50afcb8cb3f4af5380ff39650514c17dd3222c9c1828398af3442d9",
+    "rtl/arithmetic/eat_pwl_silu.vhd": "70a9ab2e68fa3be09f79554b1846e73cb344c207f8fd51a0d6eb8cb9026a971b",
+    "rtl/vector/eat_residual_add.vhd": "61f8e9e5a1eb57669e1eb6280f630403bb38e6f7a98071764e090f9344042e89",
+    "rtl/vector/eat_rmsnorm.vhd": "0ad13ec4ce6dfa7c05dc943890a8f5c22c90005a52af6e91a7d15625f3d083a0",
+    "rtl/attention/eat_streaming_attention_engine.vhd": "02b07c1b084f229be94bf3f99101f2b4a5bc32b656178a818aa3c04a35cbf85f",
+    "rtl/tensor/eat_tensor_engine.vhd": "85a1e31211fa4391d0d358ed41d6ca5e6444befc08e73fc3a8b2cd0f5096d942",
+    "rtl/tokens/eat_token_compactor.vhd": "d598800bd25f5a2dada3b4a97218e9ad3e98d16b326e090d8a88d08d958c3152",
+    "rtl/vector/eat_vector_engine.vhd": "fa78af8fe08e2fd2e282d3e741e0f291824935409ed081802f7fd7de672eac49",
+    "rtl/pkg/eat_config_pkg.vhd": "d0edea71f9827ec2243626a8966fd08dd388009b80c9379e83a3fd6e4234bf1e",
+    "rtl/pkg/eat_types_pkg.vhd": "d7324b317af14a767c63313fc2c7e7652540334767bec797d2a14ecdb213af85",
+    "rtl/pkg/eat_math_pkg.vhd": "bb8938366d488f443102e1f46e594442f6f6fb5b4c1165ff4fae6c5f6d85ecf7",
+    "rtl/pkg/eat_image_pkg.vhd": "258a16da9acbcbd81236961e72a81cbf19c99286cf4dba924a76a8f349c9f40e"
+  },
+  "limits": "Full model for the listed saved examples with simulated parameter/input services; not full dataset, physical memory, Vivado timing or board equivalence."
+}

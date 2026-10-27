@@ -20,7 +20,7 @@ def main():
         with path.open("rb") as f:
             digest = hashlib.file_digest(f, "sha256").hexdigest()
         files[str(path)] = {"bytes": path.stat().st_size, "sha256": digest}
-    manifest = {"status": "software_research_package_hardware_gates_incomplete",
+    manifest = {"status": "software_and_functional_rtl_package_target_hardware_gates_incomplete",
                 "parent_git_commit_at_capture": subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip(),
                 "completed_training_runs": len(list(Path("results/runs").glob("*/metrics.json"))),
                 "completed_independent_integer_comparisons": len(list(Path("results/integer/calibrated").glob("*/metrics.json"))),

@@ -2,6 +2,7 @@ rtl/pkg/eat_config_pkg.vhd
 rtl/pkg/eat_types_pkg.vhd
 rtl/pkg/eat_registers_pkg.vhd
 rtl/pkg/eat_math_pkg.vhd
+rtl/pkg/eat_image_pkg.vhd
 rtl/common/eat_reset_sync.vhd
 rtl/common/eat_rv_fifo.vhd
 rtl/common/eat_stream_register.vhd
@@ -19,10 +20,9 @@ rtl/memory/eat_weight_buffer_banked.vhd
 rtl/memory/eat_activation_buffer_pingpong.vhd
 rtl/memory/eat_attention_state_buffer.vhd
 rtl/memory/eat_token_index_buffer.vhd
+rtl/memory/eat_model_memory.vhd
 rtl/memory/eat_parameter_store.vhd
 rtl/memory/eat_constant_loader.vhd
-rtl/tensor/eat_address_generator.vhd
-rtl/tensor/eat_patch_reader.vhd
 rtl/tensor/eat_activation_quantizer.vhd
 rtl/tensor/eat_weight_unpack.vhd
 rtl/tensor/eat_mac_lane.vhd
@@ -34,16 +34,12 @@ rtl/vector/eat_residual_add.vhd
 rtl/vector/eat_mean_pool.vhd
 rtl/vector/eat_rmsnorm.vhd
 rtl/attention/eat_qkv_quantizer.vhd
-rtl/attention/eat_qk_tile_engine.vhd
 rtl/attention/eat_score_scale.vhd
-rtl/attention/eat_rowmax_exp.vhd
 rtl/attention/eat_running_normalizer.vhd
-rtl/attention/eat_av_tile_engine.vhd
 rtl/attention/eat_attention_finalize.vhd
 rtl/attention/eat_streaming_attention_engine.vhd
 rtl/tokens/eat_group_scorer.vhd
 rtl/tokens/eat_group_selector.vhd
-rtl/tokens/eat_rts_summary.vhd
 rtl/tokens/eat_token_compactor.vhd
 rtl/control/eat_mode_controller.vhd
 rtl/control/eat_encoder_sequencer.vhd

@@ -12,3 +12,13 @@ Vivado mapping, timing and board equivalence were still incomplete at that check
 Generated stimuli, executables and netlists remain under ignored `rtl/build/`.
 Reproduce checks with the tracked test drivers rather than treating an old pass
 as proof for subsequently changed source.
+
+`integration_v1/` is the first connected encoder/platform checkpoint. It predates
+registered private reads, iterative-divider integration and complete diagnostic
+counters. Its six golden encoder and repeated HAR Energy-Saver platform runs are
+historical evidence; their cycle counts are not current-source results.
+
+`implementation_v2/` records the final functional RTL checkpoint. The archive
+script rejects stale tested-source fingerprints. Its full-model case lists,
+explicit stress inputs, actual AXI/peripheral runs and diagnostic counts must be
+read with the scope limits in [the RTL report](../../paper/rtl_results.md).

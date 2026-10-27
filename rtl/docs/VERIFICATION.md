@@ -2,18 +2,25 @@
 
 ## Current evidence
 
-Functional phase 1 implements 38 of 53 entities. Exact regressions cover 2,622
-primitive cases, 965 service cases, 64 routed arbiter responses, eight matrix
-cases, 30 vector cases, 11 streamed-attention cases, eight connected token-gate
-cases and four QKV routing cases. Cases include frozen tensors, signed limits,
-rounding ties, actual token/feature tails, independent stalls and reset flushing.
-Test drivers are `rtl/scripts/test_*.py`; archived results and source fingerprints
-are under `rtl/validation/phase1/`.
+All 48 entities are implemented; structural analysis/elaboration and the complete
+hierarchy guard pass. Exact tests cover 2,622 primitive cases, 966 service cases,
+64 routed arbiter responses, eight tensor cases, 30 vector cases, 11 attention
+cases, eight token-gate cases, four QKV cases, all 27 exported images, four loaded
+resident images, 83 AXI-Lite transactions and 32 framed stream/DMA cases. A
+separate compact-RAM regression checks all three banks, byte writes, capacity and
+region bounds, response stalls, rejected-write preservation and reset metadata.
 
-GHDL netlist generation passes for 13 primitive units. No Vivado mapping, target
-utilization, routed timing or whole-model RTL result is claimed. The remaining
-15 skeletons still fail default simulation, and the top synthesis guard rejects
-them. The 27-export boundary audit and ABI2 parameter-image audit both pass.
+Full encoder and platform tests are separate long-running suites. Current
+source-fingerprinted reports belong in `rtl/validation/implementation_v2/`;
+`phase1/` and `integration_v1/` are historical checkpoints. Consult the actual
+case list before claiming a run. Full encoder tests compare every final integer
+logit and MAC/saturation totals for the listed saved or stress inputs. They are
+not full-dataset RTL evaluations.
+
+GHDL synthesis-front-end checks pass for 13 primitive units and eight integration
+tops, including the complete platform wrapper. The tensor engine uses shifted
+fixed slices to avoid a GHDL 6 variable-slice internal error. No Vivado mapping, routed
+timing, FPGA latency, power or board result is claimed.
 
 ## Implementation sequence
 
@@ -28,7 +35,7 @@ them. The 27-export boundary audit and ABI2 parameter-image audit both pass.
 
 Host/DMA bring-up can proceed independently with agreed interfaces. Algorithmic
 changes, structured 2:4 weight sparsity, INT2, head gating and learned mode policies
-are not introduced by this skeleton effort. The template's G1/G2 conditions still
+are not introduced by this implementation. The template's G1/G2 conditions still
 apply; do not treat this table as permission to bypass them.
 
 ## Test obligations by block
@@ -53,7 +60,7 @@ apply; do not treat this table as permission to bypass them.
 
 Each functional bench must fail on nonzero integer error; predicted-label equality
 alone is insufficient. Record saturation counts and assert other overflow bounds.
-Drive randomized backpressure with a reproducible seed and explicit timeouts.
+Drive deterministic randomized backpressure with a reproducible seed and explicit timeouts.
 For variable-latency units, queue metadata with the accepted operand and compare
 it at output; do not advance a query/token counter because valid alone is high.
 
@@ -93,3 +100,14 @@ an explicit argument; board pin and PS constraints are not guessed. The supplied
 or multicycle exceptions are supplied without justification. Later calibrate
 the cycle model against RTL (template target about 10–15 percent agreement), then
 route, verify exact board outputs and collect real latency/power/energy data.
+
+
+## Current diagnostic-counter checks
+
+Core regression independently counts stalled external requests and awaited
+responses and requires exact EV_MEMORY_STALL agreement. It checks nine distinct
+aggregate events, nonzero bounded bubble/nonlinear counts, MAC and saturation
+counts against Python, and byte/token totals against the selected profile.
+Platform tests verify nonzero diagnostic registers and coherent snapshots across
+repeat inference. Counter categories and overlap are specified in
+[HOST_PROGRAMMING.md](HOST_PROGRAMMING.md).

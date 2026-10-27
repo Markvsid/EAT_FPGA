@@ -1,3 +1,8 @@
+> Current implementation: ABI2 is approved and wired. The detailed numerical
+> interfaces below include the initial design discussion; final host semantics
+> are in [HOST_PROGRAMMING.md](HOST_PROGRAMMING.md). The compact model RAM has
+> three resident banks and does not allocate logical region gaps.
+
 # Proposed RTL interfaces and host ABI
 
 This records the initial ABI1 proposal. The user agreed to the
@@ -164,7 +169,7 @@ assumed. Byte strobes and delayed B/R acceptance need dedicated tests.
 | 0x08 | STATUS | RO busy/done/error/bank-valid; sticky completion proposal |
 | 0x0c | ERROR | RO `error_t` ordinal; encoding review required |
 | 0x10 | MODEL | RW workload bit0 (HAR0/speech1), bank bits7..4 |
-| 0x14 | ABI_VERSION | RO draft1.0, not a hardware compatibility approval |
+| 0x14 | ABI_VERSION | RO ABI2 (0x00020000) |
 | 0x18 | NUMERIC_VERSION | RO2 |
 | 0x1c | INFERENCE_ID | RW host-assigned 32-bit ID |
 | 0x20..0x3c | EXPECTED_ID | RW eight32-bit host-verified identity words |
@@ -173,7 +178,8 @@ assumed. Byte strobes and delayed B/R acceptance need dedicated tests.
 | 0x64 | LOAD_BYTES | RW exact incoming load byte count |
 | 0x68 | LOAD_KIND | RW typed constant region |
 | 0x6c | OUTPUT_CLASSES | RO6 or35 |
-| 0x70 | SNAPSHOT_ID | RO completed inference ID |
+| 0x70 | SNAPSHOT_ID | RO completed inference ID; freezes coherent counter read snapshot |
+| 0x74 | TRANSFER_KIND | RW raw input 0, typed constants 1 |
 | 0x100+8*n | COUNTER[n] | RO low/high32-bit words of a64-bit completed snapshot |
 
 Snapshot data must remain coherent while the CPU reads both halves; proposal is
@@ -181,7 +187,7 @@ to retain the last completed snapshot during the next inference. Counter
 definitions are in `counter_event_t`. Units, per-layer versus global granularity,
 overflow behavior, interrupt acknowledgement and error-clear semantics need review.
 
-## Decisions required before implementation
+## Initial review decisions and current resolution
 
 | Decision | Concrete current proposal | Still required |
 | --- | --- | --- |
@@ -193,7 +199,11 @@ overflow behavior, interrupt acknowledgement and error-clear semantics need revi
 | Busy/reset/error | Reject busy changes; reset invalidates bank identity | Uniform host/RTL errors, DMA recovery and reset persistence tests |
 | ABI |128-bit streams,32-bit logits, offsets above | Agree register fields, PS base address and completion/counter semantics |
 
-These review items are not silently marked agreed by creating skeleton files.
+The user explicitly approved integration ABI2 on 2026-10-26. Its final typed
+image and programming semantics supersede the initial proposals above; see
+[the approved contract](INTEGRATION_CONTRACT_V2.md) and
+[host programming](HOST_PROGRAMMING.md). Exact Vivado device/board files, PS DMA
+bring-up, physical resource fit and routed timing remain unresolved.
 
 ## Implemented phase 1 amendments
 
@@ -203,4 +213,5 @@ physical narrowing/banking is pending. Scorer and compactor share `G_SCORE_BASE`
 (default 32768). RMSNorm buffers its row internally and ties off its old external
 scratch interface. Tensor output is tile-major and QKV routing accepts that
 order; row vector units require row-major beats. The connected compactor now
-performs RTS directly; a separate summary unit remains a skeleton.
+performs RTS directly; the separate summary skeleton was consolidated into it.
+See [consolidated boundaries](CONSOLIDATED_MODULES.md).

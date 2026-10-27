@@ -34,7 +34,9 @@ entity eat_streaming_attention_engine is
     param_req_o : out param_req_t;
     param_rsp_valid_i : in std_logic;
     param_rsp_ready_o : out std_logic;
-    param_rsp_i : in param_rsp_t
+    param_rsp_i : in param_rsp_t;
+    active_products_o : out unsigned(15 downto 0);
+    saturation_events_o : out unsigned(15 downto 0)
   );
 end entity;
 
@@ -44,7 +46,7 @@ architecture rtl of eat_streaming_attention_engine is
   type tile_scores_t is array(0 to C_ATTENTION_TILE-1) of score_t;
   type tile_probs_t is array(0 to C_ATTENTION_TILE-1) of exp_t;
   type row_state_t is array(0 to HEAD_WIDTH-1) of av_acc_t;
-  type phase_t is (IDLE,LOAD_REQ,LOAD_RSP,INIT_ROW,DOT_PRODUCT,SCALE_SCORE,MAX_TILE,EXP_PREPARE,EXP_REQ,EXP_RSP,UPDATE_DENOMINATOR,UPDATE_VALUES,FINALIZE_VALUES,EMIT,DONE);
+  type phase_t is (IDLE,LOAD_REQ,LOAD_RSP,INIT_ROW,DOT_PRODUCT,SCALE_SCORE,MAX_TILE,EXP_PREPARE,EXP_REQ,EXP_RSP,UPDATE_DENOMINATOR,UPDATE_VALUES,FINALIZE_VALUES,FINAL_DIV_START,FINAL_DIV_WAIT,EMIT,DONE);
   signal phase : phase_t := IDLE;
   signal command : attention_cmd_t := C_ATTENTION_CMD_IDLE;
   signal q,k,v : tensor_t;
@@ -69,7 +71,15 @@ architecture rtl of eat_streaming_attention_engine is
   signal output_row : state_vec_t(0 to HEAD_WIDTH-1);
   signal request : mem_req_t;
 
+  signal divide_numerator:wide_t;
+  signal divide_ready,divide_valid,divide_zero,divide_overflow:std_logic;
+  signal divide_result:wide_t;
 begin
+  divider:entity work.eat_round_divide(rtl) port map(clk_i=>clk_i,rst_i=>rst_i,s_valid_i=>flag(phase=FINAL_DIV_START),s_ready_o=>divide_ready,
+    numerator_i=>divide_numerator,denominator_i=>resize(unsigned(denominator),64),m_valid_o=>divide_valid,m_ready_i=>flag(phase=FINAL_DIV_WAIT),
+    quotient_o=>divide_result,divide_by_zero_o=>divide_zero,overflow_o=>divide_overflow);
+  active_products_o<=to_unsigned(1,16) when phase=DOT_PRODUCT and rst_i='0' else
+    to_unsigned(minimum(C_ATTENTION_TILE,command.tokens-key_base),16) when phase=UPDATE_VALUES and rst_i='0' else (others=>'0');
   cmd_ready_o<=flag(phase=IDLE) and not rst_i;done_valid_o<=flag(phase=DONE) and not rst_i;
   m_valid_o<=flag(phase=EMIT) and not rst_i;
   mem_req_valid_o<=flag(phase=LOAD_REQ) and not rst_i;mem_req_o<=request;
@@ -97,6 +107,7 @@ begin
     variable bad : boolean;
   begin
     if rising_edge(clk_i) then
+      saturation_events_o<=(others=>'0');
       if rst_i='1' then phase<=IDLE;status_o<=C_STATUS_IDLE;command<=C_ATTENTION_CMD_IDLE;
       else
         case phase is
@@ -199,8 +210,17 @@ begin
             end if;
           when FINALIZE_VALUES =>
             numerator:=shift_left(resize(weighted(feature),64),C_EXP_FRAC);
-            final_value:=divide_even(numerator,unsigned(denominator));output_row(feature)<=sat(final_value,C_STATE_BITS);
-            if feature+1=HEAD_WIDTH then output_base<=0;phase<=EMIT;else feature<=feature+1;end if;
+            if not fits(numerator,62) or denominator<=0 then status_o<=('0','1','1',ERR_OVERFLOW,command.ctx);phase<=DONE;
+            else divide_numerator<=numerator;phase<=FINAL_DIV_START;end if;
+          when FINAL_DIV_START => if divide_ready='1' then phase<=FINAL_DIV_WAIT;end if;
+          when FINAL_DIV_WAIT => if divide_valid='1' then
+            if divide_zero='1' or divide_overflow='1' then status_o<=('0','1','1',ERR_OVERFLOW,command.ctx);phase<=DONE;
+            else
+              output_row(feature)<=sat(divide_result,C_STATE_BITS);
+              if not fits(divide_result,C_STATE_BITS) then saturation_events_o<=to_unsigned(1,16);end if;
+              if feature+1=HEAD_WIDTH then output_base<=0;phase<=EMIT;else feature<=feature+1;phase<=FINALIZE_VALUES;end if;
+            end if;
+          end if;
           when EMIT => if m_ready_i='1' then
             if output_base+C_LANES<HEAD_WIDTH then output_base<=output_base+C_LANES;
             elsif head+1<C_HEADS then head<=head+1;phase<=INIT_ROW;

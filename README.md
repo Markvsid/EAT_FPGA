@@ -210,19 +210,23 @@ independent family as its default and publishes all three seeds for each option.
 The shared family is verified without new training. Test and robustness data
 were previously observed. This software freeze does not approve hardware G2.
 
-## RTL outline and skeleton
+## VHDL implementation
 
-The [complete VHDL outline](rtl/RTL_OUTLINE.md), [draft interfaces](rtl/docs/INTERFACES.md)
-and [verification milestones](rtl/docs/VERIFICATION.md) scope the next hardware phase.
-There are 38 implemented entities and 15 remaining skeletons. Exact regressions
-cover tensor/vector arithmetic, streaming attention, QKV routing and the connected
-RTS token gate. Full encoder/host integration and hardware G1/G2 remain open.
+The [VHDL design](rtl/RTL_OUTLINE.md) contains 48 functional entities and five
+packages, with no remaining stubs. The connected encoder supports both workloads
+and all three modes; the PL peripheral implements ABI2 loading, bank arming,
+AXI-Lite control, framed input/output and completed-inference counter snapshots.
 The user agreed to [integration contract v2](rtl/docs/INTEGRATION_CONTRACT_V2.md).
 
 ```sh
 make -C rtl check
+make -C rtl functional
+make -C rtl integration
 ```
 
-See [RTL setup and limitations](rtl/README.md) and the archived local evidence in
-`rtl/validation/`. See [implementation status](rtl/IMPLEMENTATION_STATUS.md) for exact tested scope.
-Block equivalence is not full-model RTL equivalence.
+See [test evidence and limitations](rtl/docs/VERIFICATION.md),
+[host programming](rtl/docs/HOST_PROGRAMMING.md), and
+[current implementation status](rtl/IMPLEMENTATION_STATUS.md).
+Simulated integer agreement does not establish target resource fit, routed timing,
+board latency or energy. Those and the remaining template G1/G2 requirements
+remain open.

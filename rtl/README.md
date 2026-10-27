@@ -1,77 +1,62 @@
-# EAT FPGA Lite VHDL outline and skeleton
+# EAT FPGA Lite VHDL implementation
 
-**Status: functional subsystems; full accelerator integration remains incomplete.**
-There are 38 implemented entities and 15 remaining skeletons, plus four packages.
-The compute path has exact primitive, tensor, vector, streaming-attention, QKV
-and connected RTS-gate regressions. No connected full encoder or FPGA inference
-is claimed. See [current implementation status](IMPLEMENTATION_STATUS.md).
+There are 48 functional VHDL-2008 entities and five packages, with no remaining
+stubs. The design connects a shared 8×8 tensor engine, row-vector operations,
+tiled online attention, stable group selection/RTS compaction, encoder schedule,
+compact model RAM and AXI host interface. No logits are supplied by software at
+runtime. The testbench supplies input data and parameters and checks the results
+against the separate integer reference.
 
-The user agreed to [integration contract v2](docs/INTEGRATION_CONTRACT_V2.md) on
-2026-10-26. Its typed model images pass reconstruction audits for all 27 frozen
-exports. Broader hardware G1/G2 requirements remain open.
+The user approved [integration contract v2](docs/INTEGRATION_CONTRACT_V2.md) on
+2026-10-26. Broader template G1/G2 gates and target hardware validation remain open.
 
-## Review these first
+- [Hierarchy and implementation outline](RTL_OUTLINE.md)
+- [Implementation inventory](IMPLEMENTATION_STATUS.md)
+- [Interfaces](docs/INTERFACES.md) and [host sequence](docs/HOST_PROGRAMMING.md)
+- [Verification scope](docs/VERIFICATION.md) and [archived evidence](validation/README.md)
+- [Consolidated skeleton boundaries](docs/CONSOLIDATED_MODULES.md)
 
-- [RTL outline and full module inventory](RTL_OUTLINE.md)
-- [Proposed interfaces and register map](docs/INTERFACES.md)
-- [Verification and implementation milestones](docs/VERIFICATION.md)
-- [Machine-readable module and port inventory](design_inventory.json)
-- [Candidate RTL configuration](config/rtl_candidate.json)
-
-Remaining skeletons have an explicitly named `stub` architecture.
-Stubs hold ready/valid outputs low and report `ERR_STUB` where status is exposed.
-They never accept a command or return dummy inference results. By default they
-fail simulation at time zero. `G_ALLOW_STUB_SIM => true` is only for structural
-inspection. The supplied synthesis entry point refuses any reachable stub.
-Functional blocks are connected within tensor/vector/gate subsystems. The encoder
-and host/platform hierarchy is not wired yet.
-
-## Run structural and functional checks
-
-With the repository Python environment and GHDL installed:
+## Reproduce
 
 ```sh
-make -C rtl check
-make -C rtl functional
-make -C rtl synthesis-frontend
+make -C rtl check                 # generated packages, inventory, numeric audit, analyze/elaborate
+make -C rtl functional            # exact unit, subsystem, image and host protocol suites
+make -C rtl integration           # full encoder + actual loaded AXI peripheral simulations
+make -C rtl synthesis-frontend    # primitive GHDL netlist generation
+make -C rtl synthesis-integration # connected hierarchy GHDL netlist generation
+make -C rtl synth-check           # verify implemented hierarchy; does not invoke synthesis
 ```
 
-This checks generated constants, all port declarations, compile-order inventory,
-export boundary widths, analysis and elaboration of every entity, inert stub
-behavior, and expected failure when a stub is simulated without explicit opt-in.
-The structural command does not establish arithmetic correctness. `functional`
-runs exact numerical and stalled-channel scoreboards. `synthesis-frontend`
-generates GHDL netlists for 13 primitive units; it does not run Vivado target
-mapping, physical banking, routed timing or board tests.
+Full inference simulations take substantially longer than unit tests. Run one case
+with `.venv/bin/python rtl/scripts/test_core.py --case har_energy_saver_seed17`.
+Use `--input-pattern maximum`, `minimum` or `checkerboard` for independent stress
+inputs. `test_system.py --case har_energy_saver_seed17 --repeat 2` tests model
+loading, inference, retained input reuse, snapshots and reset through the real
+platform wrapper. Give concurrent system jobs different `--build-name` values.
+Build products, generated stimuli and executables are ignored under `rtl/build/`.
 
-```sh
-# Expected to fail while the top or any dependency is still a skeleton:
-make -C rtl synth-check
+`make functional` does not run full inference; `make integration` does. Report
+claims must identify the selected cases and source hashes. Saved-example RTL
+agreement does not establish full-dataset RTL accuracy or board equivalence.
 
-# Regenerate only constants or structural test benches after a reviewed change:
-.venv/bin/python rtl/scripts/emit_config.py
-.venv/bin/python rtl/scripts/emit_smoke_tb.py
-```
+Entity files are ordinary editable VHDL. Keep ports, dependencies, functional test
+references and compile order synchronized in `design_inventory.json`/`sources.f`.
+Generated configuration/image packages are checked with `make -C rtl generated`.
+The original software numeric contract and frozen exports are preserved.
 
-Entity files are ordinary editable VHDL. Update their inventory entries when
-changing ports; the checker rejects divergence. Do not mark a module implemented
-merely to bypass a gate. The compile list is `sources.f`. Build products live in
-ignored `rtl/build/`; no bitstream is produced.
+## Memory and pipeline choices
 
-## Use the software golden cases
+The top instantiates three compact resident banks, 90,112 64-bit words each:
+2,162,688 bytes of allocated model RAM. Logical ABI region gaps consume no RAM.
+The largest audited frozen payload including profile is 85,445 words. This is
+an allocation calculation, not a placed BRAM/URAM utilization result. Per-bank
+payload lengths define compact offsets; profile word zero/reset invalidates
+mapping metadata. All payload reads require valid lengths and a loaded image.
 
-```sh
-.venv/bin/python rtl/scripts/export_vectors.py \
-  --vectors results/alignment_study/test/har_balanced_seed17/golden_vectors.npz \
-  --export results/alignment_study/exports/har_balanced_seed17 \
-  --output rtl/build/vectors/har_balanced_seed17
-```
-
-The converter first replays the case using the separate integer reference, then
-emits exact-width two's-complement scalar hex files, shapes and hashes. It checks
-hex round trips and refuses lossy narrowing. These are boundary test vectors,
-not proof that the skeleton computes anything. Fine-grained exp/rowmax/normalizer
-unit vectors still need dedicated arithmetic drivers as implementation begins.
+Core activation reads and QKV reads are registered. Vector readers hold accepted
+operands under stalls. RMS variance, pooling, RTS summaries and attention final
+normalization reuse iterative division. Mutually exclusive stages arbitrate
+activation writes. These choices require target synthesis and timing review.
 
 ## Toolchain
 
@@ -84,13 +69,15 @@ See the [official release](https://github.com/ghdl/ghdl/releases/tag/v6.0.0) and
 [installation documentation](https://ghdl.github.io/ghdl/getting.html).
 
 GitHub CI separately installs GHDL on Ubuntu, records its version in the build
-evidence, checks the skeleton and replays four representative golden cases. Local
+evidence, checks all implemented entities, and runs subsystem, full-model and
+platform inference jobs. Local
 check evidence is archived under `validation/`. Different compiler versions are
 recorded rather than represented as one pinned cross-platform toolchain.
 
-## Remaining integration work
+## Remaining target work
 
-Implement the agreed profile provider/loader, host ingress/control, sequencer and
-core interconnect, then prove full-model RTL equivalence. Existing exact block
-results do not substitute for that final regression. Target memory/resource
-feasibility, timing, DMA recovery and board measurements remain outstanding.
+Confirm the exact Vivado tool/device/board setup, run target synthesis and inspect
+banked activation RAM/DSP inference. GHDL netlist generation passes for the full
+platform, but does not validate the intended target RAM mapping. Place and route,
+calibrate the analytical schedule, connect the vendor PS/DMA design and validate
+board outputs, latency and power. No board or energy result is claimed.

@@ -1,10 +1,11 @@
--- NONFUNCTIONAL SKELETON. Proposed interfaces; no transactions accepted.
+-- Functional VHDL-2008; synchronous reset and accepted-transfer state updates.
 -- PL transfer counts/routing for PS AXI DMA; not a custom DDR AXI master.
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 use work.eat_config_pkg.all;
 use work.eat_types_pkg.all;
+use work.eat_math_pkg.all;
 
 entity eat_dma_descriptor_engine is
   generic (
@@ -27,15 +28,39 @@ entity eat_dma_descriptor_engine is
   );
 end entity;
 
-architecture stub of eat_dma_descriptor_engine is
+architecture rtl of eat_dma_descriptor_engine is
+  type phase_t is (IDLE,ACTIVE,DONE);
+  signal phase : phase_t := IDLE;
+  signal command : transfer_cmd_t := C_TRANSFER_CMD_IDLE;
+  signal accepted : unsigned(31 downto 0) := (others=>'0');
+
 begin
-  -- synthesis translate_off
-  assert G_ALLOW_STUB_SIM report "UNIMPLEMENTED_STUB: eat_dma_descriptor_engine" severity failure;
-  -- synthesis translate_on
-  cmd_ready_o <= '0';
-  done_valid_o <= '0';
-  status_o <= C_STATUS_STUB;
-  active_transfer_o <= C_TRANSFER_CMD_IDLE;
-  active_valid_o <= '0';
-  -- TODO: implement after interface review; replace this architecture and inventory status.
+  cmd_ready_o<=flag(phase=IDLE) and not rst_i;done_valid_o<=flag(phase=DONE) and not rst_i;
+  active_transfer_o<=command;active_valid_o<=flag(phase=ACTIVE) and not rst_i;
+  process(clk_i)
+    variable count:unsigned(32 downto 0);
+  begin
+    if rising_edge(clk_i) then
+      if rst_i='1' then phase<=IDLE;status_o<=C_STATUS_IDLE;accepted<=(others=>'0');
+      else
+        case phase is
+          when IDLE => if cmd_valid_i='1' then
+            command<=cmd_i;accepted<=(others=>'0');
+            if cmd_i.bytes=0 then status_o<=('0','1','1',ERR_FRAME,cmd_i.ctx);phase<=DONE;
+            else status_o<=('1','0','0',ERR_NONE,cmd_i.ctx);phase<=ACTIVE;end if;
+          end if;
+          when ACTIVE =>
+            count:=resize(accepted,33)+resize(stream_bytes_accepted_i,33);
+            if frame_error_i='1' or count>resize(command.bytes,33) or (stream_last_i='1' and (stream_bytes_accepted_i=0 or count/=resize(command.bytes,33))) or
+               (stream_last_i='0' and count=resize(command.bytes,33)) then
+              status_o<=('0','1','1',ERR_FRAME,command.ctx);phase<=DONE;
+            elsif stream_bytes_accepted_i/=0 then
+              accepted<=count(31 downto 0);
+              if stream_last_i='1' then status_o<=('0','1','0',ERR_NONE,command.ctx);phase<=DONE;end if;
+            end if;
+          when DONE => if done_ready_i='1' then phase<=IDLE;status_o<=C_STATUS_IDLE;end if;
+        end case;
+      end if;
+    end if;
+  end process;
 end architecture;

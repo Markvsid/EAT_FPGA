@@ -1,9 +1,9 @@
 # EAT FPGA Lite Adaptive Execution of Compact Edge Transformers
 
-Manuscript under development. The experimental evidence currently covers HAR
-software validation. FPGA implementation, integer-reference equivalence, the
-secondary-workload results, and board measurements remain prerequisites for a
-submission under the controlling research plan.
+Manuscript under development. The evidence includes three-seed software studies for both workloads, exact
+integer-reference comparisons, and connected VHDL verification. Target resource
+mapping, routed timing, board equivalence and measured energy remain prerequisites
+for submission under the controlling research plan.
 
 ## Abstract
 
@@ -118,8 +118,9 @@ early exit and a trained energy-budget controller are not implemented.
 The controlling design specifies a shared W8A8/W4A8 tensor engine, tile-streaming
 attention, an RMSNorm and activation unit, banked on-chip weights, ping-pong
 activations, token compaction and summary logic, runtime mode control, and
-performance counters. This section describes the required design, not an existing
-implemented accelerator.
+performance counters. The VHDL implementation connects these services in one PL peripheral; physical
+implementation and board validation remain outstanding. See the separate
+[RTL evidence report](rtl_results.md) for tested cases and limits.
 
 The floating-point attention reference processes key/value tiles while maintaining
 each query's running maximum, normalizer, and weighted value accumulator. Each
@@ -128,7 +129,9 @@ contributions. Division by the final normalizer produces the attention result.
 Tests compare this recurrence with dense attention for sequence length one,
 partial final tiles, and the complete encoder. The integer candidate now uses a
 finite-width online recurrence with exponential lookup and per-tile rounding.
-RTL buffering, backpressure, and fixed-point hardware equivalence remain outstanding.
+RTL buffering and backpressure have dedicated regressions. Complete encoder
+and AXI platform simulations compare integer outputs for recorded examples;
+full-dataset RTL and board equivalence remain outstanding.
 
 ## 6 Analytical model
 
@@ -345,10 +348,12 @@ training times or ideal MAC bounds.
 
 ## 9 Limitations and discussion
 
-Current results use software execution. Secondary-workload and controlled mode
+Accuracy results use software execution. Separate VHDL simulations establish
+implementation agreement for the recorded examples. Secondary-workload and controlled mode
 training and the held-out Python study are complete locally; fixed-point formats
 remain candidates with documented differences from the trained forward pass.
-The accelerator, physical implementation, and energy evaluation are incomplete.
+The RTL is functionally implemented; physical implementation and energy
+evaluation remain incomplete.
 Novelty is unresolved: the closest verified 2024 FPGA pruning design already
 fuses discarded tokens, so a standalone summary-on-FPGA claim is not supported.
 

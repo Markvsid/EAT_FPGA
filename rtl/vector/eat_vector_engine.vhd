@@ -32,12 +32,13 @@ entity eat_vector_engine is
     param_req_o : out param_req_t;
     param_rsp_valid_i : in std_logic;
     param_rsp_ready_o : out std_logic;
-    param_rsp_i : in param_rsp_t
+    param_rsp_i : in param_rsp_t;
+    saturation_events_o : out unsigned(15 downto 0)
   );
 end entity;
 
 architecture rtl of eat_vector_engine is
-  type phase_t is (IDLE,COLLECT,PREPARE_ROW,RSQRT_REQ,RSQRT_RSP,VALUE_PREPARE,VALUE_REQ,VALUE_RSP,KNOT_REQ,KNOT_RSP,EMIT,DONE);
+  type phase_t is (IDLE,COLLECT,PREPARE_ROW,VAR_DIV_START,VAR_DIV_WAIT,RSQRT_REQ,RSQRT_RSP,VALUE_PREPARE,VALUE_REQ,VALUE_RSP,KNOT_REQ,KNOT_RSP,EMIT,DONE);
   signal phase : phase_t := IDLE;
   signal command : vector_cmd_t := C_VECTOR_CMD_IDLE;
   signal values,results : state_vec_t(0 to C_MAX_MATRIX_COLS-1);
@@ -50,7 +51,14 @@ architecture rtl of eat_vector_engine is
   signal knot_index : natural range 0 to 7 := 0;
   signal first_knot : state_t;
 
+  signal divide_ready,divide_valid,divide_zero,divide_overflow : std_logic;
+  signal divide_result : wide_t;
 begin
+  norm_divider:if G_OPERATION="rmsnorm" generate
+    divider:entity work.eat_round_divide(rtl) port map(clk_i=>clk_i,rst_i=>rst_i,
+      s_valid_i=>flag(phase=VAR_DIV_START),s_ready_o=>divide_ready,numerator_i=>sum_squares,denominator_i=>to_unsigned(command.features,64),
+      m_valid_o=>divide_valid,m_ready_i=>flag(phase=VAR_DIV_WAIT),quotient_o=>divide_result,divide_by_zero_o=>divide_zero,overflow_o=>divide_overflow);
+  end generate;
   assert G_OPERATION="rmsnorm" or G_OPERATION="position" or G_OPERATION="pwl" report "Invalid vector specialization" severity failure;
   cmd_ready_o<=flag(phase=IDLE) and not rst_i;
   done_valid_o<=flag(phase=DONE) and not rst_i;
@@ -74,12 +82,13 @@ begin
     variable long_product : signed(127 downto 0);
     variable var_unsigned : unsigned(63 downto 0);
     variable exponent,shift_amount,half_power,index_value,frac : integer;
-    variable bad,finished_value : boolean;
+    variable bad,finished_value,saturation_occurred : boolean;
   begin
     if rising_edge(clk_i) then
+      saturation_events_o<=(others=>'0');
       if rst_i='1' then phase<=IDLE;status_o<=C_STATUS_IDLE;command<=C_VECTOR_CMD_IDLE;
       else
-        finished_value:=false;
+        finished_value:=false;saturation_occurred:=false;
         case phase is
           when IDLE => if cmd_valid_i='1' then
             command<=cmd_i;row<=0;input_base<=0;sum_squares<=(others=>'0');
@@ -107,15 +116,20 @@ begin
             else input_base<=input_base+C_LANES;end if;
           end if;
           when PREPARE_ROW =>
-            if G_OPERATION="rmsnorm" then
-              var_signed:=divide_even(sum_squares,to_unsigned(command.features,64))+C_NORM_EPSILON_Q24;
+            if G_OPERATION="rmsnorm" then phase<=VAR_DIV_START;else phase<=VALUE_PREPARE;end if;
+          when VAR_DIV_START => if divide_ready='1' then phase<=VAR_DIV_WAIT;end if;
+          when VAR_DIV_WAIT => if divide_valid='1' then
+            if divide_zero='1' or divide_overflow='1' then status_o<=('0','1','1',ERR_OVERFLOW,command.ctx);phase<=DONE;
+            else
+              var_signed:=divide_result+C_NORM_EPSILON_Q24;
               var_unsigned:=unsigned(var_signed);variance<=var_unsigned;
               exponent:=0;for i in 0 to 63 loop if var_unsigned(i)='1' then exponent:=i;end if;end loop;
               power<=exponent-24;shift_amount:=exponent-10;
               if shift_amount>=0 then index_value:=to_integer(shift_right(var_unsigned,shift_amount))-1024;
               else index_value:=to_integer(shift_left(var_unsigned,-shift_amount))-1024;end if;
               request_reg<=(CONST_RSQRT,to_unsigned(index_value,C_MEM_ADDR_BITS),command.ctx.model_bank,(others=>'0'));phase<=RSQRT_REQ;
-            else phase<=VALUE_PREPARE;end if;
+            end if;
+          end if;
           when RSQRT_REQ => if param_req_ready_i='1' then phase<=RSQRT_RSP;end if;
           when RSQRT_RSP => if param_rsp_valid_i='1' then
             if param_rsp_i.error='1' or param_rsp_i.tag/=request_reg.tag or unsigned(param_rsp_i.data)>2**30 then
@@ -154,10 +168,10 @@ begin
               long_product:=normalized*signed(param_rsp_i.data);
               result_value:=resize(rshift_even(long_product,C_GAMMA_FRAC),64);
               if not fits(product,63) or not fits(long_product,63) then status_o<=('0','1','1',ERR_OVERFLOW,command.ctx);phase<=DONE;
-              else results(feature)<=sat(result_value,C_STATE_BITS);finished_value:=true;end if;
+              else results(feature)<=sat(result_value,C_STATE_BITS);finished_value:=true;saturation_occurred:=not fits(result_value,C_STATE_BITS);end if;
             elsif G_OPERATION="position" then
               result_value:=resize(values(feature),64)+signed(param_rsp_i.data);
-              results(feature)<=sat(result_value,C_STATE_BITS);finished_value:=true;
+              results(feature)<=sat(result_value,C_STATE_BITS);finished_value:=true;saturation_occurred:=not fits(result_value,C_STATE_BITS);
             else first_knot<=resize(signed(param_rsp_i.data),C_STATE_BITS);request_reg.address<=request_reg.address+1;phase<=KNOT_REQ;end if;
           end if;
           when KNOT_REQ => if param_req_ready_i='1' then phase<=KNOT_RSP;end if;
@@ -169,7 +183,7 @@ begin
               term:=signed(param_rsp_i.data)-resize(first_knot,64);
               long_product:=term*to_signed(frac,64);
               result_value:=resize(first_knot,64)+resize(rshift_even(long_product,C_STATE_FRAC),64);
-              results(feature)<=sat(result_value,C_STATE_BITS);finished_value:=true;
+              results(feature)<=sat(result_value,C_STATE_BITS);finished_value:=true;saturation_occurred:=not fits(result_value,C_STATE_BITS);
             end if;
           end if;
           when EMIT => if m_ready_i='1' then
@@ -180,6 +194,7 @@ begin
           when DONE => if done_ready_i='1' then phase<=IDLE;status_o<=C_STATUS_IDLE;end if;
         end case;
         if finished_value then
+          saturation_events_o<=to_unsigned(boolean'pos(saturation_occurred),16);
           if feature+1=command.features then output_base<=0;phase<=EMIT;
           else feature<=feature+1;phase<=VALUE_PREPARE;end if;
         end if;

@@ -17,6 +17,7 @@ entity eat_performance_counters is
     start_i : in std_logic;
     complete_i : in std_logic;
     clear_i : in std_logic;
+    abort_i : in std_logic;
     event_valid_i : in std_logic;
     event_i : in counter_event_t;
     event_count_i : in unsigned(31 downto 0);
@@ -41,6 +42,8 @@ begin
       else
         next_counters:=counters;
         if full='1' and snapshot_ready_i='1' then full<='0';end if;
+        if abort_i='1' then active<='0';
+        else
         if start_i='1' then next_counters:=C_COUNTERS_IDLE;active<='1';end if;
         if active='1' or start_i='1' then
           next_counters(EV_CYCLE):=next_counters(EV_CYCLE)+1;
@@ -53,6 +56,7 @@ begin
             assert full='0' or snapshot_ready_i='1' report "Unread performance snapshot overwritten" severity failure;
             snapshot_o<=next_counters;full<='1';
           end if;
+        end if;
         end if;
         counters<=next_counters;
       end if;

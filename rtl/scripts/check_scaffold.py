@@ -5,6 +5,7 @@ from pathlib import Path
 import re
 
 from emit_config import generate
+from emit_image_pkg import render as render_image
 
 ROOT = Path(__file__).resolve().parents[2]
 
@@ -19,6 +20,8 @@ def check():
         raise ValueError('Compile manifest differs from inventory')
     if (ROOT / 'rtl/pkg/eat_config_pkg.vhd').read_text() != generate():
         raise ValueError('Generated constants are stale')
+    if (ROOT / 'rtl/pkg/eat_image_pkg.vhd').read_text()!=render_image():
+        raise ValueError('Generated image map is stale')
     for m in modules.values():
         text = (ROOT / m['path']).read_text()
         if not re.search(r'entity\s+' + m['name'] + r'\s+is', text, re.I):
@@ -34,6 +37,12 @@ def check():
             raise ValueError('Stub guard missing: ' + m['name'])
         if m['status'] not in ['stub', 'implemented']:
             raise ValueError('Unknown implementation status: ' + m['name'])
+        if len(re.findall(r'^architecture\s+\w+\s+of\s+',text,re.M|re.I))!=1:
+            raise ValueError('Expected one architecture: '+m['name'])
+        if m['status']=='implemented':
+            actual_dependencies=sorted(set(re.findall(r'entity\s+work\.(\w+)',text,re.I)))
+            if actual_dependencies!=sorted(m['dependencies']):raise ValueError('Dependency contract mismatch: '+m['name'])
+            if not m.get('functional_tests') or any(not (ROOT/f).exists() for f in m['functional_tests']):raise ValueError('Functional regression missing: '+m['name'])
         if m['status'] == 'implemented' and ('UNIMPLEMENTED_STUB' in text or 'architecture stub' in text):
             raise ValueError('A status change cannot promote an unchanged stub: ' + m['name'])
         if any(d not in modules for d in m['dependencies']):
@@ -42,7 +51,7 @@ def check():
     actual = {str(p.relative_to(ROOT)) for p in (ROOT / 'rtl').rglob('*.vhd') if 'build' not in p.parts and 'tb' not in p.parts}
     if actual != declared:
         raise ValueError('Unlisted/missing VHDL: ' + str(actual ^ declared))
-    print(f'Inventory valid: {len(modules)} entities, {len(inventory["packages"])} packages; interfaces proposed')
+    print(f'Inventory valid: {len(modules)} entities, {len(inventory["packages"])} packages; ABI2 implementation inventory')
     return modules
 
 

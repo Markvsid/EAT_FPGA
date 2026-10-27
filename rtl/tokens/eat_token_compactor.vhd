@@ -40,7 +40,7 @@ entity eat_token_compactor is
 end entity;
 
 architecture rtl of eat_token_compactor is
-  type phase_t is (IDLE,DECISION,COLLECT,SCORE_REQ,SCORE_RSP,SELECT_GROUP,SUMMARIZE,EMIT,DONE);
+  type phase_t is (IDLE,DECISION,COLLECT,SCORE_REQ,SCORE_RSP,SELECT_GROUP,SUMMARIZE,SUM_DIV_START,SUM_DIV_WAIT,EMIT,DONE);
   signal phase : phase_t := IDLE;
   type tokens_t is array(0 to C_MAX_TOKENS-1) of state_vec_t(0 to C_WIDTH-1);
   type scores_t is array(0 to C_MAX_TOKENS-1) of state_t;
@@ -55,7 +55,14 @@ architecture rtl of eat_token_compactor is
   signal retained_token : natural range 0 to C_GROUP_SIZE-1 := 0;
   signal summary_mode : std_logic := '0';
 
+  signal divide_numerator:wide_t;
+  signal divide_denominator:unsigned(63 downto 0);
+  signal divide_ready,divide_valid,divide_zero,divide_overflow:std_logic;
+  signal divide_result:wide_t;
 begin
+  divider:entity work.eat_round_divide(rtl) port map(clk_i=>clk_i,rst_i=>rst_i,s_valid_i=>flag(phase=SUM_DIV_START),s_ready_o=>divide_ready,
+    numerator_i=>divide_numerator,denominator_i=>divide_denominator,m_valid_o=>divide_valid,m_ready_i=>flag(phase=SUM_DIV_WAIT),
+    quotient_o=>divide_result,divide_by_zero_o=>divide_zero,overflow_o=>divide_overflow);
   cmd_ready_o<=flag(phase=IDLE) and not rst_i;done_valid_o<=flag(phase=DONE) and not rst_i;
   decision_ready_o<=flag(phase=DECISION) and not rst_i;s_ready_o<=flag(phase=COLLECT) and not rst_i;
   m_valid_o<=flag(phase=EMIT) and not rst_i;
@@ -140,12 +147,16 @@ begin
               importance:=importance+2**C_STATE_FRAC;denominator:=denominator+importance;
               product:=resize(tokens(group_index*C_GROUP_SIZE+i)(feature),64)*importance;numerator:=numerator+resize(product,64);
             end loop;
-            value:=divide_even(numerator,unsigned(denominator));
-            if not fits(numerator,C_SUMMARY_NUM_BITS) or not fits(value,C_STATE_BITS) then status_o<=('0','1','1',ERR_OVERFLOW,command.ctx);phase<=DONE;
+            if not fits(numerator,C_SUMMARY_NUM_BITS) or denominator<=0 then status_o<=('0','1','1',ERR_OVERFLOW,command.ctx);phase<=DONE;
+            else divide_numerator<=numerator;divide_denominator<=unsigned(denominator);phase<=SUM_DIV_START;end if;
+          when SUM_DIV_START => if divide_ready='1' then phase<=SUM_DIV_WAIT;end if;
+          when SUM_DIV_WAIT => if divide_valid='1' then
+            if divide_zero='1' or divide_overflow='1' or not fits(divide_result,C_STATE_BITS) then status_o<=('0','1','1',ERR_OVERFLOW,command.ctx);phase<=DONE;
             else
-              summary(feature)<=resize(value,C_STATE_BITS);
-              if feature+1=C_WIDTH then feature<=0;phase<=EMIT;else feature<=feature+1;end if;
+              summary(feature)<=resize(divide_result,C_STATE_BITS);
+              if feature+1=C_WIDTH then feature<=0;phase<=EMIT;else feature<=feature+1;phase<=SUMMARIZE;end if;
             end if;
+          end if;
           when EMIT => if m_ready_i='1' then
             if feature+C_LANES<C_WIDTH then feature<=feature+C_LANES;
             elsif output_token+1=decision_reg.output_tokens then status_o<=('0','1','0',ERR_NONE,command.ctx);phase<=DONE;

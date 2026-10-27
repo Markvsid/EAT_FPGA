@@ -25,13 +25,8 @@ jobs:
           python -m pip install numpy==2.5.4
       - name: Check inventory, ports, widths, analysis, elaboration and stub guards
         run: python rtl/scripts/check_vhdl.py
-      - name: Confirm synthesis is blocked for unimplemented modules
-        run: |
-          if python rtl/scripts/check_scaffold.py --require-implemented eat_fpga_top > rtl/build/synthesis_guard.log 2>&1; then
-            echo "Unexpected synthesis approval for stub design"
-            exit 1
-          fi
-          cat rtl/build/synthesis_guard.log
+      - name: Confirm complete top hierarchy is implemented
+        run: python rtl/scripts/check_scaffold.py --require-implemented eat_platform_wrapper
       - name: Replay and serialize dense, RTS, early-exit and speech golden cases
         run: |
           for case in har_quality_seed17 har_balanced_seed17 har_energy_saver_seed17 speech_quality_seed17; do
@@ -45,11 +40,11 @@ jobs:
             rtl/build/**/*.json
             rtl/build/**/*.log
 
-# Structural and exact functional subsystem tests; no full encoder, Vivado timing or board equivalence.
+# Simulation evidence only; target implementation and board measurements are separate.
 
   functional:
     runs-on: ubuntu-24.04
-    timeout-minutes: 30
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v7
         with:
@@ -64,12 +59,53 @@ jobs:
           python -m pip install numpy==2.5.4
       - name: Exact primitive and subsystem regressions
         run: python rtl/scripts/test_rtl.py
-      - name: Audit all frozen model parameter images
-        run: python rtl/scripts/test_images.py
+      - name: Synthesis front-end checks for primitives and complete hierarchy
+        run: |
+          python rtl/scripts/check_synth_frontend.py
+          python rtl/scripts/check_synth_frontend.py --integration
       - uses: actions/upload-artifact@v7.0.2
         if: always()
         with:
           name: vhdl-functional-checks
+          path: |
+            rtl/build/**/*.json
+            rtl/build/**/*.log
+
+  inference:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: core-har
+            command: python rtl/scripts/test_core.py --case har_quality_seed17 --case har_balanced_seed17 --case har_energy_saver_seed17
+          - name: core-speech
+            command: python rtl/scripts/test_core.py --case speech_quality_seed17 --case speech_balanced_seed17 --case speech_energy_saver_seed17
+          - name: core-saturation
+            command: python rtl/scripts/test_core.py --case har_energy_saver_seed17 --input-pattern checkerboard
+          - name: platform-repeat
+            command: python rtl/scripts/test_system.py --case har_energy_saver_seed17 --repeat 2
+          - name: platform-speech
+            command: python rtl/scripts/test_system.py --case speech_quality_seed17
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+      - name: Install simulator and reference dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ghdl
+          python -m pip install numpy==2.5.4
+      - name: Exact full inference regression
+        run: ${{ matrix.command }}
+      - uses: actions/upload-artifact@v7.0.2
+        if: always()
+        with:
+          name: vhdl-${{ matrix.name }}
           path: |
             rtl/build/**/*.json
             rtl/build/**/*.log

@@ -26,19 +26,19 @@ package body eat_math_pkg is
     elsif x(x'high)='1' then return lo; else return hi; end if;
   end;
   function rshift_even(x : signed; amount : natural) return signed is
-    variable ext : signed(x'length downto 0);
-    variable mag,q,remn,half : unsigned(x'length downto 0);
+    variable ext,q : signed(x'length downto 0);
+    variable remainder_value,half,mask : unsigned(x'length downto 0);
   begin
-    ext := resize(x,ext'length);
-    if ext(ext'high)='1' then mag:=unsigned(-ext); else mag:=unsigned(ext); end if;
-    if amount=0 then return x; end if;
-    if amount>mag'high then return to_signed(0,x'length); end if;
-    q:=shift_right(mag,amount);
-    remn:=mag-shift_left(q,amount);
-    half:=(others=>'0'); half(amount-1):='1';
-    if remn>half or (remn=half and q(0)='1') then q:=q+1; end if;
-    if x(x'high)='1' then ext:=-signed(q); else ext:=signed(q); end if;
-    return resize(ext,x'length);
+    if amount=0 then return x;end if;
+    if amount>x'length then return to_signed(0,x'length);end if;
+    ext:=resize(x,ext'length);q:=shift_right(ext,amount);
+    mask:=(others=>'0');half:=(others=>'0');half(amount-1):='1';
+    for i in mask'range loop if i<amount then mask(i):='1';end if;end loop;
+    remainder_value:=unsigned(ext) and mask;
+    -- Arithmetic shift gives floor division even for negatives. Its low-bit
+    -- residue is nonnegative, so one conditional increment gives ties-to-even.
+    if remainder_value>half or (remainder_value=half and q(0)='1') then q:=q+1;end if;
+    return resize(q,x'length);
   end;
   function shift_even(x : signed; amount : integer) return signed is
   begin

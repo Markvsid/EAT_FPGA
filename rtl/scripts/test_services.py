@@ -120,6 +120,9 @@ def generate():
         snap="counter_snapshot_t'(EV_CYCLE=>to_unsigned("+str(length+1)+",64),EV_INFERENCE=>to_unsigned(1,64),"+','.join(e+'=>'+u(v,64) for e,v in counts.items())+')'
         for _ in range(3):b.check(n,'snapshot_valid_o',"'1'");b.check(n,'snapshot_o',snap);b.add('tick;')
         b.set(n,snapshot_ready_i="'1'");b.add('tick;')
+    b.set(n,start_i="'1'",snapshot_ready_i="'0'",complete_i="'0'",event_valid_i="'0'");b.add('tick;');b.set(n,start_i="'0'");b.add('tick;')
+    b.set(n,abort_i="'1'");b.add('tick;');b.set(n,abort_i="'0'",complete_i="'1'",event_valid_i="'1'",event_i='EV_MEMORY_STALL',event_count_i=u(1000,32));b.add('tick;')
+    b.check(n,'snapshot_valid_o',"'0'");b.check(n,'snapshot_o',snap);b.set(n,complete_i="'0'",event_valid_i="'0'");b.cases[n]+=1
     n='eat_axi_stream_output'
     for classes in [6,35]*8:
         vals=[R.randrange(-2**23,2**23) for _ in range(classes)]

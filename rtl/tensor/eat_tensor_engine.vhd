@@ -34,7 +34,9 @@ entity eat_tensor_engine is
     param_req_o : out param_req_t;
     param_rsp_valid_i : in std_logic;
     param_rsp_ready_o : out std_logic;
-    param_rsp_i : in param_rsp_t
+    param_rsp_i : in param_rsp_t;
+    active_products_o : out unsigned(15 downto 0);
+    saturation_events_o : out unsigned(15 downto 0)
   );
 end entity;
 
@@ -76,7 +78,7 @@ begin
     clk_i=>clk_i,rst_i=>rst_i,s_valid_i=>array_input_valid,s_ready_o=>array_ready,
     activations_i=>acts,weights_i=>weights,row_mask_i=>row_mask,column_mask_i=>col_mask,
     first_k_i=>first_k,last_k_i=>last_k,m_valid_o=>array_valid,
-    m_ready_i=>flag(phase=MAC_RESULT),accumulators_o=>array_values,active_products_o=>open,overflow_o=>array_overflow);
+    m_ready_i=>flag(phase=MAC_RESULT),accumulators_o=>array_values,active_products_o=>active_products_o,overflow_o=>array_overflow);
   process(all)
     variable a : natural;
   begin
@@ -101,6 +103,7 @@ begin
   end process;
   process(clk_i)
     variable a,bits_per_word,nibble : natural;
+    variable packed_weight : signed(63 downto 0);
     variable value : signed(74 downto 0);
     variable total : signed(C_ACC_BITS downto 0);
     variable product : signed(C_ACC_BITS+C_MULT_BITS downto 0);
@@ -108,6 +111,7 @@ begin
     variable end_source,end_weights : unsigned(C_MEM_ADDR_BITS downto 0);
   begin
     if rising_edge(clk_i) then
+      saturation_events_o<=(others=>'0');
       if rst_i='1' then phase<=IDLE;command<=C_MATRIX_CMD_IDLE;status_o<=C_STATUS_IDLE;
       else
         case phase is
@@ -132,7 +136,7 @@ begin
               status_o<=('0','1','1',ERR_PROTOCOL,command.ctx);phase<=DONE;
             else
               value:=shift_even(resize(signed(mem_rsp_i.data),75),to_integer(command.activation_shift));
-              acts(lane)<=sat(value,C_ACT_BITS);
+              acts(lane)<=sat(value,C_ACT_BITS);if col_base=0 and not fits(value,C_ACT_BITS) then saturation_events_o<=to_unsigned(1,16);end if;
               if lane=C_LANES-1 or row_base+lane+1=command.rows then lane<=0;phase<=WEIGHT_REQ;
               else lane<=lane+1;phase<=ACT_REQ;end if;
             end if;
@@ -141,9 +145,10 @@ begin
           when WEIGHT_RSP => if param_rsp_valid_i='1' then
             if param_rsp_i.error='1' or param_rsp_i.tag/=param_request.tag then status_o<=('0','1','1',ERR_PROTOCOL,command.ctx);phase<=DONE;
             else
+              -- Fixed slices after shifting avoid variable-slice synthesis tool failures.
               a:=(col_base+lane)*command.reduction+k_index;
-              if command.weight_bits=4 then nibble:=a mod 16;weights(lane)<=resize(signed(param_rsp_i.data(4*nibble+3 downto 4*nibble)),C_ACT_BITS);
-              else nibble:=a mod 8;weights(lane)<=signed(param_rsp_i.data(8*nibble+7 downto 8*nibble));end if;
+              if command.weight_bits=4 then nibble:=a mod 16;packed_weight:=shift_right(signed(param_rsp_i.data),4*nibble);weights(lane)<=resize(packed_weight(3 downto 0),C_ACT_BITS);
+              else nibble:=a mod 8;packed_weight:=shift_right(signed(param_rsp_i.data),8*nibble);weights(lane)<=packed_weight(7 downto 0);end if;
               if lane=C_LANES-1 or col_base+lane+1=command.columns then lane<=0;phase<=MAC_STEP;
               else lane<=lane+1;phase<=WEIGHT_REQ;end if;
             end if;
@@ -176,7 +181,7 @@ begin
                not fits(total,C_ACC_BITS) or not fits(product,63) then
               status_o<=('0','1','1',ERR_OVERFLOW,command.ctx);phase<=DONE;
             else
-              result_beat.data(out_lane)<=sat(rounded_value,C_STATE_BITS);
+              result_beat.data(out_lane)<=sat(rounded_value,C_STATE_BITS);if not fits(rounded_value,C_STATE_BITS) then saturation_events_o<=to_unsigned(1,16);end if;
               if out_lane=C_LANES-1 or col_base+out_lane+1=command.columns then phase<=EMIT;
               else out_lane<=out_lane+1;phase<=BIAS_REQ;end if;
             end if;
