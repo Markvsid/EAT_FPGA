@@ -5,6 +5,22 @@ The controlling project instructions are in
 Paper 1 follows Section 14 and the mathematical reference in Sections 1–12.
 The later execution plans propose a reduced scope; they do not supersede the Word plan.
 
+## Start here for the project handoff
+
+Read the [implementation handoff](paper/EAT_FPGA_Lite_KV260_Handoff.md) for the
+completed work, remaining tasks, commands, known CI setup failures, and acceptance
+criteria. The same handoff is available as an editable
+[Word document](paper/EAT_FPGA_Lite_KV260_Handoff.docx) and a
+[PDF](paper/EAT_FPGA_Lite_KV260_Handoff.pdf).
+
+The handoff records the 12 November 2026 project snapshot. Check current source
+and CI status before starting new work. The confirmed target is **AMD SK-KV260-G**,
+with Vivado part `xck26-sfvc784-2LV-c`; see the
+[board configuration](rtl/config/target_board.json) and
+[physical implementation instructions](rtl/docs/TARGET_VALIDATION.md).
+The [paper directory guide](paper/README.md) locates the evidence, manuscript,
+completion checklist, and research history.
+
 ## Current state
 
 This repository began with planning documents only. The experimental implementation

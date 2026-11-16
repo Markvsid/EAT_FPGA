@@ -407,3 +407,16 @@ iterative operators differ from the earlier bandwidth/overlap assumptions.
 These are simulated cycles with specified boundaries, not board milliseconds,
 achieved Fmax or energy. Physical target memory mapping, routing, board equivalence,
 full-dataset/layer-trace RTL evaluation and measured ablations remain open.
+
+
+## 2026-11-12 — FPGA board confirmed
+
+The user identified the target kit as AMD SK-KV260-G (Kria KV260 Vision AI
+Starter Kit). AMD's KV260 tutorials identify the commercial device as
+`xck26-sfvc784-2LV-c`; recorded the board/device in
+`rtl/config/target_board.json` and replaced the part placeholder in the physical
+implementation handoff. Installed board-file revision, Vivado version/environment
+and board access are not inferred from the SKU. Vivado was not found on PATH or
+in the checked standard Linux installation roots from this workspace. No RTL
+arithmetic, trained weights, simulation results or physical timing/resource
+claims changed.

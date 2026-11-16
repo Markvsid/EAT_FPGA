@@ -84,7 +84,9 @@ recorded rather than represented as one pinned cross-platform toolchain.
 
 ## Remaining target work
 
-Confirm the exact Vivado tool/device/board setup, run target synthesis and inspect
+The confirmed board is AMD SK-KV260-G, with device `xck26-sfvc784-2LV-c`.
+Establish the Vivado version, installed board files and execution environment,
+then run target synthesis and inspect
 banked activation RAM/DSP inference. GHDL netlist generation passes for the full
 platform, but does not validate the intended target RAM mapping. Place and route,
 calibrate the analytical schedule, connect the vendor PS/DMA design and validate

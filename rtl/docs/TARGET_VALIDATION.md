@@ -1,17 +1,21 @@
 # Physical implementation handoff
 
 The user-approved ABI2 and functional RTL are implemented. The controlling Word
-plan's hardware evidence remains required. This handoff contains commands to run
-once the actual Vivado version/device/board setup is supplied; none has been run
-with Vivado in the current environment.
+plan's hardware evidence remains required. The user confirmed **AMD SK-KV260-G (Kria KV260 Vision AI Starter Kit)** on
+2026-11-12. The Vivado device is **`xck26-sfvc784-2LV-c`**, as listed by the
+[AMD University Program](https://github.com/Xilinx/xup_high_level_synthesis_design_flow)
+and [AMD KV260 platform tutorial](https://xilinx.github.io/Vitis-Tutorials/2022-1/build/html/docs/Vitis_Platform_Creation/Design_Tutorials/01-Edge-KV260/step4.html).
+The target is recorded in `rtl/config/target_board.json`. Vivado version, installed
+board-file revision, execution environment and board access remain to be established.
+No Vivado execution is claimed in the current environment.
 
 ## Target synthesis and routing
 
-From the repository root, using the confirmed Vivado part and Python environment:
+From the repository root, using Vivado with K26 device support and the project Python environment:
 
 ```sh
 vivado -mode batch -source rtl/platform/vivado_ooc_candidate.tcl \
-  -tclargs eat_platform_wrapper CONFIRMED_PART ABSOLUTE_PYTHON_PATH route
+  -tclargs eat_platform_wrapper xck26-sfvc784-2LV-c ABSOLUTE_PYTHON_PATH route
 ```
 
 The optional `route` argument runs optimization, placement, physical optimization
@@ -20,7 +24,11 @@ Outputs are isolated under `rtl/build/vivado/eat_platform_wrapper/` and include
 metadata, hierarchical resources, RAM mapping, timing, DRC/methodology and DCPs.
 The 6.667 ns clock is a candidate 150 MHz target. A generated OOC report is not
 a completed board design and has no assigned PS base address, I/O timing or pins.
-Check tool-version support for report commands on the actual installation.
+For PS/DMA integration, query `get_board_parts *kv260*` in the installed Vivado
+release and select its compatible SOM/carrier definitions. Board-file version
+strings depend on the installation; a historical tutorial revision is not a
+required current board revision. Check tool-version support for report commands
+on the actual installation.
 
 Inspect the compact resident RAM, per-lane activation memories, port inference,
 BRAM/URAM fragmentation, DSP mapping and combinational paths before accepting

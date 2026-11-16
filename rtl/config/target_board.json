@@ -1,0 +1,24 @@
+{
+  "status": "board_sku_confirmed_by_user_toolchain_pending",
+  "confirmed_date": "2026-11-12",
+  "manufacturer": "AMD",
+  "board_sku": "SK-KV260-G",
+  "board_name": "Kria KV260 Vision AI Starter Kit",
+  "som_device": "XCK26 commercial",
+  "vivado_part": "xck26-sfvc784-2LV-c",
+  "board_part_policy": "Query installed KV260/K26 SOM board definitions and companion carrier support; do not assume a board-file revision.",
+  "candidate_clock_hz": 150000000,
+  "clock_status": "target_only_not_achieved",
+  "vivado_version": null,
+  "vivado_environment": null,
+  "sources": [
+    {
+      "title": "AMD University Program HLS tutorial: KV260 part",
+      "url": "https://github.com/Xilinx/xup_high_level_synthesis_design_flow"
+    },
+    {
+      "title": "AMD Vitis KV260 platform tutorial: platform device identity",
+      "url": "https://xilinx.github.io/Vitis-Tutorials/2022-1/build/html/docs/Vitis_Platform_Creation/Design_Tutorials/01-Edge-KV260/step4.html"
+    }
+  ]
+}

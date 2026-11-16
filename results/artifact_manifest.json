@@ -1,6 +1,6 @@
 {
   "status": "software_and_functional_rtl_package_target_hardware_gates_incomplete",
-  "parent_git_commit_at_capture": "34d95b091ddf2089525a771afab25694bfdbcca4",
+  "parent_git_commit_at_capture": "0c97aedfea76d58f27fff105c3874f7370717835",
   "completed_training_runs": 49,
   "completed_independent_integer_comparisons": 18,
   "completed_shared_family_integer_comparisons": 9,
@@ -26,12 +26,12 @@
       "sha256": "ec3bbd1c35a411eea69fd1bbe8d4271336d11b6640f4aab15f84e4d42b6b54db"
     },
     ".gitignore": {
-      "bytes": 126,
-      "sha256": "f5986cc4cd0c7a3d00057801831d83622a319482d54aac6d3cb80710597cc3aa"
+      "bytes": 171,
+      "sha256": "73a732ca01bf670d8d31766a84778b9c36c7812b2b1dffe0e33d338a2d821235"
     },
     "README.md": {
-      "bytes": 11998,
-      "sha256": "71e93059e59c3aa28bfc0407d96a09da679064172d2f4afdf80f490d2bc9f0bf"
+      "bytes": 12827,
+      "sha256": "91a681eed653b0253121c4aa96ad536f807fff31190368ecfca7844a00739477"
     },
     "Report_Template/FPGA_Energy_Efficient_Transformer_Research_Plan_2-Month_Extended.docx": {
       "bytes": 535637,
@@ -8565,6 +8565,22 @@
       "bytes": 2111,
       "sha256": "548517492411a3776bb5a3182b992532c8db2eeecb16135e2d971349b49cd5f2"
     },
+    "paper/EAT_FPGA_Lite_KV260_Handoff.docx": {
+      "bytes": 49280,
+      "sha256": "ee41277d491dd280776b96331ec8a0fdc3f9ff8c8af04f4bcb6476168309db05"
+    },
+    "paper/EAT_FPGA_Lite_KV260_Handoff.md": {
+      "bytes": 22143,
+      "sha256": "d6da49c7f0ea1ee4cbbb581658b7651fb1d8eace3346b8a698c13eee4ad06d27"
+    },
+    "paper/EAT_FPGA_Lite_KV260_Handoff.pdf": {
+      "bytes": 242792,
+      "sha256": "784ee91a0a363f1522c72f87a0522c885f5ef7ef01f1f717e7258c9ab42b3fe8"
+    },
+    "paper/README.md": {
+      "bytes": 2607,
+      "sha256": "8ae83943bc123719f19bef6541cc53048f760c58438663a2caf99ba444d59169"
+    },
     "paper/aligned_numerics_results.md": {
       "bytes": 13866,
       "sha256": "b3c57e9323bf3f0783b98ea37b9b7b2d9262f67f66ec8c443fc275d7c427462e"
@@ -8574,8 +8590,8 @@
       "sha256": "c44b71e5768755410e0082967c443e091e6281e0661e49503df26483f49027e8"
     },
     "paper/completion_checklist.md": {
-      "bytes": 7836,
-      "sha256": "bbe30f4122d8b52f59198764303deb80c844720b5a6296d88245fa8f6d426295"
+      "bytes": 7879,
+      "sha256": "c5a61c8eea0cf6a19716be599a8eee4b729f2d56c515e984e72f6d7450a42d99"
     },
     "paper/current_results.md": {
       "bytes": 5711,
@@ -8622,8 +8638,8 @@
       "sha256": "23d26cae5767dea4953866d915727602a077300ec04159eea9bfd26c95e06391"
     },
     "paper/lab_notebook.md": {
-      "bytes": 25884,
-      "sha256": "725fd8a0bd11a2cd88978b2e041033b1623fd5db48731567e60d226f0fc9fd2d"
+      "bytes": 26535,
+      "sha256": "2b7c6dbf261d3c6fa3e42b237cc8930bdcc008f593c3d034d1b61a318a471edb"
     },
     "paper/manuscript.md": {
       "bytes": 22331,
@@ -9742,8 +9758,8 @@
       "sha256": "691774d0678a2b34720c49e457b9ae57f752d228321cca0021924edb1c33992f"
     },
     "results/artifact_manifest.py": {
-      "bytes": 3260,
-      "sha256": "ca87f42e4e92dc449880d7fa316e37d2049b92636405c2067adfb1bf3e712cec"
+      "bytes": 3416,
+      "sha256": "0fe2003d89016fd9f682c5206a0928dfa6a045333999755f3b2307887cf20d62"
     },
     "results/build_report.py": {
       "bytes": 2812,
@@ -13194,8 +13210,8 @@
       "sha256": "7332bbcd6b8636e269d6c69aa8ca86cdd9bb70db1abf527c07395da743caaed9"
     },
     "rtl/README.md": {
-      "bytes": 5455,
-      "sha256": "f814a1cf1ea9a4a4df4cfaa5623d5340e8b9fe7a97180ebc6344563339839f03"
+      "bytes": 5563,
+      "sha256": "9a3937a124a6d8dee42915dd54aa20c05500fd27389d486379a186abcafbcbb1"
     },
     "rtl/RTL_OUTLINE.md": {
       "bytes": 7048,
@@ -13269,6 +13285,10 @@
       "bytes": 1058,
       "sha256": "931f1f7eafd0a15a811f598f14c1dde6dfbfa017a8034d2ec71bea0574158a03"
     },
+    "rtl/config/target_board.json": {
+      "bytes": 971,
+      "sha256": "f2a9086c6183ed378a8d66cacffb67349c2accf9e5f4c30d43e7cf2ca377e8ee"
+    },
     "rtl/constraints/core_clock_candidate.xdc": {
       "bytes": 365,
       "sha256": "c9dc3f7f8f4b01e0d5d45be079c4dbefd5ac81b70c01942db465d7d508ab3dae"
@@ -13306,8 +13326,8 @@
       "sha256": "c0d262ed76ec0b9c2d9588206fc22b7539781d4669e6e3325af55afa8b7e336c"
     },
     "rtl/docs/TARGET_VALIDATION.md": {
-      "bytes": 3795,
-      "sha256": "be98223eaa857788dcc0f28edf70b28cacdc9cc94646882ff651b0757259b589"
+      "bytes": 4562,
+      "sha256": "9159d61cdf0b6c024e0d5dfdee52ed4b1320f57b4d6455b469635d0c2cc61b5e"
     },
     "rtl/docs/VERIFICATION.md": {
       "bytes": 8875,
@@ -14040,6 +14060,7 @@
     "native compiled libraries",
     "local tool archives",
     "RTL build products",
+    "temporary Office lock files",
     "Git internals"
   ]
 }

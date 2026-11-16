@@ -17,6 +17,8 @@ def main():
             continue
         if "__pycache__" in path.parts or path.suffix in [".pyc", ".dylib", ".so"] or path.name in ["artifact_manifest.json", ".DS_Store"]:
             continue
+        if path.name.startswith('~$') or (path.name.startswith('.~lock.') and path.name.endswith('#')):
+            continue
         with path.open("rb") as f:
             digest = hashlib.file_digest(f, "sha256").hexdigest()
         files[str(path)] = {"bytes": path.stat().st_size, "sha256": digest}
@@ -33,7 +35,7 @@ def main():
                 "completed_shared_release_validation_comparisons": len(list(Path("results/software_release_v1/validation").glob("*/metrics.json"))),
                 "completed_shared_release_test_comparisons": len(list(Path("results/software_release_v1/test").glob("*/metrics.json"))),
                 "completed_final_release_robustness_settings": len(list(Path("results/software_release_v1/robustness").glob("*/metrics.json"))),
-                "files": files, "excluded": ["downloaded/prepared datasets", "virtual environment", "native compiled libraries", "local tool archives", "RTL build products", "Git internals"]}
+                "files": files, "excluded": ["downloaded/prepared datasets", "virtual environment", "native compiled libraries", "local tool archives", "RTL build products", "temporary Office lock files", "Git internals"]}
     Path("results/artifact_manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
     print(json.dumps({"files": len(files), "bytes": sum(p["bytes"] for p in files.values()),
                       "completed_training_runs": manifest["completed_training_runs"]}))

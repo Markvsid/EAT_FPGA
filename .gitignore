@@ -10,3 +10,7 @@ exports/
 *.pyc
 native/*.dylib
 native/*.so
+
+# Temporary Office lock files
+~$*
+.~lock.*#

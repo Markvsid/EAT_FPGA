@@ -20,7 +20,7 @@ cannot replace board measurements.
 | RTL controller, compactor, RTS, nonlinear units, buffers | 48 functional entities, no stubs; core and AXI platform integrated; all nine aggregate counter events connected |
 | Unit, layer, full-model RTL equivalence and backpressure | Exact primitive/subsystem and stall regressions pass; ten full-core and four loaded-platform inferences pass exactly; full-dataset/layer-trace RTL and board equivalence pending |
 | Calibrated cycle model within about 10–15 percent of RTL | Old HAR estimates underpredict by about 17× (core) and 32× (loaded peripheral), with about 94–97% relative error; tolerance fails; see rtl_results.md |
-| KV260 dense and adaptive bitstreams; nonnegative routed slack | Board and Vivado access missing |
+| KV260 dense and adaptive bitstreams; nonnegative routed slack | AMD SK-KV260-G confirmed; Vivado environment and board access still needed |
 | Accuracy over three seeds per workload and numeric stage | Original full-test study in `python_test_results.md`; validation-selected aligned study in `aligned_numerics_results.md`, with previously observed test disclosure; board stage pending |
 | LUT, FF, DSP, BRAM, URAM, routed Fmax, WNS and per-block costs | Pending implementation |
 | Board outputs versus integer reference on full test set | Pending |
