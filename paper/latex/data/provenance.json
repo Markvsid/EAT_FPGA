@@ -1,0 +1,12 @@
+{
+  "status": "frozen_software_and_archived_local_rtl_only",
+  "accuracy_source": "results/software_release_v1/accuracy.csv",
+  "accuracy_sha256": "ca9d8ff56d7369a542092725d15d15a69b71e1fa667694ef05559a0deb2d9d56",
+  "training_seeds": [
+    17,
+    29,
+    43
+  ],
+  "test_sets_previously_observed": true,
+  "board_results_available": false
+}

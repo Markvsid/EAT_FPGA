@@ -7,13 +7,17 @@ from pathlib import Path
 
 def main():
     paths = []
-    for folder in ["model", "golden", "native", "architecture", "host", "config", "tests", "paper", "results", "exports", "rtl", ".github"]:
+    for folder in ["model", "golden", "native", "architecture", "host", "config", "tests", "paper", "results", "exports", "rtl", "Paper_Template", ".github"]:
         paths.extend(p for p in Path(folder).rglob("*") if p.is_file())
     paths.extend(Path(p) for p in ["README.md", "requirements.txt", "requirements.lock", ".gitignore", ".gitattributes",
                                 "Report_Template/FPGA_Energy_Efficient_Transformer_Research_Plan_2-Month_Extended.docx"])
     files = {}
     for path in sorted(paths):
         if path.parts[:2] == ('rtl', 'build'):
+            continue
+        if path.parts[:3] == ('paper', 'latex', 'build'):
+            continue
+        if path.parent == Path('paper/latex') and (path.suffix in ['.aux', '.bbl', '.blg', '.log', '.out', '.fls', '.xdv', '.toc', '.bcf'] or path.name in ['main.pdf', 'main.synctex.gz', 'main.fdb_latexmk', 'main.run.xml']):
             continue
         if "__pycache__" in path.parts or path.suffix in [".pyc", ".dylib", ".so"] or path.name in ["artifact_manifest.json", ".DS_Store"]:
             continue
@@ -35,7 +39,7 @@ def main():
                 "completed_shared_release_validation_comparisons": len(list(Path("results/software_release_v1/validation").glob("*/metrics.json"))),
                 "completed_shared_release_test_comparisons": len(list(Path("results/software_release_v1/test").glob("*/metrics.json"))),
                 "completed_final_release_robustness_settings": len(list(Path("results/software_release_v1/robustness").glob("*/metrics.json"))),
-                "files": files, "excluded": ["downloaded/prepared datasets", "virtual environment", "native compiled libraries", "local tool archives", "RTL build products", "temporary Office lock files", "Git internals"]}
+                "files": files, "excluded": ["downloaded/prepared datasets", "virtual environment", "native compiled libraries", "local tool archives", "RTL build products", "LaTeX build products and generated Overleaf packages", "temporary Office lock files", "Git internals"]}
     Path("results/artifact_manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
     print(json.dumps({"files": len(files), "bytes": sum(p["bytes"] for p in files.values()),
                       "completed_training_runs": manifest["completed_training_runs"]}))

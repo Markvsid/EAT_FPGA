@@ -1,0 +1,21 @@
+\section{Implementation and Reproducibility}
+\label{sec:implementation}
+The target board is the AMD SK-KV260-G Kria KV260 Vision AI Starter Kit, with
+Vivado part \texttt{xck26-sfvc784-2LV-c}. Functional analysis, elaboration, and
+GHDL synthesis-front-end checks have been recorded, including a complete
+platform netlist. These checks do not establish Vivado mapping, routed timing,
+or FPGA execution. No board bitstream or deployed host driver is claimed here.
+
+The current XDC proposes 6.667 ns, approximately 150 MHz. The controlling plan
+calls for beginning near 200 MHz and recording any relaxation; its G3 target
+is at least about 150 MHz with an explicit fallback. Both are targets rather
+than measured Fmax. The current hosted VHDL CI also has documented simulator
+installation failures that must be repaired before claiming a green workflow.
+
+\writingtask{integration lead}{Record the actual Vivado release, board files,
+part, clocks, constraints, synthesis and place-and-route settings, PS/DMA design,
+boot image, host software, and hashes for the bitstream, source, and configuration. Archive
+resource, RAM, timing, DRC, and methodology reports for every reported build.}
+\writingtask{artifact lead}{Describe the versioned software and RTL package,
+dataset preparation, frozen model catalog, build commands, and evidence hashes.
+Raw data and local tools are not bundled with this manuscript project.}

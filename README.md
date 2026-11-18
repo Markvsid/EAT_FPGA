@@ -5,6 +5,18 @@ The controlling project instructions are in
 Paper 1 follows Section 14 and the mathematical reference in Sections 1–12.
 The later execution plans propose a reduced scope; they do not supersede the Word plan.
 
+## Write the TRETS paper
+
+The version-controlled manuscript entry point is
+[paper/latex/main.tex](paper/latex/main.tex). The
+[LaTeX project guide](paper/latex/README.md) explains building the ACM Small
+Standard Format draft and generating a paper-only Overleaf upload ZIP.
+See [group editing instructions](paper/latex/CONTRIBUTING.md) for Git branches,
+pull requests, sharing in Overleaf, and keeping Overleaf edits in Git history.
+The [supplied template PDF](Paper_Template/README.md) is retained with provenance.
+Author details, classification terms and unfinished hardware results remain
+explicit writing tasks; this is not a submission-ready paper.
+
 ## Start here for the project handoff
 
 Read the [implementation handoff](paper/EAT_FPGA_Lite_KV260_Handoff.md) for the

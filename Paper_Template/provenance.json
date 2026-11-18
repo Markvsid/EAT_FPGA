@@ -1,0 +1,14 @@
+{
+  "source": "user supplied sibling Paper_Template folder",
+  "recorded_date": "2026-11-18",
+  "file": "Association_for_Computing_Machinery__ACM____Small_Standard_Format_Template.pdf",
+  "sha256": "d57502c20f73e500f074671050ccf9220608d90ca89053f80768b6ee6f9275c3",
+  "pages": 10,
+  "pdf_page_points": [
+    486,
+    720
+  ],
+  "reference_acmart_version": "2.19",
+  "working_source": "paper/latex/main.tex",
+  "journal_guide": "https://trets.cse.sc.edu/tretsauthors.php"
+}

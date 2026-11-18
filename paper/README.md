@@ -38,11 +38,21 @@ current repository before making readiness claims.
 
 ## Prepare the manuscript
 
-[manuscript.md](manuscript.md) is the working paper. Supporting material includes
+The canonical writing source is [latex/main.tex](latex/main.tex), with separate
+section files and the shared [bibliography](latex/references.bib).
+Read the [LaTeX project guide](latex/README.md),
+[collaboration workflow](latex/CONTRIBUTING.md), and
+[submission checklist](latex/SUBMISSION_CHECKLIST.md) before editing.
+The ACM Small Standard Format scaffold targets TRETS, retains visible pending
+work, and has a script-generated Overleaf upload package and compile workflow.
+
+[manuscript.md](manuscript.md) is retained as historical drafting material, not
+a second source to maintain in parallel. Supporting material includes
 [datasets](datasets.md), [related work](related_work.md),
 [numerical alignment](aligned_numerics_results.md),
 [Python test results](python_test_results.md), and
-[the bibliography](references.bib). Figures are under `figures/`.
+the prior figures under `figures/`. New manuscript figures belong in
+`latex/figures/`, with their provenance and accessibility descriptions.
 
 Preserve earlier experiment reports as historical evidence. Functional RTL
 simulation does not establish target resource fit, routed timing, board accuracy,

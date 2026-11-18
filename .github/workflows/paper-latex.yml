@@ -1,0 +1,55 @@
+name: TRETS paper LaTeX
+
+on:
+  push:
+    paths:
+      - 'paper/latex/**'
+      - 'Paper_Template/**'
+      - 'results/software_release_v1/accuracy.csv'
+      - 'rtl/validation/implementation_v2/**'
+      - '.github/workflows/paper-latex.yml'
+  pull_request:
+    paths:
+      - 'paper/latex/**'
+      - 'Paper_Template/**'
+      - 'results/software_release_v1/accuracy.csv'
+      - 'rtl/validation/implementation_v2/**'
+      - '.github/workflows/paper-latex.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  manuscript:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+      - name: Install checksum-verified Tectonic
+        run: |
+          curl -fL --retry 3 https://github.com/tectonic-typesetting/tectonic/releases/download/tectonic%400.17.0/tectonic-0.17.0-x86_64-unknown-linux-musl.tar.gz -o "$RUNNER_TEMP/tectonic.tar.gz"
+          printf '%s  %s\n' '8533d07f9ccbd7a65824b9e0459041bca34af1eb33daba48f59215593753a3b7' "$RUNNER_TEMP/tectonic.tar.gz" | sha256sum -c -
+          mkdir -p "$RUNNER_TEMP/tectonic-bin"
+          tar -xzf "$RUNNER_TEMP/tectonic.tar.gz" -C "$RUNNER_TEMP/tectonic-bin"
+          echo "$RUNNER_TEMP/tectonic-bin" >> "$GITHUB_PATH"
+      - name: Check source and recorded evidence
+        run: python paper/latex/scripts/check_project.py
+      - name: Compile the internal writing draft
+        run: python paper/latex/scripts/build.py --engine tectonic
+      - name: Package Overleaf sources
+        run: python paper/latex/scripts/package_overleaf.py
+      - uses: actions/upload-artifact@v7.0.2
+        if: always()
+        with:
+          name: trets-paper
+          path: |
+            paper/latex/build/main.pdf
+            paper/latex/build/*.log
+            paper/latex/build/*_report.json
+            paper/latex/build/EAT_FPGA_Lite_TRETS_Overleaf.zip

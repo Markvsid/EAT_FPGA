@@ -420,3 +420,36 @@ and board access are not inferred from the SKU. Vivado was not found on PATH or
 in the checked standard Linux installation roots from this workspace. No RTL
 arithmetic, trained weights, simulation results or physical timing/resource
 claims changed.
+
+
+## 2026-11-18 — Versioned TRETS manuscript scaffold
+
+Created the canonical ACM Small/TRETS writing project at `paper/latex/main.tex`,
+with separate section files, shared bibliography, author metadata placeholders,
+and visible writing tasks following the controlling Word research plan. The
+user-supplied reference PDF is preserved unchanged under `Paper_Template/`
+with provenance. The TRETS author guide was reviewed for manuscript preparation;
+its requirements and the remaining scientific work are recorded in
+`paper/latex/SUBMISSION_CHECKLIST.md`.
+
+The manuscript contains frozen, provenance-checked software accuracy aggregates
+and selected complete-inference RTL simulation counts. It discloses previously
+observed test sets and distinguishes functional simulations from pending Vivado
+and board measurements. No training, inference, weights, RTL behavior, or measured
+hardware claims were changed.
+
+Local Tectonic 0.17.0 compiled a six-page draft with no unresolved citations or
+references and no overfull text boxes; all six rendered pages were inspected.
+The local standard class is acmart 1.83, while the supplied PDF records 2.19
+under TeX Live 2026. This version difference and the need for a consistent final
+Overleaf proof are documented. The 180-word abstract and nine bibliography
+entries pass source checks; strict submission checks intentionally reject this
+incomplete writing scaffold. A standalone 31-file source ZIP was extracted and
+compiled independently, without the research datasets or local tool directories.
+
+Added source-check/build/package scripts, a checksum-verified compiler workflow,
+and group editing instructions covering Git branches, pull requests, Overleaf
+ZIP import, and reviewed round trips. No live Overleaf project, account linkage,
+or collaborator invitations have been created. The project owner must import
+and share the prepared ZIP. Generated PDFs, ZIPs, and compiler files are ignored
+in Git; editable sources and small evidence snapshots are versioned.

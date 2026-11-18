@@ -14,3 +14,23 @@ native/*.so
 # Temporary Office lock files
 ~$*
 .~lock.*#
+
+# Version the paper's small aggregate evidence snapshots, not raw datasets.
+!paper/latex/data/
+!paper/latex/data/**
+
+# Generated LaTeX outputs and Overleaf upload packages.
+paper/latex/build/
+paper/latex/*.aux
+paper/latex/*.bbl
+paper/latex/*.blg
+paper/latex/*.log
+paper/latex/*.out
+paper/latex/*.fdb_latexmk
+paper/latex/*.fls
+paper/latex/*.synctex.gz
+paper/latex/*.xdv
+paper/latex/*.toc
+paper/latex/*.bcf
+paper/latex/*.run.xml
+paper/latex/main.pdf

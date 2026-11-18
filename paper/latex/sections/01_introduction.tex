@@ -1,0 +1,25 @@
+\section{Introduction}
+\label{sec:introduction}
+Short sensor and keyword sequences provide a useful setting for studying
+adaptive Transformer inference on an edge FPGA. Their complete weights can
+potentially reside on chip, while projection and feed-forward layers account
+for much of the arithmetic. Reducing the tokens that reach later layers can
+therefore reduce more than quadratic attention work. Selection, compaction,
+summary construction, and mode control also introduce overhead that must be
+included in a measured comparison.
+
+\projectname{} restricts adaptation to three finite execution modes in one
+compact encoder architecture. It combines W8A8 or W4A8 arithmetic, retention of
+chronological groups, a residual summary for each discarded group, and one
+mode-selected depth boundary. This scope follows the controlling research
+plan's Paper 1 subset; it does not implement a trained energy-budget policy,
+head gating, or a general architecture search.
+
+Token removal, merging, and aggregation are established techniques
+\cite{arxiv210602034,arxiv220207800,arxiv221009461,arxiv231201026}.
+The paper must identify a specific technical distinction and measured benefit
+relative to the nearest FPGA work, rather than claim that token summaries or
+runtime modes alone are new.
+\writingtask{technical lead}{Write the final contribution list after the novelty
+review and hardware measurements. State the workload and measurement boundary
+for every performance or energy claim.}

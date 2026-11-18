@@ -1,0 +1,24 @@
+\section{Microarchitecture}
+\label{sec:microarchitecture}
+The functional VHDL hierarchy contains 48 entities and five packages. A single
+$8\times8$ tensor engine serves embedding, projections, feed-forward layers,
+scoring, and classification. Registered readers provide row-vector operands;
+tiled online attention maintains running state without a full score matrix.
+The selector and compactor implement stable grouping, chronological retention,
+and summaries. The sequencer selects four-block or block-two-exit execution.
+
+The peripheral connects AXI-Lite control, framed 128-bit AXI streams, typed model
+loading, bank arming and identity checks, input storage, output serialization,
+and completed-inference counter snapshots. The logical model map is compacted
+into three resident allocations of 90,112 64-bit words each. This allocation
+is 2,162,688 bytes before other state and physical mapping overhead; it is not
+a placed BRAM/URAM utilization result.
+
+Core activation and QKV reads are registered. RMS variance, pooling, RTS
+summaries, and final attention normalization use iterative division. Scalar
+parameter and operand transactions currently serialize, so a functional
+$8\times8$ array does not establish high sustained utilization.
+\writingtask{RTL leads}{Add the actual hierarchy/dataflow figure, bank and port
+schedule, buffer lifetimes, arithmetic widths and rounding points, pipeline
+stages, reset/error behavior, and a measured breakdown of controller/RTS costs.
+Separate implemented logic from vendor-generated PS/DMA integration.}

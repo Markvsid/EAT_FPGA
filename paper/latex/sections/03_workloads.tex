@@ -1,0 +1,33 @@
+\section{Workload Characterization}
+\label{sec:workloads}
+\subsection{Human Activity Recognition}
+The UCI Human Activity Recognition Using Smartphones dataset
+\cite{uciHAR} supplies 128-sample windows with nine inertial channels and six
+activity labels. Four-sample patches produce 32 tokens, each embedded from 36
+values to width 128. The study uses sequential sensor channels rather than the
+precomputed feature table. The recorded split contains 5,991 training, 1,361
+validation, and 2,947 official test windows. Validation subjects are held out
+from the official training subjects, and normalization is fitted on training
+data only.
+
+\subsection{Speech Commands}
+The secondary workload uses Speech Commands v0.02 with all 35 named words
+\cite{arxiv180403209}. Official lists define 84,843 training, 9,981 validation,
+and 11,005 test clips. The host frontend converts mono 16 kHz audio into 40
+log-mel channels in 64 frame slots. Two-frame patches again yield 32 tokens.
+Two trailing log-silence frames are valid inputs in the frozen frontend; they
+are not hardware padding. This is a 35-class protocol, not a directly
+comparable 12-class keyword benchmark.
+
+\subsection{Operator and Memory Demand}
+For token count $N$, width $d$, and feed-forward expansion $r$, a block executes
+\begin{equation}
+  M_{\mathrm{block}} = 4Nd^2 + 2N^2d + 2rNd^2
+\end{equation}
+projection, attention, and feed-forward multiply--accumulates. These counts do
+not include normalization, nonlinear functions, selection, division, residual
+addition, or data movement. All effective operation counts must specify
+whether summary construction is included.
+\writingtask{architecture lead}{Add measured activation ranges, operator shares,
+roofline and bandwidth analyses, and physical memory costs. Keep analytical
+sequence sweeps distinct from hardware configurations actually implemented.}

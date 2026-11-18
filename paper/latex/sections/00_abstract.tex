@@ -1,0 +1,20 @@
+\begin{abstract}
+Compact edge Transformers offer a setting in which token retention, operand
+precision, and execution depth can be restricted to a small set of
+hardware-regular modes. This paper studies EAT-FPGA Lite, a four-block encoder
+with feature width 128, four attention heads, and feed-forward expansion two,
+for human activity recognition and speech keyword classification. Quality,
+Balanced, and Energy-Saver modes combine eight-bit or four-bit weights,
+chronological token-group retention, residual token summaries, and a block-two
+exit boundary. The current prototype connects a shared tensor engine, tiled
+online attention, fixed-point nonlinear operators, and a host-controlled VHDL
+peripheral. Preliminary software evaluation over three training seeds yields
+Quality-mode test accuracies of 93.474 percent for human activity recognition
+and 92.328 percent for speech. An aligned PyTorch model matches a separate
+integer reference exactly for the verified model families, and selected RTL
+simulations also match their golden outputs. These results provide a numerical
+baseline for hardware evaluation. Post-route feasibility, board latency, and
+whole-board power and energy measurements remain pending. The final study
+must establish attributable benefits through same-board baselines and
+controlled precision, dropping, summary, and depth ablations.
+\end{abstract}

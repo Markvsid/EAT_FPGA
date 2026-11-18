@@ -1,6 +1,6 @@
 {
   "status": "software_and_functional_rtl_package_target_hardware_gates_incomplete",
-  "parent_git_commit_at_capture": "0c97aedfea76d58f27fff105c3874f7370717835",
+  "parent_git_commit_at_capture": "63e69d48f2d4cdb6728904d6990e3e0101ad45e6",
   "completed_training_runs": 49,
   "completed_independent_integer_comparisons": 18,
   "completed_shared_family_integer_comparisons": 9,
@@ -17,6 +17,10 @@
       "bytes": 124,
       "sha256": "43e32dc99f73dc5b6a430b91053b696b657cbf54c5b920115736f6e521792fc9"
     },
+    ".github/workflows/paper-latex.yml": {
+      "bytes": 1989,
+      "sha256": "151e055228b473d949cf9518bedf33694e2da1228633a75551aaa2a3697f856c"
+    },
     ".github/workflows/software-reference.yml": {
       "bytes": 1657,
       "sha256": "d593df03cf9767b59bc61ce9b79e54f8477bbc2e19db48f7c6eeac7eccad8d20"
@@ -26,12 +30,24 @@
       "sha256": "ec3bbd1c35a411eea69fd1bbe8d4271336d11b6640f4aab15f84e4d42b6b54db"
     },
     ".gitignore": {
-      "bytes": 171,
-      "sha256": "73a732ca01bf670d8d31766a84778b9c36c7812b2b1dffe0e33d338a2d821235"
+      "bytes": 620,
+      "sha256": "ed72f478f3c41452a8660623736c2bf3403775834f1616891695edc51ce5168e"
+    },
+    "Paper_Template/Association_for_Computing_Machinery__ACM____Small_Standard_Format_Template.pdf": {
+      "bytes": 633688,
+      "sha256": "d57502c20f73e500f074671050ccf9220608d90ca89053f80768b6ee6f9275c3"
+    },
+    "Paper_Template/README.md": {
+      "bytes": 1218,
+      "sha256": "906526338173398ad6b96a6310e7163df2d3bfdfb20e889ad100d8af70e39d01"
+    },
+    "Paper_Template/provenance.json": {
+      "bytes": 473,
+      "sha256": "9d1b3c0001728dce6aa7b83b4d5d6ab4ecd192e507c440a3de2d9a1a35b48453"
     },
     "README.md": {
-      "bytes": 12827,
-      "sha256": "91a681eed653b0253121c4aa96ad536f807fff31190368ecfca7844a00739477"
+      "bytes": 13481,
+      "sha256": "ab4caf9c02334f6837d8bf0d48a51779c6d350b02f2e4a5dbf3754bac3a2486d"
     },
     "Report_Template/FPGA_Energy_Efficient_Transformer_Research_Plan_2-Month_Extended.docx": {
       "bytes": 535637,
@@ -8578,8 +8594,8 @@
       "sha256": "784ee91a0a363f1522c72f87a0522c885f5ef7ef01f1f717e7258c9ab42b3fe8"
     },
     "paper/README.md": {
-      "bytes": 2607,
-      "sha256": "8ae83943bc123719f19bef6541cc53048f760c58438663a2caf99ba444d59169"
+      "bytes": 3227,
+      "sha256": "58c4f813de490cecc7d5a7928c421ca23451312b65e946a985806b2ffa39f291"
     },
     "paper/aligned_numerics_results.md": {
       "bytes": 13866,
@@ -8638,12 +8654,136 @@
       "sha256": "23d26cae5767dea4953866d915727602a077300ec04159eea9bfd26c95e06391"
     },
     "paper/lab_notebook.md": {
-      "bytes": 26535,
-      "sha256": "2b7c6dbf261d3c6fa3e42b237cc8930bdcc008f593c3d034d1b61a318a471edb"
+      "bytes": 28543,
+      "sha256": "2b5b9b0621a75d6e7efdf65cd468f0267a7d19e33685d670a9bb285b812a79c7"
+    },
+    "paper/latex/CONTRIBUTING.md": {
+      "bytes": 4206,
+      "sha256": "e66a8db3e717d1c50ee2a7de8666da36af8c3ab3f3c6afbd4abe02a4ce8f85a3"
+    },
+    "paper/latex/Makefile": {
+      "bytes": 324,
+      "sha256": "7e2754a92b7b5fad7e20d26ebf57d2019ab49deb06a89a1542c1364ef4c7dd22"
+    },
+    "paper/latex/README.md": {
+      "bytes": 5397,
+      "sha256": "8e1724222520f4782b71455b7f6b3df8d1147c63622ecdb8ebce50181365632e"
+    },
+    "paper/latex/SUBMISSION_CHECKLIST.md": {
+      "bytes": 3003,
+      "sha256": "573c2b6dcc6594f0bf2b15ef4147558dd595d93d48aa9f321f1b044e64e46094"
+    },
+    "paper/latex/data/provenance.json": {
+      "bytes": 343,
+      "sha256": "3c2791dda0c8c8b1bcd85982ee20e9288668dd2204255421eabc835477ca94fd"
+    },
+    "paper/latex/data/rtl_validation.json": {
+      "bytes": 2013,
+      "sha256": "ac04bd9edf2d8ab44902d083fcc45d12b3934c9e2a9b54f80941ce1487485b1d"
+    },
+    "paper/latex/data/software_accuracy.csv": {
+      "bytes": 2070,
+      "sha256": "ca9d8ff56d7369a542092725d15d15a69b71e1fa667694ef05559a0deb2d9d56"
+    },
+    "paper/latex/figures/README.md": {
+      "bytes": 739,
+      "sha256": "79cbb07cf70d89a6d560e97801f7ddc6853fd72a67131271febb588ee3dabefd"
+    },
+    "paper/latex/latexmkrc": {
+      "bytes": 105,
+      "sha256": "0f52de25d634c770a9a2f93d2491101cee2bdc6b23bfe197b1e2212e2ee6b572"
+    },
+    "paper/latex/main.tex": {
+      "bytes": 1666,
+      "sha256": "c8b5732595e9d846b6e264539670ded8a44235cac9c1244ff2cbf4c3eab8fd66"
+    },
+    "paper/latex/metadata.tex": {
+      "bytes": 595,
+      "sha256": "2eb391f6d085e2571c7014a15fb268724f2256321323f7b42ee12e98d30a77a7"
+    },
+    "paper/latex/references.bib": {
+      "bytes": 2779,
+      "sha256": "bdd663ef904c241ea32f71f68c2bd0063010b9363a3a468576e6814e1eab93b8"
+    },
+    "paper/latex/scripts/build.py": {
+      "bytes": 2432,
+      "sha256": "a866570742e3c71121f750618b4e77d0d58a57a849fc1cf84638a1e2e991c927"
+    },
+    "paper/latex/scripts/check_project.py": {
+      "bytes": 3618,
+      "sha256": "8cb261432ffd37b5fe7183c1afd83d3edd0e421c121beb0533247ab0616f73aa"
+    },
+    "paper/latex/scripts/evidence.py": {
+      "bytes": 4022,
+      "sha256": "87976158dd6ee426c6ab08606c9e56667bae3978473fe62f2eb6a6c581c69109"
+    },
+    "paper/latex/scripts/package_overleaf.py": {
+      "bytes": 1838,
+      "sha256": "7dbe1e480e9c0c7368272c7dce38886ef193442b50d26ed9a35c9eeb709d9974"
+    },
+    "paper/latex/scripts/refresh_evidence.py": {
+      "bytes": 1125,
+      "sha256": "067c79552574211679b93341aca483b05777cc5a5bc5e351f7f45ba0fa00f589"
+    },
+    "paper/latex/sections/00_abstract.tex": {
+      "bytes": 1380,
+      "sha256": "bc5ae15260f71e1f1ad99d3412f738c19ddc5bd35caef4ddc775dd4c2eb9697d"
+    },
+    "paper/latex/sections/01_introduction.tex": {
+      "bytes": 1484,
+      "sha256": "f99c440a9d1756aea1f6a26f0f6ba57a13e06be35fbeabe06502e7033f51d148"
+    },
+    "paper/latex/sections/02_related_work.tex": {
+      "bytes": 1150,
+      "sha256": "93a7c3c344039badf4e6aef5b635dd0ab2dff2f9f9008f8d3729790eaeadc9b0"
+    },
+    "paper/latex/sections/03_workloads.tex": {
+      "bytes": 1866,
+      "sha256": "2c1e1281ca92547f714efe271f033ac6207343a65e42b25497ffa42544c8d41a"
+    },
+    "paper/latex/sections/04_codesign.tex": {
+      "bytes": 1943,
+      "sha256": "8dab1dd0c16df97d74f50b65a75b060c55aeb04fb17da52bfdf89412d107560e"
+    },
+    "paper/latex/sections/05_microarchitecture.tex": {
+      "bytes": 1550,
+      "sha256": "1473231b260bced92ac718b9a7f73d9a5d22630f5c896afb4427a81131abc740"
+    },
+    "paper/latex/sections/06_analytical_model.tex": {
+      "bytes": 922,
+      "sha256": "39b5b9f5b382e1d3546e2109a26eb18418ae82ce911c62c8352435eaf75cea14"
+    },
+    "paper/latex/sections/07_implementation.tex": {
+      "bytes": 1411,
+      "sha256": "6235cdd170a40c2665bd7f97c6c9ba96e614f68e43b83b38df1fd721dfe91814"
+    },
+    "paper/latex/sections/08_evaluation.tex": {
+      "bytes": 2457,
+      "sha256": "2e2ec1b15f9275226a041be404ba6e78e93c876466e0b386146628be81b875c7"
+    },
+    "paper/latex/sections/09_limitations.tex": {
+      "bytes": 1064,
+      "sha256": "be1611d92c510787243df05b5f6edd907592e2e0a0cb33d87004c6015efe4346"
+    },
+    "paper/latex/sections/10_conclusion.tex": {
+      "bytes": 602,
+      "sha256": "b8e7d24705020474fbeaacdd4bf763487ccafd9c5930a041fdc2f6d6c1797a34"
+    },
+    "paper/latex/tables/rtl_coverage.tex": {
+      "bytes": 469,
+      "sha256": "a5beb9e0a96a092267ad52bbbd7dd8736635b120967ab34327307ed4a4eef009"
+    },
+    "paper/latex/tables/software_accuracy.tex": {
+      "bytes": 690,
+      "sha256": "4c14b2215f489e957e116ed3628a9c3b0fcc19372e509bfb863041155f7dec8e"
+    },
+    "paper/latex/toolchain.json": {
+      "bytes": 858,
+      "sha256": "fb9479caaf2c767b9f554ab2a1813bc53b2a18c66f5482ceb0a68351df7231f1"
     },
     "paper/manuscript.md": {
-      "bytes": 22331,
-      "sha256": "bc51a4851fdaf89c2809d7aa51db985849152d134f2eb9f9abf14c9c8cc2864b"
+      "bytes": 22591,
+      "sha256": "330f4830814f16364e53a1ab6313c21e67039a6becfafb7a83c7f8e35f88d02f"
     },
     "paper/python_numerical_findings.md": {
       "bytes": 11205,
@@ -8652,10 +8792,6 @@
     "paper/python_test_results.md": {
       "bytes": 14690,
       "sha256": "bf38159b9f656bef90d1fff1e1d6623d23b18cf1a412eacde5e91c6a53a12fb8"
-    },
-    "paper/references.bib": {
-      "bytes": 2465,
-      "sha256": "39c6992a2745de78f2878f75c31743d7df40e7b0559647a3312800e2e8848d95"
     },
     "paper/related_work.md": {
       "bytes": 4164,
@@ -9758,8 +9894,8 @@
       "sha256": "691774d0678a2b34720c49e457b9ae57f752d228321cca0021924edb1c33992f"
     },
     "results/artifact_manifest.py": {
-      "bytes": 3416,
-      "sha256": "0fe2003d89016fd9f682c5206a0928dfa6a045333999755f3b2307887cf20d62"
+      "bytes": 3815,
+      "sha256": "553ef51dde077007bc03f82ce7653d1218e27e22c481a2c6c47e7906c40649b9"
     },
     "results/build_report.py": {
       "bytes": 2812,
@@ -14060,6 +14196,7 @@
     "native compiled libraries",
     "local tool archives",
     "RTL build products",
+    "LaTeX build products and generated Overleaf packages",
     "temporary Office lock files",
     "Git internals"
   ]

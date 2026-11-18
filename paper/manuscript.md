@@ -1,5 +1,10 @@
 # EAT FPGA Lite Adaptive Execution of Compact Edge Transformers
 
+Historical drafting material. The canonical group-editable manuscript is now
+[latex/main.tex](latex/main.tex); see [the collaboration guide](latex/CONTRIBUTING.md).
+Preserve this file for the earlier narrative and do not maintain two manuscripts
+in parallel.
+
 Manuscript under development. The evidence includes three-seed software studies for both workloads, exact
 integer-reference comparisons, and connected VHDL verification. Target resource
 mapping, routed timing, board equivalence and measured energy remain prerequisites

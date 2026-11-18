@@ -1,0 +1,41 @@
+\section{Evaluation}
+\label{sec:evaluation}
+\subsection{Verified Software Accuracy}
+Table~\ref{tab:software-accuracy} reports the frozen independent aligned models.
+Values are mean and sample standard deviation across seeds 17, 29, and 43;
+each seed sees the same official test partition. These final comparisons use
+previously observed test sets and are not new untouched-test evidence. The
+aligned PyTorch implementation and separate integer reference agree at recorded
+intermediate points, logits, and group choices across the verified families.
+This does not retrospectively make the earlier dynamic fake-quantized model
+numerically identical.
+\input{tables/software_accuracy}
+
+\subsection{Selected RTL Simulation Coverage}
+Table~\ref{tab:rtl-coverage} summarizes the archived local complete-model cases.
+Coverage includes six mode examples for HAR and speech using seed 17, four directed stress
+inputs, and actual loaded-peripheral cases including repeated inference.
+Exact final-logit agreement and event/protocol checks apply to those cases;
+full-dataset and all-seed board equivalence remain pending.
+\input{tables/rtl_coverage}
+
+\subsection{Physical Implementation and Board Results}
+\writingtask{integration and measurement leads}{Populate LUT, FF, DSP, BRAM,
+URAM, post-route Fmax/WNS, and per-block costs from actual reports. Run the full
+test partitions on the board before reporting on-board accuracy. Measure batch-one
+median/p95 latency, whole-board watts, and joules per completed inference.}
+
+\subsection{Controlled Baselines and Ablations}
+\writingtask{evaluation lead}{Measure (a) dense static W8A8, (b) static W4A8,
+(c) W4A8 plus group dropping, (d) dropping plus RTS, and (e) RTS plus early exit,
+as required by the controlling plan. Include the same-board Cortex-A53 INT8
+baseline. A runtime Quality mode alone is not a separately built static baseline.}
+
+\subsection{Statistics Sensitivity and Prior Work}
+\writingtask{statistics and architecture leads}{Retain paired per-seed outcomes
+and independent measurement windows; justify statistical tests and uncertainty
+without treating repeated examples or adjacent power samples as independent
+replications. Add accuracy--energy Pareto, mechanism ablation, sequence
+sensitivity, and utilization analyses. Stall categories overlap and cannot be
+summed directly. Verify raw/normalized prior-FPGA comparisons and disclose
+model, precision, device, clock, and operation-count differences.}

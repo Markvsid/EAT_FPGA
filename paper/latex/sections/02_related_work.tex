@@ -1,0 +1,19 @@
+\section{Background and Related Work}
+\label{sec:related-work}
+DynamicViT studies dynamic token sparsification \cite{arxiv210602034}; EViT,
+Token Merging, and Token Fusion establish related token reorganization and
+aggregation approaches \cite{arxiv220207800,arxiv221009461,arxiv231201026}.
+FlashAttention motivates attention dataflows that avoid materializing the
+complete score matrix \cite{arxiv220514135}. These ideas must be distinguished
+from the fixed-point arithmetic, short-sequence regime, and physical resource
+constraints of the present prototype.
+
+FPGA co-design has combined static and dynamic pruning
+\cite{arxiv240314047}; the starting bibliography also includes a runtime-adaptive
+FPGA inference engine \cite{arxiv260322867}. These records are starting sources,
+not a completed current literature or patent audit.
+\writingtask{literature lead}{Verify final publication metadata and original
+full texts. Add a nearest-work matrix covering retained-token policy, summary
+formation, arithmetic, attention dataflow, runtime control, physical resources,
+and measurement boundaries. Update the patent search before fixing novelty
+claims.}

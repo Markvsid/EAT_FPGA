@@ -1,0 +1,15 @@
+\section{Analytical Performance and Resource Model}
+\label{sec:model}
+The existing schedule models array tails, GEMM startup, requantization,
+nonlinear operators, division, selection, compaction, and memory assumptions.
+It is not calibrated to the current serialized RTL services. For HAR, archived
+core-bench cycles are approximately 17 times the original estimates; loaded
+peripheral kernel cycles are approximately 32 times the estimates. The
+comparison uses explicit, different simulation boundaries and establishes no
+achieved frequency, seconds, or energy.
+
+\writingtask{architecture lead}{Model actual requests, response latency,
+overlap, bank bandwidth, and divider/control costs. Validate predictions on
+held-out configurations against the research plan's approximately 10--15\%
+tolerance. Preserve the original estimates and negative results. Do not claim
+calibration from fitting a constant to these examples.}

@@ -1,0 +1,43 @@
+\section{Algorithm and Hardware Co Design}
+\label{sec:codesign}
+The encoder has four pre-normalized blocks, width $d=128$, four attention heads,
+and feed-forward width 256. It uses RMSNorm, piecewise-linear SiLU, learned
+position embeddings, mean pooling, and classification heads at the final and
+block-two boundaries. The current modes use eight-bit activations; four-bit
+weights do not imply a DSP subword-packing speedup.
+
+After block one, a learned score is reduced within chronological groups of four
+tokens. Stable ranking retains the earlier group on an exact score tie. Each
+retained group contributes four original tokens. Residual Token Summary (RTS)
+adds one importance-weighted summary for every discarded group. With eight
+input groups and $k$ retained groups, the later sequence length is
+\begin{equation}
+  N_{\mathrm{RTS}}=4k+(8-k).
+\end{equation}
+In real-valued form, a group's summary uses weights $|s_i|+1$; its implementation
+uses the frozen fixed-point representation, rounding, and checked widths.
+Compaction preserves chronological order.
+
+\begin{table}
+\caption{Current mode configuration. Token counts apply after the first block.}
+\label{tab:modes}
+\centering
+\begin{tabular}{lccc}
+\toprule
+Mode & Weight bits & Later tokens & Executed blocks \\
+\midrule
+Quality & 8 & 32 & 4 \\
+Balanced & 4 & 26 & 4 \\
+Energy-Saver & 4 & 20 & 2 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The frozen default uses independently trained modes. A separately published
+shared HAR family uses one shadow parameter set per seed, with mode-specific
+calibration and encoded constants. These families have different training
+budgets and must not be compared as an isolated sharing experiment.
+\writingtask{model lead}{Document training losses, checkpoint selection,
+straight-through surrogates, calibration, and exact integer summary arithmetic.
+Present dropping and RTS controls at both equal retention and equal processed
+sequence length.}
